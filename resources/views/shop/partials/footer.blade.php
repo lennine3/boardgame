@@ -98,61 +98,76 @@
 
 <div class="d-flex justify-content-center border-top border-2 border-orange"
     style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
-    <!--slide Banner-->
-    <script>
-        //slide
-        $('.owl-banner').owlCarousel({
-            loop: true,
-            autoplay: true,
-            navSpeed: 1750,
-            dots: false,
-            margin: 10,
-            center: true,
-            center: true,
-            autoplaySpeed: 1750,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 1
-                },
-                1000: {
-                    items: 1
-                }
+<!--slide Banner-->
+<script>
+    //slide
+    $('.owl-banner').owlCarousel({
+        loop: true,
+        autoplay: true,
+        navSpeed: 1750,
+        dots: false,
+        margin: 10,
+        center: true,
+        center: true,
+        autoplaySpeed: 1750,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1
             }
-        })
-    </script>
-    <!--slide Banner-->
-    <!--slide Exclusive-->
-    <script>
-        //slide
-        $('.owl-exclusive').owlCarousel({
-            loop: true,
-            autoplay: true,
-            navSpeed: 1750,
-            dots: true,
-            margin: 10,
-            center: true,
-            center: true,
-            navText: ["<img src={{ asset('FrontEnd/img/prev-arrow.png') }}>",
+        }
+    })
+
+</script>
+<!--slide Banner-->
+<!--slide Exclusive-->
+<script>
+    //slide
+    $('.owl-exclusive').owlCarousel({
+        loop: true,
+        autoplay: false,
+        navSpeed: 1750,
+        dots: false,
+        margin: 10,
+        autoplayTimeout:6500,
+        center: true,
+        center: true,
+        navText: ["<img src={{ asset('FrontEnd/img/prev-arrow.png') }}>",
             "<img src={{ asset('FrontEnd/img/next-arrow.png') }}>"
         ],
-            autoplaySpeed: 1750,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 1
-                },
-                1000: {
-                    items: 1
-                }
+        autoplaySpeed: 1750,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1
             }
-        })
-    </script>
-    <!--slide Exclusive-->
+        }
+    })
+    var owl = $('.owl-exclusive');
+    owl.owlCarousel();
+    // Go to the next item
+    $('.btn-right-exclusive').click(function () {
+        owl.trigger('next.owl.carousel',[1750]);
+    })
+    // Go to the previous item
+    $('.btn-left-exclusive').click(function () {
+        // With optional speed parameter
+        // Parameters has to be in square bracket '[]'
+        owl.trigger('prev.owl.carousel', [1750]);
+    })
+
+</script>
+<!--slide Exclusive-->
 <script>
     //slide
     $('.owl-carousel').owlCarousel({
@@ -180,30 +195,36 @@
             }
         }
     })
+
 </script>
 <script>
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function () {
+        myFunction()
+    };
 
     var navbar = document.getElementById("navBar");
     var sticky = navbar.offsetTop;
 
     function myFunction() {
-      if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
-      } else {
-        navbar.classList.remove("sticky");
-      }
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
     }
-    </script>
+
+</script>
 <script>
     function searchVisible() {
-      document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
+        document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
     }
+
 </script>
 <script>
     function searchHidden() {
-      document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
+        document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
     }
+
 </script>
 
 <!--Count Down Watch Start-->
@@ -213,33 +234,34 @@
 
     var nowLater = new Date().getTime();
     // Update the count down every 1 second
-    var x = setInterval(function() {
+    var x = setInterval(function () {
 
-      // Get today's date and time
-      var now = new Date().getTime();
+        // Get today's date and time
+        var now = new Date().getTime();
 
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
 
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Output the result in an element with id="demo"
-     /*  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-      + minutes + "m " + seconds + "s "; */
-      document.getElementById("days").innerHTML= days ;
-      document.getElementById("hours").innerHTML= hours ;
-      document.getElementById("minutes").innerHTML= minutes;
-      document.getElementById("seconds").innerHTML= seconds;
+        // Output the result in an element with id="demo"
+        /*  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+         + minutes + "m " + seconds + "s "; */
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
 
-      // If the count down is over, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
-      }
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
     }, 1000);
-    </script>
+
+</script>
 <!--Count Down Watch End-->

@@ -148,32 +148,42 @@ body{
     position: relative;
     bottom:140px;
 }
+/*Exclusive Start*/
 .owl-prev-custome{
     position: absolute!important;
     left: -135;
-    top: -175;
+    top: -245;
     opacity: 0.5;
 }
 .owl-prev-custome:hover{
     position: absolute!important;
     background: none !important;;
     left: -135;
-    top: -175;
+    top: -245;
     opacity: 1;
 }
 .owl-next-custome{
     position: absolute!important;
     right: -135;
-    top:-175;
+    top:-245;
     opacity: 0.5;
 }
 .owl-next-custome:hover{
     position: absolute!important;
     background:none!important;
     right: -135;
-    top:-175;
+    top:-245;
     opacity: 1;
 }
+.product-details .price h4 {
+    font-size: 24px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-right: 15px;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+/*Exclusive End*/
 .owl-prev{
     position: absolute!important;
     left: 300px;
@@ -181,6 +191,12 @@ body{
 }
 .owl-prev:hover{
     background: transparent!important;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Poppins", sans-serif;
+    color: #222222;
+    font-weight: 500;
+    line-height: 1.2 !important;
 }
 .img-fluid{
     max-width: 100%;
@@ -196,6 +212,7 @@ body{
     font-family: "Poppins", sans-serif;
     margin: 0;
 }
+
 .single-product .product-details .prd-bottom {
     position: relative;
     margin-top: 20px;
@@ -283,14 +300,14 @@ body{
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #fff;
+    background-color: transparent;
     color: #000;
     text-align: center;
     padding: 5px 0;
 
     /* Position the tooltip */
     position: absolute;
-    z-index: 1;
+    z-index: 9999;
     top: 100%;
     left: 50%;
     margin-left: -57px;
@@ -363,6 +380,9 @@ a {
 .exclusive-slogan{
     color: #fff!important;
     font-family: "Poppins", sans-serif;
+}
+.exclusive-slogan > div>h1{
+    color: #fff!important;
 }
 .exclusive-slogan::before{
     background-color: #fff!important;
@@ -542,6 +562,20 @@ img {
   flex-flow: row wrap;
   align-items: center;
 }
+/*Padding Start*/
+.p-t-20{
+    padding-top: 20px;
+}
+.p-b-20{
+    padding-bottom: 20px;
+}
+.p-b-25{
+    padding-bottom: 25px;
+}
+.p-b-30{
+    padding-bottom: 30px;
+}
+/*Padding End*/
 /*Contact*/
 .contactLeft{
         background-image: linear-gradient(to bottom right, #ffba00 , #ff6c00);
