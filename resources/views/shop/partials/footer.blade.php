@@ -98,6 +98,7 @@
 
 <div class="d-flex justify-content-center border-top border-2 border-orange"
     style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
+    
 <!--slide Banner-->
 <script>
     //slide

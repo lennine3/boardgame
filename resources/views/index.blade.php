@@ -57,7 +57,16 @@
     </div>
 </div>
 <!--//Banner-->
-
+<div style="padding-top: 100px;">
+    <div class="container" style="height:150px;box-shadow: 0 10px 30px rgb(0 0 0 / 10%);">
+        <div class="row" style="text-align: center;padding: 25px 0px 10px 0px;">
+            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-truck fa-2x"></i> <h6 style="padding-top: 10px"><b>Free Delivery</b></h6> Fee ship on all order  </div>
+            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-sync-alt fa-2x"></i><h6 style="padding-top: 10px"><b>Return Policy</b></h6> Fee ship on all order</div>
+            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-headphones-alt fa-2x"></i><h6 style="padding-top: 10px"><b>24/7 Support</b></h6> Fee ship on all order</div>
+            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-database fa-2x"></i><h6 style="padding-top: 10px"><b>Secure Payment</b></h6> Fee ship on all order</div>
+            </div>
+    </div>
+</div>
 
 
 <!--Content-->
@@ -87,7 +96,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -116,7 +125,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -145,7 +154,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -174,7 +183,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -203,7 +212,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -232,7 +241,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -261,7 +270,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -290,7 +299,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -339,7 +348,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -368,7 +377,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -397,7 +406,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -426,7 +435,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -455,7 +464,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -484,7 +493,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -513,7 +522,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -542,7 +551,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -591,7 +600,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -620,7 +629,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -649,7 +658,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -678,7 +687,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -707,7 +716,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -736,7 +745,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -765,7 +774,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>
@@ -794,7 +803,7 @@
                                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
                                                     alt="">
                                                 <div class="product-details">
-                                                    <h6>The Best borad game to play with friend</h6>
+                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a></h6>
                                                     <div class="price">
                                                         <h6>$60</h6>
                                                     </div>

@@ -1,4 +1,3 @@
- <div style="padding-bottom: 10px">
     <div class="d-flex border-bottom header-color">
         <div class="container">
             <div class="row">
@@ -11,7 +10,6 @@
             </div>
         </div>
     </div>
- </div>
 
 
     <!--Nav Bar-->
