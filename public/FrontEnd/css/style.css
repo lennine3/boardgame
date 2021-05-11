@@ -1,5 +1,7 @@
 body{
-    font-family: Montserrat;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: #777777;
 }
 .border-orange{
     border-color: #ec4e0f!important;
@@ -8,6 +10,16 @@ body{
 
     color: #fff;
 }
+/*Index Start*/
+h6 > a{
+    text-decoration: none;
+    color: #000000;
+}
+h6 > a:hover{
+    text-decoration: none;
+    color: #000000;
+}
+/*Index End*/
 .trapezoid {
 	width: 200px;
     display: flex;
@@ -96,6 +108,27 @@ body{
     background-color:#000!important;
     color: #fff;
 }
+
+/*Nav bar*/
+.sticky-wrapper {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    color: white;
+}
+.header_area {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transition: background 0.4s, all 0.3s linear;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+/*Nav bar*/
 .header-color{
     background: -webkit-linear-gradient(
         90deg
@@ -561,7 +594,25 @@ img {
     display: flex;
   flex-flow: row wrap;
   align-items: center;
+  position: relative;
 }
+/*Category Start*/
+.banner-category{
+    background: url(../img/common-banner.jpg) center no-repeat;
+    background-size: cover;
+    padding-top: 1;
+}
+
+.banner-category {
+    margin-bottom: 40px;
+}
+.color-w{
+    color: #fff!important;
+}
+.color-w >a{
+    color: #ffffff!important;
+}
+/*Category End*/
 /*Padding Start*/
 .p-t-20{
     padding-top: 20px;

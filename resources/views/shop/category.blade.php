@@ -1,5 +1,29 @@
 @extends('shop.layout')
 @section('content')
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>Shop Category page</b></h1>
+                <nav class="d-flex align-items-center color-w">
+                    <a href>
+                        Home
+                        <span style="    display: inline-block;
+                        margin: 0 10px;"><i class="fal fa-long-arrow-right"></i></span>
+                    </a>
+                    <a href>
+                         Shop
+                        <span style="    display: inline-block;
+                        margin: 0 10px;"><i class="fal fa-long-arrow-right"></i></span>
+                    </a>
+                    <a href>
+                         Category
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container" style="padding-bottom: 30px">
     <div class="row">
         <div class="col-lg-3">
