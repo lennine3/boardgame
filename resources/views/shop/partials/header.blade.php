@@ -1,4 +1,5 @@
 <title>Amin Board Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('FrontEnd/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('FrontEnd/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('FrontEnd/css/owl.carousel.css') }}">
