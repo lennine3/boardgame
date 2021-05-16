@@ -99,4 +99,32 @@
 <div class="d-flex justify-content-center border-top border-2 border-orange"
     style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
 
+    <script>
+        window.onscroll = function () {
+            myFunction()
+        };
 
+        var navbar = document.getElementById("navBar");
+        var sticky = navbar.offsetTop;
+
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+    </script>
+    <script>
+        function searchVisible() {
+            document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
+        }
+
+    </script>
+    <script>
+        function searchHidden() {
+            document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
+        }
+
+    </script>

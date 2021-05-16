@@ -1,227 +1,315 @@
 @extends('shop.layout')
 @section('content')
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>Shopping cart</b></h1>
+                <nav class="d-flex align-items-center color-w">
+                    <a href>
+                        description
+                        <span style="  display: inline-block;
+                        margin: 0 10px;"><i class="fal fa-long-arrow-right"></i></span>
+                    </a>
+                    <a href>
+                        Product detail
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container" style="padding-top: 20px;padding-bottom:50px">
     <div class="row">
-        <div class="col-lg-4 col-mb-12">
+        <div class="col-lg-6 col-mb-12">
             <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" class="img-fluid" alt="">
         </div>
-        <div class="col-lg-5 col-mb-12" style="color: #000;padding-left:50px">
-            <h1 style="font-size:30px">Monopoly - Traditional board game to play with friend</h1>
-            <hr>
-            <div style="padding:15px;15px;15px;15px">
-                <div style="display: inline-flex">
-                    <span>price:</span>
-                    <h3 style="color:orange;padding-left:25px">650.000 vnd</h3>
-                </div>
-
-            </div>
-            <div>
-                <div>
-                    <label>Number player:</label> 2-4 players <br>
-                    <label>Idea participant:</label> 4 players <br>
-                    <label>Playing time:</label> 30+ minutes
-                    <label>Age:</label> 4+
-                </div>
-
-                <hr>
-                <div style="display: inline-flex">
-                    <label>Amout:</label>
-                    <div style="padding-left: 10px">
-                        <select name="" id="">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div style="padding-top: 20px">
-                <button class="btn btn-primary">
-                    <i class="far fa-cart-plus"></i>
-                    Add to cart
-                </button>
-            </div>
-        </div>
-        <div class="col-lg-3 col-mb-12 col-sm-12">
-            <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"> <img src="{{ asset('FrontEnd/img/shipPolicy.png') }}"
-                            style="width: 15%" alt=""> Shipping Policy
-                        <hr>
+        <div class="col-lg-6 col-mb-12" style="color: #000;padding-left:50px">
+            <div class="product_text">
+                <h3>
+                    Monopoly Best game for Kid
+                </h3>
+                <h2>$ 70</h2>
+                <ul class="list">
+                    <li>
+                        <a href="#">
+                            <span class="active">Availibilti</span>: In Stock
+                        </a>
                     </li>
-                    <li class="list-group-item"> <img src="{{ asset('FrontEnd/img/Payment.png') }}" style="width: 15%"
-                            alt=""> Easy payment
-                        <hr>
-                    </li>
-                    <li class="list-group-item"> <img src="{{ asset('FrontEnd/img/Trusted.png') }}" style="width: 15%"
-                            alt=""> Trusted seller
-                        <hr>
-                    </li>
-                    <li class="list-group-item"> <img src="{{ asset('FrontEnd/img/Contact.png') }}" style="width: 15%"
-                            alt=""> Contact Us now <div class="d-flex justify-content-center">
-                            <hr width="75%">
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-center">Tel: +123456789 </li>
                 </ul>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis corrupti, temporibus natus, eius
+                    ullam fugiat ea sapiente recusandae
+                    laudantium incidunt numquam adipisci. Fugit at atque eaque accusamus nulla dolorem aliquid.
+                </p>
+                <div class="product_count">
+                    <label for="qty">Quantity</label>
+                    <input type="number" value="1" min="1">
+                </div>
+                <div class="d-flex align-items-center card_area">
+                    <a href="#" class="product-primary-btn">
+                        ADD TO CART
+                    </a>
+                    <a href="#" class="icon_btn">
+                        <i class="fas fa-heart-circle fa-3x addFav"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row" style="padding-top: 20px">
-        <div style="padding-bottom:20px;padding-top:20px">
-            <div class="trapezoid">
-                <div style="padding-left: 5px;padding-top:13px">
-                    <h4 style="color: #fff" style="padding-top: 30px"><i>Related</i></h4>
-                </div>
-            </div>
-            <div style="background-color: #ec4e0f;width:100%;height:2.5px">
-            </div>
-        </div>
-
-        <div>
-            <div id="latesrPreview" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="{{ asset('FrontEnd/img/dragomino-1.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width:32%">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('FrontEnd/img/dragomino-1.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width:32%">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('FrontEnd/img/dragomino-1.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width: 32%">
-                        <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" class="col-lg-3 col-sm-6 col-mb-3"
-                            style="width:32%">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#latesrPreview"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#latesrPreview"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="row" style="padding-top: 20px">
-        <div>
-            <div style="padding-bottom:20px;padding-top:20px">
-                <div class="trapezoid">
-                    <div style="padding-left: 5px;padding-top:13px">
-                        <h4 style="color: #fff" style="padding-top: 30px"><i>Detail</i></h4>
-                    </div>
-                </div>
-                <div style="background-color: #ec4e0f;width:100%;height:2.5px">
-                </div>
-            </div>
-
-            <div style="color: #000">
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-            </div>
-        </div>
-    </div>
-        <div>
-            <div style="padding-bottom:20px;padding-top:20px">
-                <div class="trapezoid">
-                    <div style="padding-left: 5px;padding-top:13px">
-                        <h4 style="color: #fff" style="padding-top: 30px"><i>Image detail</i></h4>
-                    </div>
-                </div>
-                <div style="background-color: #ec4e0f;width:100%;height:2.5px">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" width="100%" class="img-fluid">
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-4"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" width="100%" class="img-fluid"></div>
-                        <div class="col-lg-4"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" width="100%" class="img-fluid"></div>
-                        <div class="col-lg-4"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" width="100%" class="img-fluid"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div>
-            <div style="padding-bottom:20px;padding-top:20px">
-                <div class="trapezoid">
-                    <div style="padding-left: 5px;padding-top:13px">
-                        <h4 style="color: #fff" style="padding-top: 30px"><i>Rule</i></h4>
-                    </div>
-                </div>
-                <div style="background-color: #ec4e0f;width:100%;height:2.5px">
-                </div>
-            </div>
-            <div style="color: #000">
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-                <h2>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ipsum magnam nobis laborum quia
-                    nemo quisquam animi
-                    illo sequi odit? Voluptas debitis perspiciatis ex ipsam quam molestias praesentium dolorem esse.
-                </h2>
-            </div>
-        </div>
-        <div>
-            <div style="padding-bottom:20px;padding-top:20px">
-                <div class="trapezoid">
-                    <div style="padding-left: 5px;padding-top:13px">
-                        <h4 style="color: #fff" style="padding-top: 30px"><i>Rule</i></h4>
-                    </div>
-                </div>
-                <div style="background-color: #ec4e0f;width:100%;height:2.5px">
-                </div>
-            </div>
-            <div>
-                <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                  </div>
-            </div>
-        </div>
-
-
 </div>
+<section class="product_description">
+    <div class="container">
+        <ul class="nav nav-tabs nav-pills nav-background justify-content-center pointer" id=" nav-tab" role="tablist">
+            <li class="nav-items">
+                <a class="nav-link active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#description"
+                    role="tab" aria-controls="nav-description" aria-selected="true">description</a>
+            </li>
+            <li class="nav-items">
+                <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification" role="tab"
+                    aria-controls="nav-profile" aria-selected="false">specification</a>
+            </li>
+            <li class="nav-items">
+                <a class="nav-link" id="nav-co-tab" data-bs-toggle="tab" data-bs-target="#comment" role="tab"
+                    aria-controls="nav-review" aria-selected="false">Review</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="description" role="tabpanel">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae mollitia saepe sapiente eveniet
+                    similique
+                    accusantium laboriosam repellendus natus sunt a, reprehenderit voluptatem nisi, praesentium iure.
+                    Voluptatem labore quasi sint vel! <br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in beatae omnis quas aspernatur officia
+                    culpa impedit, amet ea assumenda
+                    inventore sint quaerat praesentium reprehenderit voluptatem numquam placeat optio voluptas.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis reprehenderit adipisci repudiandae
+                    eligendi nisi quam velit eius
+                    necessitatibus ex? Atque illum blanditiis ex pariatur, dolorem unde! Soluta dolores maxime
+                    cupiditate?
+                </p>
+            </div>
+            <div class="tab-pane fade" id="specification" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table_product">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h5>Width</h5>
+                                </td>
+                                <td>
+                                    <h5>128mm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Height</h5>
+                                </td>
+                                <td>
+                                    <h5>68mm</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Origin</h5>
+                                </td>
+                                <td>
+                                    <h5>japanese</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Weight</h5>
+                                </td>
+                                <td>
+                                    <h5>960g</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>Age range</h5>
+                                </td>
+                                <td>
+                                    <h5>> 8</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5>>Category</h5</td> <td>
+                                        <h5>Child</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="comment" role="tabpanel">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="box_rating">
+                                    <h5>
+                                        Overrall
+                                    </h5>
+                                    <h4>
+                                        4.0
+                                    </h4>
+                                    <h6>
+                                        3 Review and Comment
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="rating_list">
+                                    <h3>Based on 3 Reviews</h3>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#" class="ratings">5 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="ratings">4 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="ratings">3 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="ratings">2 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="ratings">1 Star
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> 01
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review_list">
+                            <div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
+                                    </div>
+                                    <div class="review_body">
+                                        <h4>Blake Ruiz</h4>
+                                        <span>87 </span>point
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
+                                    commodo</p>
+                            </div>
+                            <div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
+                                    </div>
+                                    <div class="review_body">
+                                        <h4>Blake Ruiz</h4>
+                                        <span>87 </span>point
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
+                                    commodo</p>
+                            </div>
+                            <div class="review_item">
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
+                                    </div>
+                                    <div class="review_body">
+                                        <h4>Blake Ruiz</h4>
+                                        <span>87 </span>point
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut aliquip ex ea
+                                    commodo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="review-box">
+                            <h4>Add a review and comment</h4>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="rating" placeholder="Your rating" min="0"
+                                    max="100" style="width: 200px">
+                                <label for="rating">Your rating</label>
+                            </div>
+                            <form class="row review_form" action="#" method="post" id="reviewForm" novalidate="">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <input type="text" class="form-control" id="name" name="name"
+                                            placeholder="Your Full name">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <input type="text" class="form-control" id="number" name="number"
+                                            placeholder="Phone Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <textarea class="form-control" name="message" id="message"
+                                            placeholder="Review"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+
+                                    <button type="submit" value="submit" class="product-primary-btn">Submit Now</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 @endsection

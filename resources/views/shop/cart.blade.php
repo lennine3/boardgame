@@ -175,7 +175,7 @@
                             <td></td>
                             <td>
                                 <div class="cupon_text align-items-end" style="margin-left: -390px">
-                                    <a class="gray_btn btn" href="#"><b>CONTINUE SHOPPING</b>  </a><a href="#"
+                                    <a class="gray_btn btn" href="#"><b>CONTINUE SHOPPING</b>  </a><a href="{{ route('checkout') }}"
                                         class="primary-btn-cart btn"> <b>PROCESS TO CHECKOUT</b> </a>
                                 </div>
                             </td>

@@ -38,3 +38,6 @@ Route::get('/admin', function () {
 Route::get('/admin/user', function () {
     return view('admin/user/user');
 })->name('user');
+Route::get('/checkout',function(){
+    return view('shop.checkout');
+})->name('checkout');
