@@ -1048,35 +1048,7 @@
     })
 
 </script>
-<script>
-    window.onscroll = function () {
-        myFunction()
-    };
 
-    var navbar = document.getElementById("navBar");
-    var sticky = navbar.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
-        }
-    }
-
-</script>
-<script>
-    function searchVisible() {
-        document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
-    }
-
-</script>
-<script>
-    function searchHidden() {
-        document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
-    }
-
-</script>
 
 <!--Count Down Watch Start-->
 <script>
