@@ -15,7 +15,7 @@
     <!--Nav Bar-->
     <div id="navBar" class="container_banner">
         <div>
-            <nav class="navbar navbar-expand-lg nav-index navbar-light " {{-- style="background-color: #2F323A" --}}>
+            <nav class="navbar navbar-expand-lg nav-index navbar-light ">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('FrontEnd/img/logo-new.png') }}" class="logo"
                         alt=""></a>
@@ -28,22 +28,15 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown ">
                             <div class="menu-background">
-                                <a class="nav-link dropbtn nav-link" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">Category </a>
+                                <a class="nav-link dropbtn nav-link" href="{{ route('category') }}" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">Category</a>
                                 <div class="dropdown-content" aria-labelledby="navbarDropdown"
                                     style="background-color: #EEEBE4;width:250px!important">
-                                    <a class="link nav-link" style="color: #000!important"
-                                        href="{{ route('category') }}">All Product</a>
-                                    <a class=" nav-link" href="#" style="color: #000!important">Another action</a>
+                                    <a class="link nav-link" style="color: #000!important" href="#">Family Boardgame</a>
+                                    <a class=" nav-link" href="#" style="color: #000!important">Action Boardgame</a>
                                     <hr class="dropdown-divider">
-                                    <a class="nav-link" href="#" style="color: #000!important">Something else here</a>
+                                    <a class="nav-link" href="#" style="color: #000!important">RPG Boardgame</a>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="menu-background">
-                                <a class="nav-link disabled nav-link" href="#" tabindex="-1"
-                                    aria-disabled="true">Disabled</a>
                             </div>
                         </li>
                         <li class=" nav-item">
@@ -60,7 +53,6 @@
                         </li>
                         <li class="nav-item">
                             <div style="padding-top: 15px">
-                                    {{-- <input class="form-control" type="search" placeholder="Search" aria-label="Search"> --}}
                                     <button class="btn search_button" onclick="searchVisible()"><i class="fal fa-search"></i></button>
                             </div>
                         </li>
