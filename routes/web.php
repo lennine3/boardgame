@@ -32,12 +32,16 @@ Route::get('/about-us',function(){
 Route::get('/invoice',function(){
     return view('shop.invoice');
 })->name('invoice');
+Route::get('/checkout',function(){
+    return view('shop.checkout');
+})->name('checkout');
+/*Admin*/
 Route::get('/admin', function () {
     return view('admin/index');
 })->name('admin');
 Route::get('/admin/user', function () {
     return view('admin/user/user');
 })->name('user');
-Route::get('/checkout',function(){
-    return view('shop.checkout');
-})->name('checkout');
+Route::get('/admin/role', function () {
+    return view('admin/user/role');
+})->name('role');

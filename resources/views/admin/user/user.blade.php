@@ -1,75 +1,63 @@
 @extends('admin.layout')
 @section('content')
 <div class="container-fluid" style="padding-top: 20px">
-    <div class="row">
-        <div class="col-lg-3">
-            <div style="background-color: #ffffffb6;border-radius: 15px 15px 15px 15px;padding: 15px 15px 15px 15px">
-                <div>
-                    User
-                </div>
-                <hr>
-                <div>
-                    <div class="row">
-                        <div class=" col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">User Name</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class=" col-lg-6 mb-3">
-                            <label for="Email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="Email">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="Password">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Birth</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                            <div class="col-lg-6 mb-3">
-                                <label for="fullName" class="form-label">Sex</label>
-                                <input type="text" class="form-control" id="fullName">
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Role</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                        <div class="col-lg-6 mb-3">
-                            <label for="fullName" class="form-label">Avarta</label>
-                            <input type="text" class="form-control" id="fullName">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="justify-content-end d-flex" style="padding-top: 10px">
-                    <button class="btn btn-danger">Add</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-9">
-            abc
-        </div>
+    <!-- Button trigger modal -->
+    <div style="padding-bottom: 20px">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ADD USER
+          </button>
     </div>
+
+  <div class="table-responsive" style="background-color: #fff;border-radius:15px 15px 15px 15px">
+      <table class="table">
+          <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Birth</th>
+                <th>Sex</th>
+                <th>Role</th>
+                <th>Avartar</th>
+                <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>
+                      Trần Võ Đăng Khoa
+                  </td>
+                  <td>kan1989bd</td>
+                  <td>tvdkhoa1801@gmail.com</td>
+                  <td>0382024592</td>
+                  <td>634/7 Sư Vạn hạn p10 q10</td>
+                  <td>18/01/2000</td>
+                  <td>Male</td>
+                  <td>Admin</td>
+                  <td><img src="{{ asset('Img/unsigned.png') }}" alt="" width="150px"></td>
+                  <td>
+                    <p>
+                        <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="width: 110px">
+                            <i class="fal fa-cog"></i> Action
+                        </a>
+                      </p>
+                      <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                         <button class="btn btn-warning">Edit</button>
+                         <br><br>
+                         <button class="btn btn-danger">Delete</button>
+                        </div>
+                      </div>
+                  </td>
+
+              </tr>
+          </tbody>
+      </table>
+  </div>
 </div>
 
+
+@include('admin.user.userCreate_modal')
 @endsection
