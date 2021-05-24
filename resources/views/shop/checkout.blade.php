@@ -220,7 +220,7 @@
                             <label for="f-option4">I’ve read and accept the </label>
                             <a href="#">terms & conditions*</a>
                         </div>
-                        <a class="primary-btn">Proceed to Paypal</a>
+                        <a class="primary-btn" href="{{ route('confirmation') }}">Proceed to Paypal</a>
                     </div>
                 </div>
             </div>

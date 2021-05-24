@@ -5,7 +5,7 @@
         <div class="col-lg-3">
             <div style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
                 <div>
-                    <label for="roleName" class="form-label">Role Name</label>
+                    <label for="roleName" class="form-label">Product Type Name</label>
                     <input type="text" id="roleName" class="form-control">
                 </div>
                 <div class="d-flex justify-content-end padding-top-35">
@@ -18,16 +18,16 @@
                 <table class="table">
                     <thead>
                         <th>ID</th>
-                        <th>Role Name</th>
+                        <th>Name</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Admin</td>
+                            <td>RPG</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Staff</td>
+                            <td>Action</td>
                         </tr>
                     </tbody>
                 </table>

@@ -439,6 +439,11 @@ a {
   background-color:#312f2f;
   }
 /*Scrollbar*/
+/*Padding*/
+.padding-top-35{
+    padding-top: 35px;
+}
+/*Padding*/
 @media screen and (max-width:780px) {
     .chart-style{
         width:100%;background-color:#fff!important;

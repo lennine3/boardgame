@@ -37,18 +37,18 @@
         <div style="padding: 20px 20px 20px 20px">
             <a href="{{ route('user') }}" class="dot test"><i class="fal fa-user"></i><span>User</span></a>
             <a href="{{ route('role') }}" class="dot"><i class="fal fa-key"></i><span>Role</span></a>
-            <a href="#" class="dot"><i class="fal fa-user-tag"></i><span>User Role</span></a>
+            <a href="{{ route('permission') }}" class="dot"><i class="fal fa-user-tag"></i><span>User Role</span></a>
         </div>
     </div>
-    <a href="#" class="dot"><i class="fal fa-truck-loading"></i><span>Supplier</span></a>
+    <a href="{{ route('supplier') }}" class="dot"><i class="fal fa-truck-loading"></i><span>Supplier</span></a>
     <a data-bs-toggle="collapse" href="#collapseProduct" class="dot"><i class="far fa-chess-board"></i><span>product</span></a>
     <div class="collapse" id="collapseProduct">
         <div style="padding: 20px 20px 20px 20px">
-            <a href="#" class="dot test"><i class="fal fa-box-ballot"></i><span>Product Type</span></a>
+            <a href="{{ route('productType') }}" class="dot test"><i class="fal fa-box-ballot"></i><span>Product Type</span></a>
             <a href="#" class="dot"><i class="fal fa-box-open"></i></i><span>Product</span></a>
         </div>
     </div>
-    <a href="#" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
+    <a href="{{ route('promotion') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
     <a href="{{ route('home') }}"><i class="fal fa-store"></i><span>Store</span></a>
     <a href="#" class="dot"><i class="far fa-cogs"></i><span>Setting</span></a>
 </div>

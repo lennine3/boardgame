@@ -35,6 +35,10 @@ Route::get('/invoice',function(){
 Route::get('/checkout',function(){
     return view('shop.checkout');
 })->name('checkout');
+Route::get('/checkout/confirmation',function(){
+    return view('shop.confirmation');
+})->name('confirmation');
+
 /*Admin*/
 Route::get('/admin', function () {
     return view('admin/index');
@@ -45,3 +49,15 @@ Route::get('/admin/user', function () {
 Route::get('/admin/role', function () {
     return view('admin/user/role');
 })->name('role');
+Route::get('/admin/permission', function () {
+    return view('admin/user/permission');
+})->name('permission');
+Route::get('/admin/supplier', function () {
+    return view('admin/supplier/supplier');
+})->name('supplier');
+Route::get('/admin/productType', function () {
+    return view('admin/product/productType');
+})->name('productType');
+Route::get('/admin/promotion', function () {
+    return view('admin/promotion/promotion');
+})->name('promotion');
