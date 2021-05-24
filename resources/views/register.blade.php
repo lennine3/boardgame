@@ -20,7 +20,7 @@
                         <label for="floatingPassword">Password</label>
                     </div>
                     <div style="padding-top: 30px">
-                        <button type="button" class="btn btn-primary col-lg-12" "><a href="{{ route('admin') }}" style="text-decoration: none;color:#fff">Login</a></button>
+                        <a href="{{ route('admin') }}" style="text-decoration: none;color:#fff"  type="button" class="btn btn-primary col-lg-12" >Login</a>
                     </div>
                     <div class="form-check" style="justify-content: start!important;padding-top:10px">
                         <input type="checkbox" id="rememberME" class="form-check-input">

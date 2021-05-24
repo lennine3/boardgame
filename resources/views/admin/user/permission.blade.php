@@ -8,6 +8,10 @@
                     <label for="roleName" class="form-label">Role Name</label>
                     <input type="text" id="roleName" class="form-control">
                 </div>
+                <div>
+                    <label for="User" class="form-label">User</label>
+                    <input type="text" id="User" class="form-control">
+                </div>
                 <div class="d-flex justify-content-end padding-top-35">
                     <a class="btn btn-primary">Add</a>
                 </div>
@@ -18,16 +22,19 @@
                 <table class="table">
                     <thead>
                         <th>ID</th>
-                        <th>Role Name</th>
+                        <th>User Name</th>
+                        <th>Role</th>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
                             <td>Admin</td>
+                            <td>Admin</td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Staff</td>
+                            <td>kan1989</td>
+                            <td>Admin</td>
                         </tr>
                     </tbody>
                 </table>
