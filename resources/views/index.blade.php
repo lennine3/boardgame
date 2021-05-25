@@ -3,11 +3,11 @@
 
 <!--Banner-->
 <div class="banner">
-    <div class="container" style="padding-bottom:50px;padding-top:50px">
+    <div class="container banner-padding">
         <div class="owl-banner owl-carousel owl-theme col-lg-12">
             <div class="item">
                 <div class="row">
-                    <div class="col-lg-5" style="text-align: left">
+                    <div class="col-lg-5 text-start">
                         <h1>Title</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae praesentium dignissimos natus
                             ullam itaque obcaecati,
@@ -23,7 +23,7 @@
             </div>
             <div class="item">
                 <div class="row">
-                    <div class="col-lg-5" style="text-align: left">
+                    <div class="col-lg-5 text-start">
                         <h1>Title</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae praesentium dignissimos natus
                             ullam itaque obcaecati,
@@ -39,7 +39,7 @@
             </div>
             <div class="item">
                 <div class="row">
-                    <div class="col-lg-5" style="text-align: left">
+                    <div class="col-lg-5 text-start">
                         <h1>Title</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae praesentium dignissimos natus
                             ullam itaque obcaecati,
@@ -57,21 +57,20 @@
     </div>
 </div>
 <!--//Banner-->
-<div style="padding-top: 100px;">
-    <div class="container" style="height:150px;box-shadow: 0 10px 30px rgb(0 0 0 / 10%);">
+<div class="pad-top-100">
+    <div class="container term">
         <div class="row" style="text-align: center;padding: 25px 0px 10px 0px;">
-            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-truck fa-2x"></i>
-                <h6 style="padding-top: 10px"><b>Free Delivery</b></h6> Fee ship on all order
+            <div class="col-lg-3 term-box"><i class="fal fa-truck fa-2x"></i>
+                <h6 class="pad-top-10"><b>Free Delivery</b></h6> Fee ship on all order
             </div>
-            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-sync-alt fa-2x"></i>
-                <h6 style="padding-top: 10px"><b>Return Policy</b></h6> Fee ship on all order
+            <div class="col-lg-3 term-box" ><i class="fal fa-sync-alt fa-2x"></i>
+                <h6 class="pad-top-10"><b>Return Policy</b></h6> Fee ship on all order
             </div>
-            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i
-                    class="fal fa-headphones-alt fa-2x"></i>
-                <h6 style="padding-top: 10px"><b>24/7 Support</b></h6> Fee ship on all order
+            <div class="col-lg-3 term-box"><i class="fal fa-headphones-alt fa-2x"></i>
+                <h6 class="pad-top-10"><b>24/7 Support</b></h6> Fee ship on all order
             </div>
-            <div class="col-lg-3" style="border-right: 1px#eee solid;height:50px"><i class="fal fa-database fa-2x"></i>
-                <h6 style="padding-top: 10px"><b>Secure Payment</b></h6> Fee ship on all order
+            <div class="col-lg-3 term-box"><i class="fal fa-database fa-2x"></i>
+                <h6 class="pad-top-10"><b>Secure Payment</b></h6> Fee ship on all order
             </div>
         </div>
     </div>
@@ -906,7 +905,7 @@
                         <h1>Exclusive Hot Deal End Soon!</h1>
                         <p>Get it now before it End.</p>
                     </div>
-                    <div class="col-lg-12 d-flex justify-content-center">
+                    <div class="col-lg-12 d-flex justify-content-center" id="notice">
                         <div class="row clock-wrap">
                             <div class="col clockinner">
                                 <h1 id="days"></h1>
@@ -1172,75 +1171,8 @@
 </section>
 <!--Deal end-->
 
-<!--slide Banner-->
-<script>
-    //slide
-    $('.owl-banner').owlCarousel({
-        loop: true,
-        autoplay: true,
-        navSpeed: 1750,
-        dots: false,
-        margin: 10,
-        center: true,
-        center: true,
-        autoplaySpeed: 1750,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
 
-</script>
-<!--slide Banner-->
-<!--slide Exclusive-->
-<script>
-    //slide
-    $('.owl-exclusive').owlCarousel({
-        loop: true,
-        autoplay: false,
-        navSpeed: 1750,
-        dots: false,
-        margin: 10,
-        autoplayTimeout: 6500,
-        center: true,
-        center: true,
-        navText: ["<img src={{ asset('FrontEnd/img/prev-arrow.png') }}>",
-            "<img src={{ asset('FrontEnd/img/next-arrow.png') }}>"
-        ],
-        autoplaySpeed: 1750,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-    var owl = $('.owl-exclusive');
-    owl.owlCarousel();
-    // Go to the next item
-    $('.btn-right-exclusive').click(function () {
-        owl.trigger('next.owl.carousel', [1750]);
-    })
-    // Go to the previous item
-    $('.btn-left-exclusive').click(function () {
-        // With optional speed parameter
-        // Parameters has to be in square bracket '[]'
-        owl.trigger('prev.owl.carousel', [1750]);
-    })
-
-</script>
+<script src="{{ asset('FrontEnd/js/slider.js') }}"></script>
 <!--slide Exclusive-->
 <script>
     //slide
@@ -1273,43 +1205,4 @@
 </script>
 
 
-<!--Count Down Watch Start-->
-<script>
-    // Set the date we're counting down to
-    var countDownDate = new Date("May 14, 2021 00:00:00").getTime();
-
-    var nowLater = new Date().getTime();
-    // Update the count down every 1 second
-    var x = setInterval(function () {
-
-        // Get today's date and time
-        var now = new Date().getTime();
-
-        // Find the distance between now and the count down date
-        var distance = countDownDate - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="demo"
-        /*  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-         + minutes + "m " + seconds + "s "; */
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        // If the count down is over, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
-    }, 1000);
-
-</script>
-<!--Count Down Watch End-->
-<!--exclusive end-->
 @endsection
