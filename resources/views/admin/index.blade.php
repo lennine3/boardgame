@@ -142,7 +142,9 @@
                     <div class="col-lg-6">
                         <h2>To do list</h2>
                     </div>
-                    <div class="col-lg-6 d-flex justify-content-end"><button class="btn btn-primary">Add</button></div>
+                    <div class="col-lg-6 d-flex justify-content-end">
+                        <button class="btn btn-primary" data-bs-target="#todoModal"  data-bs-toggle="modal">Add</button>
+                    </div>
                 </div>
 
                 <div style="background-color: #fff;">
@@ -176,7 +178,7 @@
                 <h2>Notice board</h2>
             </div>
             <div class="col-lg-6 d-flex justify-content-end">
-                <button class="btn btn-success">Add</button>
+                <button class="btn btn-success" data-bs-target="#noticeModal"  data-bs-toggle="modal">Add</button>
             </div>
         </div>
         <div class="table-responsive rounded background-white border-4" style="padding:0 15px 0 15px"
@@ -198,4 +200,8 @@
         </div>
     </div>
 </div>
+
+@include('admin.todoModal')
+
+<script src="{{ asset('BackEnd/js/admin-chart.js') }}"></script>
 @endsection

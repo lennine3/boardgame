@@ -1149,7 +1149,12 @@ section {
 .p-t-20 {
     padding-top: 20px;
 }
-
+.pad-top-10{
+    padding-top: 10px;
+}
+.pad-top-100 {
+    padding-top: 100px;
+}
 .p-b-20 {
     padding-bottom: 20px;
 }
@@ -1161,8 +1166,18 @@ section {
 .p-b-30 {
     padding-bottom: 30px;
 }
-
+.banner-padding{
+    padding-bottom:50px;padding-top:50px;
+}
 /*Padding End*/
+/**/
+.term{
+    height:150px;box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+.term-box{
+    border-right: 1px#eee solid;height:50px;
+}
+/**/
 /*Contact*/
 .contactLeft {
     background-image: linear-gradient(to bottom right, #ffba00, #ff6c00);

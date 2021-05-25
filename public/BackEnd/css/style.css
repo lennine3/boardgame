@@ -33,7 +33,7 @@ header {
     font-weight: 900;
 }
 
-.left-area .neon {
+/* .left-area .neon {
     color: #1DC4E7 !important;
 
 
@@ -47,8 +47,21 @@ header {
         0px 0px 25px #1dc5e777,
         0px 0px 30px #1dc5e777,
         0px 0px 35px #1dc5e777;
-}
+} */
+.neon {
+    color: #1DC4E7;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
 
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #1DC4E7, 0 0 15px #1DC4E7, 0 0 30px #1DC4E7, 0 0 40px #1DC4E7, 0 0 50px #1DC4E7, 0 0 60px #1DC4E7, 0 0 70px #1DC4E7;
+    }
+
+    to {
+      text-shadow: 0 0 20px #1DC4E7, 0 0 30px #1DC4E7, 0 0 40px #1DC4E7, 0 0 50px #1DC4E7, 0 0 60px #1DC4E7, 0 0 70px #1DC4E7, 0 0 80px #1DC4E7;
+    }
+  }
 .logout-btn {
     padding: 5px;
     background: #19B3D3;
