@@ -40,7 +40,7 @@
             <a href="{{ route('permission') }}" class="dot"><i class="fal fa-user-tag"></i><span>User Role</span></a>
         </div>
     </div>
-    <a href="{{ route('supplier') }}" class="dot"><i class="fal fa-truck-loading"></i><span>Supplier</span></a>
+    <a href="{{ route('supplier.index') }}" class="dot"><i class="fal fa-truck-loading"></i><span>Supplier</span></a>
     <a data-bs-toggle="collapse" href="#collapseProduct" class="dot"><i class="far fa-chess-board"></i><span>product</span></a>
     <div class="collapse" id="collapseProduct">
         <div style="padding: 20px 20px 20px 20px">

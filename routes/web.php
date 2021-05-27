@@ -52,9 +52,9 @@ Route::get('/admin/role', function () {
 Route::get('/admin/permission', function () {
     return view('admin/user/permission');
 })->name('permission');
-Route::get('/admin/supplier', function () {
+/* Route::get('/admin/supplier', function () {
     return view('admin/supplier/supplier');
-})->name('supplier');
+})->name('supplier'); */
 Route::get('/admin/productType', function () {
     return view('admin/product/productType');
 })->name('productType');
