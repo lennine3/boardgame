@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,21 +43,55 @@ Route::get('/checkout/confirmation',function(){
 Route::get('/admin', function () {
     return view('admin/index');
 })->name('admin');
-Route::get('/admin/user', function () {
-    return view('admin/user/user');
-})->name('user');
-Route::get('/admin/role', function () {
-    return view('admin/user/role');
-})->name('role');
+
+Route::get('/admin/user', 'App\Http\Controllers\UserController@index')->name('user');
+Route::get('/admin/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
+Route::PUT('/admin/edit-user/{id}', 'App\Http\Controllers\UserController@update')->name('updateUser');
+
+Route::get('/admin/role', 'App\Http\Controllers\RoleController@index')->name('role');
+Route::post('/admin/role-store', 'App\Http\Controllers\RoleController@roleStore')->name('roleStore');
+Route::get('/admin/staff', function () {
+    return view('admin/user/staff');
+})->name('staff');
+Route::get('/admin/profile', function () {
+    return view('admin/user/profile');
+})->name('profile');
+
+
 Route::get('/admin/permission', function () {
     return view('admin/user/permission');
 })->name('permission');
-/* Route::get('/admin/supplier', function () {
-    return view('admin/supplier/supplier');
-})->name('supplier'); */
+
+Route::resource('/admin/supplier', App\Http\Controllers\supplierController::class);
+
 Route::get('/admin/productType', function () {
     return view('admin/product/productType');
 })->name('productType');
+Route::get('/admin/product', function () {
+    return view('admin.product.product');
+})->name('product');
+Route::get('/admin/product-image', function () {
+    return view('admin.product.productImage');
+})->name('product-img');
+
+Route::get('/admin/invoice', function () {
+    return view('admin.invoice.invoice');
+})->name('invoice');
+
+Route::get('/admin/order', function () {
+    return view('admin.order.order');
+})->name('order');
+Route::get('/admin/order-detail', function () {
+    return view('admin.order.orderDetail');
+})->name('order-detail');
+
 Route::get('/admin/promotion', function () {
     return view('admin/promotion/promotion');
 })->name('promotion');
+
+Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');
+Route::post('/user-login', 'App\Http\Controllers\Auth\LoginController@checkLogin')->name('UserLogin');
+Route::get('/test', 'App\Http\Controllers\Auth\LoginController@test')->name('test');
+Auth::routes();
+
+Route::get('/home1', [App\Http\Controllers\HomeController::class, 'index'])->name('home1');

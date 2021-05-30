@@ -24,6 +24,7 @@
                     <label for="User"  class="form-label">Supplier'Email</label>
                     <input type="text" id="User" name="email" class="form-control">
                 </div>
+                
                 <div class="d-flex justify-content-end padding-top-35">
                     <button type="submit" class="btn btn-primary">Add</button>
                     {{-- <a class="btn btn-primary">Add</a> --}}
