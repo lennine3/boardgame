@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: "Roboto", sans-serif;
     height: 100%;
+    background-color: #EFF0F4;
 }
 
 .background {
@@ -11,7 +12,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 150%;
+    /* height: 150%; */
     transition: 0.5s
 }
 
@@ -457,6 +458,14 @@ a {
     padding-top: 35px;
 }
 /*Padding*/
+/*Profile Staff*/
+.profile_staff {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
+
+}
+/*Profile Staff*/
 @media screen and (max-width:780px) {
     .chart-style{
         width:100%;background-color:#fff!important;

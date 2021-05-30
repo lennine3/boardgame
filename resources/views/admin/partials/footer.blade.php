@@ -15,7 +15,17 @@ for(let i=0;i<menuLength;i++){
     }
 }
 </script>
+<script>
+    var user= document.getElementById("user");
+    var role= document.getElementById("role");
+    var permission= document.getElementById("permission");
+    var userMain=document.getElementById("collapseUser");
+    if($(user).hasClass('active_1')||$(role).hasClass('active_1')||$(permission).hasClass('active_1'))
+    {
+        userMain.className="show"
+    }
 
+</script>
 {{-- <script type="text/javascript">
     function loadUser(){
         history.pushState({},"","admin/user");

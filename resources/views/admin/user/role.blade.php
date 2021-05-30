@@ -4,31 +4,33 @@
     <div class="row">
         <div class="col-lg-3">
             <div style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
-                <div>
-                    <label for="roleName" class="form-label">Role Name</label>
-                    <input type="text" id="roleName" class="form-control">
-                </div>
-                <div class="d-flex justify-content-end padding-top-35">
-                    <a class="btn btn-primary">Add</a>
-                </div>
+                <form action="{{ route('roleStore') }}" method="POST">
+                    @csrf
+                    <div>
+                        <label for="roleName" class="form-label">Role Name</label>
+                        <input type="text" name="name" id="roleName" class="form-control" required>
+                    </div>
+                    <div class="d-flex justify-content-end padding-top-35">
+                        <button class="btn btn-primary" type="submit">SAVE</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="table-responsive" style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+            <div class="table-responsive"
+                style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
                 <table class="table">
                     <thead>
-                        <th>ID</th>
-                        <th>Role Name</th>
+                        <th style="width: 50%">ID</th>
+                        <th style="width: 50%">Role Name</th>
                     </thead>
                     <tbody>
+                        @foreach ($roles as $role)
                         <tr>
-                            <td>1</td>
-                            <td>Admin</td>
+                            <td style="width: 50%">{{  $role->id  }}</td>
+                            <td style="width: 50%">{{ $role->name }}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Staff</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
