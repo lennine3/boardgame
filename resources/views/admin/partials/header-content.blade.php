@@ -52,7 +52,7 @@
             <a href="{{ route('user') }}" class="dot test" id="user"><i class="fal fa-user"></i><span>User</span></a>
             <a href="{{ route('role') }}" class="dot" id="role"><i class="fal fa-key"></i><span>Role</span></a>
             <a href="{{ route('permission') }}" class="dot" id="permission"><i class="fal fa-user-tag"></i><span>User Role</span></a>
-            <a href="{{ route('staff') }}" class="dot test" id="user"><i class="fal fa-user"></i><span>Staff</span></a>
+            <a href="{{ route('staff-index') }}" class="dot test" id="staff"><i class="fal fa-user"></i><span>Staff</span></a>
         </div>
     </div>
     <a href="{{ route('supplier.index') }}" class="dot"><i class="fal fa-truck-loading"></i><span>Supplier</span></a>
