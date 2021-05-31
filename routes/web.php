@@ -50,9 +50,9 @@ Route::PUT('/admin/edit-user/{id}', 'App\Http\Controllers\UserController@update'
 
 Route::get('/admin/role', 'App\Http\Controllers\RoleController@index')->name('role');
 Route::post('/admin/role-store', 'App\Http\Controllers\RoleController@roleStore')->name('roleStore');
-Route::get('/admin/staff', function () {
+/* Route::get('/admin/staff', function () {
     return view('admin/user/staff');
-})->name('staff');
+})->name('staff'); */
 Route::get('/admin/profile', function () {
     return view('admin/user/profile');
 })->name('profile');
@@ -63,6 +63,9 @@ Route::get('/admin/permission', function () {
 })->name('permission');
 
 Route::resource('/admin/supplier', App\Http\Controllers\supplierController::class);
+
+Route::resource('/admin/staffs', App\Http\Controllers\StaffController::class);
+Route::get('/admin/staffs', 'App\Http\Controllers\StaffController@index')->name('staff-index');
 
 Route::get('/admin/productType', function () {
     return view('admin/product/productType');
