@@ -67,6 +67,7 @@ class StaffController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -78,6 +79,10 @@ class StaffController extends Controller
     public function edit($id)
     {
         //
+        $staff=staff::findOrFail($id);
+        $user=User::join('staff','staff.user','=','users.id')->where('staff.id','=',$id)->get(/* ['users.*'] */);
+
+        return view('admin.staff.staff-update',compact('staff','user'));
     }
 
     /**
@@ -90,6 +95,21 @@ class StaffController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $staffs=staff::findOrFail($id);
+        $users=User::join('staff','staff.user','=','users.id')->where('staff.id','=',$id);
+        $users->name=$request->name;
+        $users->email=$request->email;
+        $users->password=Hash::make($request->password);
+        /* $users->save(); */
+        $staffs->name=$request->name;
+        $staffs->phone=$request->phone;
+        $staffs->birth=$request->birth;
+        $staffs->sex=$request->gender;
+        $staffs->address=$request->address;
+        $staffs->avatar=$this->ImgUpload($request);
+        $staffs->user=$users->id;
+        /* $staffs->save(); */
+        return redirect()->route('staff-index');
     }
 
     /**
