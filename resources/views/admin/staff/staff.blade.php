@@ -60,7 +60,7 @@
                         <img src="{{ asset('Img/user-img/'.$staff->avatar) }}" alt="" style="width: 150px;height:150px">
                     </td>
                     <td>
-                        <a href="#" class="btn btn-success"><i class="far fa-pencil"></i></a>
+                        <a href="{{ route('staffs.edit',$staff->id) }}" class="btn btn-success"><i class="far fa-pencil"></i></a>
                     </td>
                     <td>
                         <a href="#" class="btn btn-danger"><i class="fal fa-trash"></i></a>
