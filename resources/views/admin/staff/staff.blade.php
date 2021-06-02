@@ -14,7 +14,8 @@
         </div>
     </div>
 
-    <div class="table-responsive" style="background-color: #fff;border-radius:15px 15px 15px 15px;padding:15px 15px 15px 15px">
+    <div class="table-responsive"
+        style="background-color: #fff;border-radius:15px 15px 15px 15px;padding:15px 15px 15px 15px">
         <table class="table">
             <thead>
                 <th>ID</th>
@@ -60,10 +61,19 @@
                         <img src="{{ asset('Img/user-img/'.$staff->avatar) }}" alt="" style="width: 150px;height:150px">
                     </td>
                     <td>
-                        <a href="{{ route('staffs.edit',$staff->id) }}" class="btn btn-success"><i class="far fa-pencil"></i></a>
+                        <a href="{{ route('staffs.edit',$staff->id) }}" class="btn btn-success"><i
+                                class="far fa-pencil"></i></a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-danger"><i class="fal fa-trash"></i></a>
+                        <button  class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i class="fal fa-trash"></i></button>
+                        {{-- <form action="{{ route('staffs.destroy',$staff->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="text" value="{{ $staff->id }}" name="staff_id">
+                        <input type="text" value="{{ $staff->user }}" name="user_id">
+
+                        </form> --}}
                     </td>
                 </tr>
                 @endforeach
@@ -71,4 +81,29 @@
         </table>
     </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete this staff ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="{{ route('staffs.destroy',$staff->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="text" value="{{ $staff->id }}" name="staff_id" hidden>
+                    <input type="text" value="{{ $staff->user }}" name="user_id" hidden>
+                    <button type="submit" type="button" class="btn btn-primary">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
