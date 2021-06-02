@@ -2,8 +2,11 @@
 @section('content')
 <div class="container" style="padding-top: 20px">
     <div style="background-color: #fff;border-radius:15px 15px 15px 15px;padding:15px 15px 15px 15px">
-        <form action="{{ route('staffs.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('staff-update',$staff->id) }}" method="POST" enctype="multipart/form-data">
+
             @csrf
+            <input type="text" value="{{ $staff->id }}" name="id" hidden>
+            <input type="text" value="{{ $staff->user }}" name="user_id" hidden>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">
@@ -38,23 +41,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Ex: name@example.com"
-                            name="email" value="{{ $staff->userRelation->email }}">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="mb-3 floating-label">
-                        <label for="inputPass" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPass" placeholder="Enter Password"
-                            name="password">
-                    </div>
-                </div>
-            </div>
+            </div>-
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">

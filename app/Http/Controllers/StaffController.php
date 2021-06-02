@@ -13,6 +13,10 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('checkLogin');
+    }
     public function index()
     {
         //
@@ -92,23 +96,22 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
-        $staffs=staff::findOrFail($id);
-        $users=User::join('staff','staff.user','=','users.id')->where('staff.id','=',$id);
+        /* dd($this->ImgUpload($request))
+        ; */
+        $staffs=staff::findOrFail($request->id);
+        $users=User::findOrFail($request->user_id);
         $users->name=$request->name;
-        $users->email=$request->email;
-        $users->password=Hash::make($request->password);
-        /* $users->save(); */
+        $users->save();
         $staffs->name=$request->name;
         $staffs->phone=$request->phone;
         $staffs->birth=$request->birth;
         $staffs->sex=$request->gender;
         $staffs->address=$request->address;
         $staffs->avatar=$this->ImgUpload($request);
-        $staffs->user=$users->id;
-        /* $staffs->save(); */
+        $staffs->save();
         return redirect()->route('staff-index');
     }
 
@@ -118,9 +121,14 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $staffs=staff::findOrFail($request->staff_id);
+        $users=User::findOrFail($request->user_id);
+        $staffs->delete();
+        $users->delete();
+        return redirect()->route('staff-index');
     }
 
     public function ImgUpload(Request $request)

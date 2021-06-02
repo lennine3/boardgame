@@ -37,11 +37,11 @@
 <!--navigatpr mobile end-->
 <div class="sidebar" id="sideBar">
     <div class="profile_info" style="padding-top: 30px">
-        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="cen profile_image">
-
         @guest
+        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="cen profile_image">
         <h4>Admin</h4>
         @else
+        <img src="{{asset('Img/user-img/'.Auth::user()->staffRelation->avatar)}}" alt="" class="cen profile_image">
         <h4>{{ Auth::user()->name }}</h4>
         @endguest
     </div>

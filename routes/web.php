@@ -66,6 +66,8 @@ Route::resource('/admin/supplier', App\Http\Controllers\supplierController::clas
 
 Route::resource('/admin/staffs', App\Http\Controllers\StaffController::class);
 Route::get('/admin/staffs', 'App\Http\Controllers\StaffController@index')->name('staff-index');
+Route::post('/admin/staffs-update', 'App\Http\Controllers\StaffController@update')->name('staff-update');
+Route::Delete('/admin/staffs-destroy/{id}', 'App\Http\Controllers\StaffController@destroy')->name('staffs.destroy');
 
 Route::get('/admin/productType', function () {
     return view('admin/product/productType');
