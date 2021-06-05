@@ -7,7 +7,7 @@
         <div class="col-lg-3">
             <form action="{{ route('supplier.store') }}" method="POST">
                 @csrf
-            <div style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+            <div class="table-admin">
                 <div>
                     <label for="roleName"  class="form-label">Supplier's Name</label>
                     <input type="text" id="roleName" name="name" class="form-control">
@@ -24,7 +24,7 @@
                     <label for="User"  class="form-label">Supplier'Email</label>
                     <input type="text" id="User" name="email" class="form-control">
                 </div>
-                
+
                 <div class="d-flex justify-content-end padding-top-35">
                     <button type="submit" class="btn btn-primary">Add</button>
                     {{-- <a class="btn btn-primary">Add</a> --}}
@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-lg-9">
-            <div class="table-responsive" style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+            <div class="table-responsive table-admin">
                 <table class="table">
                     <thead>
                         <th>ID</th>

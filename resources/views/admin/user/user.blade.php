@@ -1,10 +1,11 @@
 @extends('admin.layout')
 @section('content')
 <div class="container-fluid" style="padding-top: 20px">
-    <div class="table-responsive" style="background-color: #fff;border-radius:15px 15px 15px 15px">
+    <div class="table-responsive table-admin">
         <table class="table">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Full Name</th>
                     <th>Email</th>
                     @can('edit user')
@@ -18,7 +19,7 @@
             <tbody>
                 @foreach ($users as $user)
                 <tr>
-                    <td hidden class="id">{!! $user->id !!}</td>
+                    <td class="id">{!! $user->id !!}</td>
                     <td class="name">{!! $user->name !!}</td>
                     <td class="email">{!! $user->email !!}</td>
                     @can('edit user')

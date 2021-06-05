@@ -3,7 +3,7 @@
 <div class="container-fluid padding-top-35">
     <div class="row">
         <div class="col-lg-3">
-            <div style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+            <div class="table-admin">
                 <form action="{{ route('roleStore') }}" method="POST">
                     @csrf
                     <div>
@@ -17,8 +17,7 @@
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="table-responsive"
-                style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+            <div class="table-responsive table-admin">
                 <table class="table">
                     <thead>
                         <th style="width: 50%">ID</th>

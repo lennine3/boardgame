@@ -3,31 +3,22 @@
 <div class="container-fluid padding-top-35">
     <div class="row">
         <div class="col-lg-3">
-            <div class="table-admin">
-                @if(!empty($ProductTypeSingle))
-                <form action="{{ route('productType-update',$ProductTypeSingle->id) }}" method="post">
+            <div style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
+                <form action="{{ route('productType-store') }}">
                     @csrf
-                @else
-                <form action="{{ route('productType-store') }}" method="post">
-                    @csrf
-                @endif
-
                     <div>
                         <label for="roleName" class="form-label">Product Type Name</label>
-                            <input type="text" id="roleName" class="form-control" name="product_type_name" value="{{ !empty($ProductTypeSingle)? $ProductTypeSingle->product_type_name:''	 }}">
+                            <input type="text" id="roleName" class="form-control" name="product_type_name">
                     </div>
                     <div class="d-flex justify-content-end padding-top-35">
-                        @if(!empty($ProductTypeSingle))
-                        <button class="btn btn-primary" type="submit">Update</button>
-                        @else
-                        <button class="btn btn-primary" type="submit">Save</button>
-                        @endif
+                        <button class="btn btn-primary" type="submit">Add</button>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-lg-9">
-            <div class="table-responsive table-admin">
+            <div class="table-responsive"
+                style="background-color: #fff;border-radius:10px 10px 10px 10px;padding:15px 15px 15px 15px">
                 <table class="table">
                     <thead>
                         <th>ID</th>
@@ -67,11 +58,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{ route('productType-destroy',$productType->id) }}" method="POST">
+                {{-- <form action="{{ route('staffs.destroy',$staff->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
+                    <input type="text" value="{{ $staff->id }}" name="staff_id" hidden>
+                    <input type="text" value="{{ $staff->user }}" name="user_id" hidden>
                     <button type="submit" type="button" class="btn btn-primary">Yes</button>
-                </form>
+                </form> --}}
             </div>
         </div>
     </div>
