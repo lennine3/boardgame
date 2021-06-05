@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
-<div class="container" style="padding-top: 20px">
-    <div style="background-color: #fff;border-radius:15px 15px 15px 15px;padding:15px 15px 15px 15px">
+<div class="container-fluid" style="padding-top: 20px">
+    <div class="table-admin">
         <form action="{{ route('staffs.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">

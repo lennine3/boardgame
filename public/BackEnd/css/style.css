@@ -3,12 +3,97 @@ body {
     padding: 0;
     font-family: "Roboto", sans-serif;
     height: 100%;
-    background-color: #EFF0F4;
+    background-color: #454d55;
+}
+h1, h2, h3, h4, h5{
+    color: #fff;
+}
+/*Index*/
+.info-board{
+    text-transform: uppercase;
+    font-size:13px;
+    color: #1DC4E7;
+}
+/*Index*/
+/*Input*/
+input[type=text]{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=text]:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=password]{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=password]:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=date]{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=date]:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=email]{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=email]:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=file]{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=file]:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+input[type=radio]{
+    background-color: #454d55;
+    border: none;
+}
+/*Input*/
+/*Table*/
+.table-admin{
+    background-color: #2F323A;
+    padding:15px 15px 15px 15px;    ;
+}
+.form-label{
+    color: #fff;
 }
 
+.form-check-label{
+    color:#fff;
+}
+
+tr{
+    color: #ccc;
+}
+thead tr{
+    color: #1DC4E7;
+}
+/*Table*/
 .background {
     margin-left: 250px;
-    background-color: #EFF0F4;
+    background-color: #454d55;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,21 +119,6 @@ header {
     font-weight: 900;
 }
 
-/* .left-area .neon {
-    color: #1DC4E7 !important;
-
-
-}
-
-.neon {
-    text-shadow: 0px 0px 5px #1dc5e777,
-        0px 0px 10px #1dc5e777,
-        0px 0px 15px #1dc5e777,
-        0px 0px 20px #1dc5e777,
-        0px 0px 25px #1dc5e777,
-        0px 0px 30px #1dc5e777,
-        0px 0px 35px #1dc5e777;
-} */
 .neon {
     color: #1DC4E7;
     animation: glow 1s ease-in-out infinite alternate;
@@ -247,6 +317,7 @@ a {
 /*Chart*/
 .chart-style{
     width:100%;background-color:#fff!important;
+
 }
 /*Chart*/
 /*Border Color*/
@@ -261,7 +332,7 @@ a {
 /*Border Color*/
 /*Report div*/
 .background-white {
-    background-color: #fff !important;
+    background-color: #2F323A !important;
 }
 
 .report-style {

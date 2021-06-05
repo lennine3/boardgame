@@ -50,9 +50,7 @@ Route::PUT('/admin/edit-user/{id}', 'App\Http\Controllers\UserController@update'
 
 Route::get('/admin/role', 'App\Http\Controllers\RoleController@index')->name('role');
 Route::post('/admin/role-store', 'App\Http\Controllers\RoleController@roleStore')->name('roleStore');
-/* Route::get('/admin/staff', function () {
-    return view('admin/user/staff');
-})->name('staff'); */
+
 Route::get('/admin/profile', function () {
     return view('admin/user/profile');
 })->name('profile');
@@ -63,18 +61,25 @@ Route::get('/admin/permission', function () {
 })->name('permission');
 
 Route::resource('/admin/supplier', App\Http\Controllers\supplierController::class);
+Route::get('/admin/productType', 'App\Http\Controllers\productTypeController@index')->name('productType-index');
+Route::post('/admin/productType-store', 'App\Http\Controllers\productTypeController@store')->name('productType-store');
+Route::get('/admin/productType-edit/{id}', 'App\Http\Controllers\productTypeController@edit')->name('productType-edit');
+Route::post('/admin/productType-update/{id}', 'App\Http\Controllers\productTypeController@update')->name('productType-update');
+Route::delete('/admin/productType-delete/{id}', 'App\Http\Controllers\productTypeController@destroy')->name('productType-destroy');
 
 Route::resource('/admin/staffs', App\Http\Controllers\StaffController::class);
 Route::get('/admin/staffs', 'App\Http\Controllers\StaffController@index')->name('staff-index');
 Route::post('/admin/staffs-update', 'App\Http\Controllers\StaffController@update')->name('staff-update');
 Route::Delete('/admin/staffs-destroy/{id}', 'App\Http\Controllers\StaffController@destroy')->name('staffs.destroy');
 
-Route::get('/admin/productType', function () {
-    return view('admin/product/productType');
-})->name('productType');
-Route::get('/admin/product', function () {
+Route::resource('/admin/product', App\Http\Controllers\productController::class);
+Route::post('/admin/product-update/{id}','App\Http\Controllers\productController@update')->name('product-update');
+
+
+/* Route::get('/admin/product', function () {
     return view('admin.product.product');
-})->name('product');
+})->name('product'); */
+
 Route::get('/admin/product-image', function () {
     return view('admin.product.productImage');
 })->name('product-img');

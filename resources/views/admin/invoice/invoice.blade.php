@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('content')
 <div class="container-fluid" style="padding-top: 20px">
-    <div class="table-responsive" style="background-color: #fff;border-radius:15px 15px 15px 15px;padding:15px 15px 15px 15px">
+    <div class="table-responsive table-admin">
         <table class="table">
             <thead>
                 <th>ID</th>

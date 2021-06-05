@@ -8,7 +8,7 @@
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-primary border-4 background-white">
                 <div class="container report-style">
-                    <span style="text-transform: uppercase;font-size:13px">earnings (monthly)</span>
+                    <span class="info-board">earnings (monthly)</span>
                     <h5>$ 40,000</h5>
                 </div>
             </div>
@@ -16,7 +16,7 @@
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-success border-4 background-white">
                 <div class="container report-style">
-                    <span style="text-transform: uppercase;font-size:13px">earnings (monthly)</span>
+                    <span class="info-board">earnings (monthly)</span>
                     <h5>$ 40,000</h5>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-cyan border-4 background-white">
                 <div class="container report-style">
-                    <span style="text-transform: uppercase;font-size:13px">earnings (monthly)</span>
+                    <span class="info-board">earnings (monthly)</span>
                     <h5>$ 40,000</h5>
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-warning border-4 background-white">
                 <div class="container report-style">
-                    <span style="text-transform: uppercase;font-size:13px">earnings (monthly)</span>
+                    <span class="info-board">earnings (monthly)</span>
                     <h5>$ 40,000</h5>
                 </div>
             </div>
@@ -40,7 +40,7 @@
     </div>
     <div style="padding-top: 20px">
         <h2>Chart</h2>
-        <div class="row d-flex">
+        <div class="row d-flex chart-color">
             <div class="col-lg-6" style="padding-top: 20px">
                 <canvas id="myChart" class="chart-style"></canvas>
             </div>
@@ -181,7 +181,7 @@
                 <button class="btn btn-success" data-bs-target="#noticeModal"  data-bs-toggle="modal">Add</button>
             </div>
         </div>
-        <div class="table-responsive rounded background-white border-4" style="padding:0 15px 0 15px"
+        <div class="table-responsive rounded table-admin border-4"
             style="display: block!important">
             <table class="table ">
                 <thead>
