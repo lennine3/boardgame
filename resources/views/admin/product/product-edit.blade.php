@@ -100,11 +100,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="in cen">
-                        <img id="img-preview" src="{{ asset('Img/product-img/'.$product->image) }}"
-
-
-                        {{-- class="profile_staff" --}} style="width: 80%">
-
+                        <img id="img-preview" src="{{ asset('Img/product-img/'.$product->image) }}" style="width: 80%">
                     </div>
                 </div>
             </div>

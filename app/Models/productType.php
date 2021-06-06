@@ -10,4 +10,5 @@ class productType extends Model
 {
     protected $table='product_type';
     use HasFactory;
+    
 }

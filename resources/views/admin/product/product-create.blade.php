@@ -87,12 +87,14 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Image</label>
-                        <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()">
+                        {{-- <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()"> --}}
+                        <input class="form-control" type="file" id="file-input" name="imageFile[]" multiple="multiple">
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="in cen">
-                        <img id="img-preview" {{-- class="profile_staff" --}} style="width: 70%;hright:70%">
+                        {{-- <img id="img-preview" style="width: 70%;hright:70%"> --}}
+                        <div id="img-preview" style="width: 70%;height:70%" class="d-flex"></div>
                     </div>
                 </div>
             </div>
@@ -104,11 +106,40 @@
     </div>
 </div>
 <script>
-    function ImgPreview() {
+    $(document).ready(function(){
+     $('#file-input').on('change', function(){ //on file input change
+        if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+        {
+
+            var data = $(this)[0].files; //this file data
+
+            $.each(data, function(index, file){ //loop though each file
+                if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                    var fRead = new FileReader(); //new filereader
+                    fRead.onload = (function(file){ //trigger function on successful read
+                    return function(e) {
+                        var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element
+                        $('#img-preview').append(img); //append image to output element
+                    };
+                    })(file);
+                    fRead.readAsDataURL(file); //URL representing the file's data.
+                }
+            });
+
+        }else{
+            alert("Your browser doesn't support File API!"); //if File API is absent
+        }
+     });
+    });
+
+    </script>
+
+<script>
+    /* function ImgPreview() {
         var src = URL.createObjectURL(event.target.files[0]);
         var preview = document.getElementById("img-preview");
         preview.src = src;
-    }
+    } */
 
 </script>
 @endsection

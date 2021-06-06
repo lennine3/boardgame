@@ -22,5 +22,7 @@ class product extends Model
     {
         return $this->hasOne('App\Models\productType','id','id_product_type');
     }
-
+    public function image(){
+        return $this->hasMany(productImage::class);
+    }
 }
