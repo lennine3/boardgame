@@ -75,14 +75,12 @@ Route::Delete('/admin/staffs-destroy/{id}', 'App\Http\Controllers\StaffControlle
 Route::resource('/admin/product', App\Http\Controllers\productController::class);
 Route::post('/admin/product-update/{id}','App\Http\Controllers\productController@update')->name('product-update');
 
+Route::get('/admin/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
+Route::post('/admin/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
 
-/* Route::get('/admin/product', function () {
-    return view('admin.product.product');
-})->name('product'); */
-
-Route::get('/admin/product-image', function () {
+/* Route::get('/admin/product-image', function () {
     return view('admin.product.productImage');
-})->name('product-img');
+}) */
 
 Route::get('/admin/invoice', function () {
     return view('admin.invoice.invoice');

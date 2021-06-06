@@ -356,7 +356,7 @@
                         </div>
                         <div class="owl-item">
                             <div class="single-product">
-                                <img src="{{ asset('frontend/img/conan.png') }}" alt="" style="width: 250px;height:250px">
+                                <img src="{{ asset('FrontEnd/img/conan.png') }}" alt="" style="width: 250px;height:250px">
                                 <div class="product-details">
                                     <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a>
                                     </h6>

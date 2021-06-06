@@ -46,6 +46,7 @@ class productController extends Controller
     public function store(Request $request)
     {
         //
+
         $product=new product();
         $product->stock_keeper_unit=$request->sku;
         $product->id_product_type=$request->productType;
@@ -54,8 +55,17 @@ class productController extends Controller
         $product->name=$request->name;
         $product->stock=$request->stock;
         $product->status=$request->status;
-        $product->image=$this->ImgUpload($request);
+        /* $product->image=$this->ImgUpload($request); */
         $product->id_promotion=$request->promotion;
+        if ($request->hasfile('imageFile')) {
+            $files=$request->file('imageFile');
+            foreach ($files as $file) {
+                $name = time().'-'.$file->getClientOriginalName();
+                $file->move(public_path('Img/product-img'), $name);
+                $product->image()->create(['image'=>$name,]);
+                $product->image=$name;
+            }
+        }
         $product->save();
         return redirect()->route('product.index');
     }
@@ -105,11 +115,16 @@ class productController extends Controller
         $product->name=$request->name;
         $product->stock=$request->stock;
         $product->status=$request->status;
-        if($this->ImgUpload($request)!=null)
+        if($request->image!=null)
         {
             $product->image=$this->ImgUpload($request);
         }
+        else
+        {
+            $product->image=$product->image;
+        }
         $product->id_promotion=$request->promotion;
+        
         $product->save();
         return redirect()->route('product.index');
     }
@@ -142,7 +157,7 @@ class productController extends Controller
                 $request->image->move(public_path('Img/product-img'),$imageName);
                 return $imageName;
             }
-            return '';
+
         }
 
     }
