@@ -1,7 +1,7 @@
     <div class="d-flex border-bottom header-color">
         <div class="container">
-            <div class="row">
-                <div style="color: #fff" class="col-lg-6 col-sm-6 col-mb-6 d-flex">
+            <div class="row d-flex justify-content-end ">
+                <div style="color: #fff" class="col-lg-6 col-sm-6 col-mb-6 ">
                     @guest
                     <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
                             class="fas fa-sign-in-alt fa-2x"></i></a>
@@ -13,6 +13,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
+                            <li><a href="{{ route('invoice') }}" class="dropdown-item" style="padding-left: 20px"><i
+                                        class="far fa-file-invoice"></i><span
+                                        style="padding-left: 10px">Invoice</span></a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -22,15 +25,72 @@
                                 </form>
                             </li>
 
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+
                         </ul>
                     </div>
-                    @endguest
+                    @endguest{{--
                 </div>
-                <div style="color: #fff" class="col-lg-6 col-sm-6 col-mb-6 d-flex justify-content-end cart"><a
-                        href="{{ route('cart') }}" class="link"><i class="fal fa-bags-shopping fa-2x"></i></a>
-                    <a href="{{ route('invoice') }}" class="link" style="padding-left: 20px"><i
-                            class="far fa-file-invoice fa-2x"></i></a></div>
+                <div style="color: #fff" class="col-lg-6 col-sm-6 col-mb-6 d-flex cart"> --}}
+                    <div class="dropdown">
+                        <a href="{{ route('cart') }}" class=" link dropdown-toggle btn-outline" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"><i class="fal fa-bags-shopping fa-2x"></i></a>
+                        <ul class="dropdown-menu  cart" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div>
+                                    <div class="row total-header-section">
+                                        <div class="col-lg-6 col-sm-6 col-6">
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">3</span>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-6 col-6 total-section text-right">
+                                            <p>Total: <span class="text-info">$2,978.24</span></p>
+                                        </div>
+                                  </div>
+                                    <div style="padding-top: 15px;padding-bototm:15px">
+                                        <div class="row cart-detail">
+                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img" >
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/811OyrCd5hL._SX425_.jpg">
+                                            </div>
+                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product" style="padding-left: 40px">
+                                                <p>Sony DSC-RX100M..</p>
+                                                <span class="price text-info"> $250.22</span> <span class="count"> Quantity:01</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-top: 15px;padding-bototm:15px">
+                                        <div class="row cart-detail">
+                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/811OyrCd5hL._SX425_.jpg">
+                                            </div>
+                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product" style="padding-left: 40px">
+                                                <p>Sony DSC-RX100M..</p>
+                                                <span class="price text-info"> $250.22</span> <span class="count"> Quantity:01</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding-top: 15px;padding-bototm:15px">
+                                        <div class="row cart-detail">
+                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img" >
+                                                <img src="https://images-na.ssl-images-amazon.com/images/I/811OyrCd5hL._SX425_.jpg">
+                                            </div>
+                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product" style="padding-left: 40px">
+                                                <p>Sony DSC-RX100M..</p>
+                                                <span class="price text-info"> $250.22</span> <span class="count"> Quantity:01</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12 col-12 text-center checkout d-flex justify-content-end">
+                                        <a href="{{ route('cart') }}" class="btn btn-primary">Checkout</a>
+                                        
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
             </div>
 
         </div>
