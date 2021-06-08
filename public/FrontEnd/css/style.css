@@ -1680,6 +1680,47 @@ section {
     color: #222;
 }
 /*Confirmation*/
+/*Cart Icon*/
+.total-header-section{
+	border-bottom:1px solid #d2d2d2;
+}
+.total-section p{
+	margin-bottom:20px;
+}
+.dropdown  .cart{
+    top:5px !important;
+	padding:20px;
+	width:350px !important;
+	box-shadow:0px 5px 30px black;
+}
+.dropdown{
+	float:right;
+	padding-right: 30px;
+}
+.cart-detail-img img{
+	width:150px;
+	height:100px;
+	padding-left:15px;
+    margin-left: -25px;
+}
+.cart-detail-product p{
+	margin:0px;
+	color:#000;
+	font-weight:500;
+}
+.cart-detail .price{
+	font-size:12px;
+	margin-right:10px;
+	font-weight:500;
+}
+.cart-detail .count{
+	color:#C2C2DC;
+}
+.checkout{
+	border-top:1px solid #d2d2d2;
+	padding-top: 15px;
+}
+/*Cart Icon*/
 @media only screen and (max-width: 480px),
 only screen and (max-device-width: 480px) {
     /* CSS overrides for mobile here */
