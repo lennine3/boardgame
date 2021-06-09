@@ -1079,9 +1079,9 @@ input {
     transition: all .3s ease 0s;
 }
 
-.cupon_text {
+/* .cupon_text {
     margin-left: -446px;
-}
+} */
 
 .primary-btn-cart {
     height: 40px;
@@ -1126,7 +1126,10 @@ input {
     outline: none;
     box-shadow: none;
 }
-
+.cupon_text>input:focus{
+    
+    color: #000!important;
+}
 .gray_btn {
     width: 200px;
     height: 40px;
@@ -1139,7 +1142,9 @@ input {
 .cart-li>li {
     padding-top: 5px;
 }
-
+.cart-btn{
+    padding-left: 3px!important;
+}
 /*Cart End*/
 section {
     display: block;

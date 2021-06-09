@@ -68,6 +68,12 @@
                         <input type="number" class="form-control" id="inputStock" name="stock"  value="{{ $product->stock }}">
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="inputPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="inputPrice" name="price">
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
