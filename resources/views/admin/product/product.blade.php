@@ -20,6 +20,7 @@
                 <th>Supplier ID</th>
                 <th>Staff ID</th>
                 <th>Name</th>
+                <th>Price</th>
                 <th>Stock</th>
                 <th>Status</th>
                 <th>Promotion ID</th>
@@ -36,6 +37,7 @@
                     <td>{{ $product->id_supplier }}</td>
                     <td>{{ $product->id_staff }}</td>
                     <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->status }}</td>
                     <td>{{ $product->id_promotion }}</td>

@@ -53,6 +53,7 @@ class productController extends Controller
         $product->id_supplier=$request->supplier;
         $product->id_staff=$request->staff;
         $product->name=$request->name;
+        $product->price=$request->price;
         $product->stock=$request->stock;
         $product->status=$request->status;
         /* $product->image=$this->ImgUpload($request); */
@@ -113,6 +114,7 @@ class productController extends Controller
         $product->id_supplier=$request->supplier;
         $product->id_staff=$request->staff;
         $product->name=$request->name;
+        $product->price=$request->price;
         $product->stock=$request->stock;
         $product->status=$request->status;
         if($request->image!=null)
@@ -124,7 +126,7 @@ class productController extends Controller
             $product->image=$product->image;
         }
         $product->id_promotion=$request->promotion;
-        
+
         $product->save();
         return redirect()->route('product.index');
     }

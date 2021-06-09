@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('index');
-})->name('home');
+})->name('home'); */
+
+Route::get('/','App\Http\Controllers\shopController@index')->name('home');
+Route::get('/add-to-cart/{id}','App\Http\Controllers\shopController@addToCart')->name('add-cart');
+Route::delete('/remove-from-cart','App\Http\Controllers\shopController@remove')->name('remove-cart');
 
 Route::get('/single',function(){
     return view('shop.single');
@@ -38,6 +42,9 @@ Route::get('/checkout',function(){
 Route::get('/checkout/confirmation',function(){
     return view('shop.confirmation');
 })->name('confirmation');
+
+
+
 
 /*Admin*/
 Route::get('/admin', function () {
@@ -78,9 +85,6 @@ Route::post('/admin/product-update/{id}','App\Http\Controllers\productController
 Route::get('/admin/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
 Route::post('/admin/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
 
-/* Route::get('/admin/product-image', function () {
-    return view('admin.product.productImage');
-}) */
 
 Route::get('/admin/invoice', function () {
     return view('admin.invoice.invoice');

@@ -7,6 +7,7 @@
 <script src="{{ asset('FrontEnd/js/all.js') }}"></script>
 <script src="{{ asset('FrontEnd/js/bootstrap.bundle.min.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" href="{{ asset('FrontEnd/css/style.css') }}">
 <script src="{{ asset('FrontEnd/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('FrontEnd/js/owl.carousel.js') }}"></script>
