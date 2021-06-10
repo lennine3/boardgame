@@ -59,7 +59,20 @@ class shopController extends Controller
                 unset($cart[$request->id]);
                 session()->put('cart', $cart);
             }
-            session()->flash('success', 'Product removed successfully');
+            return response()->json([
+                'success' => 'Record deleted successfully!'
+            ]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        if($request->id and $request->quantity)
+        {
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
         }
     }
 }

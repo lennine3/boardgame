@@ -26,6 +26,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th scope="col">product</th>
                             <th></th>
                             <th scope="col">Price</th>
@@ -39,7 +40,8 @@
                         @if(session('cart'))
             @foreach(session('cart') as $id => $details)
             <?php $total += $details['price'] * $details['quantity'] ?>
-                        <tr>
+                        <tr {{-- class="oct_days" --}} id="product_id_{{$id}}">
+                            <td>{{ $id }}</td>
                             <td>
                                 <div class="media">
                                     <div class="d-flex"><img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}"></div>
@@ -59,7 +61,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5>${{ $details['price'] * $details['quantity'] }}</h5>
+                                <h5><span class="Amount{{ $id }}">$<input type="text" value="{{ $details['price'] * $details['quantity'] }}" readonly></span></h5>
                             </td>
                             <td>
                                 <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fas fa-times"></i></button>
@@ -148,10 +150,10 @@
                             <td></td>
                             <td></td>
                             <td>
-                                <h5>${{ $total }}</h5>
+                                <h5><span class="subtotal">$ <input type="text" value="{{ $total }}"></span></h5>
                             </td>
                         </tr>
-
+<div id="test"></div>
             </tbody>
             </table>
         </div>
@@ -193,12 +195,26 @@
                     url: '{{ url('remove-from-cart') }}',
                     method: "DELETE",
                     data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
+                    dataType: 'json',
                     success: function (response) {
-                        console.log(response);
-                        location.reload();
+                        $("#product_id_"+ele.attr("data-id")).empty();
+                        $(".subtotal").val()=$(".subtotal").val()-$(".Amount"+ele.attr("data-id")).val();
                     },
                 });
             }
+        });
+
+        $(".update-cart").click(function (e) {
+           e.preventDefault();
+           var ele = $(this);
+            $.ajax({
+               url: '{{ url('update-cart') }}',
+               method: "patch",
+               data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
+               success: function (response) {
+                   window.location.reload();
+               }
+            });
         });
 </script>
 @endsection
