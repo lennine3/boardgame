@@ -1127,7 +1127,7 @@ input {
     box-shadow: none;
 }
 .cupon_text>input:focus{
-    
+
     color: #000!important;
 }
 .gray_btn {
