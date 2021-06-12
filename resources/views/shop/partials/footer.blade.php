@@ -128,3 +128,30 @@
         }
 
     </script>
+
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
+<script>
+   /*  $('.dropdown.keep-open').on({
+     //fires after dropdown is shown instance method is called (if you click anywhere else)
+     "shown.bs.dropdown": function() { this.close= true; },
+    //when dropdown is clicked
+    "click": function() { this.close= false; },
+    //when close event is triggered
+    "hide.bs.dropdown":  function() { return this.close; }
+});
+ */
+ document.getElementById("keep-open").addEventListener('click', function () {
+            event.stopPropagation();
+        });
+</script>

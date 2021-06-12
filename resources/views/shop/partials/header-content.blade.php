@@ -5,7 +5,7 @@
                     @guest
                     <div class="dropdown">
                         <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
-                            class="fas fa-sign-in-alt fa-2x"></i></a>
+                                class="fas fa-sign-in-alt fa-2x"></i></a>
                     </div>
 
                     @else
@@ -30,46 +30,77 @@
                         </ul>
                     </div>
                     @endguest
-                    <div class="dropdown">
+                    <div class="dropdown" id="keep-open">
                         <a href="{{ route('cart') }}" class=" link dropdown-toggle btn-outline" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"><i class="fal fa-bags-shopping fa-2x"></i></a>
-                        <ul class="dropdown-menu  cart" aria-labelledby="dropdownMenuButton1">
+                            data-bs-toggle="dropdown"><i class="fal fa-bags-shopping fa-2x"></i>
+                            @if(Session::has("Cart")!=null)
+                            <span class="badge badge-pill badge-danger" id="quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
+                            @else
+                            <span class="badge badge-pill badge-danger" id="quanty-show">0</span>
+                            
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu  cart" aria-labelledby="dropdownMenuButton1" role="menu">
                             <li>
                                 <div style="padding: 15px 0px 15px 0px">
                                     <div class="row total-header-section">
                                         <div class="col-lg-6 col-sm-6 col-6">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
-                                                class="badge badge-pill badge-danger">3</span>
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div id="change-item-cart">
+                                        @if(Session::has("Cart")!=null)
+                                        <div style="padding-top: 15px;padding-bototm:15px">
+                                            <table class="table">
+                                                <tbody>
+                                                    @foreach (Session::get("Cart")->products as $item)
+                                                    <tr style="border-bottom: 1px solid #fff!important">
+                                                        <td>
+                                                            <div class="cart-detail-img">
+                                                                <img
+                                                                    src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}">
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col-lg-12 text-info">
+                                                                    ${{ $item['productInfo']->price }} x
+                                                                    {{ $item['quanty'] }}
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <b>{{ $item['productInfo']->name }}</b></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="cart-close">
+                                                                <button data-id="{{ $item['productInfo']->id }}"
+                                                                    class="btn"><i class="fas fa-times"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
 
-                                    </div>
-                                    <?php $total = 0 ?>
-                                    @if(session('cart'))
-                                    @foreach(session('cart') as $id => $details)
-                                    <?php $total += $details['price'] * $details['quantity'] ?>
-                                    <div style="padding-top: 15px;padding-bototm:15px">
-                                        <div class="row cart-detail">
-                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
-                                                <img
-                                                src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}">
+                                        <div class="total-section text-center checkout row">
+                                            <div class="col-lg-6">
+                                                Total:
                                             </div>
-                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product"
-                                                style="padding-left: 40px">
-                                                <p>{{ $details['name'] }}</p>
-                                                <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count">
-                                                    Quantity:{{ $details['quantity'] }}</span>
+                                            <div class="col-lg-6">
+                                                <span class="text-info">${{ Session::get('Cart')->totalPrice }}</span>
                                             </div>
                                         </div>
+                                        @else
+                                        <div style="padding: 15px 15px 15px 15px">There no product in your Cart. Please choose some thing.</div>
+                                        @endif
+
                                     </div>
-                                    @endforeach
-                                    @endif
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6 col-sm-6 col-6 total-section text-right text-center checkout d-flex justify-content-start">
-                                        <p>Total: <span class="text-info">${{ $total }}</span></p>
-                                    </div>
+
                                     <div
-                                        class="col-lg-6 col-sm-12 col-12 text-center checkout d-flex justify-content-end">
+                                        class="col-lg-12 col-sm-12 col-12 text-center checkout d-flex justify-content-end">
                                         <a href="{{ route('cart') }}" class="btn btn-primary">Checkout</a>
                                     </div>
                                 </div>
