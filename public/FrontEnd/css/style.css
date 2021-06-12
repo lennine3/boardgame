@@ -457,7 +457,52 @@ h6 {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
+.primary-btn {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 30px;
+    line-height: 50px;
+    /* border-radius: 50px; */
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.Ripple-effect {
+    border: none;
+    outline: none;
+    color: #fff;
+    box-shadow:0 2px 2px #bbb;
+    position: relative!important;
+    transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
 
+.Ripple-effect:after{
+    content:"";
+    position: absolute!important;
+    background-color: #fff;
+    padding: 50%;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 0;
+    transition: all 0.8s;
+}
+.Ripple-effect:active:after{
+    transition: 0s;
+    opacity: 1!important;
+    transform: translate(-50%,-50%) scale(0);
+}
 a {
     text-decoration: none;
     transition: all 0.3s ease-in-out;
@@ -929,7 +974,6 @@ input {
 }
 /*Cart*/
 .shopping-cart {
-    padding-top: 80px;
     padding-bottom: 60px;
 }
 .cart-table {
@@ -1061,13 +1105,7 @@ input {
 .discount-coupon .coupon-form {
     position: relative;
 }
-.primary-btn {
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    padding: 12px 30px;
-    text-transform: uppercase;
-}
+
 .proceed-checkout ul {
     border: 2px solid #ebebeb;
     background: #f3f3f3;

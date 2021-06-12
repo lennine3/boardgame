@@ -31,16 +31,15 @@
                     </div>
                     @endguest
                     <div class="dropdown" id="keep-open">
-                        <a href="{{ route('cart') }}" class=" link dropdown-toggle btn-outline" id="dropdownMenuButton1"
+                        <a href="{{ route('cart') }}" class=" link dropdown-toggle btn-outline" id="dropdownCart"
                             data-bs-toggle="dropdown"><i class="fal fa-bags-shopping fa-2x"></i>
                             @if(Session::has("Cart")!=null)
                             <span class="badge badge-pill badge-danger" id="quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
                             @else
                             <span class="badge badge-pill badge-danger" id="quanty-show">0</span>
-                            
                             @endif
                         </a>
-                        <ul class="dropdown-menu  cart" aria-labelledby="dropdownMenuButton1" role="menu">
+                        <ul class="dropdown-menu  cart" aria-labelledby="dropdownCart" role="menu">
                             <li>
                                 <div style="padding: 15px 0px 15px 0px">
                                     <div class="row total-header-section">
@@ -180,3 +179,4 @@
     </div>
 
     <!--//Nav Bar-->
+

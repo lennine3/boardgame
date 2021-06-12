@@ -30,99 +30,41 @@
             <div class="row">
                 <div class="col-lg-8">
                     <h3>Billing Details</h3>
-                    <div class="table-responsive">
-                        <table class="table">
+                    @if(Session::has("Cart")!=null)
+                    <div class="cart-table table-responsive">
+                        <table>
                             <thead>
-                                <th>
-                                    Product
-                                </th>
-                                <th>
-                                    Price
-                                </th>
-                                <th>
-                                    Quanlity
-                                </th>
-                                <th>
-                                    Total
-                                </th>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                </tr>
                             </thead>
                             <tbody>
+                                @foreach (Session::get("Cart")->products as $item)
                                 <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex"><img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}"
-                                                    style="width: 150px;height:100px"></div>
-                                            <div class="media-body">
-                                                <p style="    padding-left: 50">Monopoly- Smart board game for Kid</p>
+                                    <td class="cart-pic first-row"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
+                                            style="width: 90%"></td>
+                                    <td class="cart-title first-row">
+                                        <h5>{{ $item['productInfo']->name }}</h5>
+                                    </td>
+                                    <td class="p-price first-row">${{ $item['productInfo']->price }}</td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity" style="text-align: end">
+                                            <div>
+                                                {{ $item['quanty'] }}
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        $360000
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>$720000</td>
+                                    <td class="total-price first-row">${{ $item['productInfo']->price*$item['quanty'] }}</td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex"><img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}"
-                                                    style="width: 150px;height:100px"></div>
-                                            <div class="media-body">
-                                                <p style="    padding-left: 50">Monopoly- Smart board game for Kid</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $360000
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>$720000</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex"><img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}"
-                                                    style="width: 150px;height:100px"></div>
-                                            <div class="media-body">
-                                                <p style="    padding-left: 50">Monopoly- Smart board game for Kid</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $360000
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>$720000</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="media">
-                                            <div class="d-flex"><img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}"
-                                                    style="width: 150px;height:100px"></div>
-                                            <div class="media-body">
-                                                <p style="    padding-left: 50">Monopoly- Smart board game for Kid</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        $360000
-                                    </td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>$720000</td>
-                                </tr>
-
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
+                    @endif
                 </div>
                 <div class="col-lg-4">
                     <div class="order_box">
