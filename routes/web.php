@@ -13,13 +13,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-/* Route::get('/', function () {
-    return view('index');
-})->name('home'); */
 
 Route::get('/','App\Http\Controllers\shopController@index')->name('home');
-Route::get('/add-to-cart/{id}','App\Http\Controllers\shopController@addToCart')->name('add-cart');
-Route::delete('/remove-from-cart','App\Http\Controllers\shopController@remove')->name('remove-cart');
+Route::get('/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
+Route::get('/remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
+Route::get('/remove-Listitem-cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
+Route::get('/update-Listitem-cart/{id}/{quanty}','App\Http\Controllers\CartController@UpdateListItemCart')->name('update-list-cart');
+
+Route::get('/shopping-cart',function(){
+    return view('shop.shopping-cart');
+});
+Route::get('/list-cart',function(){
+    return view('shop.ListCart');
+});
+
 
 Route::get('/single',function(){
     return view('shop.single');
