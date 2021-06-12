@@ -49,39 +49,9 @@
         $("#listCart").html(response);
         $("#quanty-show").text($("#quanty-cart").val());
     }
+    var userMain=document.getElementById("dropdownCart");
+    if(window.location.href.indexOf("cart")>-1){
+        userMain.className="visible_hidden"
+    }
 </script>
-{{-- <script>
-    $(".remove-from-cart").click(function (e) {
-            e.preventDefault();
-            var ele = $(this);
-            if(confirm("Are you sure")) {
-                $.ajax({
-                    url: '{{ url('remove-from-cart') }}',
-method: "DELETE",
-data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id")},
-dataType: 'json',
-success: function (response) {
-$("#product_id_"+ele.attr("data-id")).empty();
-$(".subtotal").val()=$(".subtotal").val()-$(".Amount"+ele.attr("data-id")).val();
-},
-});
-}
-});
-
-$(".update-cart").click(function (e) {
-e.preventDefault();
-var ele = $(this);
-$.ajax({
-url: '{{ url('update-cart') }}',
-method: "patch",
-data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
-success: function (response) {
-window.location.reload();
-}
-});
-});
-</script> --}}
-@endsection
-@section('scripts')
-
 @endsection

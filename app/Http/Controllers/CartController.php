@@ -53,8 +53,10 @@ class CartController extends Controller
 
         $oldCart=Session('Cart') ? Session('Cart') : null;
         $newCart=new Cart($oldCart);
+        if($quanty!=0)
         $newCart->UpdateItemCart($id,$quanty);
-
+        else
+        $newCart->DeleteItemCart($id);
         $request->Session()->put('Cart',$newCart);
 
         return view('shop.ListCart');

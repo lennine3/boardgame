@@ -19,7 +19,8 @@
                 </td>
                 <td>
                     <div class="cart-close">
-                        <button data-id="{{ $item['productInfo']->id }}" class="btn"><i class="fas fa-times"></i></button>
+                        <button data-id="{{ $item['productInfo']->id }}" class="btn"><i
+                                class="fas fa-times"></i></button>
                     </div>
                 </td>
             </tr>
@@ -28,17 +29,20 @@
     </table>
 </div>
 
-    <div class="total-section text-center checkout row">
-        <div class="col-lg-6">
-            Total:
-        </div>
-        <div class="col-lg-6">
-            <span class="text-info">$ ${{ number_format(Session::get('Cart')->totalPrice) }}</span>
-            <input type="number" value="{{ Session::get('Cart')->totalQuanty }}" id="quanty-cart" hidden>
-        </div>
-        <p>
-
-             </p>
+<div class="total-section text-center checkout row">
+    <div class="col-lg-6">
+        Total:
     </div>
+    <div class="col-lg-6">
+        <span class="text-info">$ ${{ number_format(Session::get('Cart')->totalPrice) }}</span>
+        <input type="number" value="{{ Session::get('Cart')->totalQuanty }}" id="quanty-cart" hidden>
+    </div>
+    <p>
 
+    </p>
+</div>
+@else
+<div style="padding: 15px 15px 15px 15px">There no product in your Cart. Please choose some thing.</div>
+<input type="number" value="0" id="quanty-cart" hidden>
 @endif
+
