@@ -11,5 +11,8 @@ class shopController extends Controller
         $products=product::all();
         return view ('index',compact('products'));
     }
+    public function loginPage(){
+        return view('shop.login-page');
+    }
 }
 
