@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 //Shop
 Route::prefix('/')->group(function () {
     Route::get('/','App\Http\Controllers\shopController@index')->name('home');
+    Route::get('login-page','App\Http\Controllers\shopController@loginPage')->name('loginPage');
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
     Route::get('remove-Listitem-cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');

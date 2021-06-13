@@ -709,7 +709,7 @@
                         </div>
                     </div>
                 </div>
-                <a href class="primary-btn Ripple-effect"> Shop Now</a>
+                <a href class="exclusive-btn Ripple-effect"> Shop Now</a>
             </div>
             <div class="col-lg-6 exclusive-right">
                 <div>

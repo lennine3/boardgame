@@ -415,8 +415,14 @@ h6 {
 .owl-next:hover {
     background: transparent !important;
 }
-
-.primary-btn {
+.exclusive-btn{
+    background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+}
+.exclusive-btn{
+    font-family: "Poppins", sans-serif;
     position: relative;
     overflow: hidden;
     color: #fff;
@@ -432,7 +438,60 @@ h6 {
     -o-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
 }
-
+.exclusive-btn:hover{
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 30px;
+    line-height: 50px;
+    /* border-radius: 50px; */
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+.primary-btn {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    /* padding: 0 30px;
+    line-height: 50px; */
+    /* border-radius: 50px; */
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+.primary-btn:hover {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    /* padding: 0 30px;
+    line-height: 50px; */
+    /* border-radius: 50px; */
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    -webkit-transition: all .3s ease 0s;
+    -moz-transition: all .3s ease 0s;
+    -o-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+}
+.radius-50{
+    border-radius: 50px;
+}
 .primary-btn {
     background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
     background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
@@ -440,40 +499,7 @@ h6 {
     background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
 }
 
-.primary-btn:hover {
-    font-family: "Poppins", sans-serif;
-    position: relative;
-    overflow: hidden;
-    color: #fff;
-    padding: 0 30px;
-    line-height: 50px;
-    /* border-radius: 50px; */
-    display: inline-block;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-}
-.primary-btn {
-    font-family: "Poppins", sans-serif;
-    position: relative;
-    overflow: hidden;
-    color: #fff;
-    padding: 0 30px;
-    line-height: 50px;
-    /* border-radius: 50px; */
-    display: inline-block;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    -webkit-transition: all 0.3s ease 0s;
-    -moz-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-}
+
 .Ripple-effect {
     border: none;
     outline: none;
@@ -1724,6 +1750,111 @@ section {
 	padding-top: 15px;
 }
 /*Cart Icon*/
+/*Login Page*/
+.text-wrap {
+
+    background: #ffba00;
+    background: -moz-linear-gradient(-45deg,#ffba00 0%,#ff6c00 100%);
+    background: -webkit-gradient(left top,right bottom,color-stop(0%,#ffba00),color-stop(100%,#ff6c00));
+    background: -webkit-linear-gradient(
+-45deg
+,#ffba00 0%,#ff6c00 100%);
+    background: -o-linear-gradient(-45deg,#ffba00 0%,#ff6c00 100%);
+    background: -ms-linear-gradient(-45deg,#ffba00 0%,#ff6c00 100%);
+    background: -webkit-linear-gradient(
+315deg
+,#ffba00 0%,#ff6c00 100%);
+    background: -o-linear-gradient(315deg,#ffba00 0%,#ff6c00 100%);
+    background: linear-gradient(
+135deg
+,#ffba00 0%,#ff6c00 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffba00', endColorstr='#ff6c00', GradientType=1 );
+    color: #fff;
+}
+.text-wrap, .login-wrap {
+    width: 50%;
+}
+.text-center {
+    text-align: center!important;
+}
+.text-wrap {
+    white-space: normal!important;
+}
+.w-100 {
+    width: 100%!important;
+}
+.text-wrap .text h2 {
+    font-weight: 900;
+    color: #fff;
+}
+.btn.btn-white.btn-outline-white {
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+.login-wrap {
+    position: relative;
+    background: #fff;
+}
+
+.text-wrap, .login-wrap {
+    width: 50%;
+}
+.login-wrap h3 {
+    font-weight: 300;
+}
+.social-media .social-icon {
+    color: #999!important;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.05);
+    font-size: 16px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.text-log{
+    color: #495057!important;
+}
+.log-input{
+    color:#495057;
+    padding:10px 15px 10px 15px;
+    background-color: #0000000d!important;
+    border-radius: 35px 35px 35px 35px;
+}
+.social-media .social-icon:hover {
+    color: #fff!important;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-image: linear-gradient(to bottom right, #ffba00, #ff6c00);
+    border: 1px solid rgba(0,0,0,.05);
+    font-size: 16px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.wrap {
+    width: 100%;
+    border-radius: 5px;
+    /* -webkit-box-shadow: 0 10px 34px -15px rgb(0 0 0 / 24%); */
+    -moz-box-shadow: 0 10px 34px -15px rgba(0,0,0,.24);
+    box-shadow: 0 10px 34px -15px rgb(0 0 0 / 24%);
+}
+.close-button{
+    position: relative;
+    top: -165px!important;
+    right: -35px;
+}
+.label-color{
+    color: #ff6c00 !important;
+}
+/* .login-shadow{
+
+  box-shadow: 10px 10px 5px grey;
+} */
+/*Login Page*/
 @media only screen and (max-width: 480px),
 only screen and (max-device-width: 480px) {
     /* CSS overrides for mobile here */
