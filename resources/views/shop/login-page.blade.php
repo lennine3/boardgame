@@ -26,15 +26,9 @@
                 <div class="wrap d-md-flex">
                     <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                         <div class="text w-100">
-                            <div class="d-flex justify-content-end close-button">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <h2>Welcome to login</h2>
+                            <h2>Welcome to TK Board Game</h2>
                             <p>Don't have an account?</p>
-                            <button type="buttoz"
-                                class="btn btn-white btn-outline-white Ripple-effect radius-50"
-                                data-bs-toggle="modal" data-bs-target="#ModalLogin"
-                                data-bs-dismiss="modal">Sign Up</button>
+                            <a type="button" class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign Up</a>
                         </div>
                     </div>
 
@@ -85,11 +79,6 @@
                             <div class="form-group mb-3">
                                 <button type="submit"
                                     class="form-control btn primary-btn submit px-3 radius-50 Ripple-effect">{{ __('Sign In') }}</button>
-                                @if (Route::has('password.request'))
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                                @endif
                             </div>
 
                         </form>
@@ -101,7 +90,9 @@
                                     for="rememberCheck">Remember Me</label>
                             </div>
                             <div class="w-50 d-flex justify-content-end text-md-right">
-                                <a href="#" class="text-log">Forgot Password</a>
+                                @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="text-log">{{ __('Forgot Password?') }}</a>
+                                @endif
                             </div>
                         </div>
                         </form>

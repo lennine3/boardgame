@@ -27,7 +27,7 @@ class checkLogin
         }
         else
         {
-            return redirect()->route('home');
+            return redirect()->route('loginPage');
         }
 
     }
