@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->group(function () {
     Route::get('/','App\Http\Controllers\shopController@index')->name('home');
     Route::get('login-page','App\Http\Controllers\shopController@loginPage')->name('loginPage');
+    Route::get('category','App\Http\Controllers\shopController@category')->name('category');
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
     Route::get('remove-Listitem-cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
@@ -30,9 +31,7 @@ Route::prefix('/')->group(function () {
     Route::get('single',function(){
         return view('shop.single');
     })->name('single');
-    Route::get('category',function(){
-        return view('shop.category');
-    })->name('category');
+    
     Route::get('cart',function(){
         return view('shop.cart');
     })->name('cart');

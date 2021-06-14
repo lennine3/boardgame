@@ -255,7 +255,7 @@ h6>a:hover {
 .owl-prev {
     position: absolute !important;
     left: 300px;
-    top: -700px;
+    top: -575px;
 }
 
 .owl-prev:hover {
@@ -282,9 +282,7 @@ h6 {
 .single-product {
     padding-top: 30px;
 }
-.single-product img{
-    border: 0.2px rgb(87, 85, 85) solid;
-}
+
 
 .single-product .product-details .price h6 {
     font-size: 16px;
@@ -373,7 +371,7 @@ h6 {
 .owl-next {
     position: absolute !important;
     right: 300px;
-    top: -700;
+    top: -575px;
 }
 
 .exclusive-right .active-exclusive-product-slider {
@@ -734,7 +732,15 @@ img {
     vertical-align: middle;
     border-style: none;
 }
-
+.box-img{
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    border: 0.2px #e7e7e7 solid;
+    width: 400px;
+    height: 400px;
+}
 .form-inline {
     display: flex;
     flex-flow: row wrap;
@@ -1194,6 +1200,12 @@ section {
 
 .p-b-30 {
     padding-bottom: 30px;
+}
+.p-b-35 {
+    padding-bottom: 35px;
+}
+.p-b-40 {
+    padding-bottom: 40px;
 }
 .banner-padding{
     padding-bottom:50px;padding-top:50px;
@@ -1844,7 +1856,7 @@ section {
 }
 .close-button{
     position: relative;
-    top: -165px!important;
+    top: -140px!important;
     right: -35px;
 }
 .label-color{

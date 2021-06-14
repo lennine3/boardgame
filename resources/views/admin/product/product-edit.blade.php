@@ -71,7 +71,7 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputPrice" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="inputPrice" name="price">
+                        <input type="number" class="form-control" id="inputPrice" name="price" value="{{ $product->price }}">
                     </div>
                 </div>
             </div>

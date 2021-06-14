@@ -18,8 +18,7 @@
                     <tbody>
                         @foreach (Session::get("Cart")->products as $item)
                         <tr>
-                            <td class="cart-pic first-row"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                    style="width: 90%"></td>
+                            <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="100%"></td>
                             <td class="cart-title first-row">
                                 <h5>{{ $item['productInfo']->name }}</h5>
                             </td>

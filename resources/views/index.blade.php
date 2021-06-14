@@ -89,7 +89,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 text-center">
                                     <div style="padding-left: 5px;padding-top:13px">
-                                        <h1 style="color: #000" style="padding-top: 30px"><b>Family</b></h1>
+                                        <h1 style="color: #000" style="padding-top: 30px"><b>Product Type 1</b></h1>
                                         <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum harum iusto
                                             corrupti
                                             repudiandae rerum excepturi fugiat blanditiis ducimus voluptas sint, saepe
@@ -99,11 +99,14 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="row">
-                                        @foreach ($products->take(8) as $product)
+                                        @foreach ($productType_1 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}"
-                                                    alt="">
+                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                    <div class="box-img">
+                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                    </div>
+                                                </div>
                                                 <div class="product-details">
                                                     <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
@@ -140,7 +143,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 text-center">
                                     <div style="padding-left: 5px;padding-top:13px">
-                                        <h1 style="color: #000" style="padding-top: 30px"><b>Family</b></h1>
+                                        <h1 style="color: #000" style="padding-top: 30px"><b>Product Type 2</b></h1>
                                         <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum harum iusto
                                             corrupti
                                             repudiandae rerum excepturi fugiat blanditiis ducimus voluptas sint, saepe
@@ -150,24 +153,26 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="row">
+                                        @foreach ($productType_2 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
+                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                    <div class="box-img">
+                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                    </div>
+                                                </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
+                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
-                                                        <h6>$60</h6>
+                                                        <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
+                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
                                                                     </a><span class="tooltiptext">Add Cart</span>
                                                                 </div>
                                                                 <div class="tooltip col-lg-6">
@@ -181,223 +186,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-6 p-b-20">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6 ">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-20">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-20">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6 ">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -408,7 +197,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 text-center">
                                     <div style="padding-left: 5px;padding-top:13px">
-                                        <h1 style="color: #000" style="padding-top: 30px"><b>Family</b></h1>
+                                        <h1 style="color: #000" style="padding-top: 30px"><b>Product Type 3</b></h1>
                                         <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum harum iusto
                                             corrupti
                                             repudiandae rerum excepturi fugiat blanditiis ducimus voluptas sint, saepe
@@ -418,24 +207,26 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="row">
+                                        @foreach ($productType_3 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
+                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                    <div class="box-img">
+                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                    </div>
+                                                </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
+                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
-                                                        <h6>$60</h6>
+                                                        <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
+                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
                                                                     </a><span class="tooltiptext">Add Cart</span>
                                                                 </div>
                                                                 <div class="tooltip col-lg-6">
@@ -449,55 +240,47 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 text-center">
+                                    <div style="padding-left: 5px;padding-top:13px">
+                                        <h1 style="color: #000" style="padding-top: 30px"><b>Product Type 4</b></h1>
+                                        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum harum iusto
+                                            corrupti
+                                            repudiandae rerum excepturi fugiat blanditiis ducimus voluptas sint, saepe
+                                            illum adipisci <br>
+                                            officiis est nostrum incidunt soluta dolor commodi.</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        @foreach ($productType_4 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6 ">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                    <div class="box-img">
+                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-20">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
+                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
-                                                        <h6>$60</h6>
+                                                        <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
                                                         <div class="row">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
+                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
                                                                     </a><span class="tooltiptext">Add Cart</span>
                                                                 </div>
                                                                 <div class="tooltip col-lg-6">
@@ -511,161 +294,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-3 col-md-6 p-b-20">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6 ">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 p-b-30">
-                                            <div class="single-product">
-                                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                                    alt="">
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">The Best borad game to play
-                                                            with friend</a></h6>
-                                                    <div class="price">
-                                                        <h6>$60</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i
-                                                                            class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
