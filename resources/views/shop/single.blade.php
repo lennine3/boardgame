@@ -21,20 +21,41 @@
 </section>
 <div class="container" style="padding-top: 20px;padding-bottom:50px">
     <div class="row">
-        <div class="col-lg-6 col-mb-12">
-            <img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" class="img-fluid" alt="">
+        <div class="col-lg-4 col-mb-12">
+            <div class="product-img-box">
+                <div class="product-image">
+                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                        <div style="position: relative;
+                        display: table-cell;
+                        vertical-align: middle;
+                        text-align: center;
+                        width: 400px;
+                        height: 400px;" class="box-img">
+    <img  src="{{ asset('Img/product-img/'.$product->image) }}" alt="" width="400" height="400">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="col-lg-6 col-mb-12" style="color: #000;padding-left:50px">
+        <div class="col-lg-8 col-mb-12" style="color: #000;padding-left:50px">
             <div class="product_text">
                 <h3>
-                    Monopoly Best game for Kid
+                    {{ $product->name }}
                 </h3>
-                <h2>$ 70</h2>
+                <h2>$ {{ $product->price }}</h2>
                 <ul class="list">
                     <li>
+                        @if ( $product->stock >0)
                         <a href="#">
-                            <span class="active">Availibilti</span>: In Stock
+                            <span class="active">Availibilti</span>: {{ $product->stock }}
                         </a>
+                        @else
+                        <a href="#">
+                            <span class="active">Availibilti</span>: Out of order
+                        </a>
+                        @endif
+
                     </li>
                 </ul>
                 <p>
@@ -42,12 +63,11 @@
                     ullam fugiat ea sapiente recusandae
                     laudantium incidunt numquam adipisci. Fugit at atque eaque accusamus nulla dolorem aliquid.
                 </p>
-                <div class="product_count">
+                {{-- <div class="product_count">
                     <label for="qty">Quantity</label>
                     <input type="number" value="1" min="1">
-                </div>
-                <div class="d-flex align-items-center card_area">
-                    <a href="#" class="product-primary-btn">
+                </div> --}}
+                    <a onclick="AddCart({{ $product->id }})" href="javascript:" class="product-primary-btn">
                         ADD TO CART
                     </a>
                     <a href="#" class="icon_btn">
@@ -333,7 +353,7 @@
                                 <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
                                     style="width: 250px;height:250px">
                                 <div class="product-details">
-                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a>
+                                    <h6> <a href="#">The Best borad game to play with friend</a>
                                     </h6>
                                     <div class="price">
                                         <h6>$60</h6>
@@ -346,7 +366,7 @@
                                 <img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" alt=""
                                     style="width: 250px;height:250px">
                                 <div class="product-details">
-                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a>
+                                    <h6> <a href="#">The Best borad game to play with friend</a>
                                     </h6>
                                     <div class="price">
                                         <h6>$60</h6>
@@ -358,7 +378,7 @@
                             <div class="single-product">
                                 <img src="{{ asset('FrontEnd/img/conan.png') }}" alt="" style="width: 250px;height:250px">
                                 <div class="product-details">
-                                    <h6> <a href="{{ route('single') }}">The Best borad game to play with friend</a>
+                                    <h6> <a href="#">The Best borad game to play with friend</a>
                                     </h6>
                                     <div class="price">
                                         <h6>$60</h6>

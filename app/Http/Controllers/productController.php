@@ -19,8 +19,8 @@ class productController extends Controller
     public function index()
     {
         //
-        $products=product::all();
-        return view ('admin.product.product',compact('products'));
+        $data=product::paginate(4);
+        return view ('admin.product.product',['products'=>$data]);
     }
 
     /**
@@ -46,7 +46,6 @@ class productController extends Controller
     public function store(Request $request)
     {
         //
-
         $product=new product();
         $product->stock_keeper_unit=$request->sku;
         $product->id_product_type=$request->productType;
@@ -56,18 +55,17 @@ class productController extends Controller
         $product->price=$request->price;
         $product->stock=$request->stock;
         $product->status=$request->status;
-        /* $product->image=$this->ImgUpload($request); */
+        $product->image=$this->ImgUpload($request);
         $product->id_promotion=$request->promotion;
+        $product->save();
         if ($request->hasfile('imageFile')) {
             $files=$request->file('imageFile');
             foreach ($files as $file) {
                 $name = time().'-'.$file->getClientOriginalName();
                 $file->move(public_path('Img/product-img'), $name);
-                $product->image()->create(['image'=>$name,]);
-                $product->image=$name;
+                $product->image()->create(['image'=>$name,'product_id'=>$product->id]);
             }
         }
-        $product->save();
         return redirect()->route('product.index');
     }
 
@@ -144,7 +142,11 @@ class productController extends Controller
         $product->delete();
         return redirect()->route('product.index');
     }
-
+    public function ImgSingle(Request $request){
+                $imageName=time().'.'.$request->imageFile[0]->extension();
+                $request->imageFile[0]->move(public_path('Img/product-img'),$imageName);
+                return $imageName;
+    }
     public function ImgUpload(Request $request)
     {
         if($request->hasFile('image'))

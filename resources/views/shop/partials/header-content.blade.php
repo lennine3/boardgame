@@ -127,7 +127,7 @@
                     </button>
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item dropdown ">
+                            {{-- <li class="nav-item dropdown ">
                                 <div class="menu-background">
                                     <a class="nav-link dropbtn nav-link" href="{{ route('category') }}" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">Category</a>
@@ -139,6 +139,10 @@
                                         <hr class="dropdown-divider">
                                         <a class="nav-link" href="#" style="color: #000!important">RPG Boardgame</a>
                                     </div>
+                                </div>
+                            </li> --}}
+                            <li class=" nav-item">
+                                <div class="menu-background"><a class="nav-link" href="{{ route('category') }}">Category</a>
                                 </div>
                             </li>
                             <li class=" nav-item">

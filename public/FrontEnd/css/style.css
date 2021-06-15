@@ -281,6 +281,8 @@ h6 {
 
 .single-product {
     padding-top: 30px;
+    padding: 0px 0px 15px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 
@@ -303,6 +305,8 @@ h6 {
     font-size: 16px;
     text-transform: uppercase;
     font-weight: bold;
+    padding-left: 5px;
+    padding-right:5px;
 }
 
 .single-product .product-details .prd-bottom {
@@ -732,6 +736,11 @@ img {
     vertical-align: middle;
     border-style: none;
 }
+.column {
+    float: left;
+    width: 16.66%;
+  }
+
 .box-img{
     position: relative;
     display: table-cell;
@@ -1612,6 +1621,18 @@ section {
     opacity: 1;
 }
 
+/*Single Product*/
+.product-img-box {
+    width: 400px;
+    height: 550px;
+    float: left;
+}
+.product-img-box .product-image {
+    float: left;
+    position: relative;
+    width: 400px;
+    border: 1px solid #f1f1f1;
+}
 /*Single Product*/
 /*Certificate start*/
 .certificate{

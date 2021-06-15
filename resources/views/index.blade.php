@@ -108,13 +108,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
+                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
                                                         <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
-                                                        <div class="row">
+                                                        <div class="row p-b-20">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
                                                                         <a onclick="AddCart({{ $product->id }})" href="javascript:">
@@ -162,14 +162,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
+                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
                                                         <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
-                                                        <div class="row">
-                                                            <div class="d-flex justify-content-center">
+                                                        <div class="row p-b-20">
+                                                            <div class="d-flex justify-content-center p-b-20">
                                                                 <div class="tooltip col-lg-6">
                                                                         <a onclick="AddCart({{ $product->id }})" href="javascript:">
                                                                         <i class="fal fa-shopping-bag fa-3x addCart"></i>
@@ -216,13 +216,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
+                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
                                                         <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
-                                                        <div class="row">
+                                                        <div class="row p-b-20">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
                                                                         <a onclick="AddCart({{ $product->id }})" href="javascript:">
@@ -270,13 +270,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-details">
-                                                    <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
+                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
                                                     <div class="price">
                                                         <h6>${{ $product->price }}</h6>
                                                     </div>
                                                     <hr>
                                                     <div class="prd-bottom">
-                                                        <div class="row">
+                                                        <div class="row p-b-20">
                                                             <div class="d-flex justify-content-center">
                                                                 <div class="tooltip col-lg-6">
                                                                         <a onclick="AddCart({{ $product->id }})" href="javascript:">
