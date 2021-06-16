@@ -24,17 +24,31 @@
         <div class="col-lg-4 col-mb-12">
             <div class="product-img-box">
                 <div class="product-image">
-                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;overflow:hidden">
                         <div style="position: relative;
                         display: table-cell;
                         vertical-align: middle;
                         text-align: center;
-                        width: 400px;
+                        width: 100%;
                         height: 400px;" class="box-img">
-    <img  src="{{ asset('Img/product-img/'.$product->image) }}" alt="" width="400" height="400">
+                        <div class="owl-single owl-carousel owl-theme owl-loaded">
+                            <div class="owl-stage-outer">
+                                <div class="owl-stage">
+                                    @foreach ($product_images as $product_image)
+                                    <div class="owl-item"><img  src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="350"></div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="owl-nav">
+                                <div class="owl-prev">prev</div>
+                                <div class="owl-next">next</div>
+                            </div>
+                        </div>
+    {{-- <img  src="{{ asset('Img/product-img/'.$product->image) }}" alt="" width="400" height="400"> --}}
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>

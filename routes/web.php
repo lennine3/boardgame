@@ -89,6 +89,8 @@ Route::prefix('/admin')->group(function () {
     //Product Image
     Route::get('/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
     Route::post('/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
+    //Product Detail
+    Route::get('/product-detail', 'App\Http\Controllers\productDetailController@index')->name('product-detail');
     //invoice
     Route::get('/invoice', function () {
         return view('admin.invoice.invoice');

@@ -25,10 +25,4 @@ class product extends Model
     public function image(){
         return $this->hasMany(productImage::class);
     }
-
-    /* public function render(){
-        return view('admin.product.product',[
-            'product'=> product::latest()->paginate(2);
-        ]);
-    } */
 }
