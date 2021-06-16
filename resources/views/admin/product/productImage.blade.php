@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-<div class="container-fluid" style="padding-top: 20px">
+<div class="container-fluid pad-top-20 pad-bot-50">
     <div class="row">
         <div class="col-lg-3">
             <div class="table-admin">
@@ -42,7 +42,7 @@
             </form>
             </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9 mb-4">
             <div class="table-responsive table-admin">
                 <table class="table">
                     <thead>
@@ -72,6 +72,9 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div class="d-flex justify-content-center pagination-admin">
+            {!! $productImages->render() !!}
         </div>
     </div>
 

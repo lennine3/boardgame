@@ -18,7 +18,9 @@ Route::prefix('/')->group(function () {
     Route::get('login-page','App\Http\Controllers\shopController@loginPage')->name('loginPage');
     Route::get('category','App\Http\Controllers\shopController@category')->name('category');
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
+    Route::get('/single/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
     Route::get('remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
+    Route::get('/single/remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart-single');
     Route::get('remove-Listitem-cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
     Route::get('update-Listitem-cart/{id}/{quanty}','App\Http\Controllers\CartController@UpdateListItemCart')->name('update-list-cart');
     Route::get('shopping-cart',function(){
@@ -27,11 +29,8 @@ Route::prefix('/')->group(function () {
     Route::get('list-cart',function(){
         return view('shop.ListCart');
     });
+    Route::get('single/{id}','App\Http\Controllers\shopController@single')->name('single');
 
-    Route::get('single',function(){
-        return view('shop.single');
-    })->name('single');
-    
     Route::get('cart',function(){
         return view('shop.cart');
     })->name('cart');
@@ -90,6 +89,8 @@ Route::prefix('/admin')->group(function () {
     //Product Image
     Route::get('/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
     Route::post('/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
+    //Product Detail
+    Route::get('/product-detail', 'App\Http\Controllers\productDetailController@index')->name('product-detail');
     //invoice
     Route::get('/invoice', function () {
         return view('admin.invoice.invoice');

@@ -586,20 +586,17 @@ a {
 
 /*Padding*/
 /*Pagination*/
-.pagination-admin a.active {
-    background: -webkit-linear-gradient(90deg, #19B3D3 0%,  #19B3D3 100%);
-    background: -moz-linear-gradient(90deg, #19B3D3 0%,  #19B3D3 100%);
-    background: -o-linear-gradient(90deg, #19B3D3 0%,  #19B3D3 100%);
-    background: linear-gradient(90deg, #19B3D3 0%, #19B3D3 100%);
+
+.pagination-admin nav ul li.page-item.active .page-link {
+    background-color: #19B3D3;
     color: #fff;
 }
+
 .pagination-admin a:hover {
     background: #19B3D3!important;
     color: #fff;
 }
-.pagination-admin{
-    border-left: transparent;
-}
+
 /*Pagination*/
 @media screen and (max-width:780px) {
     .chart-style {

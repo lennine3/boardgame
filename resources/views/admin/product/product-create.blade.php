@@ -92,15 +92,28 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">
+                        <label for="formFile" class="form-label">Representative Image</label>
+                        <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="in cen">
+                        <img id="img-preview-single" style="width: 50%">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-3">
                         <label for="formFile" class="form-label">Image</label>
                         {{-- <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()"> --}}
                         <input class="form-control" type="file" id="file-input" name="imageFile[]" multiple="multiple">
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="in cen">
+                    <div class="in cen row">
                         {{-- <img id="img-preview" style="width: 70%;hright:70%"> --}}
-                        <div id="img-preview" style="width: 70%;height:70%" class="d-flex"></div>
+                        <div id="img-preview" style="height:70%" class=" col-lg-12"></div>
                     </div>
                 </div>
             </div>
@@ -141,11 +154,11 @@
     </script>
 
 <script>
-    /* function ImgPreview() {
+    function ImgPreview() {
         var src = URL.createObjectURL(event.target.files[0]);
-        var preview = document.getElementById("img-preview");
+        var preview = document.getElementById("img-preview-single");
         preview.src = src;
-    } */
+    }
 
 </script>
 @endsection

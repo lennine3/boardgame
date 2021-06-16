@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="table-responsive table-admin">
+    <div class="table-responsive table-admin mb-4">
         <table class="table">
             <thead>
                 <th>ID</th>
@@ -56,23 +56,9 @@
             </tbody>
         </table>
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination pagination-admin d-flex justify-content-center" style="background-color: #454d55">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link active" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <div class="d-flex justify-content-center pagination-admin">
+        {!! $products->render() !!}
+    </div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

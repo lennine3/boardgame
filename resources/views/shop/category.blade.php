@@ -132,17 +132,19 @@
                         <div class="single-product">
                             <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
                                 <div class="box-img">
-                                    <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                    <a href="{{ route('single',$product->id) }}">
+                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                    </a>
                                 </div>
                             </div>
                             <div class="product-details">
-                                <h6> <a href="{{ route('single') }}">{{ $product->name }}</a></h6>
+                                <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
                                 <div class="price">
                                     <h6>${{ $product->price }}</h6>
                                 </div>
                                 <hr>
                                 <div class="prd-bottom">
-                                    <div class="row">
+                                    <div class="row p-b-20">
                                         <div class="d-flex justify-content-center">
                                             <div class="tooltip col-lg-6">
                                                     <a onclick="AddCart({{ $product->id }})" href="javascript:">

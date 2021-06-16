@@ -65,6 +65,7 @@
             <a href="{{ route('productType-index') }}" class="dot test"><i class="fal fa-box-ballot"></i><span>Product
                     Type</span></a>
             <a href="{{ route('product.index') }}" class="dot"><i class="fal fa-box-open"></i><span>Product</span></a>
+            <a href="{{ route('product-detail') }}" class="dot"><i class="fal fa-box-ballot"></i><span>Product Detail</span></a>
             <a href="{{ route('product-img') }}" class="dot"><i class="fal fa-images"></i><span>Product Image</span></a>
             <a href="{{ route('promotion') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
         </div>
