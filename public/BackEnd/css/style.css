@@ -87,7 +87,16 @@ input[type=radio] {
     background-color: #454d55;
     border: none;
 }
-
+textarea{
+    background-color: #454d55!important;
+    border: none!important;
+    color: #fff!important;
+}
+textarea:focus{
+    background-color: #454d55!important;
+    border: none!important;
+    color: #fff!important;
+}
 /*Input*/
 /*Table*/
 .table-admin {

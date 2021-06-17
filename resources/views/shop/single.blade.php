@@ -29,19 +29,15 @@
                         display: table-cell;
                         vertical-align: middle;
                         text-align: center;
-                        width: 100%;
+                        width: 400px;
                         height: 400px;" class="box-img">
                         <div class="owl-single owl-carousel owl-theme owl-loaded">
                             <div class="owl-stage-outer">
                                 <div class="owl-stage">
                                     @foreach ($product_images as $product_image)
-                                    <div class="owl-item"><img  src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="350"></div>
+                                    <div class="owl-item"><img class="lazyOwl" src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="350"></div>
                                     @endforeach
                                 </div>
-                            </div>
-                            <div class="owl-nav">
-                                <div class="owl-prev">prev</div>
-                                <div class="owl-next">next</div>
                             </div>
                         </div>
     {{-- <img  src="{{ asset('Img/product-img/'.$product->image) }}" alt="" width="400" height="400"> --}}
@@ -73,20 +69,21 @@
                     </li>
                 </ul>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis corrupti, temporibus natus, eius
-                    ullam fugiat ea sapiente recusandae
-                    laudantium incidunt numquam adipisci. Fugit at atque eaque accusamus nulla dolorem aliquid.
+                    {{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}
                 </p>
                 {{-- <div class="product_count">
                     <label for="qty">Quantity</label>
                     <input type="number" value="1" min="1">
                 </div> --}}
+                <div style="bottom: 100px!important;position: absolute;">
                     <a onclick="AddCart({{ $product->id }})" href="javascript:" class="product-primary-btn">
                         ADD TO CART
                     </a>
                     <a href="#" class="icon_btn">
                         <i class="fas fa-heart-circle fa-3x addFav"></i>
                     </a>
+                </div>
+
                 </div>
             </div>
         </div>
@@ -95,12 +92,12 @@
 <section class="product_description">
     <div class="container">
         <ul class="nav nav-tabs nav-pills nav-background justify-content-center pointer" id=" nav-tab" role="tablist">
-            <li class="nav-items">
+            {{-- <li class="nav-items">
                 <a class="nav-link active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#description"
                     role="tab" aria-controls="nav-description" aria-selected="true">description</a>
-            </li>
+            </li> --}}
             <li class="nav-items">
-                <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification" role="tab"
+                <a class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification" role="tab"
                     aria-controls="nav-profile" aria-selected="false">specification</a>
             </li>
             <li class="nav-items">
@@ -109,41 +106,21 @@
             </li>
         </ul>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="description" role="tabpanel">
+            {{-- <div class="tab-pane fade show active" id="description" role="tabpanel">
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae mollitia saepe sapiente eveniet
-                    similique
-                    accusantium laboriosam repellendus natus sunt a, reprehenderit voluptatem nisi, praesentium iure.
-                    Voluptatem labore quasi sint vel! <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut in beatae omnis quas aspernatur officia
-                    culpa impedit, amet ea assumenda
-                    inventore sint quaerat praesentium reprehenderit voluptatem numquam placeat optio voluptas.
+                    {{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}
                 </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis reprehenderit adipisci repudiandae
-                    eligendi nisi quam velit eius
-                    necessitatibus ex? Atque illum blanditiis ex pariatur, dolorem unde! Soluta dolores maxime
-                    cupiditate?
-                </p>
-            </div>
-            <div class="tab-pane fade" id="specification" role="tabpanel">
+            </div> --}}
+            <div class="tab-pane fade show active" id="specification" role="tabpanel">
                 <div class="table-responsive">
                     <table class="table table_product">
                         <tbody>
                             <tr>
                                 <td>
-                                    <h5>Width</h5>
+                                    <h5>Size</h5>
                                 </td>
                                 <td>
-                                    <h5>128mm</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h5>Height</h5>
-                                </td>
-                                <td>
-                                    <h5>68mm</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}</h5>
                                 </td>
                             </tr>
                             <tr>
@@ -151,7 +128,7 @@
                                     <h5>Origin</h5>
                                 </td>
                                 <td>
-                                    <h5>japanese</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}</h5>
                                 </td>
                             </tr>
                             <tr>
@@ -159,7 +136,7 @@
                                     <h5>Weight</h5>
                                 </td>
                                 <td>
-                                    <h5>960g</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}</h5>
                                 </td>
                             </tr>
                             <tr>
@@ -167,7 +144,7 @@
                                     <h5>Age range</h5>
                                 </td>
                                 <td>
-                                    <h5>> 8</h5>
+                                    <h5>>{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}</h5>
                                 </td>
                             </tr>
                             <tr>

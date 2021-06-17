@@ -12,11 +12,5 @@ class productDetailController extends Controller
         $this->middleware('checkLogin');
     }
 
-    public function index(){
-        return view('admin.product.productDetail');
-    }
 
-    public function productDetailCreate(){
-        return view('admin.product.productDetail');
-    }
 }

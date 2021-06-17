@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\productDetail;
 use App\Models\supplier;
 use App\Models\productType;
 use App\Models\staff;
@@ -54,10 +55,22 @@ class productController extends Controller
         $product->name=$request->name;
         $product->price=$request->price;
         $product->stock=$request->stock;
+        if($request->status!=null)
         $product->status=$request->status;
+        else
+        $product->status=0;
         $product->image=$this->ImgUpload($request);
         $product->id_promotion=$request->promotion;
         $product->save();
+        $productDetail=new productDetail();
+        $productDetail->product_id=$product->id;
+        $productDetail->description=$request->description;
+        $productDetail->size=$request->size;
+        $productDetail->origin=$request->origin;
+        $productDetail->weight=$request->weight;
+        $productDetail->age=$request->age;
+        /* dd($productDetail); */
+        $productDetail->save();
         if ($request->hasfile('imageFile')) {
             $files=$request->file('imageFile');
             foreach ($files as $file) {
@@ -90,10 +103,11 @@ class productController extends Controller
     {
         //
         $product=product::findOrFail($id);
+        $productDetail=productDetail::where('product_id',$id)->first();
         $staffs=staff::all();
         $producttypes=productType::all();
         $suppliers=supplier::all();
-        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product'));
+        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product','productDetail'));
     }
 
     /**
@@ -107,6 +121,7 @@ class productController extends Controller
     {
         //
         $product=product::findOrFail($id);
+        $productDetail=productDetail::where('product_id',$id)->first();
         $product->stock_keeper_unit=$request->sku;
         $product->id_product_type=$request->productType;
         $product->id_supplier=$request->supplier;
@@ -124,7 +139,13 @@ class productController extends Controller
             $product->image=$product->image;
         }
         $product->id_promotion=$request->promotion;
-
+        $productDetail->product_id=$product->id;
+        $productDetail->description=$request->description;
+        $productDetail->size=$request->size;
+        $productDetail->origin=$request->origin;
+        $productDetail->weight=$request->weight;
+        $productDetail->age=$request->age;
+        $productDetail->save();
         $product->save();
         return redirect()->route('product.index');
     }
@@ -164,5 +185,27 @@ class productController extends Controller
 
         }
 
+    }
+
+    public function productDetail(){
+        $productDetails=productDetail::all();
+        return view('admin.product.productDetail',compact('productDetails'));
+    }
+
+    public function productDetailCreate(){
+        $products=product::all();
+        return view('admin.product.productDetail-create',compact('products'));
+    }
+    public function productDetailStore(Request $request){
+        $productDetail=new productDetail();
+        $productDetail->product_id=$request->product;
+        $productDetail->description=$request->description;
+        $productDetail->size=$request->size;
+        $productDetail->origin=$request->origin;
+        $productDetail->weight=$request->weight;
+        $productDetail->age=$request->age;
+        /* dd($productDetail); */
+        $productDetail->save();
+        /* return view('admin.product.productDetail-create',compact('products')); */
     }
 }
