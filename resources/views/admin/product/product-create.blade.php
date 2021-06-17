@@ -61,11 +61,46 @@
                         <input type="number" class="form-control" id="inputStock" name="stock">
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputPrice" class="form-label">Price</label>
                         <input type="number" class="form-control" id="inputPrice" name="price">
                     </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Size</label>
+                                <input type="text" class="form-control" name="size">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Origin</label>
+                                <input type="text" class="form-control" name="origin">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Weight</label>
+                                <input type="text" class="form-control" name="weight">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <label for="productType" class="form-label">Age</label>
+                                <input type="text" class="form-control" name="age">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="" class="form-label">Description</label>
+                        <textarea name="description" id="" cols="30" rows="8" class="form-control"
+                            placeholder="Description"></textarea>
+                    </div>
+
                 </div>
             </div>
             <div class="row">

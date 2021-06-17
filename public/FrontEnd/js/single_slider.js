@@ -39,6 +39,7 @@ $('.owl-single').owlCarousel({
     dots: false,
     center: true,
     margin:10,
+    lazyLoad: true,
     autoplaySpeed: 1750,
     responsive: {
         0: {

@@ -14,7 +14,8 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputSKU" class="form-label">Stock Keeping Unit</label>
-                        <input type="text" class="form-control" id="inputSKU" placeholder="Ex: MA-105" name="sku" value="{{ $product->stock_keeper_unit }}">
+                        <input type="text" class="form-control" id="inputSKU" placeholder="Ex: MA-105" name="sku"
+                            value="{{ $product->stock_keeper_unit }}">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -48,9 +49,9 @@
                     <select name="staff" id="inputStaff" class="form-select">
                         @foreach ($staffs as $staff)
                         <option value="{{ $staff->id }}"
-                        <?php if(!empty($product)) {if($product->id_product_type==$staff->id){echo 'selected';}} ?>>
-                        {{ $staff->name }}
-                    </option>
+                            <?php if(!empty($product)) {if($product->id_product_type==$staff->id){echo 'selected';}} ?>>
+                            {{ $staff->name }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
@@ -59,19 +60,60 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="inputName" placeholder="" name="name" value="{{ $product->name }}">
+                        <input type="text" class="form-control" id="inputName" placeholder="" name="name"
+                            value="{{ $product->name }}">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputStock" class="form-label">Stock</label>
-                        <input type="number" class="form-control" id="inputStock" name="stock"  value="{{ $product->stock }}">
+                        <input type="number" class="form-control" id="inputStock" name="stock"
+                            value="{{ $product->stock }}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label for="inputPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="inputPrice" name="price"
+                            value="{{ $product->price }}">
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Size</label>
+                                <input type="text" class="form-control" name="size"
+                                    value="{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Origin</label>
+                                <input type="text" class="form-control" name="origin"
+                                    value="{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="productType" class="form-label">Weight</label>
+                                <input type="text" class="form-control" name="weight"
+                                    value="{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <label for="productType" class="form-label">Age</label>
+                                <input type="text" class="form-control" name="age"
+                                    value="{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="mb-3">
-                        <label for="inputPrice" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="inputPrice" name="price" value="{{ $product->price }}">
+                        <label for="" class="form-label">Description</label>
+                        <textarea name="description" id="" cols="30" rows="8" class="form-control"
+                            placeholder="Description">{{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}</textarea>
                     </div>
                 </div>
             </div>
@@ -90,7 +132,7 @@
                     <label for="" class="form-label">Status</label>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="1" id="status" name="status"
-                        <?php if(!empty($product)) {if($product->status==1){echo 'checked';}} ?>>
+                            <?php if(!empty($product)) {if($product->status==1){echo 'checked';}} ?>>
                         <label class="form-check-label" for="status">
                             Active
                         </label>

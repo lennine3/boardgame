@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\product;
 use App\Models\productImage;
+use App\Models\productDetail;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 class shopController extends Controller
@@ -31,8 +32,9 @@ class shopController extends Controller
     public function single($id){
         $product_images=productImage::where('product_id',$id)->get();
         /* dd($product_images); */
+        $productDetail=productDetail::where('product_id',$id)->first();
         $product=product::find($id);
-        return view('shop.single',compact('product','product_images'));
+        return view('shop.single',compact('product','product_images','productDetail'));
     }
 }
 

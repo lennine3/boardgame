@@ -90,7 +90,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
     Route::post('/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
     //Product Detail
-    Route::get('/product-detail', 'App\Http\Controllers\productDetailController@index')->name('product-detail');
+    Route::get('/product-detail', 'App\Http\Controllers\productController@productDetail')->name('product-detail');
+    Route::get('/product-detail-create', 'App\Http\Controllers\productController@productDetailCreate')->name('product-detail-create');
+    Route::post('/product-detail-store', 'App\Http\Controllers\productController@productDetailStore')->name('product-detail-store');
     //invoice
     Route::get('/invoice', function () {
         return view('admin.invoice.invoice');
