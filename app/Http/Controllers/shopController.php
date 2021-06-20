@@ -56,8 +56,9 @@ class shopController extends Controller
         return view('shop.profile-user.profile',compact('customer','staff'));
     }
     public function profile_ajax(){
+        $staff=staff::where('user',Auth()->user()->id)->first();
         $customer=customer::where('user',Auth()->user()->id)->first();
-        return view('shop.profile-user.profile-ajax',compact('customer'));
+        return view('shop.profile-user.profile-ajax',compact('customer','staff'));
     }
     public function user_update(Request $request){
         $user=User::find(Auth()->user()->id);
@@ -101,7 +102,8 @@ class shopController extends Controller
     }
     public function invoice_ajax(){
         $customer=customer::where('user',Auth()->user()->id)->first();
-        return view('shop.invoice.invoice-ajax',compact('customer'));
+        $staff=staff::where('user',Auth()->user()->id)->first();
+        return view('shop.invoice.invoice-ajax',compact('customer','staff'));
     }
     public function address(){
         $customer=customer::where('user',Auth()->user()->id)->first();
