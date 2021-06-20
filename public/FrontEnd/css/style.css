@@ -1188,7 +1188,14 @@ input {
 section {
     display: block;
 }
+/*profile*/
+.profile_edit {
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
 
+}
+/*profile*/
 /*Padding Start*/
 .p-t-20 {
     padding-top: 20px;

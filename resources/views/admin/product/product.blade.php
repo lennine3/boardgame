@@ -35,7 +35,7 @@
                     <td>{{ $product->stock_keeper_unit }}</td>
                     <td>{{ $product->id_product_type }}</td>
                     <td>{{ $product->id_supplier }}</td>
-                    <td>{{ $product->id_staff }}</td>
+                    <td>{{ $product->staffRelation->name }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>

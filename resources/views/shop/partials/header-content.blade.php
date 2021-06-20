@@ -15,8 +15,11 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @hasanyrole('admin|staff')
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
-                            <li><a href="{{ route('invoice') }}" class="dropdown-item" style="padding-left: 20px"><i
+                            @endhasanyrole
+                            <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i class="fal fa-user"></i> <span style="padding-left: 10px">Profile</span></a></li>
+                            <li><a href="{{ route('invoice-shop') }}" class="dropdown-item"><i
                                         class="far fa-file-invoice"></i><span
                                         style="padding-left: 10px">Invoice</span></a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

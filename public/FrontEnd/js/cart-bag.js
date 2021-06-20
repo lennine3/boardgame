@@ -14,7 +14,7 @@ $("#change-item-cart").on("click", ".cart-close button", function () {
         url: 'remove-item-cart/' + id,
         type: 'GET',
     }).done(function (response) {
-        RenderCart(response)
+        RenderCart(response);
         alertify.success('Product removed successful');
     });
 });

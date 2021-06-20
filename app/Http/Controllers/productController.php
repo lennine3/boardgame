@@ -182,9 +182,7 @@ class productController extends Controller
                 $request->image->move(public_path('Img/product-img'),$imageName);
                 return $imageName;
             }
-
         }
-
     }
 
     public function productDetail(){

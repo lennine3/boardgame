@@ -98,83 +98,74 @@
 
 <!-- Modal -->
 <div class="modal fade" id="ModalLogin" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Register</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" style="background-color: transparent!important;border-style:none">
+            <section class="ftco-section" >
                 <div class="container">
-                    <div style="text-align: center;padding-bottom:20px">
-                        <img src="{{ asset('BackEnd/Img/unsigned.png') }}" alt="" width="45%" class="rounded-circle">
-                    </div>
-                    <form method="POST" action="{{ route('create') }}">
-                        @csrf
-                        <div class=" mb-3">
-                            <label for="name" class=" col-form-label text-md-right">{{ __('Name') }}</label>
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class=" mb-3">
-                            <label for="email" class=" col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 col-lg-10">
+                            <div class="wrap d-md-flex">
+                                <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                                    <div class="text w-100">
+                                        <h2>Welcome to TK Board Game</h2>
+                                        <p>Already have an account?</p>
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#ModalRegister"
+                                        data-bs-dismiss="modal" class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign In</a>
+                                    </div>
+                                </div>
 
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class=" mb-3">
-                            <label for="password" class=" col-form-label text-md-right">{{ __('Password') }}</label>
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="new-password">
+                                <div class="login-wrap p-4 p-lg-5">
+                                    <div class="d-flex">
+                                        <div class="w-100">
+                                            <h3 class="mb-4">Sign Up</h3>
+                                        </div>
+                                    </div>
+                                    <form method="POST" action="{{ route('create') }}" class="signin-form">
+                                        @csrf
+                                        <div class="form-group mb-3">
 
-                            @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                                            <label class="label mb-3"
+                                                for="name">{{ __('E-Mail Address') }}</label>
+                                            <input type="email" class="form-control log-input"
+                                            name="email" value="{{ old('email') }}"
+                                                required autocomplete="email" placeholder="Email">
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="label mb-3"
+                                                for="password">{{ __('Password') }}</label>
+                                            <input type="password" class="form-control log-input"
+                                                placeholder="Password" required name="password" required>
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="label mb-3"
+                                                for="name">{{ __('name') }}</label>
+                                            <input type="text" class="form-control log-input"
+                                                placeholder="name" required name="name" required >
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="label mb-3"
+                                                for="phone">{{ __('phone') }}</label>
+                                            <input type="text" class="form-control log-input"
+                                                placeholder="phone" required name="phone" required >
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <label class="label mb-3"
+                                                for="phone">{{ __('birth') }}</label>
+                                            <input type="date" class="form-control log-input"
+                                                placeholder="birth" required name="birth" required >
+                                        </div>
+                                        <div class="form-group mb-3">
+                                            <button type="submit"
+                                                class="form-control btn primary-btn submit px-3 radius-50 Ripple-effect">{{ __('Register') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class=" form-group mb-3">
-                            <label for="password-confirm"
-                                class=" col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control"
-                                name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                        {{-- <div class=" mb-3">
-                            <input type="password" class="form-control" id="floatingPassword">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class=" mb-3">
-                            <input type="password" class="form-control" id="floatingPassword">
-                            <label for="floatingPassword">Confirm password</label>
-                        </div> --}}
-                        <div style="padding-top: 30px">
-                            <button type="submit" class="btn btn-primary col-lg-12">
-                                {{ __('Register') }}
-                            </button>
-                        </div>
-                    </form>
-                    <div class="form-check" style="justify-content: start!important;padding-top:10px">
-                        <input type="checkbox" id="term" class="form-check-input">
-                        <label for="term" class="form-check-label">I had read your <a href="#">Term</a> and agree with
-                            it.</label>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="buttoz" class="btn btn-Danger" data-bs-toggle="modal" data-bs-target="#ModalRegister"
-                    data-bs-dismiss="modal">Login</button>
-            </div>
+            </section>
+        </div>
         </div>
     </div>
 </div>

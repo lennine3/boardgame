@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Spatie\Permission\Models\Role;
 class LoginController extends Controller
 {
     /*
@@ -48,8 +48,9 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
-
-        if (Auth::attempt($data)) {
+        $admin=Role::findById(1);
+        $staff=Role::findById(2);
+        if (Auth::attempt($data)&&Auth()->user()->hasRole([$admin,$staff])) {
             //true
             return redirect()->route('admin');
             /* echo 'ok'; */

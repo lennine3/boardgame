@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,11 @@ use Illuminate\Support\Facades\Auth;
 Route::prefix('/')->group(function () {
     Route::get('/','App\Http\Controllers\shopController@index')->name('home');
     Route::get('login-page','App\Http\Controllers\shopController@loginPage')->name('loginPage');
+    Route::get('register-page','App\Http\Controllers\shopController@registerPage')->name('registerPage');
+    Route::get('profile','App\Http\Controllers\shopController@profile')->name('profile-user');
+    Route::get('profile-user','App\Http\Controllers\shopController@profile_ajax');
+    Route::post('profile-user-update','App\Http\Controllers\shopController@user_update')->name('profile-user-update');
+    Route::post('profile-staff-update','App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
     Route::get('category','App\Http\Controllers\shopController@category')->name('category');
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('/single/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
@@ -37,16 +43,20 @@ Route::prefix('/')->group(function () {
     Route::get('about-us',function(){
         return view('shop.about-us');
     })->name('about-us');
-    Route::get('invoice',function(){
-        return view('shop.invoice');
-    })->name('invoice');
+    //Invoice
+    Route::get('invoice','App\Http\Controllers\shopController@invoice')->name('invoice-shop');
+    Route::get('invoice-user',function(){
+        return view('shop.invoice.invoice-ajax');
+    });
     Route::get('checkout',function(){
         return view('shop.checkout');
     })->name('checkout')->middleware('checkLogin');
     Route::get('confirmation',function(){
         return view('shop.confirmation');
     })->name('confirmation');
-
+    //comment
+    Route::get('comment-store/{id}','App\Http\Controllers\shopController@comment_store')->name('comment-store');
+    Route::get('comment-page/{id}','App\Http\Controllers\shopController@comment_page');
 });
 
 /*Admin*/
@@ -67,9 +77,8 @@ Route::prefix('/admin')->group(function () {
         return view('admin/user/profile');
     })->name('profile');
     //Permission
-    Route::get('/permission', function () {
-        return view('admin/user/permission');
-    })->name('permission');
+    Route::get('/permission', 'App\Http\Controllers\RoleController@assignRole')->name('permission');
+    Route::post('/permission-store', 'App\Http\Controllers\RoleController@assignRole_store')->name('permission_store');
     //supplier
     Route::resource('/supplier', App\Http\Controllers\supplierController::class);
     //Product Type
@@ -81,6 +90,7 @@ Route::prefix('/admin')->group(function () {
     //Staff
     Route::resource('/staffs', App\Http\Controllers\StaffController::class);
     Route::get('/staffs', 'App\Http\Controllers\StaffController@index')->name('staff-index');
+    Route::get('/customer', 'App\Http\Controllers\CustomerController@index')->name('customer-index');
     Route::post('/staffs-update', 'App\Http\Controllers\StaffController@update')->name('staff-update');
     Route::Delete('/staffs-destroy/{id}', 'App\Http\Controllers\StaffController@destroy')->name('staffs.destroy');
     //Product
