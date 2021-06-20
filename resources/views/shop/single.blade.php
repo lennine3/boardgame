@@ -31,16 +31,17 @@
                         text-align: center;
                         width: 400px;
                         height: 400px;" class="box-img">
-                        <div class="owl-single owl-carousel owl-theme owl-loaded">
-                            <div class="owl-stage-outer">
-                                <div class="owl-stage">
-                                    @foreach ($product_images as $product_image)
-                                    <div class="owl-item"><img class="lazyOwl" src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="350"></div>
-                                    @endforeach
+                            <div class="owl-single owl-carousel owl-theme owl-loaded">
+                                <div class="owl-stage-outer">
+                                    <div class="owl-stage">
+                                        @foreach ($product_images as $product_image)
+                                        <div class="owl-item"><img class="lazyOwl"
+                                                src="{{ asset('Img/product-img/'.$product_image->image) }}" alt=""
+                                                width="100%" height="350"></div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-    {{-- <img  src="{{ asset('Img/product-img/'.$product->image) }}" alt="" width="400" height="400"> --}}
                         </div>
                     </div>
                 </div>
@@ -84,21 +85,17 @@
                     </a>
                 </div>
 
-                </div>
             </div>
         </div>
     </div>
 </div>
+</div>
 <section class="product_description">
     <div class="container">
         <ul class="nav nav-tabs nav-pills nav-background justify-content-center pointer" id=" nav-tab" role="tablist">
-            {{-- <li class="nav-items">
-                <a class="nav-link active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#description"
-                    role="tab" aria-controls="nav-description" aria-selected="true">description</a>
-            </li> --}}
             <li class="nav-items">
-                <a class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification" role="tab"
-                    aria-controls="nav-profile" aria-selected="false">specification</a>
+                <a class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification"
+                    role="tab" aria-controls="nav-profile" aria-selected="false">specification</a>
             </li>
             <li class="nav-items">
                 <a class="nav-link" id="nav-co-tab" data-bs-toggle="tab" data-bs-target="#comment" role="tab"
@@ -106,11 +103,6 @@
             </li>
         </ul>
         <div class="tab-content" id="nav-tabContent">
-            {{-- <div class="tab-pane fade show active" id="description" role="tabpanel">
-                <p>
-                    {{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}
-                </p>
-            </div> --}}
             <div class="tab-pane fade show active" id="specification" role="tabpanel">
                 <div class="table-responsive">
                     <table class="table table_product">
@@ -120,7 +112,8 @@
                                     <h5>Size</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}
+                                    </h5>
                                 </td>
                             </tr>
                             <tr>
@@ -128,7 +121,8 @@
                                     <h5>Origin</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}
+                                    </h5>
                                 </td>
                             </tr>
                             <tr>
@@ -136,7 +130,8 @@
                                     <h5>Weight</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}</h5>
+                                    <h5>{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}
+                                    </h5>
                                 </td>
                             </tr>
                             <tr>
@@ -144,7 +139,8 @@
                                     <h5>Age range</h5>
                                 </td>
                                 <td>
-                                    <h5>>{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}</h5>
+                                    <h5>>{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}
+                                    </h5>
                                 </td>
                             </tr>
                             <tr>
@@ -227,67 +223,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="review_list">
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
-                                    </div>
-                                    <div class="review_body">
-                                        <h4>Blake Ruiz</h4>
-                                        <span>87 </span>point
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
-                                    </div>
-                                    <div class="review_body">
-                                        <h4>Blake Ruiz</h4>
-                                        <span>87 </span>point
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                            <div class="review_item">
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="{{ asset('Img/unsigned.png') }}" alt="" class="comment_radius">
-                                    </div>
-                                    <div class="review_body">
-                                        <h4>Blake Ruiz</h4>
-                                        <span>87 </span>point
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut aliquip ex ea
-                                    commodo</p>
-                            </div>
-                        </div>
+                            @include('shop.comment.comment')
+
                     </div>
                     <div class="col-lg-6">
                         <div class="review-box">
                             <h4>Add a review and comment</h4>
-                            <div class="form-floating mb-3">
+                            {{-- <div class="form-floating mb-3">
                                 <input type="number" class="form-control" id="rating" placeholder="Your rating" min="0"
                                     max="100" style="width: 200px">
                                 <label for="rating">Your rating</label>
-                            </div>
-                            <form class="row review_form" action="#" method="post" id="reviewForm" novalidate="">
-                                <div class="col-md-12">
+                            </div> --}}
+                            <input type="text" name="id_product" value="{{ $product->id }}" hidden>
+                            {{-- <div class="col-md-12">
                                     <div class="form-group mb-3">
                                         <input type="text" class="form-control" id="name" name="name"
                                             placeholder="Your Full name">
@@ -304,18 +252,18 @@
                                         <input type="text" class="form-control" id="number" name="number"
                                             placeholder="Phone Number">
                                     </div>
+                                </div> --}}
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <textarea class="form-control" name="comment" id="message"
+                                        placeholder="Review"></textarea>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <textarea class="form-control" name="message" id="message"
-                                            placeholder="Review"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-right">
-
-                                    <button type="submit" value="submit" class="product-primary-btn">Submit Now</button>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <a id="addComment" href="javascript:" data-id="{{ $product->id }}" >abc
+                                    {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
+                            </div>
+                            <div id="abc"></div>
                         </div>
                     </div>
                 </div>
@@ -367,7 +315,8 @@
                         </div>
                         <div class="owl-item">
                             <div class="single-product">
-                                <img src="{{ asset('FrontEnd/img/conan.png') }}" alt="" style="width: 250px;height:250px">
+                                <img src="{{ asset('FrontEnd/img/conan.png') }}" alt=""
+                                    style="width: 250px;height:250px">
                                 <div class="product-details">
                                     <h6> <a href="#">The Best borad game to play with friend</a>
                                     </h6>
@@ -381,12 +330,12 @@
                 </div>
                 <div class="owl-nav">
                     <div class="btn-left-related">
-                        <div class="owl-prev-related"><img src="{{ asset('FrontEnd/img/prev-black.png') }}"
-                                alt="" class="img-fluid"></div>
+                        <div class="owl-prev-related"><img src="{{ asset('FrontEnd/img/prev-black.png') }}" alt=""
+                                class="img-fluid"></div>
                     </div>
                     <div class="btn-right-related">
-                        <div class="owl-next-related"><img src="{{ asset('FrontEnd/img/next-black.png') }}"
-                                alt="" class="img-fluid"></div>
+                        <div class="owl-next-related"><img src="{{ asset('FrontEnd/img/next-black.png') }}" alt=""
+                                class="img-fluid"></div>
                     </div>
                 </div>
             </div>
@@ -414,7 +363,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom: 35px">
                         <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                                    style="height: 75px;weight:75px"></a>
                             <div class="desc">
                                 <a href="#" class="title">Black lace Heels</a>
                                 <div class="price">
@@ -425,112 +375,114 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
+                        <div class=" single-related-product d-flex">
+                        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                                style="height: 75px;weight:75px"></a>
+                        <div class="desc">
+                            <a href="#" class="title">Black lace Heels</a>
+                            <div class="price">
+                                <h6>$189.00</h6>
+                                <h6 class="l-through">$210.00</h6>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+                    <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                            style="height: 75px;weight:75px"></a>
+                    <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                            <h6>$189.00</h6>
+                            <h6 class="l-through">$210.00</h6>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <div class="ctg-right">
-                    <a href="#" target="_blank">
-                        <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}"
-                            alt="">
-                    </a>
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+                <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                        style="height: 75px;weight:75px"></a>
+                <div class="desc">
+                    <a href="#" class="title">Black lace Heels</a>
+                    <div class="price">
+                        <h6>$189.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+            <div class="desc">
+                <a href="#" class="title">Black lace Heels</a>
+                <div class="price">
+                    <h6>$189.00</h6>
+                    <h6 class="l-through">$210.00</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ctg-right">
+            <a href="#" target="_blank">
+                <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}" alt="">
+            </a>
+        </div>
+    </div>
+    </div>
     </div>
 </section>
 <!--Deal end-->
@@ -540,4 +492,31 @@
 <!--js product more-->
 <script src="{{ asset('FrontEnd/js/single_slider.js') }}"></script>
 <!--js product more-->
+
+<script>
+    $(document).ready(function () {
+        var comment_value=$("#message");
+        $("#addComment").click(function () {
+            var id = $(this).attr("data-id");
+            $.ajax({
+                url: '/comment-store/'+id,
+                type: 'GET',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    comment: comment_value.val(),
+                }
+            }).done(function (response) {
+                $("#review_list").empty();
+                $("#review_list").html(response);
+                RenderComment(response)
+                $("#message").val('');
+            });
+        });
+    });
+
+    function RenderComment(response) {
+    $("#review_list").empty();
+    $("#review_list").html(response);
+}
+</script>
 @endsection

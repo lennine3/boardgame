@@ -4,38 +4,45 @@
     <div class="row">
         <div class="col-lg-3">
             <div class="table-admin">
-                <div>
-                    <label for="roleName" class="form-label">Role Name</label>
-                    <input type="text" id="roleName" class="form-control">
-                </div>
-                <div>
-                    <label for="User" class="form-label">User</label>
-                    <input type="text" id="User" class="form-control">
-                </div>
+                <form action="{{ route('permission_store') }}" method="post">
+                    @csrf
+                    <div>
+                        <label for="roleName" class="form-label">Role Name</label>
+                        <select name="role" class="form-select" id="roleName">
+                            @foreach ($roles as $role)
+                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div>
+                        <label for="User" class="form-label">User</label>
+                        <select name="user" class="form-select" id="User">
+                            @foreach ($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->email }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                 <div class="d-flex justify-content-end padding-top-35">
-                    <a class="btn btn-primary">Add</a>
+                    <button class="btn btn-primary">Add</button>
                 </div>
+            </form>
             </div>
         </div>
         <div class="col-lg-9">
             <div class="table-responsive table-admin">
                 <table class="table">
                     <thead>
-                        <th>ID</th>
-                        <th>User Name</th>
                         <th>Role</th>
+                        <th>User Email</th>
                     </thead>
                     <tbody>
+                        @foreach ($hasRole as $item)
                         <tr>
-                            <td>1</td>
-                            <td>Admin</td>
-                            <td>Admin</td>
+                            <td>{{ $item->roleRelation->name }}</td>
+                            <td>{{ $item->userRelation->name }}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>kan1989</td>
-                            <td>Admin</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

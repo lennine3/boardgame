@@ -28,7 +28,7 @@
                         <div class="text w-100">
                             <h2>Welcome to TK Board Game</h2>
                             <p>Don't have an account?</p>
-                            <a type="button" class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign Up</a>
+                            <a type="button" href="{{ route('registerPage') }}" class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign Up</a>
                         </div>
                     </div>
 

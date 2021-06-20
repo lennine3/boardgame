@@ -9,7 +9,8 @@ use Illuminate\Notifications\Notifiable;
 /* use Spatie\Permission\Traits\HasRoles; */
 use App\Models\staff;
 use Spatie\Permission\Traits\HasRoles;
-
+use App\Models\comment;
+use App\Models\hasRole;
 class User extends Authenticatable
 {
     use HasFactory,Notifiable,HasRoles;
@@ -47,5 +48,16 @@ class User extends Authenticatable
     public function staffRelation()
     {
         return $this->belongsTo('App\Models\staff','id','user');
+    }
+
+    public function userRelation(){
+        return $this->hasOne('App\Models\customer','id','user');
+    }
+
+    public function commentRealation(){
+        return $this->hasMany('App\Models\comment','id','id_user');
+    }
+    public function roleRelation(){
+        return $this->hasOne('App\Models\hasRole','id','model_id');
     }
 }
