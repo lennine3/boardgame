@@ -12,8 +12,8 @@
                         <div>Email: </div>
                     </div>
                     <div class="col-lg-10">
-                        <div><input type="text" class="form-control" name="email" value="{{ Auth()->user()->email }}">
-                        </div>
+                        <div><input type="text" class="form-control" name="email"
+                                value="{{ Auth()->user()->email }}"></div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -21,8 +21,8 @@
                         <div>Name: </div>
                     </div>
                     <div class="col-lg-10">
-                        <div> <input type="text" class="form-control" name="name" value="{{ Auth()->user()->name }}">
-                        </div>
+                        <div> <input type="text" class="form-control" name="name"
+                                value="{{ Auth()->user()->name }}"> </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -30,8 +30,9 @@
                         <div>Phone</div>
                     </div>
                     <div class="col-lg-10">
-                        <div> <input type="text" class="form-control" value="{{ $customer->phone }}" name="phone">
-                        </div>
+                        <div> <input type="text" class="form-control"
+                                value="{{ !empty($customer)?$customer->phone : $staff->phone }}"
+                                name="phone"> </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -39,8 +40,9 @@
                         <div>Birth: </div>
                     </div>
                     <div class="col-lg-10">
-                        <div> <input type="date" class="form-control" value="{{ $customer->birth }}" name="birth">
-                        </div>
+                        <div> <input type="date" class="form-control"
+                                value="{{ !empty($customer)?$customer->birth : $staff->birth }}"
+                                name="birth"> </div>
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -50,27 +52,40 @@
                     <div class="col-lg-10">
                         <div class="row ">
                             <div class="col-lg-4">
-                                <input class="form-check-input" type="radio" name="gender" id="maleRadios" value="1"
-                                    <?php if(!empty($customer)) {if($customer->sex==1){echo 'checked';}} ?>>
+                                <input class="form-check-input" type="radio" name="gender"
+                                    id="maleRadios" value="1"
+                                    <?php if(!empty($customer)) {if($customer->sex==1){echo 'checked';}} elseif (!empty($staff)) { if($staff->sex==1){echo 'checked';}} ?>>
                                 <label class="form-check-label" for="maleRadios">
                                     Male
                                 </label>
                             </div>
                             <div class="col-lg-4">
-                                <input class="form-check-input" type="radio" name="gender" id="femaleRadios" value="2"
-                                    <?php if(!empty($customer)) {if($customer->sex==2){echo 'checked';}} ?>>
+                                <input class="form-check-input" type="radio" name="gender"
+                                    id="femaleRadios" value="2"
+                                    <?php if(!empty($customer)) {if($customer->sex==2){echo 'checked';}} elseif (!empty($staff)) { if($staff->sex==2){echo 'checked';}} ?>>
                                 <label class="form-check-label" for="femaleRadios">
                                     Female
                                 </label>
                             </div>
                             <div class="col-lg-4">
-                                <input class="form-check-input" type="radio" name="gender" id="otherRadios" value="3"
-                                    <?php if(!empty($customer)) {if($customer->sex==3){echo 'checked';}} ?>>
+                                <input class="form-check-input" type="radio" name="gender"
+                                    id="otherRadios" value="3"
+                                    <?php if(!empty($customer)) {if($customer->sex==3){echo 'checked';}} elseif (!empty($staff)) { if($staff->sex==3){echo 'checked';}} ?>>
                                 <label class="form-check-label" for="otherRadios">
                                     Other
                                 </label>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-lg-2 justify-content-end d-flex form-label">
+                        <div>Address: </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div> <input type="text" class="form-control"
+                                value="{{ !empty($customer)?$customer->address : $staff->address }}"
+                                name="address"> </div>
                     </div>
                 </div>
                 <div class="row mb-3">
