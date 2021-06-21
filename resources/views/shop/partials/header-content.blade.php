@@ -21,10 +21,10 @@
                             <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i class="fal fa-user"></i> <span style="padding-left: 10px">Profile</span></a></li>
                             <li><a href="{{ route('invoice-shop') }}" class="dropdown-item"><i
                                         class="far fa-file-invoice"></i><span
-                                        style="padding-left: 10px">Invoice</span></a></li>
+                                        style="padding-left: 15px">Invoice</span></a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                              document.getElementById('logout-form').submit();"><i class="fal fa-portal-exit"></i>
+                                    <span style="padding-left: 8px">{{ __('Logout') }}</span>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -46,7 +46,7 @@
                             <li>
                                 <div style="padding: 15px 0px 15px 0px">
                                     <div class="row total-header-section">
-                                        <div class="col-lg-6 col-sm-6 col-6">
+                                        <div class="col-lg-6 col-sm-6 col-6" style="padding-bottom:10px">
                                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                         </div>
                                     </div>

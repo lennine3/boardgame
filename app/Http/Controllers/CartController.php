@@ -62,5 +62,8 @@ class CartController extends Controller
         return view('shop.ListCart');
     }
 
-
+    public function clearAll(){
+        session()->forget('Cart');
+        return redirect()->back();
+    }
 }

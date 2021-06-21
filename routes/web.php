@@ -32,6 +32,7 @@ Route::prefix('/')->group(function () {
     Route::get('shopping-cart',function(){
         return view('shop.shopping-cart');
     });
+    Route::get('shopping-cart-clear','App\Http\Controllers\CartController@clearAll')->name('clear-cart');
     Route::get('list-cart',function(){
         return view('shop.ListCart');
     });
@@ -45,12 +46,12 @@ Route::prefix('/')->group(function () {
     })->name('about-us');
     //Invoice
     Route::get('invoice','App\Http\Controllers\shopController@invoice')->name('invoice-shop');
+    Route::post('invoice-store','App\Http\Controllers\shopController@invoice_store')->name('invoice-store');
     Route::get('invoice-user',function(){
         return view('shop.invoice.invoice-ajax');
     });
-    Route::get('checkout',function(){
-        return view('shop.checkout');
-    })->name('checkout')->middleware('checkLogin');
+    Route::get('checkout','App\Http\Controllers\shopController@checkout')->name('checkout')->middleware('checkCostumer');
+
     Route::get('confirmation',function(){
         return view('shop.confirmation');
     })->name('confirmation');

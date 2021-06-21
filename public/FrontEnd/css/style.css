@@ -1134,6 +1134,16 @@ input {
     border: 2px solid #ebebeb;
     padding: 12px 20px 12px 20px;
 }
+.cart-btn{
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 12px 30px;
+        color: #fff;
+        background: #e7ab3c;
+        text-transform: uppercase;
+
+}
 .discount-coupon {
     margin-bottom: 30px;
 }
@@ -1183,6 +1193,27 @@ input {
     padding: 15px 25px 14px 25px;
     display: block;
     text-align: center;
+}
+
+.empty_bag{
+    height: 21rem;
+}
+.empty_bag img{
+    width: 6.75rem;
+    height: 6.75rem;
+}
+.empty_bag .notice{
+    color: rgba(0,0,0,0.4);
+    font-size: .875rem;
+    line-height: 1rem;
+    margin-top: 1.125rem;
+}
+.empty_bag a{
+    width:150px;
+    line-height: 38px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 2px;
 }
 /*Cart End*/
 section {

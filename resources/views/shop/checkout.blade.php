@@ -25,6 +25,8 @@
     </div>
 </section>
 <section class="section_gap">
+    <form action="{{ route('invoice-store') }}" method="POST">
+        @csrf
     <div class="container">
         <div class="billing_details">
             <div class="row">
@@ -45,8 +47,7 @@
                             <tbody>
                                 @foreach (Session::get("Cart")->products as $item)
                                 <tr>
-                                    <td class="cart-pic first-row"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}"
-                                            style="width: 90%"></td>
+                                    <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="100%"></td>
                                     <td class="cart-title first-row">
                                         <h5>{{ $item['productInfo']->name }}</h5>
                                     </td>
@@ -66,6 +67,21 @@
                     </div>
                     @endif
                 </div>
+                @php
+                    $total=Session::get('Cart')->totalPrice;
+                    $tax= $total*10/100;
+                    $ship=0;
+                    if ($total>1000)
+                        $ship=0;
+                    elseif ($total>700)
+                        $ship=1;
+                    elseif ($total>500)
+                        $ship=1.5;
+                    elseif ($total>200)
+                        $ship=1.75;
+                    else
+                        $ship=2;
+                @endphp
                 <div class="col-lg-4">
                     <div class="order_box">
                         <h2>Your Order</h2>
@@ -75,7 +91,7 @@
                                     <div class="col-lg-6">Customer name:</div>
                                     <div class="col-lg-6">
                                         <div class="d-flex justify-content-end">
-                                            Trần Võ Đăng Khoa
+                                            {{ Auth::user()->name }}
                                         </div>
                                         </div>
                                 </div>
@@ -85,20 +101,19 @@
                                 <div class="row">
                                     <div class="col-lg-6">Phone:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        0382024592
+                                        <input type="text" value="{{ $customer->phone }}" name="phone" hidden>
+                                        {{ $customer->phone }}
                                     </div></div>
                                 </div>
                                 <a> <span class="middle"></span>
+                                </a>
+                            </li>
                             <li>
                                 <div class="row">
-                                    <div class="col-lg-12"><label for="addressSelect">Address</label></div>
-                                    <div class="col-lg-12">
-
-                                        <select name="address" id="addressSelect" class="form-select">
-                                            <option value="">Address 1</option>
-                                            <option value="">Address 2</option>
-                                            <option value="">Address 3</option>
-                                        </select>
+                                    <div class="col-lg-6">Address:</div>
+                                    <div class="col-lg-6"><div class="d-flex justify-content-end">
+                                        <input type="text" value="{{ $customer->address }}" name="address" hidden>
+                                        {{ $customer->address }}</div>
                                     </div>
                                 </div>
                                 </span></a>
@@ -109,29 +124,30 @@
                                 <div class="row">
                                     <div class="col-lg-6">Tax:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        $20000
+                                        <input type="text" value="{{ $tax }}" name="tax" hidden>
+                                        ${{ $tax }}
                                     </div></div>
                                 </div>
                                 </li>
                             <li>
                                 <div class="row">
-                                    <div class="col-lg-6">Shipping:</div>
+                                    <div class="col-lg-6">Ship cost:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        $20000
+                                        <input type="text" value="{{ $ship }}" name="ship" hidden>
+                                        @if ($ship!=0)
+                                        ${{ $ship }}
+                                        @else
+                                        Free ship
+                                        @endif
                                     </div></div>
-                                    <div class="col-lg-12">
-                                        <div class="justify-content-end d-flex">
-                                            <a href="#">Change</a>
-                                        </div>
-
-                                    </div>
                                 </div>
                                </li>
                             <li>
                                 <div class="row">
                                     <div class="col-lg-6">Total:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        $20000.00
+                                        <input type="text" value="{{ Session::get('Cart')->totalPrice+$tax+$ship }}" name="total" hidden>
+                                        ${{ number_format(Session::get('Cart')->totalPrice+$tax+$ship) }}
                                     </div></div>
                                 </div></li>
                         </ul>
@@ -162,12 +178,13 @@
                             <label for="f-option4">I’ve read and accept the </label>
                             <a href="#">terms & conditions*</a>
                         </div>
-                        <a class="primary-btn" href="{{ route('confirmation') }}">Proceed to Paypal</a>
+                        <button class="primary-btn btn" style="width: 100%">Proceed to Paypal</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</form>
 </section>
 
 @endsection
