@@ -101,8 +101,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">Phone:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        <input type="text" value="{{ $customer->phone }}" name="phone" hidden>
-                                        {{ $customer->phone }}
+                                        <input type="text" value="{{ $customer->phone ?? '' }}" name="phone" hidden>
+                                        {{ $customer->phone ?? ''}}
                                     </div></div>
                                 </div>
                                 <a> <span class="middle"></span>
@@ -112,8 +112,8 @@
                                 <div class="row">
                                     <div class="col-lg-6">Address:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
-                                        <input type="text" value="{{ $customer->address }}" name="address" hidden>
-                                        {{ $customer->address }}</div>
+                                        <input type="text" value="{{ $customer->address ?? ''}}" name="address" hidden>
+                                        {{ $customer->address ?? ''}}</div>
                                     </div>
                                 </div>
                                 </span></a>
