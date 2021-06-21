@@ -223,7 +223,7 @@
                                 </div>
                             </div>
                         </div>
-                            @include('shop.comment.comment')
+                        @include('shop.comment.comment')
 
                     </div>
                     <div class="col-lg-6">
@@ -253,17 +253,23 @@
                                             placeholder="Phone Number">
                                     </div>
                                 </div> --}}
-                            <div class="col-md-12">
-                                <div class="form-group mb-3">
-                                    <textarea class="form-control" name="comment" id="message"
-                                        placeholder="Review"></textarea>
+                                @if (Auth::check())
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <textarea class="form-control" name="comment" id="message"
+                                            placeholder="Review"></textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12 text-right">
-                                <a id="addComment" href="javascript:" data-id="{{ $product->id }}" >abc
-                                    {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
-                            </div>
-                            <div id="abc"></div>
+                                <div class="col-md-12 text-right">
+                                    <a id="addComment" href="javascript:" data-id="{{ $product->id }}">abc
+                                        {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
+                                </div>
+                                @else
+                                <div class="text-center">
+                                    <a href="{{ route('loginPage') }}">Please login to leave comment.</a>
+                                </div>
+                                @endif
+
                         </div>
                     </div>
                 </div>
@@ -493,30 +499,4 @@
 <script src="{{ asset('FrontEnd/js/single_slider.js') }}"></script>
 <!--js product more-->
 
-<script>
-    $(document).ready(function () {
-        var comment_value=$("#message");
-        $("#addComment").click(function () {
-            var id = $(this).attr("data-id");
-            $.ajax({
-                url: '/comment-store/'+id,
-                type: 'GET',
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    comment: comment_value.val(),
-                }
-            }).done(function (response) {
-                $("#review_list").empty();
-                $("#review_list").html(response);
-                RenderComment(response)
-                $("#message").val('');
-            });
-        });
-    });
-
-    function RenderComment(response) {
-    $("#review_list").empty();
-    $("#review_list").html(response);
-}
-</script>
 @endsection

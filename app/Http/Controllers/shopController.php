@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 use App\Models\comment;
 use App\Models\hasRole;
-
+use App\Models\invoice;
+use App\Models\invoiceDetail;
+use Exception;
 class shopController extends Controller
 {
     //
@@ -126,7 +128,34 @@ class shopController extends Controller
         return view('shop.comment.comment',compact('comments'));
 
     }
+    public function checkout(){
+            $staff=staff::where('user',Auth()->user()->id)->first();
+        $customer=customer::where('user',Auth()->user()->id)->first();
+        return view('shop.checkout',compact('staff','customer'));
 
+
+    }
+
+    public function invoice_store(Request $request){
+        $invoice=new invoice();
+        $invoice->id_customer=Auth()->user()->id;
+        $invoice->tax=$request->tax;
+        $invoice->ship=$request->ship;
+        $invoice->address=$request->address;
+        $invoice->phone=$request->phone;
+        $invoice->total_money=$request->total;
+        $invoice->save();
+        foreach(Session("Cart")->products as $item){
+            $invoiceDetail=new invoiceDetail;
+            $invoiceDetail->id_product=$item['productInfo']->id;
+            $invoiceDetail->price=$item['productInfo']->price;
+            $invoiceDetail->unit=$item['quanty'];
+            $invoiceDetail->amount=$item['productInfo']->price*$item['quanty'];
+            $invoiceDetail->save();
+        }
+        session()->forget('Cart');
+        return redirect()->route('confirmation');
+    }
 
     public function ImgUpload(Request $request)
     {
@@ -146,5 +175,6 @@ class shopController extends Controller
         }
 
     }
-}
 
+
+}

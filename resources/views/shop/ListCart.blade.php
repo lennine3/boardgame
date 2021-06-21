@@ -18,7 +18,7 @@
                     <tbody>
                         @foreach (Session::get("Cart")->products as $item)
                         <tr>
-                            <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="100%"></td>
+                            <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="90%"></td>
                             <td class="cart-title first-row">
                                 <h5>{{ $item['productInfo']->name }}</h5>
                             </td>
@@ -58,9 +58,12 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="cart-buttons">
-                        <a href="{{ route('home') }}" class="primary-btn continue-shop">Continue shopping</a>
+                        <a href="{{ route('home') }}" class="cart-btn continue-shop">Continue shopping</a>
+                        <a href="{{ route('clear-cart') }}" class="cart-btn up-cart">clear all</a>
                     </div>
+
                 </div>
+
                 <div class="col-lg-4 offset-lg-4">
                     <div class="proceed-checkout">
                         <ul>
@@ -89,7 +92,18 @@
         </div>
     </div>
 </section>
+@else
+<div class="container">
+    <div class="text-center empty_bag">
+        <img src="{{ asset('Img/empty-bag.png') }}" alt="">
+        <div class="notice mb-3">
+        <b>your shopping cart is empty</b>
+        </div>
+        <a href="{{ route('home') }}" class="primary-btn">buy now</a>
+    </div>
+</div>
 @endif
+
 <script>
     $('.btn-plus, .btn-minus').on('click', function (e) {
         const isNegative = $(e.target).closest('.btn-minus').is('.btn-minus');

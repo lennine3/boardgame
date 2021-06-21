@@ -65,3 +65,28 @@ $('.btn-left-related').click(function () {
     // Parameters has to be in square bracket '[]'
     owl.trigger('prev.owl.carousel', [1750]);
 })
+
+$(document).ready(function () {
+    var comment_value=$("#message");
+    $("#addComment").click(function () {
+        var id = $(this).attr("data-id");
+        $.ajax({
+            url: '/comment-store/'+id,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                comment: comment_value.val(),
+            }
+        }).done(function (response) {
+            $("#review_list").empty();
+            $("#review_list").html(response);
+            RenderComment(response)
+            $("#message").val('');
+        });
+    });
+});
+
+function RenderComment(response) {
+$("#review_list").empty();
+$("#review_list").html(response);
+}
