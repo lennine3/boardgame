@@ -22,7 +22,10 @@ Route::prefix('/')->group(function () {
     Route::get('profile-user','App\Http\Controllers\shopController@profile_ajax');
     Route::post('profile-user-update','App\Http\Controllers\shopController@user_update')->name('profile-user-update');
     Route::post('profile-staff-update','App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
-    Route::get('category','App\Http\Controllers\shopController@category')->name('category');
+    Route::get('category/{type}','App\Http\Controllers\shopController@category')->name('category');
+    Route::get('category-type/{type}/{id}','App\Http\Controllers\shopController@category_type')->name('category');
+    Route::get('category-render/{number}','App\Http\Controllers\shopController@category_render')->name('category-render');
+
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('/single/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
     Route::get('remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');

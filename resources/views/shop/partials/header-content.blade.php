@@ -18,12 +18,14 @@
                             @hasanyrole('admin|staff')
                             <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
                             @endhasanyrole
-                            <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i class="fal fa-user"></i> <span style="padding-left: 10px">Profile</span></a></li>
+                            <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i class="fal fa-user"></i>
+                                    <span style="padding-left: 10px">Profile</span></a></li>
                             <li><a href="{{ route('invoice-shop') }}" class="dropdown-item"><i
                                         class="far fa-file-invoice"></i><span
                                         style="padding-left: 15px">Invoice</span></a></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();"><i class="fal fa-portal-exit"></i>
+                                              document.getElementById('logout-form').submit();"><i
+                                        class="fal fa-portal-exit"></i>
                                     <span style="padding-left: 8px">{{ __('Logout') }}</span>
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -37,7 +39,8 @@
                         <a href="{{ route('cart') }}" class=" link dropdown-toggle btn-outline" id="dropdownCart"
                             data-bs-toggle="dropdown"><i class="fal fa-bags-shopping fa-2x"></i>
                             @if(Session::has("Cart")!=null)
-                            <span class="badge badge-pill badge-danger" id="quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
+                            <span class="badge badge-pill badge-danger"
+                                id="quanty-show">{{ Session::get("Cart")->totalQuanty }}</span>
                             @else
                             <span class="badge badge-pill badge-danger" id="quanty-show">0</span>
                             @endif
@@ -94,7 +97,8 @@
                                             </div>
                                         </div>
                                         @else
-                                        <div style="padding: 15px 15px 15px 15px">There no product in your Cart. Please choose some thing.</div>
+                                        <div style="padding: 15px 15px 15px 15px">There no product in your Cart. Please
+                                            choose some thing.</div>
                                         @endif
 
                                     </div>
@@ -133,57 +137,56 @@
                             {{-- <li class="nav-item dropdown ">
                                 <div class="menu-background">
                                     <a class="nav-link dropbtn nav-link" href="{{ route('category') }}" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Category</a>
-                                    <div class="dropdown-content" aria-labelledby="navbarDropdown"
-                                        style="background-color: #EEEBE4;width:250px!important">
-                                        <a class="link nav-link" style="color: #000!important" href="#">Family
-                                            Boardgame</a>
-                                        <a class=" nav-link" href="#" style="color: #000!important">Action Boardgame</a>
-                                        <hr class="dropdown-divider">
-                                        <a class="nav-link" href="#" style="color: #000!important">RPG Boardgame</a>
-                                    </div>
-                                </div>
-                            </li> --}}
-                            <li class=" nav-item">
-                                <div class="menu-background"><a class="nav-link" href="{{ route('category') }}">Category</a>
-                                </div>
-                            </li>
-                            <li class=" nav-item">
-                                <div class="menu-background"><a class="nav-link" href="{{ route('about-us') }}">About
-                                        Us</a>
-                                </div>
-                            </li>
-                            <li class=" nav-item">
-                                <div class="menu-background"><a class="nav-link" href="#">News</a>
-                                </div>
-                            </li>
-                            <li class=" nav-item">
-                                <div class="menu-background"><a class="nav-link" href="#">News</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <div style="padding-top: 15px">
-                                    <button class="btn search_button" onclick="searchVisible()"><i
-                                            class="fal fa-search"></i></button>
-                                </div>
-                            </li>
-                        </ul>
+                            data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+                            <div class="dropdown-content" aria-labelledby="navbarDropdown"
+                                style="background-color: #EEEBE4;width:250px!important">
+                                <a class="link nav-link" style="color: #000!important" href="#">Family
+                                    Boardgame</a>
+                                <a class=" nav-link" href="#" style="color: #000!important">Action Boardgame</a>
+                                <hr class="dropdown-divider">
+                                <a class="nav-link" href="#" style="color: #000!important">RPG Boardgame</a>
+                            </div>
                     </div>
+                    </li> --}}
+                    <li class=" nav-item">
+                        <div class="menu-background"><a class="nav-link" href="{{ url('category/0') }}">Category</a>
+                        </div>
+                    </li>
+                    <li class=" nav-item">
+                        <div class="menu-background"><a class="nav-link" href="{{ route('about-us') }}">About
+                                Us</a>
+                        </div>
+                    </li>
+                    <li class=" nav-item">
+                        <div class="menu-background"><a class="nav-link" href="#">News</a>
+                        </div>
+                    </li>
+                    <li class=" nav-item">
+                        <div class="menu-background"><a class="nav-link" href="#">News</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div style="padding-top: 15px">
+                            <button class="btn search_button" onclick="searchVisible()"><i
+                                    class="fal fa-search"></i></button>
+                        </div>
+                    </li>
+                    </ul>
                 </div>
-            </nav>
         </div>
-        <div id="search_input_box" class="visible_hidden">
-            <div class="container">
-                <form action="#" class="d-flex justify-content-between">
-                    <input type="text" class="form-control-search" id="search_input" placeholder="Search Here">
-                    <button class="btn_search" type="submit"></button>
-                    <span id="close_search" title="Close Search" onclick="searchHidden()"><i
-                            class="fal fa-times"></i></span>
-                </form>
-            </div>
+        </nav>
+    </div>
+    <div id="search_input_box" class="visible_hidden">
+        <div class="container">
+            <form action="#" class="d-flex justify-content-between">
+                <input type="text" class="form-control-search" id="search_input" placeholder="Search Here">
+                <button class="btn_search" type="submit"></button>
+                <span id="close_search" title="Close Search" onclick="searchHidden()"><i
+                        class="fal fa-times"></i></span>
+            </form>
+        </div>
 
-        </div>
+    </div>
     </div>
 
     <!--//Nav Bar-->
-
