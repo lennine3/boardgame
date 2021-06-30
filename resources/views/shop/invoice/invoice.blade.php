@@ -21,7 +21,10 @@
                         <div class="col-lg-4">
                             <div class="d-flex justify-content-end">
                                 <div class="row">
-                                    <div class="col-lg-12"><b> User</b></div>
+                                    <div class="col-lg-12"><b>{{ Auth()->user()->name}}</b></div>
+                                    <br>
+                                    <br>
+                                    <br>
                                     <div class="col-lg-12"> <a href="{{ route('profile-user') }}" class="link_1"><i
                                                 class="fal fa-pencil"></i> User
                                             setting</a></div>
@@ -81,29 +84,31 @@
                         style="padding-left: 25px">
                 </div>
                 <div>
-                    <div class="row">
+                    <div class="row">@foreach ($invoices as $invoice)
                         <div style="padding-top:20px;padding-bottom:20px">
+
                             <div class="table-responsive" style="background-color: #F5F5F5;padding-top:20px">
                                 <table class="table">
                                     <tr>
                                         <td colspan="1" style="width: 40%"> <img
                                                 src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" width="50%">
                                         </td>
-                                        <td colspan="2" style="width: 50%;font-size:25px">Monopoly- Smart board game for
-                                            Kid
+                                        <td colspan="2" style="width: 30%;font-size:25px">{{ $invoice->invoice_code }}
                                         </td>
-                                        <td style="width: 10%;font-size:25px"> 60$ </td>
+                                        <td style="width: 30%;font-size:25px">Total price: ${{ $invoice->total_price }} </td>
                                     </tr>
                                 </table>
                                 <hr>
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn btn-danger"> Rebuy </button>
+                                <div class="d-flex justify-content-end" style="padding: 15px 15px 15px 15px">
+                                    {{-- <button class="btn btn-danger"> Rebuy </button> --}}
                                     <button class="btn btn-warning"> Invoice Detail</button>
                                 </div>
                             </div>
-                        </div>
 
-                        <div style="padding-top:20px;padding-bottom:20px">
+
+                        </div>@endforeach
+
+                        {{-- <div style="padding-top:20px;padding-bottom:20px">
                             <div class="table-responsive" style="background-color: #F5F5F5;padding-top:20px">
                                 <table class="table">
                                     <tr>
@@ -185,7 +190,7 @@
                                     <button class="btn btn-warning"> Invoice Detail</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                     </div>

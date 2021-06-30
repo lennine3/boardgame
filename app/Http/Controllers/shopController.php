@@ -16,6 +16,9 @@ use App\Models\comment;
 use App\Models\hasRole;
 use App\Models\invoice;
 use App\Models\invoiceDetail;
+use App\Models\productType;
+use Illuminate\Support\Str;
+
 use Exception;
 class shopController extends Controller
 {
@@ -34,15 +37,42 @@ class shopController extends Controller
     public function registerPage(){
         return view('shop.register-page');
     }
-    public function category(){
-        $products=product::all();
+    public function category($type){
+        if($type==1){
+            $products=product::orderBy('price','asc')->paginate(12);
+        }
+        elseif($type==2){
+            $products=product::orderBy('price','desc')->paginate(12);
+        }
+        else
+        {
+            $products=product::orderBy('created_at')->paginate(12);
+        }
         $productType_1=product::where('id_product_type',1)->get();
         $productType_2=product::where('id_product_type',2)->get();
         $productType_3=product::where('id_product_type',3)->get();
         $productType_4=product::where('id_product_type',4)->get();
-        return view ('shop.category',compact('products','productType_1','productType_2','productType_3','productType_4'));
+        $productTypes=productType::all();
+        return view ('shop.category',['products'=>$products],compact('productTypes'));
     }
-
+    public function category_type($id,$type){
+        if($type==1){
+            $products=product::where('id_product_type',$id)->orderBy('price','asc')->paginate(12);
+        }
+        elseif($type==2){
+            $products=product::where('id_product_type',$id)->orderBy('price','desc')->paginate(12);
+        }
+        else
+        {
+            $products=product::where('id_product_type',$id)->orderBy('created_at')->paginate(12);
+        }
+        $productTypes=productType::all();
+        return view ('shop.category.category-Type',['products'=>$products],compact('productTypes','id'));
+    }
+    public function category_render($number){
+        $products=product::where('price','<',$number)->orderBy('price')->get();
+        return view('shop.category.category-render',compact('products'));
+    }
     public function single($id){
         $comments=comment::where('id_product',$id)->get();
         $product_images=productImage::where('product_id',$id)->get();
@@ -98,9 +128,11 @@ class shopController extends Controller
         return back();
     }
     public function invoice(){
+
         $staff=staff::where('user',Auth()->user()->id)->first();
         $customer=customer::where('user',Auth()->user()->id)->first();
-        return view('shop.invoice.invoice',compact('customer','staff'));
+        $invoices=invoice::where('id_customer',Auth()->user()->id)->get();
+        return view('shop.invoice.invoice',compact('customer','staff','invoices'));
     }
     public function invoice_ajax(){
         $customer=customer::where('user',Auth()->user()->id)->first();
@@ -139,11 +171,13 @@ class shopController extends Controller
     public function invoice_store(Request $request){
         $invoice=new invoice();
         $invoice->id_customer=Auth()->user()->id;
+        $invoice->invoice_code='HD'.rand(99999,999999) ;
         $invoice->tax=$request->tax;
         $invoice->ship=$request->ship;
         $invoice->address=$request->address;
         $invoice->phone=$request->phone;
-        $invoice->total_money=$request->total;
+        $invoice->price=$request->price;
+        $invoice->total_price=$request->total;
         $invoice->save();
         foreach(Session("Cart")->products as $item){
             $invoiceDetail=new invoiceDetail;

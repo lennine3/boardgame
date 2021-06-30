@@ -44,7 +44,7 @@
                     <button id="priceSubmit" class="primary-btn btn">Find</button>
                 </li>
                 @foreach ($productTypes as $productType)
-                <li class="main-nav-list" style="padding:20px;20px;20px;20px"><a href="{{ url('category-type'.'/'.$productType->id.'/'.'0') }}">
+                <li class="main-nav-list" style="padding:20px;20px;20px;20px"><a href="">
                         <span class="lnr lnr-arrow-right"></span>{{ $productType->product_type_name }}{{-- <span class="number">(53)</span> --}}</a>
                 </li>
                 @endforeach
@@ -55,11 +55,11 @@
                 class="d-flex flex-wrap align-items-center">
                 <div class="sorting">
                     <select name="" class="form-select" id="sortCategory">
-                        <option value="{{ url('category/0') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category/0" ))
+                        <option value="{{ url('category-type'.'/'.$id.'/'.'0') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category-type/1/0" ))
                             { {echo 'selected' ;} } @endphp>Newest</option>
-                        <option value="{{ url('category/1') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category/1" ))
+                        <option value="{{ url('category-type'.'/'.$id.'/'.'1') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category-type/1/1" ))
                             { {echo 'selected' ;} } @endphp>Price: low to high</option>
-                        <option value="{{ url('category/2') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category/2" ))
+                        <option value="{{ url('category-type'.'/'.$id.'/'.'2') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category-type/1/2" ))
                             { {echo 'selected' ;} } @endphp>Price: high to low</option>
                     </select>
                 </div>

@@ -146,6 +146,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">Total:</div>
                                     <div class="col-lg-6"><div class="d-flex justify-content-end">
+                                        <input type="text" value="{{ Session::get('Cart')->totalPrice }}" name="price" hidden>
                                         <input type="text" value="{{ Session::get('Cart')->totalPrice+$tax+$ship }}" name="total" hidden>
                                         ${{ number_format(Session::get('Cart')->totalPrice+$tax+$ship) }}
                                     </div></div>
