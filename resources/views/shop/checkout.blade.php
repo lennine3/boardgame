@@ -51,7 +51,7 @@
                                     <td class="cart-title first-row">
                                         <h5>{{ $item['productInfo']->name }}</h5>
                                     </td>
-                                    <td class="p-price first-row">${{ $item['productInfo']->price }}</td>
+                                    <td class="p-price first-row">${{ $item['productInfo']->promotion_price }}</td>
                                     <td class="qua-col first-row">
                                         <div class="quantity" style="text-align: end">
                                             <div>
@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="total-price first-row">${{ $item['productInfo']->price*$item['quanty'] }}</td>
+                                    <td class="total-price first-row">${{ $item['productInfo']->promotion_price*$item['quanty'] }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

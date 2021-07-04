@@ -108,9 +108,9 @@
                     <div class="mb-3">
                         <label for="formPromotion" class="form-label">promotion</label>
                         <select name="promotion" id="formPromotion" class="form-select">
-                            <option value="0">No Promotion</option>
-                            <option value="1">Promotion A</option>
-                            <option value="2">Promotion B</option>
+                            @foreach ($promotions as $promotion)
+                            <option value="{{ $promotion->id }}">{{ $promotion->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>

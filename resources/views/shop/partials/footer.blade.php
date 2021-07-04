@@ -99,7 +99,7 @@
 <div class="d-flex justify-content-center border-top border-2 border-orange"
     style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
 
-    <script>
+   {{--  <script>
         window.onscroll = function () {
             myFunction()
         };
@@ -115,7 +115,7 @@
             }
         }
 
-    </script>
+    </script> --}}
     <script>
         function searchVisible() {
             document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");

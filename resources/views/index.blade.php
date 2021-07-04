@@ -63,7 +63,7 @@
             <div class="col-lg-3 term-box"><i class="fal fa-truck fa-2x"></i>
                 <h6 class="pad-top-10"><b>Free Delivery</b></h6> Fee ship on all order
             </div>
-            <div class="col-lg-3 term-box" ><i class="fal fa-sync-alt fa-2x"></i>
+            <div class="col-lg-3 term-box"><i class="fal fa-sync-alt fa-2x"></i>
                 <h6 class="pad-top-10"><b>Return Policy</b></h6> Fee ship on all order
             </div>
             <div class="col-lg-3 term-box"><i class="fal fa-headphones-alt fa-2x"></i>
@@ -102,34 +102,59 @@
                                         @foreach ($productType_1 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                                    <div class="box-img">
-                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                <a href="{{ route('single',$product->id) }}">
+                                                    <span class="onsale">Sale {{ $product->promotionRelation->rate }}%
+                                                        off</span>
+                                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                        <div class="box-img">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('Img/product-img/'.$product->image) }}"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
-                                                    <div class="price">
-                                                        <h6>${{ $product->price }}</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row p-b-20">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
-                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
+                                                    <div class="product-details">
+                                                        <h6> <a
+                                                                href="{{ route('single',$product->id) }}">{{ $product->name }}</a>
+                                                        </h6>
+                                                        <div class="price">
+                                                            @if ($product->id_promotion!=0)
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="price-color">
+                                                                        ${{ $product->promotion_price}}
+                                                                    </h6>
                                                                 </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="l-through">${{ $product->price }}</h6>
+                                                                </div>
+                                                            </div>
+                                                            @else
+                                                            <h6>${{ $product->price }}</h6>
+                                                            @endif
+
+                                                        </div>
+                                                        <hr>
+                                                        <div class="prd-bottom">
+                                                            <div class="row p-b-20">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a onclick="AddCart({{ $product->id }})"
+                                                                            href="javascript:">
+                                                                            <i
+                                                                                class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        </a><span class="tooltiptext">Add Cart</span>
+                                                                    </div>
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a href="#">
+                                                                            <i
+                                                                                class="fas fa-heart-circle fa-3x addFav"></i>
+                                                                        </a><span class="tooltiptext">Favortire</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                         @endforeach
@@ -156,34 +181,45 @@
                                         @foreach ($productType_2 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                                    <div class="box-img">
-                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                <a href="{{ route('single',$product->id) }}">
+                                                    <span class="onsale">Sale {{ $product->promotionRelation->rate }}%
+                                                        off</span>
+                                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                        <div class="box-img">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('Img/product-img/'.$product->image) }}"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
-                                                    <div class="price">
-                                                        <h6>${{ $product->price }}</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row p-b-20">
-                                                            <div class="d-flex justify-content-center p-b-20">
-                                                                <div class="tooltip col-lg-6">
-                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
-                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
+                                                    <div class="product-details">
+                                                        <h6> <a
+                                                                href="{{ route('single',$product->id) }}">{{ $product->name }}</a>
+                                                        </h6>
+                                                        <div class="price">
+                                                            <h6>${{ $product->price }}</h6>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="prd-bottom">
+                                                            <div class="row p-b-20">
+                                                                <div class="d-flex justify-content-center p-b-20">
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a onclick="AddCart({{ $product->id }})"
+                                                                            href="javascript:">
+                                                                            <i
+                                                                                class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        </a><span class="tooltiptext">Add Cart</span>
+                                                                    </div>
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a href="#">
+                                                                            <i
+                                                                                class="fas fa-heart-circle fa-3x addFav"></i>
+                                                                        </a><span class="tooltiptext">Favortire</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                         @endforeach
@@ -210,34 +246,45 @@
                                         @foreach ($productType_3 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                                    <div class="box-img">
-                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                <a href="{{ route('single',$product->id) }}">
+                                                    <span class="onsale">Sale {{ $product->promotionRelation->rate }}%
+                                                        off</span>
+                                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                        <div class="box-img">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('Img/product-img/'.$product->image) }}"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
-                                                    <div class="price">
-                                                        <h6>${{ $product->price }}</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row p-b-20">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
-                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
+                                                    <div class="product-details">
+                                                        <h6> <a
+                                                                href="{{ route('single',$product->id) }}">{{ $product->name }}</a>
+                                                        </h6>
+                                                        <div class="price">
+                                                            <h6>${{ $product->price }}</h6>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="prd-bottom">
+                                                            <div class="row p-b-20">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a onclick="AddCart({{ $product->id }})"
+                                                                            href="javascript:">
+                                                                            <i
+                                                                                class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        </a><span class="tooltiptext">Add Cart</span>
+                                                                    </div>
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a href="#">
+                                                                            <i
+                                                                                class="fas fa-heart-circle fa-3x addFav"></i>
+                                                                        </a><span class="tooltiptext">Favortire</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                         @endforeach
@@ -264,34 +311,45 @@
                                         @foreach ($productType_4 as $product)
                                         <div class="col-lg-3 col-md-6 p-b-20">
                                             <div class="single-product">
-                                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                                    <div class="box-img">
-                                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$product->image) }}" alt="">
+                                                <a href="{{ route('single',$product->id) }}">
+                                                    <span class="onsale">Sale {{ $product->promotionRelation->rate }}%
+                                                        off</span>
+                                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                        <div class="box-img">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('Img/product-img/'.$product->image) }}"
+                                                                alt="">
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-details">
-                                                    <h6> <a href="{{ route('single',$product->id) }}">{{ $product->name }}</a></h6>
-                                                    <div class="price">
-                                                        <h6>${{ $product->price }}</h6>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="prd-bottom">
-                                                        <div class="row p-b-20">
-                                                            <div class="d-flex justify-content-center">
-                                                                <div class="tooltip col-lg-6">
-                                                                        <a onclick="AddCart({{ $product->id }})" href="javascript:">
-                                                                        <i class="fal fa-shopping-bag fa-3x addCart"></i>
-                                                                    </a><span class="tooltiptext">Add Cart</span>
-                                                                </div>
-                                                                <div class="tooltip col-lg-6">
-                                                                    <a href="#">
-                                                                        <i class="fas fa-heart-circle fa-3x addFav"></i>
-                                                                    </a><span class="tooltiptext">Favortire</span>
+                                                    <div class="product-details">
+                                                        <h6> <a
+                                                                href="{{ route('single',$product->id) }}">{{ $product->name }}</a>
+                                                        </h6>
+                                                        <div class="price">
+                                                            <h6>${{ $product->price }}</h6>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="prd-bottom">
+                                                            <div class="row p-b-20">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a onclick="AddCart({{ $product->id }})"
+                                                                            href="javascript:">
+                                                                            <i
+                                                                                class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        </a><span class="tooltiptext">Add Cart</span>
+                                                                    </div>
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a href="#">
+                                                                            <i
+                                                                                class="fas fa-heart-circle fa-3x addFav"></i>
+                                                                        </a><span class="tooltiptext">Favortire</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                         @endforeach
@@ -462,7 +520,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom: 35px">
                         <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                                    style="height: 75px;weight:75px"></a>
                             <div class="desc">
                                 <a href="#" class="title">Black lace Heels</a>
                                 <div class="price">
@@ -473,112 +532,114 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
-                                </div>
+                        <div class=" single-related-product d-flex">
+                        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                                style="height: 75px;weight:75px"></a>
+                        <div class="desc">
+                            <a href="#" class="title">Black lace Heels</a>
+                            <div class="price">
+                                <h6>$189.00</h6>
+                                <h6 class="l-through">$210.00</h6>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+                    <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                            style="height: 75px;weight:75px"></a>
+                    <div class="desc">
+                        <a href="#" class="title">Black lace Heels</a>
+                        <div class="price">
+                            <h6>$189.00</h6>
+                            <h6 class="l-through">$210.00</h6>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <div class="ctg-right">
-                    <a href="#" target="_blank">
-                        <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}"
-                            alt="">
-                    </a>
+            <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+                <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
+                        style="height: 75px;weight:75px"></a>
+                <div class="desc">
+                    <a href="#" class="title">Black lace Heels</a>
+                    <div class="price">
+                        <h6>$189.00</h6>
+                        <h6 class="l-through">$210.00</h6>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+            <div class="desc">
+                <a href="#" class="title">Black lace Heels</a>
+                <div class="price">
+                    <h6>$189.00</h6>
+                    <h6 class="l-through">$210.00</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
+                        <div class=" single-related-product d-flex">
+        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
+        <div class="desc">
+            <a href="#" class="title">Black lace Heels</a>
+            <div class="price">
+                <h6>$189.00</h6>
+                <h6 class="l-through">$210.00</h6>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="ctg-right">
+            <a href="#" target="_blank">
+                <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}" alt="">
+            </a>
+        </div>
+    </div>
+    </div>
     </div>
 </section>
 <!--Deal end-->

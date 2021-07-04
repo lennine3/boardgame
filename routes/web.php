@@ -119,9 +119,8 @@ Route::prefix('/admin')->group(function () {
         return view('admin.order.orderDetail');
     })->name('order-detail');
     //promotion
-    Route::get('promotion', function () {
-        return view('admin/promotion/promotion');
-    })->name('promotion');
+    Route::get('/promotion', 'App\Http\Controllers\promotionController@index')->name('promotion-index');
+    Route::post('/promotion-store', 'App\Http\Controllers\promotionController@store')->name('promotion-store');
 });
 
 Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');

@@ -8,7 +8,8 @@ use App\Models\productDetail;
 use App\Models\supplier;
 use App\Models\productType;
 use App\Models\staff;
-
+use App\Models\promotion;
+use GuzzleHttp\Middleware;
 
 class productController extends Controller
 {
@@ -17,6 +18,10 @@ class productController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('checkLogin');
+    }
     public function index()
     {
         //
@@ -32,10 +37,11 @@ class productController extends Controller
     public function create()
     {
         //
+        $promotions=promotion::all();
         $staffs=staff::all();
         $producttypes=productType::all();
         $suppliers=supplier::all();
-        return view('admin.product.product-create',compact('staffs','producttypes','suppliers'));
+        return view('admin.product.product-create',compact('staffs','producttypes','suppliers','promotions'));
     }
 
     /**
@@ -60,7 +66,7 @@ class productController extends Controller
         else
         $product->status=0;
         $product->image=$this->ImgUpload($request);
-        $product->id_promotion=$request->promotion;
+        $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
         $product->save();
         $productDetail=new productDetail();
         $productDetail->product_id=$product->id;
@@ -102,12 +108,13 @@ class productController extends Controller
     public function edit($id)
     {
         //
+        $promotions=promotion::all();
         $product=product::findOrFail($id);
         $productDetail=productDetail::where('product_id',$id)->first();
         $staffs=staff::all();
         $producttypes=productType::all();
         $suppliers=supplier::all();
-        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product','productDetail'));
+        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product','productDetail','promotions'));
     }
 
     /**
@@ -139,12 +146,14 @@ class productController extends Controller
             $product->image=$product->image;
         }
         $product->id_promotion=$request->promotion;
+        $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
         $productDetail->product_id=$product->id;
         $productDetail->description=$request->description;
         $productDetail->size=$request->size;
         $productDetail->origin=$request->origin;
         $productDetail->weight=$request->weight;
         $productDetail->age=$request->age;
+        /* dd($product); */
         $productDetail->save();
         $product->save();
         return redirect()->route('product.index');
