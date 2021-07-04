@@ -67,7 +67,7 @@
             <a href="{{ route('product-detail') }}" class="dot"><i class="fal fa-box-ballot"></i><span>Product
                     Detail</span></a>
             <a href="{{ route('product-img') }}" class="dot"><i class="fal fa-images"></i><span>Product Image</span></a>
-            <a href="{{ route('promotion') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
+            <a href="{{ route('promotion-index') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
         </div>
     </div>
     <a href="{{ route('invoice') }}" class="dot"><i class="fas fa-file-invoice"></i><span>Invoice</span></a>

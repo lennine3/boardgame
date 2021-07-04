@@ -17,6 +17,7 @@ use App\Models\hasRole;
 use App\Models\invoice;
 use App\Models\invoiceDetail;
 use App\Models\productType;
+use App\Models\promotion;
 use Illuminate\Support\Str;
 
 use Exception;
@@ -29,6 +30,7 @@ class shopController extends Controller
         $productType_2=product::where('id_product_type',2)->get();
         $productType_3=product::where('id_product_type',3)->get();
         $productType_4=product::where('id_product_type',4)->get();
+        $promotion=promotion::all();
         return view ('index',compact('products','productType_1','productType_2','productType_3','productType_4'));
     }
     public function loginPage(){
@@ -137,7 +139,8 @@ class shopController extends Controller
     public function invoice_ajax(){
         $customer=customer::where('user',Auth()->user()->id)->first();
         $staff=staff::where('user',Auth()->user()->id)->first();
-        return view('shop.invoice.invoice-ajax',compact('customer','staff'));
+        $invoices=invoice::where('id_customer',Auth()->user()->id)->get();
+        return view('shop.invoice.invoice-ajax',compact('customer','staff','invoices'));
     }
     public function address(){
         $customer=customer::where('user',Auth()->user()->id)->first();

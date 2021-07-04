@@ -22,7 +22,7 @@
                             <td class="cart-title first-row">
                                 <h5>{{ $item['productInfo']->name }}</h5>
                             </td>
-                            <td class="p-price first-row">${{ $item['productInfo']->price }}</td>
+                            <td class="p-price first-row">${{ $item['productInfo']->promotion_price }}</td>
                             <td class="qua-col first-row">
                                 <div class="quantity">
                                     <div class="input-group inline-group">
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="total-price first-row">${{ $item['productInfo']->price*$item['quanty'] }}</td>
+                            <td class="total-price first-row">${{ ($item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100))*$item['quanty'] }}</td>
                             <td class="close-td first-row"><a class="btn"
                                     onclick="UpdateItem({{ $item['productInfo']->id }})"><i class="fal fa-save"></i></a>
                             </td>

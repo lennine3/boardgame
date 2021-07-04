@@ -22,7 +22,30 @@ h5 {
 }
 
 /*Index*/
+/*Select*/
+select{
+    background-color: #454d55!important;
+    border: none!important;
+    color: #fff!important;
+}
+select:focus{
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+/*Select*/
 /*Input*/
+input[type=number] {
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
+
+input[type=number]:focus {
+    background-color: #454d55;
+    border: none;
+    color: #fff;
+}
 input[type=text] {
     background-color: #454d55;
     border: none;

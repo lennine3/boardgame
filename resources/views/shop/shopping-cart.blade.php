@@ -12,7 +12,7 @@
                 <td>
                     <div class="row">
                         <div class="col-lg-12 text-info">
-                            ${{ $item['productInfo']->price }} x {{ $item['quanty'] }}
+                            ${{ $item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100) }} x {{ $item['quanty'] }}
                         </div>
                         <div class="col-lg-12"><b>{{ $item['productInfo']->name }}</b></div>
                     </div>
@@ -34,7 +34,7 @@
         Total:
     </div>
     <div class="col-lg-6">
-        <span class="text-info">$ ${{ number_format(Session::get('Cart')->totalPrice) }}</span>
+        <span class="text-info">${{ number_format(Session::get('Cart')->totalPrice) }}</span>
         <input type="number" value="{{ Session::get('Cart')->totalQuanty }}" id="quanty-cart" hidden>
     </div>
     <p>
