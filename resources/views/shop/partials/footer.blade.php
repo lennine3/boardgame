@@ -99,7 +99,7 @@
 <div class="d-flex justify-content-center border-top border-2 border-orange"
     style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
 
-   {{--  <script>
+{{--  <script>
         window.onscroll = function () {
             myFunction()
         };
@@ -116,34 +116,35 @@
         }
 
     </script> --}}
-    <script>
-        function searchVisible() {
-            document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
-        }
 
-    </script>
-    <script>
-        function searchHidden() {
-            document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
-        }
+<script>
+    function searchVisible() {
+        document.getElementById("search_input_box").removeAttribute("class", "visible_hidden");
+    }
 
-    </script>
+</script>
+<script>
+    function searchHidden() {
+        document.getElementById("search_input_box").setAttribute("class", "visible_hidden");
+    }
+
+</script>
 <!--Cart-->
 <script src="{{ asset('FrontEnd/js/cart-bag.js') }}"></script>
 <!-- JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 <!-- CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 <!-- Default theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
 <!-- Semantic UI theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
 <!-- Bootstrap theme -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
 
 <script>
-   /*  $('.dropdown.keep-open').on({
+    /*  $('.dropdown.keep-open').on({
      //fires after dropdown is shown instance method is called (if you click anywhere else)
      "shown.bs.dropdown": function() { this.close= true; },
     //when dropdown is clicked
@@ -152,7 +153,8 @@
     "hide.bs.dropdown":  function() { return this.close; }
 });
  */
- document.getElementById("keep-open").addEventListener('click', function () {
-            event.stopPropagation();
-        });
+    document.getElementById("keep-open").addEventListener('click', function () {
+        event.stopPropagation();
+    });
+
 </script>

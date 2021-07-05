@@ -156,119 +156,34 @@
             <div class="tab-pane fade" id="comment" role="tabpanel">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="box_rating">
-                                    <h5>
-                                        Overrall
-                                    </h5>
-                                    <h4>
-                                        4.0
-                                    </h4>
-                                    <h6>
-                                        3 Review and Comment
-                                    </h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="rating_list">
-                                    <h3>Based on 3 Reviews</h3>
-                                    <ul class="list">
-                                        <li>
-                                            <a href="#" class="ratings">5 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ratings">4 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ratings">3 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ratings">2 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="ratings">1 Star
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i> 01
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                         @include('shop.comment.comment')
-
                     </div>
                     <div class="col-lg-6">
                         <div class="review-box">
                             <h4>Add a review and comment</h4>
-                            {{-- <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="rating" placeholder="Your rating" min="0"
-                                    max="100" style="width: 200px">
-                                <label for="rating">Your rating</label>
-                            </div> --}}
+                            <p>
+                                <div id="rateYo"></div>
+                                <br>
+                                <span id="result" name="rating"></span>
+                            </p>
                             <input type="text" name="id_product" value="{{ $product->id }}" hidden>
-                            {{-- <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="Your Full name">
-                                    </div>
+                            @if (Auth::check())
+                            <div class="col-md-12">
+                                <div class="form-group mb-3">
+                                    <textarea class="form-control" name="comment" id="message"
+                                        placeholder="Review"></textarea>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <input type="text" class="form-control" id="number" name="number"
-                                            placeholder="Phone Number">
-                                    </div>
-                                </div> --}}
-                                @if (Auth::check())
-                                <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <textarea class="form-control" name="comment" id="message"
-                                            placeholder="Review"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-right">
-                                    <a id="addComment" href="javascript:" data-id="{{ $product->id }}">abc
-                                        {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
-                                </div>
-                                @else
-                                <div class="text-center">
-                                    <a href="{{ route('loginPage') }}">Please login to leave comment.</a>
-                                </div>
-                                @endif
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <a id="addComment" href="javascript:" data-id="{{ $product->id }}">Submit
+                                    {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
+                            </div>
+                            <div id="rateYo"></div>
+                            @else
+                            <div class="text-center">
+                                <a href="{{ route('loginPage') }}">Please login to leave comment.</a>
+                            </div>
+                            @endif
 
                         </div>
                     </div>

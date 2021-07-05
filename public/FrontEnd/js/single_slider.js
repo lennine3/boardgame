@@ -38,7 +38,7 @@ $('.owl-single').owlCarousel({
     navSpeed: 1750,
     dots: false,
     center: true,
-    margin:10,
+    margin: 10,
     lazyLoad: true,
     autoplaySpeed: 1750,
     responsive: {
@@ -67,26 +67,55 @@ $('.btn-left-related').click(function () {
 })
 
 $(document).ready(function () {
-    var comment_value=$("#message");
+    var comment_value = $("#message");
+    var $rateYo = $("#rateYo").rateYo();
+
     $("#addComment").click(function () {
+        var rating = $rateYo.rateYo("rating");
         var id = $(this).attr("data-id");
         $.ajax({
-            url: '/comment-store/'+id,
+            url: '/comment-store/' + id,
             type: 'GET',
             data: {
                 "_token": "{{ csrf_token() }}",
                 comment: comment_value.val(),
+                rating: rating,
             }
         }).done(function (response) {
             $("#review_list").empty();
             $("#review_list").html(response);
-            RenderComment(response)
+            RatingBlank();
+            RenderComment(response);
             $("#message").val('');
         });
     });
 });
+function RatingBlank() {
 
+    $("#rateYo").rateYo({
+      rating: 3.6
+    });
+
+  };
+  $(function () {
+
+    $("#rateYo").rateYo({
+      rating: 3.6
+    });
+
+  });
 function RenderComment(response) {
-$("#review_list").empty();
-$("#review_list").html(response);
+    $("#review_list").empty();
+    $("#review_list").html(response);
 }
+
+//start
+$(function () {
+    var $rateYo = $("#rateYo").rateYo();
+    $("#rateYo").click(function () {
+
+        /* get rating */
+        var rating = $rateYo.rateYo("rating");
+        $("#result").text("Rating "+rating);
+    });
+});
