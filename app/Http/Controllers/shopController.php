@@ -18,6 +18,7 @@ use App\Models\invoice;
 use App\Models\invoiceDetail;
 use App\Models\productType;
 use App\Models\promotion;
+use App\Models\rating;
 use Illuminate\Support\Str;
 
 use Exception;
@@ -76,12 +77,14 @@ class shopController extends Controller
         return view('shop.category.category-render',compact('products'));
     }
     public function single($id){
+        $rate=rating::where('id_product',$id)->get();
         $comments=comment::where('id_product',$id)->get();
         $product_images=productImage::where('product_id',$id)->get();
         /* dd($product_images); */
+
         $productDetail=productDetail::where('product_id',$id)->first();
         $product=product::find($id);
-        return view('shop.single',compact('product','product_images','productDetail','comments'));
+        return view('shop.single',compact('product','product_images','productDetail','comments','rate'));
     }
 
     public function profile(){
@@ -149,18 +152,28 @@ class shopController extends Controller
     public function comment_store(Request $request,$id){
         $comments=comment::where('id_product',$id)->get();
         $comment=new comment();
+        $rating=new rating();
         $hasRole=hasRole::where('model_id',Auth()->user()->id)->first();
         $comment->comment=$request->comment;
         $comment->id_product=$id;
         $comment->id_user=Auth()->user()->id;
         $comment->role_user=$hasRole->role_id;
         $comment->save();
+        $rating->id_comment=$comment->id;
+        $rating->rate=$request->rating;
+        $rating->id_product=$id;
+        $rating->id_user=Auth()->user()->id;
+        /* dd($rating); */
+        $rating->save();
+
         return $this->comment_page($id);
     }
 
     public function comment_page($id){
+        $rate=rating::where('id_product',$id)->get();
+
         $comments=comment::where('id_product',$id)->get();
-        return view('shop.comment.comment',compact('comments'));
+        return view('shop.comment.comment',compact('comments','rate'));
 
     }
     public function checkout(){

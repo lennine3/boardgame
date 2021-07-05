@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\rating;
 class comment extends Model
 {
     protected $table='comment';
@@ -18,5 +19,8 @@ class comment extends Model
     }
     public function customerRelation(){
         return $this->belongsTo('App\Models\customer','id_user','user');
+    }
+    public function RatingRelation(){
+        return $this->hasOne('App\Models\rating','id_comment','id');
     }
 }

@@ -1563,7 +1563,7 @@ section {
     font-weight: normal;
 }
 
-.box_rating h4 {
+.box_rating .d-flex h4 {
     font-size: 48px;
     font-weight: bold;
 }
@@ -1574,7 +1574,7 @@ section {
     font-size: 24px;
 }
 
-.box_rating h4 {
+.box_rating .d-flex h4 {
     background-clip: text;
     background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
     background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
