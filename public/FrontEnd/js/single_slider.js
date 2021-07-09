@@ -4,8 +4,9 @@ $('.owl-product-more').owlCarousel({
     autoplay: true,
     navSpeed: 1750,
     dots: false,
+    loop:false,
     margin: 10,
-    center: true,
+    center: false,
     autoplaySpeed: 1750,
     responsive: {
         0: {
@@ -53,18 +54,7 @@ $('.owl-single').owlCarousel({
         }
     }
 })
-var owl = $('.owl-product-more');
-owl.owlCarousel();
-// Go to the next item
-$('.btn-right-related').click(function () {
-    owl.trigger('next.owl.carousel', [1750]);
-})
-// Go to the previous item
-$('.btn-left-related').click(function () {
-    // With optional speed parameter
-    // Parameters has to be in square bracket '[]'
-    owl.trigger('prev.owl.carousel', [1750]);
-})
+
 
 $(document).ready(function () {
     var comment_value = $("#message");
@@ -119,3 +109,38 @@ $(function () {
         $("#result").text("Rating "+rating);
     });
 });
+
+
+//Deal
+$('.owl-product-deal').owlCarousel({
+    loop: true,
+    autoplay: false,
+    navSpeed: 1750,
+    dots: false,
+    margin: 10,
+    center: false,
+    autoplaySpeed: 1750,
+    responsive: {
+        0: {
+            items: 1
+        },
+        600: {
+            items: 2
+        },
+        1000: {
+            items: 3
+        }
+    }
+})
+var owl_1 = $('.owl-product-deal');
+owl_1.owlCarousel();
+// Go to the next item
+$('.btn-right-deal').click(function () {
+    owl_1.trigger('next.owl.carousel', [1750]);
+})
+// Go to the previous item
+$('.btn-left-deal').click(function () {
+    // With optional speed parameter
+    // Parameters has to be in square bracket '[]'
+    owl_1.trigger('prev.owl.carousel', [1750]);
+})

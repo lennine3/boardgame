@@ -84,7 +84,9 @@ class shopController extends Controller
 
         $productDetail=productDetail::where('product_id',$id)->first();
         $product=product::find($id);
-        return view('shop.single',compact('product','product_images','productDetail','comments','rate'));
+        $relateds=product::where('id_product_type',$product->id_product_type)->get();
+        $deals=product::all();
+        return view('shop.single',compact('product','product_images','productDetail','comments','rate','relateds','deals'));
     }
 
     public function profile(){

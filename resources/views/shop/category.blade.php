@@ -36,8 +36,6 @@
             <ul class="main-categories">
 
                 <li class="main-nav-list" style="padding:20px;20px;20px;20px">
-                    {{-- <label for="customRange1" class="form-label">Filter Price</label>
-                    <input type="range" class="form-range" id="slider"> --}}
                     <div id="slider"></div>
                     <br>
                     <div id="abc" hidden></div>

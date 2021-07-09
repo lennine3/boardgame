@@ -92,37 +92,46 @@
                         </li>
                         <li style="padding-left: 20px;margin-right: 20px;border-left: 1px solid #353940;">
                             @guest
-                <div class="dropdown">
-                    <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
-                            class="fas fa-sign-in-alt fa-2x"></i></a>
-                </div>
-                @else
-                <div class="dropdown">
-                    <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @hasanyrole('admin|staff')
-                        <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
-                        @endhasanyrole
-                        <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i class="fal fa-user"></i>
-                                <span style="padding-left: 10px">Profile</span></a></li>
-                        <li><a href="{{ route('invoice-shop') }}" class="dropdown-item"><i
-                                    class="far fa-file-invoice"></i><span style="padding-left: 15px">Invoice</span></a>
+                        <li>
+                            <div class="dropdown">
+                                <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
+                                        class="fas fa-sign-in-alt fa-2x"></i></a>
+                            </div>
                         </li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();"><i
-                                    class="fal fa-portal-exit"></i>
-                                <span style="padding-left: 8px">{{ __('Logout') }}</span>
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+
+                        @else
+                        <li>
+                            <div class="dropdown">
+                                <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    @hasanyrole('admin|staff')
+                                    <li><a class="dropdown-item" href="{{ route('admin') }}">Admin Dashboard</a></li>
+                                    @endhasanyrole
+                                    <li><a class="dropdown-item" href="{{ route('profile-user') }}"><i
+                                                class="fal fa-user"></i>
+                                            <span style="padding-left: 10px">Profile</span></a></li>
+                                    <li><a href="{{ route('invoice-shop') }}" class="dropdown-item"><i
+                                                class="far fa-file-invoice"></i><span
+                                                style="padding-left: 15px">Invoice</span></a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();"><i
+                                                class="fal fa-portal-exit"></i>
+                                            <span style="padding-left: 8px">{{ __('Logout') }}</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                    </ul>
-                </div>
-                @endguest
+
+                        @endguest
                         </li>
                     </ul>
                 </div>
@@ -135,7 +144,9 @@
         text-align:center;">
             <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('FrontEnd/img/logo-new.png') }}"
                     class="logo" alt="">
-                    <span  style="text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c">KT Board Game Store</span></a>
+                <span
+                    style="text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c">KT
+                    Board Game Store</span></a>
         </div>
         <hr>
         <div>
@@ -149,9 +160,8 @@
                     <div class="collapse navbar-collapse " id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <div class="menu-background"><a class="nav-link"
-                                    href="{{ route('home') }}">Home</a>
-                            </div>
+                                <div class="menu-background"><a class="nav-link" href="{{ route('home') }}">Home</a>
+                                </div>
                             </li>
                             <li class=" nav-item">
                                 <div class="menu-background"><a class="nav-link"

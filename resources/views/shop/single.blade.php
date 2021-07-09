@@ -207,49 +207,44 @@
             <div class="owl-product-more owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
-                        <div class="owl-item">
-                            {{-- <img src="{{ asset('FrontEnd/img/monopoly-1.jpg') }}" alt=""> --}}
-                            <div class="single-product">
-                                <img class="img-fluid" src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
-                                    style="width: 250px;height:250px">
-                                <div class="product-details">
-                                    <h6> <a href="#">The Best borad game to play with friend</a>
-                                    </h6>
-                                    <div class="price">
-                                        <h6>$60</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @foreach ($relateds as $related)
                         <div class="owl-item">
                             <div class="single-product">
-                                <img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" alt=""
-                                    style="width: 250px;height:250px">
-                                <div class="product-details">
-                                    <h6> <a href="#">The Best borad game to play with friend</a>
-                                    </h6>
-                                    <div class="price">
-                                        <h6>$60</h6>
+                                <a href="{{ route('single',$related->id) }}">
+                                <span class="onsale">Sale {{ $related->promotionRelation->rate }}% off</span>
+                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                    <div class="box-img">
+                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$related->image) }}"
+                                            alt="">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="owl-item">
-                            <div class="single-product">
-                                <img src="{{ asset('FrontEnd/img/conan.png') }}" alt=""
-                                    style="width: 250px;height:250px">
                                 <div class="product-details">
-                                    <h6> <a href="#">The Best borad game to play with friend</a>
-                                    </h6>
+                                    <h6> <a href="{{ route('single',$related->id) }}">{{ $related->name }}</a></h6>
                                     <div class="price">
-                                        <h6>$60</h6>
+                                        @if ($product->id_promotion!=0)
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h6 class="price-color"> <span
+                                                        class="price_icon">$</span>{{ $related->promotion_price}}
+                                                </h6>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <h6 class="l-through"><span
+                                                        class="price_icon">$</span>{{ $related->price }}</h6>
+                                            </div>
+                                        </div>
+                                        @else
+                                        <h6>${{ $product->price }}</h6>
+                                        @endif
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="owl-nav">
+                <div class="owl-nav ">
                     <div class="btn-left-related">
                         <div class="owl-prev-related"><img src="{{ asset('FrontEnd/img/prev-black.png') }}" alt=""
                                 class="img-fluid"></div>
@@ -281,129 +276,70 @@
         </div>
         <div class="row">
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom: 35px">
-                        <div class="single-related-product d-flex">
-                            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
-                                    style="height: 75px;weight:75px"></a>
-                            <div class="desc">
-                                <a href="#" class="title">Black lace Heels</a>
-                                <div class="price">
-                                    <h6>$189.00</h6>
-                                    <h6 class="l-through">$210.00</h6>
+                <div>
+                    <div class="owl-product-deal owl-carousel owl-theme owl-loaded ">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage">
+                                @foreach ($deals as $deal)
+                                @if ($deal->promotionRelation->rate>35)
+                                <div class="owl-item">
+                                    <div class="single-product">
+                                        <a href="{{ route('single',$deal->id) }}">
+                                        <span class="onsale">Sale {{ $deal->promotionRelation->rate }}% off</span>
+                                        <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                            <div class="box-img">
+                                                <img class="img-fluid" src="{{ asset('Img/product-img/'.$deal->image) }}"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                        <div class="product-details">
+                                            <h6> <a href="{{ route('single',$deal->id) }}">{{ $deal->name }}</a></h6>
+                                            <div class="price">
+                                                @if ($product->id_promotion!=0)
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <h6 class="price-color"> <span
+                                                                class="price_icon">$</span>{{ $deal->promotion_price}}
+                                                        </h6>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <h6 class="l-through"><span
+                                                                class="price_icon">$</span>{{ $deal->price }}</h6>
+                                                    </div>
+                                                </div>
+                                                @else
+                                                <h6>${{ $deal->price }}</h6>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
                                 </div>
+                                @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="owl-nav">
+                            <div class="btn-left-deal">
+                                <div class="owl-prev-deal"><img src="{{ asset('FrontEnd/img/prev-deal.png') }}" alt=""
+                                        class="img-fluid-deal"></div>
+                            </div>
+                            <div class="btn-right-deal">
+                                <div class="owl-next-deal"><img src="{{ asset('FrontEnd/img/next-deal.png') }}" alt=""
+                                        class="img-fluid-deal"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-                        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
-                                style="height: 75px;weight:75px"></a>
-                        <div class="desc">
-                            <a href="#" class="title">Black lace Heels</a>
-                            <div class="price">
-                                <h6>$189.00</h6>
-                                <h6 class="l-through">$210.00</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-                    <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
-                            style="height: 75px;weight:75px"></a>
-                    <div class="desc">
-                        <a href="#" class="title">Black lace Heels</a>
-                        <div class="price">
-                            <h6>$189.00</h6>
-                            <h6 class="l-through">$210.00</h6>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-                <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt=""
-                        style="height: 75px;weight:75px"></a>
-                <div class="desc">
-                    <a href="#" class="title">Black lace Heels</a>
-                    <div class="price">
-                        <h6>$189.00</h6>
-                        <h6 class="l-through">$210.00</h6>
-                    </div>
+            <div class="col-lg-3">
+                <div class="ctg-right">
+                    <a href="#" target="_blank">
+                        <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}" alt="">
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-            <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-            <div class="desc">
-                <a href="#" class="title">Black lace Heels</a>
-                <div class="price">
-                    <h6>$189.00</h6>
-                    <h6 class="l-through">$210.00</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6 mb-20" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-        <div class="desc">
-            <a href="#" class="title">Black lace Heels</a>
-            <div class="price">
-                <h6>$189.00</h6>
-                <h6 class="l-through">$210.00</h6>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-        <div class="desc">
-            <a href="#" class="title">Black lace Heels</a>
-            <div class="price">
-                <h6>$189.00</h6>
-                <h6 class="l-through">$210.00</h6>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-        <div class="desc">
-            <a href="#" class="title">Black lace Heels</a>
-            <div class="price">
-                <h6>$189.00</h6>
-                <h6 class="l-through">$210.00</h6>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-6" style="padding-bottom:35px"">
-                        <div class=" single-related-product d-flex">
-        <a href="#"><img src="{{ asset('FrontEnd/img/monopoly.jpg') }}" alt="" style="height: 75px;weight:75px"></a>
-        <div class="desc">
-            <a href="#" class="title">Black lace Heels</a>
-            <div class="price">
-                <h6>$189.00</h6>
-                <h6 class="l-through">$210.00</h6>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="ctg-right">
-            <a href="#" target="_blank">
-                <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}" alt="">
-            </a>
-        </div>
-    </div>
-    </div>
     </div>
 </section>
 <!--Deal end-->
