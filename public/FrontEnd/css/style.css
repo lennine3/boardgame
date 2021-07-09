@@ -277,12 +277,14 @@ h6 {
     font-weight: 500;
     line-height: 1.2 !important;
 }
-
 .img-fluid {
     max-width: 100%;
     height: auto;
 }
-
+.img-fluid-deal{
+    max-width: 20%;
+    height: auto;
+}
 .single-product {
     padding-top: 30px;
     position: relative;
@@ -1691,6 +1693,41 @@ section {
     opacity: 1;
 }
 
+/*Deal*/
+.owl-prev-deal {
+    position: absolute !important;
+    left: -115;
+    top: -135;
+    opacity: 0.5;
+}
+
+.owl-prev-deal:hover {
+    position: absolute !important;
+    background: none !important;
+    left: -115;
+    top: -135;
+    opacity: 1;
+}
+
+.owl-next-deal {
+    position: absolute !important;
+    right: -115;
+    top: -135;
+    opacity: 0.5;
+}
+.owl-next-deal:hover {
+    position: absolute !important;
+    background: none !important;
+    right: -115;
+    top: -135;
+    opacity: 1;
+}
+.hide {
+    display: none;
+  }
+.deal-block:hover + .hide{
+    display: block;
+}
 /*Single Product*/
 .product-img-box {
     width: 400px;
