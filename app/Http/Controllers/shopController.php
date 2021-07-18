@@ -19,6 +19,7 @@ use App\Models\invoiceDetail;
 use App\Models\productType;
 use App\Models\promotion;
 use App\Models\rating;
+use App\Models\turtorial;
 use Illuminate\Support\Str;
 
 use Exception;
@@ -32,7 +33,8 @@ class shopController extends Controller
         $productType_3=product::where('id_product_type',3)->get();
         $productType_4=product::where('id_product_type',4)->get();
         $promotion=promotion::all();
-        return view ('index',compact('products','productType_1','productType_2','productType_3','productType_4'));
+        $deals=product::all();
+        return view ('index',compact('products','productType_1','productType_2','productType_3','productType_4','deals'));
     }
     public function loginPage(){
         return view('shop.login-page');
@@ -76,17 +78,21 @@ class shopController extends Controller
         $products=product::where('price','<',$number)->orderBy('price')->get();
         return view('shop.category.category-render',compact('products'));
     }
+    public function categoryPrice_render($price_1,$price_2){
+        $products=product::whereBetween('price',[$price_1,$price_2])->orderBy('price')->get();
+        return view('shop.category.category-render',compact('products'));
+    }
     public function single($id){
         $rate=rating::where('id_product',$id)->get();
         $comments=comment::where('id_product',$id)->get();
         $product_images=productImage::where('product_id',$id)->get();
         /* dd($product_images); */
-
+        $turtorial=turtorial::where('id_product',$id)->first();
         $productDetail=productDetail::where('product_id',$id)->first();
         $product=product::find($id);
         $relateds=product::where('id_product_type',$product->id_product_type)->get();
         $deals=product::all();
-        return view('shop.single',compact('product','product_images','productDetail','comments','rate','relateds','deals'));
+        return view('shop.single',compact('product','product_images','productDetail','comments','rate','relateds','deals','turtorial'));
     }
 
     public function profile(){

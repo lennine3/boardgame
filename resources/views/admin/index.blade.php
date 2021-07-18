@@ -8,32 +8,37 @@
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-primary border-4 background-white">
                 <div class="container report-style">
-                    <span class="info-board">earnings (monthly)</span>
-                    <h5>$ 40,000</h5>
+                    <span class="info-board">Employees</span>
+                    <h5><i class="far fa-users"></i> {{ $staffCount }}</h5>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-success border-4 background-white">
                 <div class="container report-style">
-                    <span class="info-board">earnings (monthly)</span>
-                    <h5>$ 40,000</h5>
+                    <span class="info-board">Members</span>
+                    <h5><i class="far fa-users"></i> {{ $customerCount }}</h5>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-cyan border-4 background-white">
                 <div class="container report-style">
-                    <span class="info-board">earnings (monthly)</span>
-                    <h5>$ 40,000</h5>
+                    <span class="info-board">Earnings (Year)</span>
+                    @php
+                    $incomeYear=0;
+                    foreach ($invoiceYearCount as $item)
+                    $incomeYear+=$item->total_price
+                    @endphp
+                    <h5><i class="fas fa-money-bill-wave-alt"></i> {{ $incomeYear }} $</h5>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-sm-12">
             <div class="rounded border-start border-warning border-4 background-white">
                 <div class="container report-style">
-                    <span class="info-board">earnings (monthly)</span>
-                    <h5>$ 40,000</h5>
+                    <span class="info-board">Number Invoice (Month)</span>
+                    <h5><i class="fas fa-file-invoice-dollar"></i> {{ $invoiceCount }}</h5>
                 </div>
             </div>
         </div>
@@ -143,7 +148,7 @@
                         <h2>To do list</h2>
                     </div>
                     <div class="col-lg-6 d-flex justify-content-end">
-                        <button class="btn btn-primary" data-bs-target="#todoModal"  data-bs-toggle="modal">Add</button>
+                        <button class="btn btn-primary" data-bs-target="#todoModal" data-bs-toggle="modal">Add</button>
                     </div>
                 </div>
 
@@ -178,11 +183,10 @@
                 <h2>Notice board</h2>
             </div>
             <div class="col-lg-6 d-flex justify-content-end">
-                <button class="btn btn-success" data-bs-target="#noticeModal"  data-bs-toggle="modal">Add</button>
+                <button class="btn btn-success" data-bs-target="#noticeModal" data-bs-toggle="modal">Add</button>
             </div>
         </div>
-        <div class="table-responsive rounded table-admin border-4"
-            style="display: block!important">
+        <div class="table-responsive rounded table-admin border-4" style="display: block!important">
             <table class="table ">
                 <thead>
                     <th>Date</th>

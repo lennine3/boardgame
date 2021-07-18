@@ -22,9 +22,11 @@ Route::prefix('/')->group(function () {
     Route::get('profile-user','App\Http\Controllers\shopController@profile_ajax');
     Route::post('profile-user-update','App\Http\Controllers\shopController@user_update')->name('profile-user-update');
     Route::post('profile-staff-update','App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
+    /*Category*/
     Route::get('category/{type}','App\Http\Controllers\shopController@category')->name('category');
     Route::get('category-type/{type}/{id}','App\Http\Controllers\shopController@category_type')->name('category');
     Route::get('category-render/{number}','App\Http\Controllers\shopController@category_render')->name('category-render');
+    Route::get('category-price-render/{price1}/{price2}','App\Http\Controllers\shopController@categoryPrice_render');
 
     Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('/single/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
@@ -65,9 +67,12 @@ Route::prefix('/')->group(function () {
 
 /*Admin*/
 Route::prefix('/admin')->group(function () {
-    Route::get('/', function () {
+    /* Route::get('/', function () {
         return view('admin/index');
-    })->name('admin');
+    })->name('admin'); */
+    //index dashboard
+    Route::get('/', 'App\Http\Controllers\adminController@index')->name('admin');
+
     //User
     Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user');
     Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
@@ -121,6 +126,10 @@ Route::prefix('/admin')->group(function () {
     //promotion
     Route::get('/promotion', 'App\Http\Controllers\promotionController@index')->name('promotion-index');
     Route::post('/promotion-store', 'App\Http\Controllers\promotionController@store')->name('promotion-store');
+    Route::get('/turtorial','App\Http\Controllers\turtorialController@index')->name('turtorial');
+    Route::get('/turtorial-create','App\Http\Controllers\turtorialController@create')->name('turtorial-create');
+    Route::post('/turtorial-store','App\Http\Controllers\turtorialController@store')->name('turtorial-store');
+    Route::post('/img-upload','App\Http\Controllers\turtorialController@upload')->name('Img-Upload');
 });
 
 Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');
