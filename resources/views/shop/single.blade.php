@@ -89,7 +89,29 @@
         </div>
     </div>
 </div>
-</div>
+<section>
+
+    <div class="container">
+        <div class="main_color" style="width: 40%;padding: 15px 15px 15px 15px">
+            <h3 style="color: #fff">Image</h3>
+        </div>
+        <br>
+        <div class="row">
+            {{-- <div class="col-lg-12">
+                @foreach ($product_images as $product_image)
+                <div><img src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="auto">
+                </div> <br>
+                @endforeach
+            </div> --}}
+            <div class="col-lg-12">
+                <div class="single-detail">
+                    {!! $turtorial->content ?? ''!!}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 <section class="product_description">
     <div class="container">
         <ul class="nav nav-tabs nav-pills nav-background justify-content-center pointer" id=" nav-tab" role="tablist">
@@ -102,6 +124,7 @@
                     aria-controls="nav-review" aria-selected="false">Review</a>
             </li>
         </ul>
+
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="specification" role="tabpanel">
                 <div class="table-responsive">
@@ -211,33 +234,33 @@
                         <div class="owl-item">
                             <div class="single-product">
                                 <a href="{{ route('single',$related->id) }}">
-                                <span class="onsale">Sale {{ $related->promotionRelation->rate }}% off</span>
-                                <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                    <div class="box-img">
-                                        <img class="img-fluid" src="{{ asset('Img/product-img/'.$related->image) }}"
-                                            alt="">
-                                    </div>
-                                </div>
-                                <div class="product-details">
-                                    <h6> <a href="{{ route('single',$related->id) }}">{{ $related->name }}</a></h6>
-                                    <div class="price">
-                                        @if ($product->id_promotion!=0)
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <h6 class="price-color"> <span
-                                                        class="price_icon">$</span>{{ $related->promotion_price}}
-                                                </h6>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <h6 class="l-through"><span
-                                                        class="price_icon">$</span>{{ $related->price }}</h6>
-                                            </div>
+                                    <span class="onsale">Sale {{ $related->promotionRelation->rate }}% off</span>
+                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                        <div class="box-img">
+                                            <img class="img-fluid" src="{{ asset('Img/product-img/'.$related->image) }}"
+                                                alt="">
                                         </div>
-                                        @else
-                                        <h6>${{ $product->price }}</h6>
-                                        @endif
                                     </div>
-                                </div>
+                                    <div class="product-details">
+                                        <h6> <a href="{{ route('single',$related->id) }}">{{ $related->name }}</a></h6>
+                                        <div class="price">
+                                            @if ($product->id_promotion!=0)
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <h6 class="price-color"> <span
+                                                            class="price_icon">$</span>{{ $related->promotion_price}}
+                                                    </h6>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h6 class="l-through"><span
+                                                            class="price_icon">$</span>{{ $related->price }}</h6>
+                                                </div>
+                                            </div>
+                                            @else
+                                            <h6>${{ $product->price }}</h6>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -285,33 +308,34 @@
                                 <div class="owl-item">
                                     <div class="single-product">
                                         <a href="{{ route('single',$deal->id) }}">
-                                        <span class="onsale">Sale {{ $deal->promotionRelation->rate }}% off</span>
-                                        <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
-                                            <div class="box-img">
-                                                <img class="img-fluid" src="{{ asset('Img/product-img/'.$deal->image) }}"
-                                                    alt="">
-                                            </div>
-                                        </div>
-                                        <div class="product-details">
-                                            <h6> <a href="{{ route('single',$deal->id) }}">{{ $deal->name }}</a></h6>
-                                            <div class="price">
-                                                @if ($product->id_promotion!=0)
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <h6 class="price-color"> <span
-                                                                class="price_icon">$</span>{{ $deal->promotion_price}}
-                                                        </h6>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <h6 class="l-through"><span
-                                                                class="price_icon">$</span>{{ $deal->price }}</h6>
-                                                    </div>
+                                            <span class="onsale">Sale {{ $deal->promotionRelation->rate }}% off</span>
+                                            <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                <div class="box-img">
+                                                    <img class="img-fluid"
+                                                        src="{{ asset('Img/product-img/'.$deal->image) }}" alt="">
                                                 </div>
-                                                @else
-                                                <h6>${{ $deal->price }}</h6>
-                                                @endif
                                             </div>
-                                        </div>
+                                            <div class="product-details">
+                                                <h6> <a href="{{ route('single',$deal->id) }}">{{ $deal->name }}</a>
+                                                </h6>
+                                                <div class="price">
+                                                    @if ($product->id_promotion!=0)
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <h6 class="price-color"> <span
+                                                                    class="price_icon">$</span>{{ $deal->promotion_price}}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <h6 class="l-through"><span
+                                                                    class="price_icon">$</span>{{ $deal->price }}</h6>
+                                                        </div>
+                                                    </div>
+                                                    @else
+                                                    <h6>${{ $deal->price }}</h6>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
@@ -348,6 +372,7 @@
 
 <!--js product more-->
 <script src="{{ asset('FrontEnd/js/single_slider.js') }}"></script>
+<script src="{{ asset('FrontEnd/js/deal.js') }}"></script>
 <!--js product more-->
 
 @endsection

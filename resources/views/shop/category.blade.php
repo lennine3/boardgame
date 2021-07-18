@@ -26,38 +26,61 @@
 </section>
 <div class="container" style="padding-bottom: 30px">
     <div class="row">
-        <div class="col-lg-3 " >
+        <div class="col-lg-3">
             <div class="affix" id="navBar">
-            <div class="side_Bar_Categories">
-                <div class="head">
-                    Browser Category
-                </div>
-            </div>
-            <ul class="main-categories">
-
-                <li class="main-nav-list" style="padding:20px;20px;20px;20px">
-                    <div id="slider"></div>
-                    <br>
-                    <div id="abc" hidden></div>
-                    <div class="row">
-                        <div class="col-lg-6"><button id="priceSubmit" class="primary-btn btn">Filter</button></div>
-                        <div class="col-lg-6">$<span id="slider-range-value"></span></div>
+                <div class="side_Bar_Categories">
+                    <div class="head">
+                        Browser Category
                     </div>
-
-
-                </li>
-                <hr>
-                @foreach ($productTypes as $productType)
-                <li class="main-nav-list" style="padding:20px;20px;20px;20px"><a href="{{ url('category-type'.'/'.$productType->id.'/'.'0') }}">
-                        <span class="lnr lnr-arrow-right"></span>{{ $productType->product_type_name }}{{-- <span class="number">(53)</span> --}}</a>
-                </li>
-                @endforeach
-            </ul>
+                </div>
+                <ul class="main-categories">
+                    <li class="main-nav-list" style="padding:20px;20px;20px;20px">
+                        <h4>PRICE</h4>
+                        <ul class="list-group list-group-category">
+                            <li class="list-group-item">
+                                <button class="btn btn-outline-secondary" id="Price1">0$ - 200$</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-outline-secondary" id="Price2">200$ - 400$</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-outline-secondary" id="Price3">400$ - 1000$</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-outline-secondary" id="Price4">1000$ - 1500$</button>
+                            </li>
+                            <li class="list-group-item">
+                                <button class="btn btn-outline-secondary" id="Price5">1500$ - 2000$</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="main-nav-list" style="padding:20px;20px;20px;20px">
+                        <div id="slider"></div>
+                        <br>
+                        <div id="abc" hidden></div>
+                        <div class="row">
+                            <div class="col-lg-6"><button id="priceSubmit" class="primary-btn btn">Filter</button></div>
+                            <div class="col-lg-6">$<span id="slider-range-value"></span></div>
+                        </div>
+                    </li>
+                    <hr>
+                    <li class="main-nav-list" style="padding:20px;20px;20px;20px">
+                        <h4>Product Type</h4>
+                        <ul class="list-group list-group-category">
+                            @foreach ($productTypes as $productType)
+                            <li class="list-group-item list-group-item-link">
+                                <a href="{{ url('category-type'.'/'.$productType->id.'/'.'0') }}">
+                                    <span class="lnr lnr-arrow-right"></span>{{ $productType->product_type_name }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="col-lg-9">
-            <div style="padding: 0 20px 10px 20px;"
-                class="d-flex flex-wrap align-items-center main_color">
+            <div style="padding: 0 20px 10px 20px;" class="d-flex flex-wrap align-items-center main_color">
                 <div class="sorting">
                     <select name="" class="form-select" id="sortCategory">
                         <option value="{{ url('category/0') }}" @php if(strpos($_SERVER['REQUEST_URI'], "category/0" ))

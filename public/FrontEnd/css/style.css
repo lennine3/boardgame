@@ -112,7 +112,11 @@ h6>a:hover {
 .nav-invoice>li {
     width: 150px;
 }
-
+.list-group-category .list-group-item{
+    background-color: #fff!important;
+    color: #000;
+    border: none!important;
+}
 .list-group-item {
     background-color: rgba(61, 53, 53, 0.541) !important;
     color: #fff;
@@ -943,6 +947,7 @@ a {
 .main_color{
     background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%) !important;
 }
+
 .main-categories {
     padding: 0 20px;
     background: #fff;
@@ -962,13 +967,22 @@ li {
     border-bottom: 1px solid #eee;
 }
 
-.main-categories a:hover {
+.main-categories .list-group-item-link:hover {
     color: #ffba00;
-    font-size: 14px;
+    font-size: 36px;
     display: block;
     line-height: 50px;
     padding-left: 10px;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
+}
+
+.main-categories a:hover {
+    color: #ffba00;
+    /* font-size: 14px;
+    display: block;
+    line-height: 50px;
+    padding-left: 10px; */
+    /* border-bottom: 1px solid #eee; */
 }
 
 .main-categories a {
@@ -1379,6 +1393,16 @@ section {
 }
 /*Checkout*/
 /*Single Product*/
+.single-detail img{
+    box-sizing: border-box;
+    border-style: none;
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+img {
+    vertical-align: middle;
+}
 .product_text {
     margin-left: -15px;
     /* margin-top: 65px; */

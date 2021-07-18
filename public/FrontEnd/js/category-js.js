@@ -29,7 +29,102 @@ slider.noUiSlider.on('update', function (values, handle) {
     }, delay);
     }); */
 });
-
+$(document).ready(function(){
+    var $price1=0;
+    var $price2=200;
+    $("#Price1").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
+$(document).ready(function(){
+    var $price1=0;
+    var $price2=200;
+    $("#Price1").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
+$(document).ready(function(){
+    var $price1=200;
+    var $price2=400;
+    $("#Price2").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
+$(document).ready(function(){
+    var $price1=400;
+    var $price2=1000;
+    $("#Price3").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
+$(document).ready(function(){
+    var $price1=1000;
+    var $price2=1500;
+    $("#Price4").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
+$(document).ready(function(){
+    var $price1=1500;
+    var $price2=2000;
+    $("#Price4").click(function(){
+        $.ajax({
+            url: '/category-price-render/' + $price1+'/'+$price2,
+            type: 'GET',
+            data: {
+                "_token": "{{ csrf_token() }}",
+            }
+        }).done(function (response) {
+            $("#productCategory").empty();
+            $("#productCategory").html(response);
+        });
+    })
+});
 $(document).ready(function () {
     var priceValue = $("#abc");
     $("#priceSubmit").click(function () {
