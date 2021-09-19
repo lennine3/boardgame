@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid pad-bot-20">
     <div style="padding-top: 20px">
         <h2>Dashboard</h2>
     </div>
@@ -206,6 +206,42 @@
 </div>
 
 @include('admin.todoModal')
+ <script>
+     var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['','January', 'February', 'March', 'April', 'May', 'June','July','August','September','October','November','December'],
+        datasets: [{
+            label: 'Monthly Earn',
+            data: {!! json_encode($datas) !!},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+    animations: {
+      tension: {
+        duration: 1000,
+        easing: 'linear',
+        from: 1,
+        to: 0,
+        loop: true
+      }
+    },
+    scales: {
 
-<script src="{{ asset('BackEnd/js/admin-chart.js') }}"></script>
+      y: { // defining min and max so hiding the dataset does not change scale range
+
+        beginAtZero: true
+      }
+    }
+  }
+});
+ </script>
 @endsection

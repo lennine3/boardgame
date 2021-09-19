@@ -38,9 +38,9 @@
                 <div class="details_item">
                     <h4>Order Info</h4>
                     <ul class="list">
-                        <li><a href="#"><span>Order number</span> : 60235</a></li>
-                        <li><a href="#"><span>Date</span> : Los Angeles</a></li>
-                        <li><a href="#"><span>Total</span> : USD 2210</a></li>
+                        <li><a href="#"><span>Order number</span> : {{ $invoice->invoice_code }}</a></li>
+                        <li><a href="#"><span>Date</span> : {{ $invoice->created_at->format('Y-m-d') }}</a></li>
+                        <li><a href="#"><span>Total</span> : {{ $invoice->total_price }}</a></li>
                         <li><a href="#"><span>Payment method</span> : Check payments</a></li>
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                 <div class="details_item">
                     <h4>Billing Address</h4>
                     <ul class="list">
-                        <li><a href="#"><span>Street</span> : 56/8</a></li>
+                        <li><a href="#"><span>Street</span> : {{ $invoice->address }}</a></li>
                         <li><a href="#"><span>City</span> : Los Angeles</a></li>
                         <li><a href="#"><span>Country</span> : United States</a></li>
                         <li><a href="#"><span>Postcode </span> : 36952</a></li>
@@ -80,39 +80,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($invoice_detail as $item)
                         <tr>
                             <td>
-                                <p>Pixelstore fresh Blackberry</p>
+                                <p>{{ $item->product->name }}</p>
                             </td>
                             <td>
-                                <h5>x 02</h5>
+                                <h5>x {{ str_pad($item->unit, 2, 0, STR_PAD_LEFT) }}</h5>
                             </td>
                             <td>
-                                <p>$720.00</p>
+                                <p>${{ $item->amount }}</p>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <p>Pixelstore fresh Blackberry</p>
-                            </td>
-                            <td>
-                                <h5>x 02</h5>
-                            </td>
-                            <td>
-                                <p>$720.00</p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>Pixelstore fresh Blackberry</p>
-                            </td>
-                            <td>
-                                <h5>x 02</h5>
-                            </td>
-                            <td>
-                                <p>$720.00</p>
-                            </td>
-                        </tr>
+                        @endforeach
                         <tr>
                             <td>
                                 <h4>Subtotal</h4>
@@ -121,7 +101,7 @@
                                 <h5></h5>
                             </td>
                             <td>
-                                <p>$2160.00</p>
+                                <p>${{ $invoice->price }}</p>
                             </td>
                         </tr>
                         <tr>
@@ -132,7 +112,7 @@
                                 <h5></h5>
                             </td>
                             <td>
-                                <p>Flat rate: $50.00</p>
+                                <p>Flat rate: ${{ $invoice->ship }}</p>
                             </td>
                         </tr>
                         <tr>
@@ -143,7 +123,7 @@
                                 <h5></h5>
                             </td>
                             <td>
-                                <p>$2210.00</p>
+                                <p>${{ $invoice->total_price }}</p>
                             </td>
                         </tr>
                     </tbody>

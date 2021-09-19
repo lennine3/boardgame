@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,54 +16,61 @@ use Illuminate\Http\Request;
 */
 //Shop
 Route::prefix('/')->group(function () {
-    Route::get('/','App\Http\Controllers\shopController@index')->name('home');
-    Route::get('login-page','App\Http\Controllers\shopController@loginPage')->name('loginPage');
-    Route::get('register-page','App\Http\Controllers\shopController@registerPage')->name('registerPage');
-    Route::get('profile','App\Http\Controllers\shopController@profile')->name('profile-user');
-    Route::get('profile-user','App\Http\Controllers\shopController@profile_ajax');
-    Route::post('profile-user-update','App\Http\Controllers\shopController@user_update')->name('profile-user-update');
-    Route::post('profile-staff-update','App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
+    Route::get('/', 'App\Http\Controllers\shopController@index')->name('home');
+    Route::get('login-page', 'App\Http\Controllers\shopController@loginPage')->name('loginPage');
+    Route::get('register-page', 'App\Http\Controllers\shopController@registerPage')->name('registerPage');
+    Route::get('profile', 'App\Http\Controllers\shopController@profile')->name('profile-user');
+    Route::get('profile-user', 'App\Http\Controllers\shopController@profile_ajax');
+    Route::post('profile-user-update', 'App\Http\Controllers\shopController@user_update')->name('profile-user-update');
+    Route::post('profile-staff-update', 'App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
     /*Category*/
-    Route::get('category/{type}','App\Http\Controllers\shopController@category')->name('category');
-    Route::get('category-type/{type}/{id}','App\Http\Controllers\shopController@category_type')->name('category');
-    Route::get('category-render/{number}','App\Http\Controllers\shopController@category_render')->name('category-render');
-    Route::get('category-price-render/{price1}/{price2}','App\Http\Controllers\shopController@categoryPrice_render');
+    Route::get('category/{type}', 'App\Http\Controllers\shopController@category')->name('category');
+    Route::get('category-type/{type}/{id}', 'App\Http\Controllers\shopController@category_type')->name('category');
+    Route::get('category-render/{number}', 'App\Http\Controllers\shopController@category_render')->name('category-render');
+    Route::get('category-price-render/{price1}/{price2}', 'App\Http\Controllers\shopController@categoryPrice_render');
 
-    Route::get('add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart');
-    Route::get('/single/add-to-cart/{id}','App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
-    Route::get('remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
-    Route::get('/single/remove-item-cart/{id}','App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart-single');
-    Route::get('remove-Listitem-cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
-    Route::get('update-Listitem-cart/{id}/{quanty}','App\Http\Controllers\CartController@UpdateListItemCart')->name('update-list-cart');
-    Route::get('shopping-cart',function(){
+    Route::get('add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart')->name('add-cart');
+    Route::get('/single/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
+    Route::get('remove-item-cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
+    Route::get('/single/remove-item-cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart-single');
+    Route::get('remove-Listitem-cart/{id}', 'App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
+    Route::get('update-Listitem-cart/{id}/{quanty}', 'App\Http\Controllers\CartController@UpdateListItemCart')->name('update-list-cart');
+    Route::get('shopping-cart', function () {
         return view('shop.shopping-cart');
     });
-    Route::get('shopping-cart-clear','App\Http\Controllers\CartController@clearAll')->name('clear-cart');
-    Route::get('list-cart',function(){
+    Route::get('shopping-cart-clear', 'App\Http\Controllers\CartController@clearAll')->name('clear-cart');
+    Route::get('list-cart', function () {
         return view('shop.ListCart');
     });
-    Route::get('single/{id}','App\Http\Controllers\shopController@single')->name('single');
+    Route::get('single/{id}', 'App\Http\Controllers\shopController@single')->name('single');
 
-    Route::get('cart',function(){
+    /* Favorite */
+    Route::get('favorite', 'App\Http\Controllers\FavoriteController@index')->name('favorite');
+    Route::get('add-favorite/{product}', 'App\Http\Controllers\FavoriteController@store');
+    Route::get('remove-favorite/{product}', 'App\Http\Controllers\FavoriteController@destroy');
+
+    /* Search */
+    Route::get('search', 'App\Http\Controllers\SearchController@search')->name('search');
+
+    Route::get('cart', function () {
         return view('shop.cart');
     })->name('cart');
-    Route::get('about-us',function(){
+    Route::get('about-us', function () {
         return view('shop.about-us');
     })->name('about-us');
     //Invoice
-    Route::get('invoice','App\Http\Controllers\shopController@invoice')->name('invoice-shop');
-    Route::post('invoice-store','App\Http\Controllers\shopController@invoice_store')->name('invoice-store');
-    Route::get('invoice-user',function(){
+    Route::get('invoice', 'App\Http\Controllers\shopController@invoice')->name('invoice-shop');
+    Route::get('invoice-detail/{invoice}', 'App\Http\Controllers\shopController@invoiceDetail')->name('invoice-detail');
+    Route::post('invoice-store', 'App\Http\Controllers\shopController@invoice_store')->name('invoice-store');
+    Route::get('invoice-user', function () {
         return view('shop.invoice.invoice-ajax');
     });
-    Route::get('checkout','App\Http\Controllers\shopController@checkout')->name('checkout')->middleware('checkCostumer');
+    Route::get('checkout', 'App\Http\Controllers\shopController@checkout')->name('checkout')->middleware('checkCostumer');
 
-    Route::get('confirmation',function(){
-        return view('shop.confirmation');
-    })->name('confirmation');
+    Route::get('confirmation', 'App\Http\Controllers\shopController@confirmation')->name('confirmation');
     //comment
-    Route::get('comment-store/{id}','App\Http\Controllers\shopController@comment_store')->name('comment-store');
-    Route::get('comment-page/{id}','App\Http\Controllers\shopController@comment_page');
+    Route::get('comment-store/{id}', 'App\Http\Controllers\shopController@comment_store')->name('comment-store');
+    Route::get('comment-page/{id}', 'App\Http\Controllers\shopController@comment_page');
 });
 
 /*Admin*/
@@ -104,7 +112,7 @@ Route::prefix('/admin')->group(function () {
     Route::Delete('/staffs-destroy/{id}', 'App\Http\Controllers\StaffController@destroy')->name('staffs.destroy');
     //Product
     Route::resource('/product', App\Http\Controllers\productController::class);
-    Route::post('/product-update/{id}','App\Http\Controllers\productController@update')->name('product-update');
+    Route::post('/product-update/{id}', 'App\Http\Controllers\productController@update')->name('product-update');
     //Product Image
     Route::get('/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
     Route::post('/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
@@ -126,10 +134,10 @@ Route::prefix('/admin')->group(function () {
     //promotion
     Route::get('/promotion', 'App\Http\Controllers\promotionController@index')->name('promotion-index');
     Route::post('/promotion-store', 'App\Http\Controllers\promotionController@store')->name('promotion-store');
-    Route::get('/turtorial','App\Http\Controllers\turtorialController@index')->name('turtorial');
-    Route::get('/turtorial-create','App\Http\Controllers\turtorialController@create')->name('turtorial-create');
-    Route::post('/turtorial-store','App\Http\Controllers\turtorialController@store')->name('turtorial-store');
-    Route::post('/img-upload','App\Http\Controllers\turtorialController@upload')->name('Img-Upload');
+    Route::get('/turtorial', 'App\Http\Controllers\turtorialController@index')->name('turtorial');
+    Route::get('/turtorial-create', 'App\Http\Controllers\turtorialController@create')->name('turtorial-create');
+    Route::post('/turtorial-store', 'App\Http\Controllers\turtorialController@store')->name('turtorial-store');
+    Route::post('/img-upload', 'App\Http\Controllers\turtorialController@upload')->name('Img-Upload');
 });
 
 Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');

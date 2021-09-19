@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\staff;
+use App\Models\comment;
+use App\Models\hasRole;
+use Spatie\Permission\Traits\HasRoles;
+/* use Spatie\Permission\Traits\HasRoles; */
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-/* use Spatie\Permission\Traits\HasRoles; */
-use App\Models\staff;
-use Spatie\Permission\Traits\HasRoles;
-use App\Models\comment;
-use App\Models\hasRole;
 class User extends Authenticatable
 {
     use HasFactory,Notifiable,HasRoles;
@@ -59,5 +59,8 @@ class User extends Authenticatable
     }
     public function roleRelation(){
         return $this->hasOne('App\Models\hasRole','id','model_id');
+    }
+    public function favorites(){
+        return $this->hasMany('App\Models\favorite');
     }
 }

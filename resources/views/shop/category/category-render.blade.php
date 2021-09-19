@@ -36,7 +36,18 @@
                             </div>
                             <div class="tooltip col-lg-6">
                                 <a href="#">
-                                    <i class="fas fa-heart-circle fa-3x addFav"></i>
+                                    @if (auth()->check())
+                                        @php
+                                            $check = auth()->user()->favorites()->where('product_id', $product->id)->first();
+                                        @endphp
+                                        @if ($check)
+                                            <i class="fas fa-heart-circle fa-3x addFav removefav active" data-target="{{ $product->id }}"></i>
+                                        @else
+                                            <i class="fas fa-heart-circle fa-3x addFav addtofav" data-target="{{ $product->id }}"></i>
+                                        @endif
+                                    @else
+                                        <i class="fas fa-heart-circle fa-3x addFav addtofav" data-target="{{ $product->id }}"></i>
+                                    @endif
                                 </a><span class="tooltiptext">Favortire</span>
                             </div>
                         </div>
