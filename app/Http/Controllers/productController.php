@@ -55,28 +55,24 @@ class productController extends Controller
         //
         $product=new product();
         $product->stock_keeper_unit=$request->sku;
-        $product->id_product_type=$request->productType;
-        $product->id_supplier=$request->supplier;
-        $product->id_staff=$request->staff;
+        $product->product_type_id=$request->productType;
+        $product->supplier_id=$request->supplier;
         $product->name=$request->name;
         $product->price=$request->price;
         $product->stock=$request->stock;
+        $product->promotion_id=$request->promotion;
         if($request->status!=null)
         $product->status=$request->status;
         else
         $product->status=0;
         $product->image=$this->ImgUpload($request);
         $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
+        $product->description=$request->description;
+        $product->size=$request->size;
+        $product->origin=$request->origin;
+        $product->weight=$request->weight;
+        $product->age=$request->age;
         $product->save();
-        $productDetail=new productDetail();
-        $productDetail->product_id=$product->id;
-        $productDetail->description=$request->description;
-        $productDetail->size=$request->size;
-        $productDetail->origin=$request->origin;
-        $productDetail->weight=$request->weight;
-        $productDetail->age=$request->age;
-        /* dd($productDetail); */
-        $productDetail->save();
         if ($request->hasfile('imageFile')) {
             $files=$request->file('imageFile');
             foreach ($files as $file) {
@@ -110,11 +106,11 @@ class productController extends Controller
         //
         $promotions=promotion::all();
         $product=product::findOrFail($id);
-        $productDetail=productDetail::where('product_id',$id)->first();
+        //$productDetail=productDetail::where('product_id',$id)->first();
         $staffs=staff::all();
         $producttypes=productType::all();
         $suppliers=supplier::all();
-        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product','productDetail','promotions'));
+        return view('admin.product.product-edit',compact('staffs','producttypes','suppliers','product','promotions'));
     }
 
     /**
@@ -128,11 +124,10 @@ class productController extends Controller
     {
         //
         $product=product::findOrFail($id);
-        $productDetail=productDetail::where('product_id',$id)->first();
+        //$productDetail=productDetail::where('product_id',$id)->first();
         $product->stock_keeper_unit=$request->sku;
-        $product->id_product_type=$request->productType;
-        $product->id_supplier=$request->supplier;
-        $product->id_staff=$request->staff;
+        $product->product_type_id=$request->productType;
+        $product->supplier_id=$request->supplier;
         $product->name=$request->name;
         $product->price=$request->price;
         $product->stock=$request->stock;
@@ -145,16 +140,14 @@ class productController extends Controller
         {
             $product->image=$product->image;
         }
-        $product->id_promotion=$request->promotion;
+        $product->promotion_id=$request->promotion;
         $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
-        $productDetail->product_id=$product->id;
-        $productDetail->description=$request->description;
-        $productDetail->size=$request->size;
-        $productDetail->origin=$request->origin;
-        $productDetail->weight=$request->weight;
-        $productDetail->age=$request->age;
+        $product->description=$request->description;
+        $product->size=$request->size;
+        $product->origin=$request->origin;
+        $product->weight=$request->weight;
+        $product->age=$request->age;
         /* dd($product); */
-        $productDetail->save();
         $product->save();
         return redirect()->route('product.index');
     }

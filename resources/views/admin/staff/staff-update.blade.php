@@ -2,11 +2,11 @@
 @section('content')
 <div class="container" style="padding-top: 20px">
     <div class="table-admin">
-        <form action="{{ route('staff-update',$staff->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('staff-update') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
             <input type="text" value="{{ $staff->id }}" name="id" hidden>
-            <input type="text" value="{{ $staff->user }}" name="user_id" hidden>
+            <input type="text" value="{{ $staff->user_id }}" name="user_id" hidden>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="mb-3">

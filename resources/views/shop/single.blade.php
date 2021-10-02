@@ -4,17 +4,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
             <div>
-                <h1 class="color-w"><b>Shopping cart</b></h1>
-                <nav class="d-flex align-items-center color-w">
-                    <a href>
-                        description
-                        <span style="  display: inline-block;
-                        margin: 0 10px;"><i class="fal fa-long-arrow-right"></i></span>
-                    </a>
-                    <a href>
-                        Product detail
-                    </a>
-                </nav>
+                <h1 class="color-w"><b>Product detail</b></h1>
             </div>
         </div>
     </div>
@@ -70,7 +60,7 @@
                     </li>
                 </ul>
                 <p>
-                    {{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}
+                    {{ isset($product) && $product->description!=null ? $product->description : '' }}
                 </p>
                 {{-- <div class="product_count">
                     <label for="qty">Quantity</label>
@@ -100,20 +90,17 @@
         </div>
     </div>
 </div>
+@if ($turtorial)
 <section>
-
     <div class="container">
-        <div class="main_color" style="width: 40%;padding: 15px 15px 15px 15px">
-            <h3 style="color: #fff">Image</h3>
+        <div style="margin-top:10px">
+            <div  class="singleDescription">Product Description
+            </div>
+            <div class="singleUnderline">
+        </div>
         </div>
         <br>
         <div class="row">
-            {{-- <div class="col-lg-12">
-                @foreach ($product_images as $product_image)
-                <div><img src="{{ asset('Img/product-img/'.$product_image->image) }}" alt="" width="100%" height="auto">
-                </div> <br>
-                @endforeach
-            </div> --}}
             <div class="col-lg-12">
                 <div class="single-detail">
                     {!! $turtorial->content ?? ''!!}
@@ -123,8 +110,16 @@
         </div>
     </div>
 </section>
+@endif
+
 <section class="product_description">
     <div class="container">
+        <div style="margin-top:10px">
+            <div  class="singleDescription">Product Detail
+            </div>
+            <div class="singleUnderline">
+        </div>
+        <br>
         <ul class="nav nav-tabs nav-pills nav-background justify-content-center pointer" id=" nav-tab" role="tablist">
             <li class="nav-items">
                 <a class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#specification"
@@ -146,7 +141,7 @@
                                     <h5>Size</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}
+                                    <h5>{{ isset($product) && $product->size!=null ? $product->size : '' }}
                                     </h5>
                                 </td>
                             </tr>
@@ -155,7 +150,7 @@
                                     <h5>Origin</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}
+                                    <h5>{{ isset($product) && $product->origin!=null ? $product->origin : '' }}
                                     </h5>
                                 </td>
                             </tr>
@@ -164,7 +159,7 @@
                                     <h5>Weight</h5>
                                 </td>
                                 <td>
-                                    <h5>{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}
+                                    <h5>{{ isset($product) && $product->weight!=null ? $product->weight : '' }}
                                     </h5>
                                 </td>
                             </tr>
@@ -173,7 +168,7 @@
                                     <h5>Age range</h5>
                                 </td>
                                 <td>
-                                    <h5>>{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}
+                                    <h5>>{{ isset($product) && $product->age!=null ? $product->age : '' }}
                                     </h5>
                                 </td>
                             </tr>
@@ -194,6 +189,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="review-box">
+                            @if (Auth::check()&&$is_buy==true)
                             <h4>Add a review and comment</h4>
                             <p>
                                 <div id="rateYo"></div>
@@ -201,7 +197,7 @@
                                 <span id="result" name="rating"></span>
                             </p>
                             <input type="text" name="id_product" value="{{ $product->id }}" hidden>
-                            @if (Auth::check())
+
                             <div class="col-md-12">
                                 <div class="form-group mb-3">
                                     <textarea class="form-control" name="comment" id="message"
@@ -209,10 +205,14 @@
                                 </div>
                             </div>
                             <div class="col-md-12 text-right">
-                                <a id="addComment" href="javascript:" data-id="{{ $product->id }}">Submit
+                                <a id="addComment" href="javascript:" data-id="{{ $product->id }}" class="btn btn-primary">Submit</a>
                                     {{-- <button type="submit" class="product-primary-btn">Submit Now</button> --}}
                             </div>
                             <div id="rateYo"></div>
+                            @elseif(Auth::check()&&$is_buy==false)
+                            <div class="text-center">
+                                Please buy this product to leave comment.
+                            </div>
                             @else
                             <div class="text-center">
                                 <a href="{{ route('loginPage') }}">Please login to leave comment.</a>

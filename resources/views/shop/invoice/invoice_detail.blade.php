@@ -1,28 +1,38 @@
 @extends('shop.layout')
-
-@section('css')
-    <style>
-        body {
-            background: #f5f5f5;
-        }
-
-    </style>
-@endsection
-
 @section('content')
-    <div class="p-5">
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>Invoice detail</b></h1>
+                <nav class="d-flex align-items-center color-w">
+                    <a href>
+                        Invoice
+                        <span style="  display: inline-block;
+                        margin: 0 10px;"><i class="fal fa-long-arrow-right"></i></span>
+                    </a>
+                    <a href>
+                        Invoice detail
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" style="padding-top: 20px;padding-bottom:50px">
+    <div class="p-5" style="background: #f5f5f5;">
         <div class="row">
             <div class="col-3">
                 <div class="d-flex align-items-center ">
                     <img src="@php
-                        if (!empty($customer->avatar)) {
-                            echo asset('Img/customer-avatar/' . $customer->avatar);
-                        } elseif (!empty($staff->avatar)) {
-                            echo asset('Img/user-img/' . $staff->avatar);
-                        } else {
-                            echo asset('Img/unsigned.png');
-                        }
-                    @endphp" class="profile_edit mr-2">
+                            if (!empty($customer->avatar)) {
+                                echo asset('Img/customer-avatar/' . $customer->avatar);
+                            } elseif (!empty($staff->avatar)) {
+                                echo asset('Img/user-img/' . $staff->avatar);
+                            } else {
+                                echo asset('Img/unsigned.png');
+                            }
+                        @endphp" class="profile_edit mr-2">
 
                     <p class="mb-0">
                         {{ auth()->user()->name }}
@@ -40,6 +50,14 @@
                     <i class="far fa-credit-card"></i>
                     <p class="mb-0">
                         <a href="{{ route('invoice-shop') }}">My order</a>
+                    </p>
+                </div>
+                <div class="d-flex align-items-center order-info">
+                    <i class="fas fa-box-alt"></i>
+                    <p class="mb-0">
+                        <a href="{{ url('invoice-keep-order') }}">Order keep @if (!empty($countKeep))
+                            <span class="badge" style="background: red">{{ $countKeep }}</span>
+                            @endif </a>
                     </p>
                 </div>
             </div>
@@ -75,20 +93,20 @@
                         </thead>
                         <tbody>
                             @foreach ($invoice->details as $item)
-                                @php
-                                    $product = @$item->product;
-                                @endphp
-                                <tr class="hasborder align-middle h-90">
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ @$product->image[0]->image }}">
-                                            <p>{{ @$product->name }}</p>
-                                        </div>
-                                    </td>
-                                    <td>${{ $item->price }}</td>
-                                    <td>{{ $item->unit }}</td>
-                                    <td>${{ $item->amount }}</td>
-                                </tr>
+                            @php
+                            $product = @$item->product;
+                            @endphp
+                            <tr class="hasborder align-middle h-90">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ @$product->image[0]->image }}">
+                                        <p>{{ @$product->name }}</p>
+                                    </div>
+                                </td>
+                                <td>${{ $item->price }}</td>
+                                <td>{{ $item->number }}</td>
+                                <td>${{ $item->total_price }}</td>
+                            </tr>
                             @endforeach
                             <tr>
                                 <td></td>
@@ -101,7 +119,7 @@
                             <tr>
                                 <td colspan="2"></td>
                                 <td>Shipping price</td>
-                                <td>${{ $invoice->total_price }}</td>
+                                <td>${{ $invoice->ship_fee }}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
@@ -114,4 +132,6 @@
             </div>
         </div>
     </div>
+</div>
+
 @endsection

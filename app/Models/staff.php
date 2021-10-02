@@ -10,7 +10,7 @@ use App\Models\User;
 class staff extends Model
 {
     use HasFactory;
-    protected $table='staff';
+    protected $table='employee';
 
     public function roleRelation()
     {
@@ -18,6 +18,6 @@ class staff extends Model
     }
     public function userRelation()
     {
-        return $this->hasOne('App\Models\User','id','user');
+        return $this->hasOne('App\Models\User','id','user_id');
     }
 }

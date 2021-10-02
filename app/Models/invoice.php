@@ -23,4 +23,10 @@ class invoice extends Model
         }
         return $text;
     }
+
+    public function getCustomer()
+    {
+        return $this->belongsTo('App\Models\User','customer_id','id');
+    }
+
 }

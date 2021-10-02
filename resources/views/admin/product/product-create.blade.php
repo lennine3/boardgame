@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="mb-3">
                         <label for="inputSupplier" class="form-label">Supplier</label>
                         <select name="supplier" id="inputSupplier" class="form-select">
@@ -37,14 +37,6 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <label for="inputStaff" class="form-label">Staff</label>
-                    <select name="staff" id="inputStaff" class="form-select">
-                        @foreach ($staffs as $staff)
-                        <option value="{{ $staff->id }}">{{ $staff->name }}</option>
-                        @endforeach
-                    </select>
                 </div>
             </div>
             <div class="row">

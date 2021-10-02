@@ -12,13 +12,13 @@ class comment extends Model
     use HasFactory;
 
     public function userRelation(){
-        return $this->belongsTo('App\Models\User','id_user','id');
+        return $this->belongsTo('App\Models\User','user_id','id');
     }
     public function staffRelation(){
-        return $this->belongsTo('App\Models\staff','id_user','user');
+        return $this->belongsTo('App\Models\staff','user_id','user_id');
     }
     public function customerRelation(){
-        return $this->belongsTo('App\Models\customer','id_user','user');
+        return $this->belongsTo('App\Models\customer','user_id','user_id');
     }
     public function RatingRelation(){
         return $this->hasOne('App\Models\rating','id_comment','id');

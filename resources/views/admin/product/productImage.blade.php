@@ -56,7 +56,7 @@
                         @foreach ($productImages as $productImage)
                         <tr>
                             <td>{{ $productImage->id }}</td>
-                            <td>{{ $productImage->id_product }}</td>
+                            <td>{{ $productImage->product_id }}</td>
                             <td>
                                 <img src="{{ asset('Img/product-img/'.$productImage->image) }}" alt=""
                                     style="width: 250px;height:150px">

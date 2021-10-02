@@ -5,10 +5,6 @@
         <div class="me-auto p-2 bd-highlight">
             <h2>customer</h2>
         </div>
-
-        <div class=" p-2 bd-highlight">
-            <a class="btn btn-primary" href="#">New customer</a>
-        </div>
     </div>
 
     <div class="table-responsive table-admin mb-4">
@@ -32,10 +28,10 @@
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->birth }}</td>
                     <td>{{ $customer->gender }}</td>
-                    <td><img src="{{ asset('Img/customer-img/'.$customer->avatar) }}" alt="" style="width: 150px;height:150px"></td>
+                    <td><img src="{{ asset('Img/customer-avatar/'.$customer->avatar) }}" alt="" style="width: 150px;height:150px"></td>
                     <td>{{ $customer->rank }}</td>
                     <td>
-                        <a href="{{-- {{ route('customer.edit',$customer->id) }} --}}" class="btn btn-warning editUser"><i class="far fa-pencil"></i></a>
+                        <a href="{{ url('admin/customer-edit',$customer->id) }}" class="btn btn-warning editUser"><i class="far fa-pencil"></i></a>
 
                     </td>
                     <td>

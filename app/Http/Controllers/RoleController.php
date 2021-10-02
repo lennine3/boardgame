@@ -29,7 +29,6 @@ class RoleController extends Controller
         $roles=Role::all();
         $users=User::all();
         $hasRole=hasRole::all();
-        /* dd($hasRole); */
         return view('admin.user.permission',compact('roles','users','hasRole'));
     }
 

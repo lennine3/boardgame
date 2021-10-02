@@ -122,6 +122,10 @@ textarea:focus{
 }
 /*Input*/
 /*Table*/
+.table-wrapper {
+    max-height: 300px;
+    overflow: auto;
+  }
 .table-admin {
     background-color: #2F323A;
     padding: 15px 15px 15px 15px;
@@ -135,7 +139,9 @@ textarea:focus{
 .form-check-label {
     color: #fff;
 }
-
+.todo-table tr{
+    color: #000000;
+}
 tr {
     color: #ccc;
 }

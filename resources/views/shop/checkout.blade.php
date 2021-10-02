@@ -152,27 +152,42 @@
                                     </div></div>
                                 </div></li>
                         </ul>
-                        <div class="payment_item">
-                            <div class="radion_btn">
-                                <input type="radio" id="f-option5" name="selector">
-                                <label for="f-option5">Check payments</label>
-                                <div class="check"></div>
-                            </div>
-                            <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
-                                Store Postcode.</p>
+                        <p></p>
+                        <div >
+                            <input type="checkbox" id="pendingOption" name="keep" value="1">
+                            <label for="pendingOption">keep product</label>
+
                         </div>
-                        <div class="payment_item active">
-                            <div class="radion_btn">
-                                <input type="radio" id="f-option6" name="selector">
-                                <label for="f-option6">Paypal </label>
-                                <img src="{{ asset('FrontEnd/img/i_atm.png') }}" alt="">
-                                <img src="{{ asset('FrontEnd/img/onepay.png') }}" alt="">
-                                <img src="{{ asset('FrontEnd/img/visa.png') }}" alt="">
-                                <img src="{{ asset('FrontEnd/img/master.png') }}" alt="">
-                                <div class="check"></div>
+                        <br>
+                        <div>
+                            <h5><b>Payment method</b></h5>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="payment_item">
+                                    <div class="radion_btn">
+                                        <input type="radio" id="optionCod" name="paymentMethod" checked value="1">
+                                        <label for="optionCod">Ship COD</label>
+                                        <div class="check"></div>
+                                    </div>
+                                </div>
                             </div>
-                            <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal
-                                account.</p>
+                            <div class="col-lg-6">
+                                <div class="payment_item">
+                                    <div class="radion_btn">
+                                        <input type="radio" id="optionBank" name="paymentMethod" value="2">
+                                        <label for="optionBank">Bank tranfer</label>
+                                        <div class="check"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="payment_item">
+                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County,
+                                    Store Postcode.</p>
+                            </div>
                         </div>
                         <div class="creat_account">
                             <input type="checkbox" id="f-option4" name="selector">

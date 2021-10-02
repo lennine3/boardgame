@@ -56,7 +56,7 @@ class StaffController extends Controller
         $staffs->sex=$request->gender;
         $staffs->address=$request->address;
         $staffs->avatar=$this->ImgUpload($request);
-        $staffs->user=$users->id;
+        $staffs->user_id=$users->id;
         $staffs->save();
         return redirect()->route('staff-index');
 
@@ -84,7 +84,7 @@ class StaffController extends Controller
     {
         //
         $staff=staff::findOrFail($id);
-        $user=User::join('staff','staff.user','=','users.id')->where('staff.id','=',$id)->get(/* ['users.*'] */);
+        $user=User::join('employee','employee.user_id','=','users.id')->where('employee.id','=',$id)->get(/* ['users.*'] */);
 
         return view('admin.staff.staff-update',compact('staff','user'));
     }
@@ -125,7 +125,7 @@ class StaffController extends Controller
     {
         //
         $staffs=staff::findOrFail($request->staff_id);
-        $users=User::findOrFail($request->user_id);
+        $users=User::findOrFail($staffs->user_id);
         $staffs->delete();
         $users->delete();
         return redirect()->route('staff-index');

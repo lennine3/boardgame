@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use App\Models\favorite;
+use App\Models\notification;
+use Illuminate\Support\Facades\View;
 
 class FavoriteController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $notifications=notification::where('status','=',1)->get();
+            View::share('notifications', $notifications);
     }
-    
+
     public function index()
     {
         $favorite = favorite::where('user_id', auth()->id())->get();

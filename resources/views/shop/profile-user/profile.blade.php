@@ -1,7 +1,16 @@
 @extends('shop.layout')
 @section('content')
-
-    <div class="p-5">
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>Profile</b></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" style="padding-top: 20px;padding-bottom:50px">
+    <div class="p-5" style="background: #f5f5f5;">
         <div class="row">
             <div class="col-3">
                 <div class="d-flex align-items-center ">
@@ -31,6 +40,14 @@
                     <i class="far fa-credit-card"></i>
                     <p class="mb-0">
                         <a href="{{ route('invoice-shop') }}">My order</a>
+                    </p>
+                </div>
+                <div class="d-flex align-items-center order-info">
+                    <i class="fas fa-box-alt"></i>
+                    <p class="mb-0">
+                        <a href="{{ url('invoice-keep-order') }}">Order keep @if (!empty($countKeep))
+                            <span class="badge" style="background: red">{{ $countKeep }}</span>
+                            @endif </a>
                     </p>
                 </div>
             </div>
@@ -171,43 +188,14 @@
             </div>
         </div>
     </div>
+</div>
+
 
     <script>
         function ImgPreview() {
             var src = URL.createObjectURL(event.target.files[0]);
             var preview = document.getElementById("img-preview-single");
             preview.src = src;
-        }
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $("#change-profile-page").click(function() {
-                $.ajax({
-                    url: 'profile-user',
-                    type: 'GET',
-                }).done(function(response) {
-                    RenderProfilepage(response)
-                    /* history.pushState(null, null, 'profile'); */
-                });
-            });
-        });
-
-        $(document).ready(function() {
-            $("#change-invoice-page").click(function() {
-                $.ajax({
-                    url: 'invoice-user',
-                    type: 'GET',
-                }).done(function(response) {
-                    RenderProfilepage(response)
-                    /* history.pushState(null, null, 'invoice'); */
-                });
-            });
-        });
-
-        function RenderProfilepage(response) {
-            $("#profile").empty();
-            $("#profile").html(response);
         }
     </script>
 @endsection

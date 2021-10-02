@@ -47,11 +47,11 @@ class User extends Authenticatable
     ];
     public function staffRelation()
     {
-        return $this->belongsTo('App\Models\staff','id','user');
+        return $this->belongsTo('App\Models\staff','id','user_id');
     }
 
     public function userRelation(){
-        return $this->hasOne('App\Models\customer','id','user');
+        return $this->hasOne('App\Models\customer','id','user_id');
     }
 
     public function commentRealation(){

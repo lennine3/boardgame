@@ -1,5 +1,14 @@
 @extends('shop.layout')
 @section('content')
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>About us</b></h1>
+            </div>
+        </div>
+    </div>
+</section>
 <div class=" container-fluid" style="padding-top: 20px;padding-bottom:20px">
     <div class="row">
         <div class="col-lg-6  d-flex justify-content-center">

@@ -71,13 +71,13 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role'=>3,
         ]);
         $customer->name=$request->name;
         $customer->phone=$request->phone;
         $customer->birth=$request->birth;
         $customer->status=1;
-        $customer->role=3;
-        $customer->user=$user->id;
+        $customer->user_id=$user->id;
         $customer->avatar='unsigned.png';
         $userRole=User::findOrFail($user->id);
         $userRole->assignRole('customer');

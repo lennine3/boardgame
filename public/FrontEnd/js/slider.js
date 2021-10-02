@@ -37,9 +37,9 @@ $('.owl-exclusive').owlCarousel({
     autoplayTimeout: 6500,
     center: true,
     center: true,
-    /* navText: ["<img src={{ asset('FrontEnd/img/prev-arrow.png') }}>",
-        "<img src={{ asset('FrontEnd/img/next-arrow.png') }}>"
-    ], */
+    navText: ["<img src={{ asset('FrontEnd/img/prev.png') }}>",
+        "<img src={{ asset('FrontEnd.img.next.png') }}>"
+    ],
     autoplaySpeed: 1750,
     responsive: {
         0: {
@@ -73,15 +73,11 @@ $('.btn-left-exclusive').click(function () {
 //slide
 $('.owl-carousel').owlCarousel({
     loop: true,
-    autoplay: false,
+    autoplay: true,
     navSpeed: 1750,
     dots: false,
-    nav: true,
+    nav: false,
     margin: 10,
-    center: true,
-    navText: ["<img src={{ asset('FrontEnd/img/prev.png') }}>",
-        "<img src={{ asset('FrontEnd/img/next.png') }}>"
-    ],
     center: true,
     autoplaySpeed: 1750,
     responsive: {
@@ -97,13 +93,31 @@ $('.owl-carousel').owlCarousel({
     }
 })
 
+//Get the button
+var mybutton = document.getElementById("myBtn");
 
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 
 /* <!--Count Down Watch Start--> */
 
 // Set the date we're counting down to
-var countDownDate = new Date("May 14, 2021 00:00:00").getTime();
+var countDownDate = new Date("December 14, 2021 00:00:00").getTime();
 
 var nowLater = new Date().getTime();
 // Update the count down every 1 second

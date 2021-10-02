@@ -1,16 +1,16 @@
 @extends('shop.layout')
-
-@section('css')
-    <style>
-        body {
-            background: #f5f5f5;
-        }
-
-    </style>
-@endsection
-
 @section('content')
-    <div class="p-5">
+<section class="banner-category">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
+            <div>
+                <h1 class="color-w"><b>Invoice</b></h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container" style="padding-top: 20px;padding-bottom:50px">
+    <div class="p-5" style="background: #f5f5f5;">
         <div class="row">
             <div class="col-3">
                 <div class="d-flex align-items-center ">
@@ -42,6 +42,16 @@
                         <a href="{{ route('invoice-shop') }}">My order</a>
                     </p>
                 </div>
+                <div class="d-flex align-items-center order-info">
+                    <i class="fas fa-box-alt"></i>
+                    <p class="mb-0">
+                        <a href="{{ url('invoice-keep-order') }}">Order keep
+                            @if (!empty($countKeep))
+                            <span class="badge" style="background: red">{{ $countKeep }}</span>
+                            @endif
+                        </a>
+                    </p>
+                </div>
             </div>
             <div class="col-9 mb-5">
                 <h4 class="mt-2">My order</h4>
@@ -51,9 +61,8 @@
                             <tr class="align-middle h-90">
                                 <th scope="col">Order ID</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Products</th>
                                 <th scope="col">Total price</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Order Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,9 +73,12 @@
                                             href="{{ route('invoice-detail', ['invoice' => $item->id]) }}">{{ $item->invoice_code }}</a>
                                     </td>
                                     <td>{{ $item->created_at->format('d/m/Y') }}</td>
-                                    <td>{{ $item->getProductText() }}</td>
                                     <td>${{ $item->total_price }}</td>
-                                    <td>Giao hàng thành công</td>
+                                    <td>@if ($item->order_status==1)
+                                        Your order is being shipped
+                                        @elseif($item->order_status==2)
+                                        Your order has arrived
+                                        @endif</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -75,4 +87,6 @@
             </div>
         </div>
     </div>
+</div>
+
 @endsection

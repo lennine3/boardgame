@@ -142,7 +142,6 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
-
 <script>
     /*  $('.dropdown.keep-open').on({
      //fires after dropdown is shown instance method is called (if you click anywhere else)

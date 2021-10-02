@@ -6,6 +6,16 @@
     <div class="container banner-padding">
         <div class="owl-banner owl-carousel owl-theme col-lg-12">
             <div class="item">
+                <div>
+                    <img src="{{ asset('Img/banner_2.png') }}" alt="">
+                </div>
+            </div>
+            {{-- <div class="item">
+                <div>
+                    <img src="{{ asset('Img/banner_2.png') }}" alt="">
+                </div>
+            </div>
+            <div class="item">
                 <div class="row">
                     <div class="col-lg-5 text-start">
                         <h1>Title</h1>
@@ -52,7 +62,7 @@
                     <div class="col-lg-7"><img src="{{ asset('FrontEnd/img/foldscope.jpg') }}" class="card-img-top">
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -85,6 +95,95 @@
             <div class="col-lg-12" style="padding-top: 20px">
                 <div class="owl-carousel owl-theme">
                     <div class="item">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-6 text-center">
+                                    <div style="padding-left: 5px;padding-top:13px">
+                                        <h1 style="color: #000" style="padding-top: 30px"><b>Newest product</b></h1>
+                                        {{-- <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum harum iusto
+                                            corrupti
+                                            repudiandae rerum excepturi fugiat blanditiis ducimus voluptas sint, saepe
+                                            illum adipisci <br>
+                                            officiis est nostrum incidunt soluta dolor commodi.</p> --}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="row">
+                                        @foreach ($products as $product)
+                                        <div class="col-lg-3 col-md-6 p-b-20">
+                                            <div class="single-product">
+                                                <a href="{{ route('single',$product->id) }}">
+                                                    <span class="onsale">Sale {{ $product->promotionRelation->rate }}%
+                                                        off</span>
+                                                    <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
+                                                        <div class="box-img">
+                                                            <img class="img-fluid"
+                                                                src="{{ asset('Img/product-img/'.$product->image) }}"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-details">
+                                                        <h6> <a
+                                                                href="{{ route('single',$product->id) }}">{{ $product->name }}</a>
+                                                        </h6>
+                                                        <div class="price">
+                                                            @if ($product->id_promotion!=0)
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="price-color">
+                                                                        ${{ $product->promotion_price}}
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="l-through">${{ $product->price }}</h6>
+                                                                </div>
+                                                            </div>
+                                                            @else
+                                                            <h6>${{ $product->price }}</h6>
+                                                            @endif
+
+                                                        </div>
+                                                        <hr>
+                                                        <div class="prd-bottom">
+                                                            <div class="row p-b-20">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a onclick="AddCart({{ $product->id }})"
+                                                                            href="javascript:">
+                                                                            <i
+                                                                                class="fal fa-shopping-bag fa-3x addCart"></i>
+                                                                        </a><span class="tooltiptext">Add Cart</span>
+                                                                    </div>
+                                                                    <div class="tooltip col-lg-6">
+                                                                        <a href="#">
+                                                                            @if (auth()->check())
+                                                                                @php
+                                                                                    $check = auth()->user()->favorites()->where('product_id', $product->id)->first();
+                                                                                @endphp
+                                                                                @if ($check)
+                                                                                    <i class="fas fa-heart-circle fa-3x addFav removefav active" data-target="{{ $product->id }}"></i>
+                                                                                @else
+                                                                                    <i class="fas fa-heart-circle fa-3x addFav addtofav" data-target="{{ $product->id }}"></i>
+                                                                                @endif
+                                                                            @else
+                                                                                <i class="fas fa-heart-circle fa-3x addFav addtofav" data-target="{{ $product->id }}"></i>
+                                                                            @endif
+                                                                        </a><span class="tooltiptext">Favortire</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="item">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-6 text-center">
@@ -397,7 +496,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -436,7 +535,7 @@
                         </div>
                     </div>
                 </div>
-                <a href class="exclusive-btn Ripple-effect"> Shop Now</a>
+                <a href="{{ url('category/0') }}" class="exclusive-btn Ripple-effect">Shop Now</a>
             </div>
             <div class="col-lg-6 exclusive-right">
                 <div>
@@ -613,7 +712,7 @@
             </div>
             <div class="col-lg-3">
                 <div class="ctg-right">
-                    <a href="#" target="_blank">
+                    <a target="_blank">
                         <img class="img-fluid d-block mx-auto" src="{{ asset('FrontEnd/img/deal.png') }}" alt="">
                     </a>
                 </div>

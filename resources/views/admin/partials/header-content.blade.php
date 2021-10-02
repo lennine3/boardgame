@@ -64,22 +64,11 @@
             <a href="{{ route('productType-index') }}" class="dot test"><i class="fal fa-box-ballot"></i><span>Product
                     Type</span></a>
             <a href="{{ route('product.index') }}" class="dot"><i class="fal fa-box-open"></i><span>Product</span></a>
-            <a href="{{ route('product-detail') }}" class="dot"><i class="fal fa-box-ballot"></i><span>Product
-                    Detail</span></a>
             <a href="{{ route('product-img') }}" class="dot"><i class="fal fa-images"></i><span>Product Image</span></a>
             <a href="{{ route('promotion-index') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a>
         </div>
     </div>
     <a href="{{ route('invoice') }}" class="dot"><i class="fas fa-file-invoice"></i><span>Invoice</span></a>
-    <a href="{{ route('order') }}" class="dot"><i class="fal fa-hand-holding-box"></i><span>Order</span></a>
     <a href="{{ route('home') }}" class="dot"><i class="fal fa-store"></i><span>Store</span></a>
-    <a data-bs-toggle="collapse" href="#collapseSetting" class="dot"><i class="far fa-cogs"></i><span>Setting</span>
-        <div class="collapse" id="collapseSetting">
-            <div style="padding: 20px 20px 20px 20px">
-                <a href="{{ route('profile') }}" class="dot test"><i
-                        class="far fa-address-card"></i><span>Profile</span></a>
-            </div>
-        </div>
-    </a>
     <a href="#" hidden>a</a>
 </div>

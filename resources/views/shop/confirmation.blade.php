@@ -34,36 +34,33 @@
     <div class="container">
         <h3 class="title_confirmation">Thank you. Your order has been received.</h3>
         <div class="row order_d_inner">
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="details_item">
                     <h4>Order Info</h4>
                     <ul class="list">
-                        <li><a href="#"><span>Order number</span> : {{ $invoice->invoice_code }}</a></li>
-                        <li><a href="#"><span>Date</span> : {{ $invoice->created_at->format('Y-m-d') }}</a></li>
-                        <li><a href="#"><span>Total</span> : {{ $invoice->total_price }}</a></li>
-                        <li><a href="#"><span>Payment method</span> : Check payments</a></li>
+                        <li><a href="#"><span> <b>Order number</b> </span> <span>: </span>
+                                {{ $invoice->invoice_code }}</a></li>
+                        <li><a href="#"><span> <b>Date</b> </span> <span>: </span>
+                                {{ $invoice->created_at->format('Y-m-d') }}</a></li>
+                        <li><a href="#"><span> <b>Total</b> </span> <span>: </span> ${{ $invoice->total_price }}</a>
+                        </li>
+                        <li><a href="#"><span> <b>Payment method</b> </span> <span>: </span>
+                                @if ($invoice->payment_method==1)
+                                Ship COD
+                                @else
+                                Bank Tranfer
+                                @endif
+                            </a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="details_item">
-                    <h4>Billing Address</h4>
-                    <ul class="list">
-                        <li><a href="#"><span>Street</span> : {{ $invoice->address }}</a></li>
-                        <li><a href="#"><span>City</span> : Los Angeles</a></li>
-                        <li><a href="#"><span>Country</span> : United States</a></li>
-                        <li><a href="#"><span>Postcode </span> : 36952</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-4">
+            <div class="col-lg-6">
                 <div class="details_item">
                     <h4>Shipping Address</h4>
                     <ul class="list">
-                        <li><a href="#"><span>Street</span> : 56/8</a></li>
-                        <li><a href="#"><span>City</span> : Los Angeles</a></li>
-                        <li><a href="#"><span>Country</span> : United States</a></li>
-                        <li><a href="#"><span>Postcode </span> : 36952</a></li>
+                        <li><a href="#"><span><b>Phone</b></span> <span>: </span> {{ $customer->phone ?? ''}}</a></li>
+                        <li><a href="#"><span><b>Address</b></span> <span>: </span> {{ $customer->address ?? ''}}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -86,10 +83,10 @@
                                 <p>{{ $item->product->name }}</p>
                             </td>
                             <td>
-                                <h5>x {{ str_pad($item->unit, 2, 0, STR_PAD_LEFT) }}</h5>
+                                <h5>x {{ str_pad($item->number, 2, 0, STR_PAD_LEFT) }}</h5>
                             </td>
                             <td>
-                                <p>${{ $item->amount }}</p>
+                                <p>${{ $item->total_price }}</p>
                             </td>
                         </tr>
                         @endforeach
@@ -112,7 +109,18 @@
                                 <h5></h5>
                             </td>
                             <td>
-                                <p>Flat rate: ${{ $invoice->ship }}</p>
+                                <p>${{ $invoice->ship_fee }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>Vat</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>${{ $invoice->vat }}</p>
                             </td>
                         </tr>
                         <tr>

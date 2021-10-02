@@ -12,22 +12,18 @@ class product extends Model
     protected $table='product';
     use HasFactory;
 
-    public function staffRelation()
-    {
-        return $this->hasOne('App\Models\staff', 'id', 'id_staff');
-    }
     public function supplierRelation()
     {
-        return $this->hasOne('App\Models\supplier', 'id', 'id_supplier');
+        return $this->hasOne('App\Models\supplier', 'id', 'supplier_id');
     }
     public function promotionRelation()
     {
-        return $this->hasOne('App\Models\promotion', 'id', 'id_promotion');
+        return $this->hasOne('App\Models\promotion', 'id', 'promotion_id');
     }
 
     public function productTypeRelation()
     {
-        return $this->hasOne('App\Models\productType', 'id', 'id_product_type');
+        return $this->hasOne('App\Models\productType', 'id', 'product_type_id');
     }
     public function image()
     {

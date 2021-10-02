@@ -16,9 +16,8 @@
             <thead>
                 <th>ID</th>
                 <th>SKU</th>
-                <th>Production ID</th>
-                <th>Supplier ID</th>
-                <th>Staff ID</th>
+                <th>Production name</th>
+                <th>Supplier name</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Stock</th>
@@ -33,14 +32,13 @@
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->stock_keeper_unit }}</td>
-                    <td>{{ $product->id_product_type }}</td>
-                    <td>{{ $product->id_supplier }}</td>
-                    <td>{{ $product->staffRelation->name }}</td>
+                    <td>{{ $product->productTypeRelation->product_type_name }}</td>
+                    <td>{{ $product->supplierRelation->name }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->status }}</td>
-                    <td>{{ $product->id_promotion }}</td>
+                    <td>{{ $product->promotionRelation->name }}</td>
                     <td><img src="{{ asset('Img/product-img/'.$product->image) }}" alt="" style="width: 150px;height:150px"></td>
                     <td>
                         <a href="{{ route('product.edit',$product->id) }}" class="btn btn-warning editUser"><i class="far fa-pencil"></i></a>

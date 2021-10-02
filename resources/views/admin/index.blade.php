@@ -143,105 +143,62 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="row" style="padding-bottom: 20px">
-                    <div class="col-lg-6">
-                        <h2>To do list</h2>
-                    </div>
-                    <div class="col-lg-6 d-flex justify-content-end">
-                        <button class="btn btn-primary" data-bs-target="#todoModal" data-bs-toggle="modal">Add</button>
-                    </div>
-                </div>
-
-                <div style="background-color: #fff;">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="padding: 20px 20px 20px 20px">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-incomplete-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-incomplete" type="button" role="tab">Incomplete</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-complete-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-complete" type="button" role="tab">Completed</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-incomplete" role="tabpanel"
-                            aria-labelledby="pills-incomplete-tab">
-                            <div>
-                                <h6>No Do Lists Assigned Yet</h6>
-                            </div>
+                    <div class="row" style="padding-bottom: 20px">
+                        <div class="col-lg-6">
+                            <h2>To do list</h2>
                         </div>
-                        <div class="tab-pane fade" id="pills-complete" role="tabpanel"
-                            aria-labelledby="pills-complete-tab">No Do Lists Assigned Yet</div>
+                        <div class="col-lg-6 d-flex justify-content-end">
+                            <button class="btn btn-primary" data-bs-target="#todoModal" data-bs-toggle="modal">Add</button>
+                        </div>
                     </div>
-                </div>
+                    <section>
+                        @include('admin.listTodo')
+                </section>
+
             </div>
-        </div>
-    </div>
-    <div style="padding-top: 60px">
-        <div class="row" style="padding-bottom: 20px">
-            <div class="col-lg-6">
-                <h2>Notice board</h2>
-            </div>
-            <div class="col-lg-6 d-flex justify-content-end">
-                <button class="btn btn-success" data-bs-target="#noticeModal" data-bs-toggle="modal">Add</button>
-            </div>
-        </div>
-        <div class="table-responsive rounded table-admin border-4" style="display: block!important">
-            <table class="table ">
-                <thead>
-                    <th>Date</th>
-                    <th>Title</th>
-                    <th>Action</th>
-                </thead>
-                <tbody>
-                    <td>22/5/2021</td>
-                    <td>Test Dashboard</td>
-                    <td>
-                        <button class="btn btn-danger">More</button>
-                    </td>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
 
 @include('admin.todoModal')
- <script>
-     var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['','January', 'February', 'March', 'April', 'May', 'June','July','August','September','October','November','December'],
-        datasets: [{
-            label: 'Monthly Earn',
-            data: {!! json_encode($datas) !!},
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+                'October', 'November', 'December'
             ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-    animations: {
-      tension: {
-        duration: 1000,
-        easing: 'linear',
-        from: 1,
-        to: 0,
-        loop: true
-      }
-    },
-    scales: {
+            datasets: [{
+                label: 'Monthly Earn',
+                data: {!!json_encode($datas) !!},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            animations: {
+                tension: {
+                    duration: 1000,
+                    easing: 'linear',
+                    from: 1,
+                    to: 0,
+                    loop: true
+                }
+            },
+            scales: {
+                y: { // defining min and max so hiding the dataset does not change scale range
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
-      y: { // defining min and max so hiding the dataset does not change scale range
-
-        beginAtZero: true
-      }
-    }
-  }
-});
- </script>
+</script>
+<script src="{{ asset('BackEnd/js/adminPanel.js') }}"></script>
 @endsection

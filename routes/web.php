@@ -31,6 +31,10 @@ Route::prefix('/')->group(function () {
 
     Route::get('add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart')->name('add-cart');
     Route::get('/single/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart')->name('add-cart-single');
+    Route::get('category/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart');
+    Route::get('category-type/1/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart');
+    Route::get('category-type/2/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart');
+    Route::get('category-type/3/add-to-cart/{id}', 'App\Http\Controllers\CartController@AddCart');
     Route::get('remove-item-cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart');
     Route::get('/single/remove-item-cart/{id}', 'App\Http\Controllers\CartController@DeleteItemCart')->name('remove-cart-single');
     Route::get('remove-Listitem-cart/{id}', 'App\Http\Controllers\CartController@DeleteListItemCart')->name('remove-list-cart');
@@ -52,14 +56,12 @@ Route::prefix('/')->group(function () {
     /* Search */
     Route::get('search', 'App\Http\Controllers\SearchController@search')->name('search');
 
-    Route::get('cart', function () {
-        return view('shop.cart');
-    })->name('cart');
-    Route::get('about-us', function () {
-        return view('shop.about-us');
-    })->name('about-us');
+    Route::get('cart', 'App\Http\Controllers\shopController@cartPage')->name('cart');
+    Route::get('about-us', 'App\Http\Controllers\shopController@aboutPage')->name('about-us');
     //Invoice
-    Route::get('invoice', 'App\Http\Controllers\shopController@invoice')->name('invoice-shop');
+    Route::get('invoice', 'App\Http\Controllers\shopController@invoice')->name('invoice-shop')->middleware('checkCostumer');
+    Route::get('invoice-keep-order', 'App\Http\Controllers\shopController@keepProduct')->middleware('checkCostumer');
+    Route::post('invoice-keep-store', 'App\Http\Controllers\shopController@keepProductStore');
     Route::get('invoice-detail/{invoice}', 'App\Http\Controllers\shopController@invoiceDetail')->name('invoice-detail');
     Route::post('invoice-store', 'App\Http\Controllers\shopController@invoice_store')->name('invoice-store');
     Route::get('invoice-user', function () {
@@ -71,6 +73,8 @@ Route::prefix('/')->group(function () {
     //comment
     Route::get('comment-store/{id}', 'App\Http\Controllers\shopController@comment_store')->name('comment-store');
     Route::get('comment-page/{id}', 'App\Http\Controllers\shopController@comment_page');
+    Route::get('notification-status/{id}', 'App\Http\Controllers\shopController@notificationStatus');
+    Route::get('notification-all-status', 'App\Http\Controllers\shopController@notificationAllStatus');
 });
 
 /*Admin*/
@@ -80,7 +84,10 @@ Route::prefix('/admin')->group(function () {
     })->name('admin'); */
     //index dashboard
     Route::get('/', 'App\Http\Controllers\adminController@index')->name('admin');
-
+    Route::get('/new-admin', 'App\Http\Controllers\adminController@newIndex');
+    Route::post('to-do-store','App\Http\Controllers\adminController@saveTodo');
+    Route::get('to-do-check/{id}','App\Http\Controllers\adminController@checkDone');
+    Route::get('to-do-page','App\Http\Controllers\adminController@listUserPage');
     //User
     Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user');
     Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
@@ -107,9 +114,12 @@ Route::prefix('/admin')->group(function () {
     //Staff
     Route::resource('/staffs', App\Http\Controllers\StaffController::class);
     Route::get('/staffs', 'App\Http\Controllers\StaffController@index')->name('staff-index');
-    Route::get('/customer', 'App\Http\Controllers\CustomerController@index')->name('customer-index');
     Route::post('/staffs-update', 'App\Http\Controllers\StaffController@update')->name('staff-update');
     Route::Delete('/staffs-destroy/{id}', 'App\Http\Controllers\StaffController@destroy')->name('staffs.destroy');
+    //Customer
+    Route::get('/customer', 'App\Http\Controllers\CustomerController@index')->name('customer-index');
+    Route::get('/customer-edit/{id}', 'App\Http\Controllers\CustomerController@customerEdit');
+    Route::post('/customer-update', 'App\Http\Controllers\CustomerController@update');
     //Product
     Route::resource('/product', App\Http\Controllers\productController::class);
     Route::post('/product-update/{id}', 'App\Http\Controllers\productController@update')->name('product-update');
@@ -121,9 +131,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('/product-detail-create', 'App\Http\Controllers\productController@productDetailCreate')->name('product-detail-create');
     Route::post('/product-detail-store', 'App\Http\Controllers\productController@productDetailStore')->name('product-detail-store');
     //invoice
-    Route::get('/invoice', function () {
-        return view('admin.invoice.invoice');
-    })->name('invoice');
+    Route::get('/invoice', 'App\Http\Controllers\adminController@invoicePage')->name('invoice');
+    Route::get('/invoice-lock/{id}', 'App\Http\Controllers\adminController@invoiceLock');
+    Route::get('/invoice-order-status/{id}', 'App\Http\Controllers\adminController@invoiceChange');
     //order
     Route::get('/order', function () {
         return view('admin.order.order');

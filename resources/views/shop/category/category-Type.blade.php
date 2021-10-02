@@ -70,6 +70,7 @@
                             @foreach ($productTypes as $productType)
                             <li class="list-group-item list-group-item-link">
                                 <a href="{{ url('category-type'.'/'.$productType->id.'/'.'0') }}">
+                                    {{-- <a href="{{ url('category-type'.'/'.$productType->id.'/'.'0') }}"> --}}
                                     <span class="lnr lnr-arrow-right"></span>{{ $productType->product_type_name }}
                                 </a>
                             </li>

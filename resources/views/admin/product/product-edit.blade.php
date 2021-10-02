@@ -84,17 +84,17 @@
                             <div class="col-lg-4">
                                 <label for="productType" class="form-label">Size</label>
                                 <input type="text" class="form-control" name="size"
-                                    value="{{ isset($productDetail) && $productDetail->size!=null ? $productDetail->size : '' }}">
+                                    value="{{ isset($product) && $product->size!=null ? $product->size : '' }}">
                             </div>
                             <div class="col-lg-4">
                                 <label for="productType" class="form-label">Origin</label>
                                 <input type="text" class="form-control" name="origin"
-                                    value="{{ isset($productDetail) && $productDetail->origin!=null ? $productDetail->origin : '' }}">
+                                    value="{{ isset($product) && $product->origin!=null ? $product->origin : '' }}">
                             </div>
                             <div class="col-lg-4">
                                 <label for="productType" class="form-label">Weight</label>
                                 <input type="text" class="form-control" name="weight"
-                                    value="{{ isset($productDetail) && $productDetail->weight!=null ? $productDetail->weight : '' }}">
+                                    value="{{ isset($product) && $product->weight!=null ? $product->weight : '' }}">
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@
                             <div class="col-lg-12 mb-3">
                                 <label for="productType" class="form-label">Age</label>
                                 <input type="text" class="form-control" name="age"
-                                    value="{{ isset($productDetail) && $productDetail->age!=null ? $productDetail->age : '' }}">
+                                    value="{{ isset($product) && $product->age!=null ? $product->age : '' }}">
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                     <div class="mb-3">
                         <label for="" class="form-label">Description</label>
                         <textarea name="description" id="" cols="30" rows="8" class="form-control"
-                            placeholder="Description">{{ isset($productDetail) && $productDetail->description!=null ? $productDetail->description : '' }}</textarea>
+                            placeholder="Description">{{ isset($product) && $product->description!=null ? $product->description : '' }}</textarea>
                     </div>
                 </div>
             </div>
