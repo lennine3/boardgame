@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid" style="padding-top: 20px">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="table-admin">
         <form action="{{ route('staffs.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center padding-top-35" style="text-align: center">
                 <button class="btn btn-primary" type="submit">Save</button>
             </div>
         </form>

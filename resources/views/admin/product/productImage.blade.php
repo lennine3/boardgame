@@ -1,8 +1,8 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid pad-top-20 pad-bot-50">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="row">
-        <div class="col-lg-3">
+        {{-- <div class="col-lg-3">
             <div class="table-admin">
                 <div>
                     <label for="">Product</label>
@@ -26,7 +26,6 @@
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image</label>
                             <input class="form-control" type="file" id="file-input" name="imageFile[]" multiple="multiple">
-                            {{-- <input type="file" id="file-input" multiple /> --}}
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -41,10 +40,10 @@
                 </div>
             </form>
             </div>
-        </div>
-        <div class="col-lg-9 mb-4">
+        </div> --}}
+        <div class="col-lg-12 mb-4">
             <div class="table-responsive table-admin">
-                <table class="table">
+                <table class="table table-responsive overflow-auto row-border hover todo-table" id="table_id">
                     <thead>
                         <th>ID</th>
                         <th>Product</th>
@@ -72,9 +71,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="d-flex justify-content-center pagination-admin">
-            {!! $productImages->render() !!}
         </div>
     </div>
 
@@ -106,6 +102,14 @@
         }
      });
     });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#table_id').DataTable(
+                {"pageLength": 5}
+            );
+        });
 
     </script>
 @endsection

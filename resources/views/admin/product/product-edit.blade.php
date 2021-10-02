@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid" style="padding-top: 20px;padding-bottom:20px">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight">
             <h2>Add Product</h2>
@@ -167,5 +167,6 @@
         var preview = document.getElementById("img-preview");
         preview.src = src;
     }
+
 </script>
 @endsection

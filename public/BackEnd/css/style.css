@@ -3,162 +3,16 @@ body {
     padding: 0;
     font-family: "Roboto", sans-serif;
     height: 100%;
-    background-color: #454d55;
+
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-    color: #fff;
-}
+
 
 /*Index*/
 .info-board {
     text-transform: uppercase;
     font-size: 13px;
     color: #1DC4E7;
-}
-
-/*Index*/
-/*Select*/
-select{
-    background-color: #454d55!important;
-    border: none!important;
-    color: #fff!important;
-}
-select:focus{
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-/*Select*/
-/*Input*/
-input[type=number] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=number]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-input[type=text] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=text]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=password] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=password]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=date] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=date]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=email] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=email]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=file] {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=file]:focus {
-    background-color: #454d55;
-    border: none;
-    color: #fff;
-}
-
-input[type=radio] {
-    background-color: #454d55;
-    border: none;
-}
-textarea{
-    background-color: #454d55!important;
-    border: none!important;
-    color: #fff!important;
-}
-textarea:focus{
-    background-color: #454d55!important;
-    border: none!important;
-    color: #fff!important;
-}
-/*Input*/
-/*Table*/
-.table-wrapper {
-    max-height: 300px;
-    overflow: auto;
-  }
-.table-admin {
-    background-color: #2F323A;
-    padding: 15px 15px 15px 15px;
-    ;
-}
-
-.form-label {
-    color: #fff;
-}
-
-.form-check-label {
-    color: #fff;
-}
-.todo-table tr{
-    color: #000000;
-}
-tr {
-    color: #ccc;
-}
-
-thead tr {
-    color: #1DC4E7;
-}
-
-/*Table*/
-.background {
-    margin-left: 250px;
-    background-color: #454d55;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* height: 150%; */
-    transition: 0.5s
 }
 
 header {
@@ -199,37 +53,6 @@ header {
     }
 }
 
-.logout-btn {
-    padding: 5px;
-    background: #19B3D3;
-    text-decoration: none;
-    float: right;
-    margin-top: -30px;
-    margin-right: 20px;
-    border-radius: 2px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    transition-property: background;
-}
-
-.logout-btn:hover {
-    background: #0D9Dbb !important;
-}
-
-.sidebar {
-    top: 0;
-    background: #2F323A;
-    margin-top: 70px;
-    padding-top: 30px;
-    position: fixed;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    transition: 0.5s;
-    transition-property: left;
-    overflow: auto;
-}
 
 .profile_info {
     display: flex;

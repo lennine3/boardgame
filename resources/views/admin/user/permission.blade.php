@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid padding-top-35">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="row">
         <div class="col-lg-3">
             <div class="table-admin">
@@ -8,7 +8,7 @@
                     @csrf
                     <div>
                         <label for="roleName" class="form-label">Role Name</label>
-                        <select name="role" class="form-select" id="roleName">
+                        <select name="role" class="form-control" id="roleName">
                             @foreach ($roles as $role)
                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach
@@ -16,7 +16,7 @@
                     </div>
                     <div>
                         <label for="User" class="form-label">User</label>
-                        <select name="user" class="form-select" id="User">
+                        <select name="user" class="form-control" id="User">
                             @foreach ($users as $user)
                             <option value="{{ $user->id }}">{{ $user->email }}</option>
                             @endforeach

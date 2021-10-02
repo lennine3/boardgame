@@ -1,18 +1,21 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid pad-top-20 pad-bot-50">
-    <div class="d-flex bd-highlight mb-3">
-        <div class="me-auto p-2 bd-highlight">
-            <h2>Product</h2>
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
+    <div class="row  d-flex mb-4">
+        <div class="col-lg-8">
+            <h1>Product</h1>
         </div>
 
-        <div class=" p-2 bd-highlight">
-            <a class="btn btn-primary" href="{{ route('product.create') }}">New Product</a>
+        <div class="col-lg-4 ">
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-primary" href="{{ route('product.create') }}">New Product</a>
+            </div>
+
         </div>
     </div>
 
     <div class="table-responsive table-admin mb-4">
-        <table class="table">
+        <table class="table table-responsive overflow-auto row-border hover todo-table" id="table_id">
             <thead>
                 <th>ID</th>
                 <th>SKU</th>
@@ -45,17 +48,14 @@
 
                     </td>
                     <td>
-                        <button  class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="fal fa-trash"></i></button>
+                        <button  class="btn btn-danger" data-toggle="modal"
+                    data-target="#exampleModal"><i class="fal fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
 
             </tbody>
         </table>
-    </div>
-    <div class="d-flex justify-content-center pagination-admin">
-        {!! $products->render() !!}
     </div>
 </div>
 
@@ -64,20 +64,36 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 Are you sure to delete this product ?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{ route('product.destroy',$product->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" type="button" class="btn btn-primary">Yes</button>
-                </form>
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-start">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="{{ route('product.destroy',$product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" type="button" class="btn btn-primary">Yes</button>
+                        </form>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable(
+            {"pageLength": 4}
+        );
+    });
+
+</script>
 @endsection

@@ -84,7 +84,7 @@ Route::prefix('/admin')->group(function () {
     })->name('admin'); */
     //index dashboard
     Route::get('/', 'App\Http\Controllers\adminController@index')->name('admin');
-    Route::get('/new-admin', 'App\Http\Controllers\adminController@newIndex');
+    
     Route::post('to-do-store','App\Http\Controllers\adminController@saveTodo');
     Route::get('to-do-check/{id}','App\Http\Controllers\adminController@checkDone');
     Route::get('to-do-page','App\Http\Controllers\adminController@listUserPage');

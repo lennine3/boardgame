@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid pad-top-20 pad-bot-50">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight">
             <h2>customer</h2>
@@ -8,7 +8,7 @@
     </div>
 
     <div class="table-responsive table-admin mb-4">
-        <table class="table">
+        <table class="table table-responsive overflow-auto row-border hover todo-table" id="table_id">
             <thead>
                 <th>ID</th>
                 <th>Name</th>
@@ -28,15 +28,17 @@
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->birth }}</td>
                     <td>{{ $customer->gender }}</td>
-                    <td><img src="{{ asset('Img/customer-avatar/'.$customer->avatar) }}" alt="" style="width: 150px;height:150px"></td>
+                    <td><img src="{{ asset('Img/customer-avatar/'.$customer->avatar) }}" alt=""
+                            style="width: 150px;height:150px"></td>
                     <td>{{ $customer->rank }}</td>
                     <td>
-                        <a href="{{ url('admin/customer-edit',$customer->id) }}" class="btn btn-warning editUser"><i class="far fa-pencil"></i></a>
+                        <a href="{{ url('admin/customer-edit',$customer->id) }}" class="btn btn-warning editUser"><i
+                                class="far fa-pencil"></i></a>
 
                     </td>
                     <td>
-                        <button  class="btn btn-danger" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><i class="fal fa-trash"></i></button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fal fa-trash"></i></button>
                     </td>
                 </tr>
                 @endforeach
@@ -45,7 +47,15 @@
         </table>
     </div>
     <div class="d-flex justify-content-center pagination-admin">
-       {{--  {!! $customers->render() !!} --}}
+        {{--  {!! $customers->render() !!} --}}
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "pageLength": 4
+        });
+    });
+
+</script>
 @endsection

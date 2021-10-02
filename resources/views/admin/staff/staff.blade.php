@@ -1,8 +1,8 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid" style="padding-top: 20px">
-    <div class="row justify-content-between d-flex">
-        <div class="col-lg-4">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
+    <div class="row d-flex mb-4">
+        <div class="col-lg-8">
             <h1>Staff</h1>
         </div>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div class="table-responsive table-admin">
-        <table class="table">
+        <table class="table table-responsive overflow-auto cell-border hover todo-table" id="table_id">
             <thead>
                 <th>ID</th>
                 <th>Email</th>
@@ -64,8 +64,8 @@
                                 class="far fa-pencil"></i></a>
                     </td>
                     <td>
-                        <button  class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"><i class="fal fa-trash"></i></button>
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                class="fal fa-trash"></i></button>
                         {{-- <form action="{{ route('staffs.destroy',$staff->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -104,5 +104,12 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            "pageLength": 4
+        });
+    });
 
+</script>
 @endsection

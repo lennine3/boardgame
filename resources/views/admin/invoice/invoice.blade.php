@@ -1,8 +1,8 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid" style="padding-top: 20px">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="table-responsive table-admin">
-        <table class="table">
+        <table class="table table-responsive overflow-auto row-border hover todo-table" id="table_id">
             <thead>
                 <th>Invoice Id</th>
                 <th>Customer ID</th>
@@ -29,14 +29,17 @@
 
                     <td>
                         @if ($invoice->status==0)
-                        <a href="{{ url('admin/invoice-order-status/'.$invoice->id) }}" class="btn btn-success" style="pointer-events: none"><i class="far fa-times"></i></a>
+                        <a href="{{ url('admin/invoice-order-status/'.$invoice->id) }}" class="btn btn-success"
+                            style="pointer-events: none"><i class="far fa-times"></i></a>
                         @else
-                        <a href="{{ url('admin/invoice-order-status/'.$invoice->id) }}" class="btn btn-success"><i class="far fa-pencil"></i></a>
+                        <a href="{{ url('admin/invoice-order-status/'.$invoice->id) }}" class="btn btn-success"><i
+                                class="far fa-pencil"></i></a>
                         @endif
 
                     </td>
                     <td>
-                        <a href="{{ url('admin/invoice-lock/'.$invoice->id) }}" class="btn btn-warning"><i class="fal fa-lock"></i></a>
+                        <a href="{{ url('admin/invoice-lock/'.$invoice->id) }}" class="btn btn-warning"><i
+                                class="fal fa-lock"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -44,4 +47,12 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable(
+            {"pageLength": 15}
+        );
+    });
+
+</script>
 @endsection

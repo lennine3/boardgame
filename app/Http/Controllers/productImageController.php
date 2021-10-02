@@ -14,7 +14,7 @@ class productImageController extends Controller
     }
     public function index(){
         $products=product::all();
-        $productImages=productImage::paginate(8);
+        $productImages=productImage::all();
         return view('admin.product.productImage',compact('products','productImages'));
     }
     public function store(Request $request){

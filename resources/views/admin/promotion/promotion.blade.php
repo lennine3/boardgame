@@ -1,6 +1,7 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid padding-top-35 ">
+@extends('admin.layout.layout')
+@section('adminContent')
+
+<div class="inner-block-other">
     <div class="row">
         <div class="col-lg-3">
             <form action="{{ route('promotion-store') }}" method="POST">
@@ -31,7 +32,7 @@
         </div>
         <div class="col-lg-9">
             <div class="table-responsive table-admin">
-                <table class="table">
+                <table class="table table-responsive overflow-auto row-border hover todo-table" id="table_id">
                     <thead>
                         <th>ID</th>
                         <th>Promotion's Name</th>
@@ -52,6 +53,13 @@
             </div>
         </div>
     </div>
-
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable(
+            {"pageLength": 10}
+        );
+    });
+
+</script>
 @endsection

@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid padding-top-35">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="row">
         <div class="col-lg-3">
             <div class="table-admin">

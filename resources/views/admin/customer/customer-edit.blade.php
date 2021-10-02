@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container" style="padding-top: 20px">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <h3>Customer edit</h3>
 
     <form action="{{ url('admin/customer-update') }}" method="POST" enctype="multipart/form-data">
