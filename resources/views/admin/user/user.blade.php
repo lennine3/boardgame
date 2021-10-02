@@ -8,6 +8,7 @@
                     <th>Id</th>
                     <th>Full Name</th>
                     <th>Email</th>
+                    <th>Status</th>
                     @can('edit user')
                     <th>Edit</th>
                     @endcan
@@ -22,6 +23,13 @@
                     <td class="id">{!! $user->id !!}</td>
                     <td class="name">{!! $user->name !!}</td>
                     <td class="email">{!! $user->email !!}</td>
+                    <td class="email">
+                        @if ($user->status==0)
+                        Not active
+                        @elseif($user->status==1)
+                        Active
+                        @endif
+                    </td>
                     @can('edit user')
                     <td>
                         <button class="btn btn-warning editUser" data-id="{!! $user->id !!}" data-toggle="modal"
@@ -29,7 +37,7 @@
                     </td>@endcan
                     @role('admin')
                     <td>
-                        <button class="btn btn-danger"><i class="fal fa-trash"></i></button>
+                        <a class="btn btn-danger" href="{{ url('admin/user-lock/'.$user->id) }}"><i class="fal fa-lock"></i></a>
                     </td>
                     @endrole
                 </tr>

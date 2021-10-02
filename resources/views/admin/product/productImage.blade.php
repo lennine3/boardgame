@@ -61,10 +61,10 @@
                                     style="width: 250px;height:150px">
                             </td>
                             <td>
-                                <button class="btn btn-warning editUser"><i class="far fa-pencil"></i></button>
+                                <a href="{{ url('admin/product-image-edit/'.$productImage->id) }}" class="btn btn-warning"><i class="far fa-pencil"></i></a>
                             </td>
                             <td>
-                                <button class="btn btn-danger"><i class="fal fa-trash"></i></button>
+                                <a href="{{ url('admin/product-image-delete/'.$productImage->id) }}" class="btn btn-danger"><i class="fal fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -104,6 +104,7 @@
     });
 
     </script>
+
     <script>
         $(document).ready(function () {
             $('#table_id').DataTable(

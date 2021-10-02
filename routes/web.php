@@ -84,7 +84,7 @@ Route::prefix('/admin')->group(function () {
     })->name('admin'); */
     //index dashboard
     Route::get('/', 'App\Http\Controllers\adminController@index')->name('admin');
-    
+
     Route::post('to-do-store','App\Http\Controllers\adminController@saveTodo');
     Route::get('to-do-check/{id}','App\Http\Controllers\adminController@checkDone');
     Route::get('to-do-page','App\Http\Controllers\adminController@listUserPage');
@@ -92,6 +92,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/user', 'App\Http\Controllers\UserController@index')->name('user');
     Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
     Route::PUT('/edit-user/{id}', 'App\Http\Controllers\UserController@update')->name('updateUser');
+    Route::get('/user-lock/{id}', 'App\Http\Controllers\UserController@lockUser');
     //role
     Route::get('/role', 'App\Http\Controllers\RoleController@index')->name('role');
     //role-store
@@ -126,6 +127,8 @@ Route::prefix('/admin')->group(function () {
     //Product Image
     Route::get('/product-image', 'App\Http\Controllers\productImageController@index')->name('product-img');
     Route::post('/product-image-store', 'App\Http\Controllers\productImageController@store')->name('product-img-store');
+    Route::get('product-image-delete/{id}','App\Http\Controllers\productImageController@deleteImg');
+    Route::get('product-image-edit/{id}','App\Http\Controllers\productImageController@editImg');
     //Product Detail
     Route::get('/product-detail', 'App\Http\Controllers\productController@productDetail')->name('product-detail');
     Route::get('/product-detail-create', 'App\Http\Controllers\productController@productDetailCreate')->name('product-detail-create');
@@ -151,6 +154,7 @@ Route::prefix('/admin')->group(function () {
 });
 
 Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');
+
 Route::post('/user-login', 'App\Http\Controllers\Auth\LoginController@checkLogin')->name('UserLogin');
 Route::get('/test', 'App\Http\Controllers\Auth\LoginController@test')->name('test');
 Auth::routes();

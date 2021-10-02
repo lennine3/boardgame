@@ -33,7 +33,11 @@
                     <ul class="dropdown-menu drp-mnu">
                         <li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
                         <li><a href="{{ route('logout') }}" class="logout-btn" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                            </li>
 
                     </ul>
                 </li>

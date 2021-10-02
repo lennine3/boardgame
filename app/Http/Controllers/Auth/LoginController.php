@@ -50,7 +50,14 @@ class LoginController extends Controller
         ];
         $admin=Role::findById(1);
         $staff=Role::findById(2);
-        if (Auth::attempt($data)&&Auth()->user()->hasRole([$admin,$staff])) {
+        Auth::attempt($data);
+        if(Auth::user()->status==0)
+        {
+            Auth::logout();
+
+            return redirect()->route('home');
+        }
+        elseif (Auth()->user()->hasRole([$admin,$staff])) {
             //true
             return redirect()->route('admin');
             /* echo 'ok'; */

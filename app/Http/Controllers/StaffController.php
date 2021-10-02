@@ -49,6 +49,8 @@ class StaffController extends Controller
         $users->name=$request->name;
         $users->email=$request->email;
         $users->password=Hash::make($request->password);
+        $users->role=2;
+        $users->status=1;
         $users->save();
         $staffs->name=$request->name;
         $staffs->phone=$request->phone;
@@ -126,8 +128,10 @@ class StaffController extends Controller
         //
         $staffs=staff::findOrFail($request->staff_id);
         $users=User::findOrFail($staffs->user_id);
-        $staffs->delete();
-        $users->delete();
+        $staffs->status=0;
+        $staffs->save();
+        $users->status=0;
+        $users->save();
         return redirect()->route('staff-index');
     }
 

@@ -27,7 +27,15 @@
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->birth }}</td>
-                    <td>{{ $customer->gender }}</td>
+                    <td>
+                        @if ($customer->sex==1)
+                        Male
+                        @elseif ($customer->sex==2)
+                        Female
+                        @elseif($customer->sex==3)
+                        Other
+                        @endif
+                    </td>
                     <td><img src="{{ asset('Img/customer-avatar/'.$customer->avatar) }}" alt=""
                             style="width: 150px;height:150px"></td>
                     <td>{{ $customer->rank }}</td>
@@ -45,9 +53,6 @@
 
             </tbody>
         </table>
-    </div>
-    <div class="d-flex justify-content-center pagination-admin">
-        {{--  {!! $customers->render() !!} --}}
     </div>
 </div>
 <script>

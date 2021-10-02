@@ -11,11 +11,6 @@ class staff extends Model
 {
     use HasFactory;
     protected $table='employee';
-
-    public function roleRelation()
-    {
-        return $this->hasOne('Spatie\Permission\Models\Role','id','role');
-    }
     public function userRelation()
     {
         return $this->hasOne('App\Models\User','id','user_id');

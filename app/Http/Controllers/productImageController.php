@@ -34,6 +34,15 @@ class productImageController extends Controller
         }
     }
 
+    public function deleteImg($id){
+        $productImg=productImage::find($id);
+        $productImg->delete();
+        return redirect()->back();
+    }
+    public function editImg($id){
+        $productImg=productImage::find($id);
+        dd($productImg);
+    }
     public function ImgUpload(Request $request)
     {
         if ($image = $request->file('image')) {
@@ -45,6 +54,5 @@ class productImageController extends Controller
             }
         }
         $check = productImage::insert($insert);
-
     }
 }

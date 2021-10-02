@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\customer;
+use App\Models\staff;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -28,5 +30,24 @@ class UserController extends Controller
         $users->password=Hash::make($request->password);
         $users->save();
         return redirect()->route('user');
+    }
+
+    public function lockUser($id){
+        $user=User::find($id);
+        if($user->role==2)
+        {
+            $account=staff::where('user_id','=',$user->id)->first();
+            $account->status=0;
+            $account->save();
+        }
+        elseif($user->role==3)
+        {
+            $account=customer::where('user_id','=',$user->id)->first();
+            $account->status=0;
+            $account->save();
+        }
+        $user->status=0;
+        $user->save();
+        return redirect()->back();
     }
 }

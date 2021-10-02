@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid pad-top-20 pad-bot-50">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight">
             <h2>Product</h2>
@@ -25,13 +25,12 @@
                     <td>{{ $turtorial->id }}</td>
                     <td>{!! $turtorial->id_product !!}</td>
                     <td>{!! $turtorial->title !!}</td>
-                    
+                    <td></td>
                 </tr>
                 @endforeach
 
             </tbody>
         </table>
     </div>
-</div>
 </div>
 @endsection

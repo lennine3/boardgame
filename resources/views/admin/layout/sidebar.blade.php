@@ -28,6 +28,7 @@
                         Type</span></a></li>
                     <li><a href="{{ route('product.index') }}" class="dot"><i class="fal fa-box-open"></i><span>Product</span></a></li>
                     <li><a href="{{ route('product-img') }}" class="dot"><i class="fal fa-images"></i><span>Product Image</span></a></li>
+                    <li><a href="{{ route('turtorial') }}" class="dot"><i class="fad fa-info-circle"></i><span>Product description</span></a></li>
                     <li><a href="{{ route('promotion-index') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a></li>
                 </ul>
             </li>
