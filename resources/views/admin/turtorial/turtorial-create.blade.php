@@ -1,6 +1,6 @@
-@extends('admin.layout')
-@section('content')
-<div class="container-fluid" style="padding-top: 20px">
+@extends('admin.layout.layout')
+@section('adminContent')
+<div class="inner-block-other">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight">
             <h2>Add Content</h2>
@@ -13,7 +13,7 @@
                 @csrf
                 <div class="col-lg-12">
                     <h5>product</h5>
-                    <select name="product_id" id="" class="form-select">
+                    <select name="product_id" id="" class="form-control">
                         @foreach ($products as $product)
                         <option value="{{ $product->id }}">{{ $product->name }}</option>
                         @endforeach

@@ -25,17 +25,23 @@ class turtorialController extends Controller
         return view('admin.turtorial.turtorial-create',compact('products'));
     }
     public function store(Request $request){
-        dd($request->editor);
+
         $turtorial=new turtorial();
-        $turtorial->id_product=$request->product_id;
+        $turtorial->product_id=$request->product_id;
+        $products=Product::find($turtorial->product_id);
+        $turtorial->title=$products->name;
         $turtorial->content=$request->editor;
 
         $turtorial->save();
         return redirect()->route('turtorial');
-        /* $products=product::all();
-        return view('admin.turtorial.turtorial-create',compact('products')); */
-
     }
+
+    public function destroy($id){
+        $productContent=turtorial::find($id);
+        $productContent->delete();
+        return redirect()->back();
+    }
+
     public function ImgUpload(Request $request)
     {
         if($request->hasFile('editor'))

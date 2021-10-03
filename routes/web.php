@@ -85,6 +85,8 @@ Route::prefix('/admin')->group(function () {
     //index dashboard
     Route::get('/', 'App\Http\Controllers\adminController@index')->name('admin');
 
+    Route::get('mail-test','App\Http\Controllers\adminController@mailTest');
+
     Route::post('to-do-store','App\Http\Controllers\adminController@saveTodo');
     Route::get('to-do-check/{id}','App\Http\Controllers\adminController@checkDone');
     Route::get('to-do-page','App\Http\Controllers\adminController@listUserPage');
@@ -150,7 +152,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/turtorial', 'App\Http\Controllers\turtorialController@index')->name('turtorial');
     Route::get('/turtorial-create', 'App\Http\Controllers\turtorialController@create')->name('turtorial-create');
     Route::post('/turtorial-store', 'App\Http\Controllers\turtorialController@store')->name('turtorial-store');
+    Route::get('/productContent-destroy/{id}', 'App\Http\Controllers\turtorialController@destroy');
     Route::post('/img-upload', 'App\Http\Controllers\turtorialController@upload')->name('Img-Upload');
+
+
+
 });
 
 Route::post('/user-create', 'App\Http\Controllers\Auth\RegisterController@create')->name('create');

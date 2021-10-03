@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use App\Models\bestSale;
 use App\Models\todoList;
 use App\Models\todoUser;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -125,5 +126,18 @@ class adminController extends Controller
         $invoices->save();
         toast('Order status change','success');
         return redirect()->back();
+    }
+
+    public function mailTest(){
+        $details = [
+            'title' => 'test mail',
+            'body' => 'mail body'
+        ];
+        Mail::send('mail.testMail', compact('details'), function($message)
+        {
+            $message->to('tvdkhoa1801@gmail.com')->subject('Test');
+        });
+
+        //Mail::to('your_receiver_email@gmail.com')->send(new \App\Mail\MyTestMail($details));
     }
 }

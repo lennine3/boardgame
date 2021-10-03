@@ -9,4 +9,8 @@ class turtorial extends Model
 {
     protected $table="turtorial";
     use HasFactory;
+    public function productRelation()
+    {
+        return $this->belongsTo('App\Models\product','product_id','id');
+    }
 }
