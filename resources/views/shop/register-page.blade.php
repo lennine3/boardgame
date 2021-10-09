@@ -4,7 +4,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-end" style="padding: 90px 120px 100px 0;">
             <div>
-                <h1 class="color-w"><b>Login Page</b></h1>
+                <h1 class="color-w"><b>Register Page</b></h1>
                 <nav class="d-flex align-items-center color-w">
                     <a href>
                         Home
@@ -28,7 +28,8 @@
                         <div class="text w-100">
                             <h2>Welcome to TK Board Game</h2>
                             <p>Already have an account?</p>
-                            <a type="button" href="{{ route('loginPage') }}" class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign In</a>
+                            <a type="button" href="{{ route('loginPage') }}"
+                                class="btn btn-white btn-outline-white Ripple-effect radius-50">Sign In</a>
                         </div>
                     </div>
 
@@ -42,35 +43,45 @@
                             @csrf
                             <div class="form-group mb-3">
 
-                                <label class="label mb-3"
-                                    for="name">{{ __('E-Mail Address') }}</label>
-                                <input type="email" class="form-control log-input"
-                                name="email" value="{{ old('email') }}"
-                                    required autocomplete="email" placeholder="Email">
+                                <label class="label mb-3" for="name">{{ __('E-Mail Address') }}</label>
+                                <input type="email" class="form-control log-input" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                                <p>
+                                    @if($errors->has('email'))
+                                    <div class="alert-danger">{{ $errors->first('email') }}</div>
+                                    @endif
+                                </p>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="label mb-3" for="password">{{ __('Password') }}</label>
+                                <input type="password" class="form-control log-input" placeholder="Password" required
+                                    name="password" required>
+                                <p>
+                                    @if($errors->has('password'))
+                                    <div class="alert-danger">{{ $errors->first('password') }}</div>
+                                    @endif
+                                </p>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label mb-3"
-                                    for="password">{{ __('Password') }}</label>
-                                <input type="password" class="form-control log-input"
-                                    placeholder="Password" required name="password" required>
+                                <label class="label mb-3" for="name">{{ __('Name') }}</label>
+                                <input type="text" class="form-control log-input" placeholder="name" required
+                                    name="name" required>
+                                <p>
+                                    @if($errors->has('name'))
+                                    <div class="alert-danger">{{ $errors->first('name') }}</div>
+                                    @endif
+                                </p>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label mb-3"
-                                    for="name">{{ __('name') }}</label>
-                                <input type="text" class="form-control log-input"
-                                    placeholder="name" required name="name" required >
+                                <label class="label mb-3" for="phone">{{ __('Phone') }}</label>
+                                <input type="text" class="form-control log-input" placeholder="phone" required
+                                    name="phone" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label class="label mb-3"
-                                    for="phone">{{ __('phone') }}</label>
-                                <input type="text" class="form-control log-input"
-                                    placeholder="phone" required name="phone" required >
-                            </div>
-                            <div class="form-group mb-3">
-                                <label class="label mb-3"
-                                    for="phone">{{ __('birth') }}</label>
-                                <input type="date" class="form-control log-input"
-                                    placeholder="birth" required name="birth" required >
+                                <label class="label mb-3" for="address">{{ __('Address') }}</label>
+                                <input type="input" class="form-control log-input" placeholder="address" required
+                                    name="address" required>
                             </div>
                             <div class="form-group mb-3">
                                 <button type="submit"

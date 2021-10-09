@@ -23,6 +23,12 @@ Route::prefix('/')->group(function () {
     Route::get('profile-user', 'App\Http\Controllers\shopController@profile_ajax');
     Route::post('profile-user-update', 'App\Http\Controllers\shopController@user_update')->name('profile-user-update');
     Route::post('profile-staff-update', 'App\Http\Controllers\shopController@staff_update')->name('profile-staff-update');
+    //register complete
+    Route::get('register-user', 'App\Http\Controllers\shopController@registerCompletePage');
+    Route::get('register-user-complete', 'App\Http\Controllers\Auth\RegisterController@registerFinishPage');
+    Route::get('verify-email/{id}', 'App\Http\Controllers\Auth\RegisterController@verifyEmail');
+    Route::get('resend-email/{id}','App\Http\Controllers\Auth\RegisterController@resendMail');
+
     /*Category*/
     Route::get('category/{type}', 'App\Http\Controllers\shopController@category')->name('category');
     Route::get('category-type/{type}/{id}', 'App\Http\Controllers\shopController@category_type')->name('category');

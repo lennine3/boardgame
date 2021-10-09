@@ -23,8 +23,9 @@ use App\Models\notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -211,7 +212,7 @@ class shopController extends Controller
             $invoice->payment_method=1;
             $invoice->keep_product=0;
             $invoice->expected_date=$now;
-            
+
             $oldInvoice->status=0;
             $oldInvoice->save();
         }
@@ -296,7 +297,10 @@ class shopController extends Controller
         $invoice->status=1;
         $invoice->order_status=1;
         $invoice->payment_method=$request->paymentMethod;
+        if($request->keep!=null)
         $invoice->keep_product=$request->keep;
+        else
+        $invoice->keep_product=0;
         $invoice->expected_date=$now;
         $invoice->save();
         foreach (Session("Cart")->products as $item) {
@@ -338,6 +342,28 @@ class shopController extends Controller
     {
         $invoice = invoice::find(session('invoice_id'));
         $invoice_detail = $invoice->details;
+        /* dd($invoice_detail); */
+        foreach($invoice_detail as $items){
+            $id[]=$items->id;
+            $product_id[] = $items->product->name;
+            $price[] = $items->price;
+            $number[] = $items->number;
+            $discount[]=$items->discount;
+            $totalPrice[]=$items->total_price;
+        }
+        $data['id']=$id;
+        $data['product_id']=$product_id;
+        $data['price']=$price;
+        $data['number']=$number;
+        $data['discount']=$discount;
+        $data['total_price']=$totalPrice;
+
+
+        Mail::send('mail.testMail', compact('data'), function($message)
+        {
+            $message->to('tvdkhoa1801@gmail.com')->subject('Confirm you order');
+        });
+
         $staff=staff::where('user_id', Auth()->user()->id)->first();
         $customer=customer::where('user_id', Auth()->user()->id)->first();
         return view('shop.confirmation', compact('invoice', 'invoice_detail','customer','staff'));
@@ -345,6 +371,7 @@ class shopController extends Controller
 
     public function notificationStatus($id)
     {
+
         $notification=notification::find($id);
         $notification->status=0;
         $notification->save();
@@ -368,5 +395,9 @@ class shopController extends Controller
     {
         $products=product::inRandomOrder()->get();
         return view('shop.cart',compact('products'));
+    }
+
+    public function registerCompletePage(){
+        return view('shop.registerComplete');
     }
 }

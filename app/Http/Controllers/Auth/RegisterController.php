@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 use App\Models\customer;
 class RegisterController extends Controller
 {
@@ -50,11 +51,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        dd('abc');
+         $validator=Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
     }
 
     /**
@@ -65,6 +70,15 @@ class RegisterController extends Controller
      */
     protected function create(Request $request)
     {
+        $validator=Validator::make($request->all(), [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6'],
+        ]);
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
         /* $user = new User(); */
         $customer=new customer();
         $user=User::create([
@@ -72,16 +86,59 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role'=>3,
+            'status'=>0
         ]);
         $customer->name=$request->name;
         $customer->phone=$request->phone;
-        $customer->birth=$request->birth;
-        $customer->status=1;
+        $customer->address=$request->address;
+        $customer->status=0;
         $customer->user_id=$user->id;
         $customer->avatar='unsigned.png';
         $userRole=User::findOrFail($user->id);
         $userRole->assignRole('customer');
+        $data=[
+            'userId'=>$user->id,
+            'customerName'=>$customer->name,
+            'message'=>'Successful',
+        ];
+        Mail::send('mail.registerMail', compact('data'), function($message)
+        {
+            $message->to('tvdkhoa1801@gmail.com')->subject('Complete register');
+        });
         $customer->save();
-        return redirect()->route('home');
+        return $this->registerFinishPage($user->id);
+        //return redirect()->route('home');
     }
+    protected function registerFinishPage($id)
+    {
+        $user=User::find($id);
+        return view('shop.registerComplete',compact('user'));
+    }
+
+    protected function verifyEmail($id){
+        $user=User::find($id);
+        $customer=customer::where('user_id',$id)->first();
+        $user->status=1;
+        $customer->status=1;
+        $user->save();
+        $customer->save();
+        alert()->success('Success','Your email have been verified.');
+        return view('shop.login-page');
+    }
+
+    protected function resendMail($id){
+        $user=User::find($id);
+        $customer=customer::where('user_id',$id)->first();
+        $data=[
+            'userId'=>$user->id,
+            'customerName'=>$customer->name,
+            'message'=>'Successful',
+        ];
+        Mail::send('mail.registerMail', compact('data'), function($message)
+        {
+            $message->to('tvdkhoa1801@gmail.com')->subject('Complete register');
+        });
+        return redirect()->back();
+    }
+
 }

@@ -81,8 +81,9 @@
                             @guest
                         <li>
                             <div class="dropdown">
-                                <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
-                                        class="fas fa-sign-in-alt fa-2x"></i></a>
+                                <a href="{{ route('loginPage') }}" class="link"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+                                {{-- <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link"><i
+                                        class="fas fa-sign-in-alt fa-2x"></i></a> --}}
                             </div>
                         </li>
                         @else

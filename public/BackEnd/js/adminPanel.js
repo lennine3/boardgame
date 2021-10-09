@@ -5,15 +5,7 @@ $(document).ready(function() {
 
 
 
-function CheckDone(id){
-    $.ajax({
-        url: 'admin/to-do-check/'+id,
-        type: 'GET',
-    }).done(function(response){
-        RenderListCart(response);
-        alertify.success('Status updated');
-    });
-}
+
 
 function RenderListCart(response){
     $("#todoList").empty();
