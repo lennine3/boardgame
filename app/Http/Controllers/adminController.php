@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\staff;
 use App\Models\customer;
 use App\Models\invoice;
+use App\Models\invoiceDetail;
 use Carbon\Carbon;
 use App\Models\bestSale;
 use App\Models\todoList;
@@ -25,8 +26,13 @@ class adminController extends Controller
     }
     public function index()
     {
-        //
-        /* Carbon */
+        $product=product::select('name','stock')->where('status','!=',0)->get();
+        $chartData="";
+        foreach($product as $item){
+            $chartData.="['".$item->name."',    ".$item->stock."],";
+        };
+        $array['chartData']=rtrim($chartData,",");
+        $invoiceNumber=invoiceDetail::join('invoice','invoice.id','=','invoice_detail.invoice_id')->where('invoice.keep_product','=',0)->groupBy('invoice_detail.product_id')->select('invoice_detail.product_id',DB::raw('SUM(invoice_detail.number) as totalSell'),DB::raw('SUM(invoice_detail.total_price) as totalEarn'))->orderBy('totalSell','desc')->get();
         $todoLists=todoList::all();
         $todoUserDone=todoUser::all();
         $todoDone=todoList::join('todouser','todolist.id','=','todouser.todo_id')->where('todouser.user_id','=',Auth::user()->id)->where('is_done','=',1)->get();
@@ -47,31 +53,7 @@ class adminController extends Controller
         {
             $datas[$month]=$incomes[$index];
         }
-        return view('admin/newIndex',compact('staffCount','customerCount','invoiceYearCount','invoiceCount','datas','bestSale','Staffs','todoUser','todoLists','todoDone','todoUserDone'));
-    }
-
-    public function newIndex(){
-        $todoLists=todoList::all();
-        $todoUserDone=todoUser::all();
-        $todoDone=todoList::join('todouser','todolist.id','=','todouser.todo_id')->where('todouser.user_id','=',Auth::user()->id)->where('is_done','=',1)->get();
-        $todoUser=todoList::join('todouser','todolist.id','=','todouser.todo_id')->where('todouser.user_id','=',Auth::user()->id)->where('is_done','=',0)->get('todolist.*');
-        $now = Carbon::now();
-        $Staffs=staff::all();
-        $invoiceYearCount=invoice::whereYear('created_at', '=', $now->year)->get();
-        $staffCount=staff::all()->count();
-        $customerCount=customer::all()->count();
-        $invoiceCount=invoice::whereMonth('created_at', '=', $now->month)->count();
-        $months=invoice::select(DB::raw("Month(created_at) as month"))->whereYear('created_at',date('Y'))->groupBy(DB::raw("Month(created_at)"))->pluck('month');
-        $incomes=invoice::select(DB::raw("SUM(total_price) as sum"))->whereYear('created_at',date('Y'))->where('keep_product','=',0)->groupBy(DB::raw("Month(created_at)"))->pluck('sum');
-        //$incomes=invoice::select(DB::raw("SUM(total_price) as sum"))->whereYear('created_at',date('Y'))->groupBy(DB::raw("Month(created_at)"))->pluck('sum');
-        $invoiceJan=invoice::whereMonth('created_at', '=', $now->month)->get();
-        $datas=array(0,0,0,0,0,0,0,0,0,0,0,0,0);
-        $bestSale=bestSale::orderBy('sell_number','desc')->take(5)->get('sell_number');
-        foreach($months as $index =>$month)
-        {
-            $datas[$month]=$incomes[$index];
-        }
-        return view('admin/newIndex',compact('staffCount','customerCount','invoiceYearCount','invoiceCount','datas','bestSale','Staffs','todoUser','todoLists','todoDone','todoUserDone'));
+        return view('admin/newIndex',$array,compact('staffCount','customerCount','invoiceYearCount','invoiceCount','datas','bestSale','Staffs','todoUser','todoLists','todoDone','todoUserDone','invoiceNumber'));
     }
 
     public function saveTodo(Request $request){
@@ -122,7 +104,14 @@ class adminController extends Controller
 
     public function invoiceChange($id){
         $invoices=invoice::find($id);
-        $invoices->order_status=2;
+        if($invoices->order_status==1)
+        {
+            $invoices->order_status=2;
+        }
+        elseif($invoices->order_status==2)
+        {
+            $invoices->order_status=3;
+        }
         $invoices->save();
         toast('Order status change','success');
         return redirect()->back();

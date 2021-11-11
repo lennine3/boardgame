@@ -26,6 +26,9 @@
 
                     <p class="mb-0">
                         {{ auth()->user()->name }}
+                        <br>
+                        <img src="{{ asset('FrontEnd/img/coint.png') }}" alt="" style="width: 20%;height:20%">
+                        {{ Auth::user()->userRelation->point }} Point
                     </p>
                 </div>
 
@@ -37,7 +40,7 @@
                 </div>
 
                 <div class="d-flex align-items-center order-info active">
-                    <i class="far fa-credit-card"></i>
+                    <i class="fas fa-file-invoice-dollar"></i>
                     <p class="mb-0">
                         <a href="{{ route('invoice-shop') }}">My order</a>
                     </p>
@@ -52,41 +55,105 @@
                         </a>
                     </p>
                 </div>
+                <div class="d-flex align-items-center order-info">
+                    <i class="far fa-credit-card"></i>
+                    <p class="mb-0">
+                        <a href="{{ url('redeem-code') }}">Redeem code</a>
+                    </p>
+                </div>
             </div>
             <div class="col-9 mb-5">
                 <h4 class="mt-2">My order</h4>
                 <div class="card border-0 myorder-wrapper mt-4 p-3">
-                    <table class="table myorder-table">
-                        <thead class="thead-light">
-                            <tr class="align-middle h-90">
-                                <th scope="col">Order ID</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Total price</th>
-                                <th scope="col">Order Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($invoices as $item)
-                                <tr class="align-middle h-90 {{ $loop->last ? '' : 'hasborder' }}">
-                                    <td>
-                                        <a
-                                            href="{{ route('invoice-detail', ['invoice' => $item->id]) }}">{{ $item->invoice_code }}</a>
-                                    </td>
-                                    <td>{{ $item->created_at->format('d/m/Y') }}</td>
-                                    <td>${{ $item->total_price }}</td>
-                                    <td>@if ($item->order_status==1)
-                                        Your order is being shipped
-                                        @elseif($item->order_status==2)
-                                        Your order has arrived
-                                        @endif</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    <table class="table myorder-table table-responsive overflow-auto row-border hover todo-table" id="table_id">
+                                        <thead class="thead-light">
+                                            <tr class="align-middle h-90">
+                                                <th hidden>Id</th>
+                                                <th scope="col">Order ID</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Total price</th>
+                                                <th scope="col">Order Status</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($invoices as $item)
+                                                <tr class="align-middle h-90 {{ $loop->last ? '' : 'hasborder' }}">
+                                                    <td  class="id" hidden>{{ $item->id}}</td>
+                                                    <td>
+                                                        <a
+                                                            href="{{ route('invoice-detail', ['invoice' => $item->id]) }}">{{ $item->invoice_code }}</a>
+                                                    </td>
+                                                    <td>{{ $item->created_at->format('d/m/Y')}}</td>
+                                                    <td>${{ $item->total_price }}</td>
+                                                    <td>@if($item->status==0)
+                                                    <button type="button" class="btn btn-danger">Your order has been cancel</button>
+                                                    
+                                                        @elseif ($item->order_status==1)
+                                                        <button type="button" class="btn btn-secondary">Your order has been confirmed</button>
+                                                        
+                                                        @elseif($item->order_status==2)
+                                                        <button type="button" class="btn btn-warning">Your order are being delivered</button>
+                                                        
+                                                        @elseif($item->order_status==3)
+                                                        <button type="button" class="btn btn-success">Your order has been delivered</button>
+                                                        
+                                                        @endif</td>
+                                                        <td>
+                                                            @if($item->status==0 || $item->order_status==3)
+                                                            <button type="button" class="btn btn-primary" disabled data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel order</button>
+                                                            @else
+                                                            <button type="button" class="btn btn-primary cancelProduct" data-bs-toggle="modal" data-bs-target="#exampleModal">Cancel order</button>
+                                                    @endif
+                                                          </td>  
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                
             </div>
         </div>
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cancel order</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Do you want to cancel your order?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <form action="{{ url('/invoice-cancel') }}" method="GET">
+                            @csrf
+                            @method('GET')
+                            <input type="text" id="v_id" name="invoiceId" hidden>
+        <button type="submit" class="btn btn-primary">Yes</button>
+                        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    $(document).on('click', '.cancelProduct', function () {
+        var _this = $(this).parents('tr');
+        $('#v_id').val(_this.find('.id').text());
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        
+        $('#table_id').DataTable({
+            "order": [ 0, 'desc' ]
+        });
+    });
+
+</script>
 @endsection

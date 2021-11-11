@@ -26,7 +26,7 @@ class invoice extends Model
 
     public function getCustomer()
     {
-        return $this->belongsTo('App\Models\User','customer_id','id');
+        return $this->belongsTo('App\Models\customer','customer_id','id');
     }
 
 }

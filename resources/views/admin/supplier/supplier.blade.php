@@ -5,28 +5,36 @@
     <div class="row">
 
         <div class="col-lg-3">
-            <form action="{{ route('supplier.store') }}" method="POST">
+            @if(!empty($editData))
+            <form action="{{ url('admin/supplier-update/'.$editData->id) }}" method="POST">
+            @else
+            <form action="{{ url('admin/supplier-store') }}" method="POST">
+            @endif
                 @csrf
                 <div class="table-admin">
                     <div>
                         <label for="roleName" class="form-label">Supplier's Name</label>
-                        <input type="text" id="roleName" name="name" class="form-control">
+                        <input type="text" id="roleName" name="name" class="form-control" value="{{ !empty($editData)? $editData->name:''}}">
                     </div>
                     <div>
                         <label for="User" class="form-label">Supplier's Address</label>
-                        <input type="text" id="User" name="address" class="form-control">
+                        <input type="text" id="User" name="address" class="form-control" value="{{ !empty($editData)? $editData->address:''}}">
                     </div>
                     <div>
                         <label for="User" class="form-label">Supplier's Phone</label>
-                        <input type="text" id="User" name="phone" class="form-control">
+                        <input type="text" id="User" name="phone" class="form-control" value="{{ !empty($editData)? $editData->phone:''}}">
                     </div>
                     <div>
                         <label for="User" class="form-label">Supplier'Email</label>
-                        <input type="text" id="User" name="email" class="form-control">
+                        <input type="text" id="User" name="email" class="form-control" value="{{ !empty($editData)? $editData->email:''}}">
                     </div>
 
                     <div class="d-flex justify-content-end padding-top-35">
+                        @if(!empty($editData))
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        @else
                         <button type="submit" class="btn btn-primary">Add</button>
+                        @endif
                         {{-- <a class="btn btn-primary">Add</a> --}}
                     </div>
                 </div>
@@ -63,9 +71,9 @@
                                 <div class="collapse" id="collapseExample{{ $item->id }}">
                                     <div class="card card-body">
                                         <br>
-                                        <button class="btn btn-warning btn-block">Edit</button>
+                                        <a href="{{url('admin/supplier-edit/'.$item->id)}}" class="btn btn-warning btn-block">Edit</a>
                                         <br>
-                                        <button class="btn btn-danger btn-block">Delete</button>
+                                        <button  class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModal">Delete</button>
                                     </div>
                                 </div>
                             </td>
@@ -76,8 +84,39 @@
             </div>
         </div>
     </div>
-
 </div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-6 justify-content-start d-flex"><h3 class="modal-title" id="exampleModalLabel">Confirm Lock</h3></div>
+                    <div class="col-lg-6 justify-content-end d-flex"><button type="button" class="btn btn-secondary" data-dismiss="modal">X</button></div>
+                </div>
+            </div>
+      <div class="modal-body">
+        Are you sure to delete ?
+      </div>
+      <div class="modal-footer">
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-start">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <form action="{{url('admin/supplier-delete/'.$item->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" type="button" class="btn btn-primary">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+  </div>
+</div>
+
 <script>
     $(document).ready(function () {
         $('#table_id').DataTable(

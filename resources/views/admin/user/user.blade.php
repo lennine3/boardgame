@@ -23,7 +23,7 @@
                     <td class="id">{!! $user->id !!}</td>
                     <td class="name">{!! $user->name !!}</td>
                     <td class="email">{!! $user->email !!}</td>
-                    <td class="email">
+                    <td class="status">
                         @if ($user->status==0)
                         Not active
                         @elseif($user->status==1)
@@ -37,8 +37,12 @@
                     </td>@endcan
                     @role('admin')
                     <td>
-                        <a class="btn btn-danger" href="{{ url('admin/user-lock/'.$user->id) }}"><i class="fal fa-lock"></i></a>
+                        <button class="btn btn-danger deleteUser" data-toggle="modal" data-target="#userDelete"><i
+                                class="fal fa-trash"></i></button>
                     </td>
+                    <!--<td>-->
+                    <!--    <a class="btn btn-danger" href="{{ url('admin/user-lock/'.$user->id) }}"><i class="fal fa-lock"></i></a>-->
+                    <!--</td>-->
                     @endrole
                 </tr>
                 @endforeach
@@ -50,12 +54,48 @@
 
 @include('admin.user.userCreate_modal')
 
+<div class="modal fade" id="userDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-lg-6 justify-content-start d-flex"><h3 class="modal-title" id="exampleModalLabel">Confirm Lock</h3></div>
+                    <div class="col-lg-6 justify-content-end d-flex"><button type="button" class="btn btn-secondary" data-dismiss="modal">X</button></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                Lock this staff?
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-lg-6 justify-content-start d-flex"><button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button></div>
+                    <div class="col-lg-6">
+                        <form action="{{ url('admin/user-lock') }}" method="GET">
+                            @csrf
+                            @method('GET')
+                            <input type="text"id="v_idUser" name="userId" hidden>
+                            <button type="submit" type="button" class="btn btn-primary">Yes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).on('click', '.editUser', function () {
         var _this = $(this).parents('tr');
         $('#v_id').val(_this.find('.id').text());
         $('#v_name').val(_this.find('.name').text());
         $('#v_email').val(_this.find('.email').text());
+    });
+</script>
+<script>
+    $(document).on('click', '.deleteUser', function () {
+        var _this = $(this).parents('tr');
+        $('#v_idUser').val(_this.find('.id').text());
     });
 
 </script>

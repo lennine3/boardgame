@@ -82,6 +82,7 @@ h6>a:hover {
 
 .menu-background:hover>a {
     color: #ec4e0f !important;
+    border-bottom: 1px solid #ec4e0f;
 }
 
 .icon_in_search {

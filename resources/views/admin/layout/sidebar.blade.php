@@ -19,17 +19,18 @@
                                 Customer</span></a></li>
                 </ul>
             </li>
-            <li id="menu-home"><a href="{{ route('supplier.index') }}"><i
+            <li id="menu-home"><a href="{{ url('admin/supplier') }}"><i
                         class="fal fa-truck-loading"></i><span>Supplier</span></a></li>
             <li><a href="#"><i class="fad fa-hand-holding-box"></i><span>product</span><span class="fa fa-angle-right"
                         style="float: right"></span></a>
                 <ul>
                     <li><a href="{{ route('productType-index') }}" class="dot test"><i class="fal fa-box-ballot"></i><span>Product
                         Type</span></a></li>
-                    <li><a href="{{ route('product.index') }}" class="dot"><i class="fal fa-box-open"></i><span>Product</span></a></li>
+                    <li><a href="{{ url('admin/product') }}" class="dot"><i class="fal fa-box-open"></i><span>Product</span></a></li>
                     <li><a href="{{ route('product-img') }}" class="dot"><i class="fal fa-images"></i><span>Product Image</span></a></li>
                     <li><a href="{{ route('turtorial') }}" class="dot"><i class="fad fa-info-circle"></i><span>Product description</span></a></li>
                     <li><a href="{{ route('promotion-index') }}" class="dot"><i class="fal fa-percent"></i><span>Promotion</span></a></li>
+                    <li><a href="{{ url('admin/voucher') }}" class="dot"><i class="fas fa-donate"></i><span>Voucher</span></a></li>
                 </ul>
             </li>
             <li id="menu-home"><a href="{{ route('invoice') }}" class="dot"><i

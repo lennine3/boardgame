@@ -20,7 +20,8 @@ class checkCostumer
         $admin=Role::findById(1);
         $staff=Role::findById(2);
         $costumer=Role::findById(3);
-        if(Auth::check()&&Auth()->user()->hasRole([$costumer,$admin,$staff])&&Auth::user()->status==1)
+        // if(Auth::check()&&Auth()->user()->hasRole([$costumer,$admin,$staff])&&Auth::user()->status==1)
+        if(Auth::check()&&Auth::user()->status==1)
         {
             return $next($request);
         }

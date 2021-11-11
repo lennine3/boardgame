@@ -47,7 +47,7 @@
 </head>
 
 <body>
-    <img src="{{ $message->embed(public_path() . '/Img/common-banner.jpg') }}" width="100%" />
+    <img src="{{ $message->embed('Img/common-banner.jpg') }}" width="100%" />
     <div style="text-align: center">
         <h1><b>WELCOME TO TK BOARDGAME</b></h1>
     </div>
@@ -63,7 +63,7 @@
             You won't be able to go further unitl your email is verified.
             <br><br>
             <div style="text-align: center">
-                <a href="{{ url('register-user-complete/'.$data['userId']) }}" target="_blank">Verify your email</a>
+                <a href="{{ url('verify-email/'.$data['userId']) }}" target="_blank">Verify your email</a>
             </div>
             <br><br>
             if you did not create an account, no further action is required.

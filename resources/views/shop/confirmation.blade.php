@@ -125,6 +125,17 @@
                         </tr>
                         <tr>
                             <td>
+                                <h4>Voucher</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>${{($invoice->voucher > 0 ) ? $invoice->voucher : 0}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 <h4>Total</h4>
                             </td>
                             <td>

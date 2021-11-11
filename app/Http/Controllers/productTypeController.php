@@ -14,7 +14,7 @@ class productTypeController extends Controller
         $this->middleware('checkLogin');
     }
     public function index(){
-        $productTypes=productType::all();
+        $productTypes=productType::where('status',1)->get();
         return view('admin.product.productType',compact('productTypes'));
     }
 
@@ -29,18 +29,22 @@ class productTypeController extends Controller
         $productTypes= new productType();
         $productTypes->product_type_name=$request->product_type_name;
         $productTypes->save();
+        toast('Product type created','success');
         return redirect()->route('productType-index');
     }
     public function update(Request $request,$id){
         $productType= productType::findOrFail($id);
         $productType->product_type_name=$request->product_type_name;
         $productType->save();
+        toast('Product type updated','success');
         return redirect()->route('productType-index');
     }
 
-    public function destroy($id){
-        $productType= productType::findOrFail($id);
-        $productType->delete();
+    public function destroy(Request $request){
+        $productType= productType::findOrFail($request->productTypeId);
+        $productType->status=0;
+        $productType->save();
+        toast('Product type status updated','success');
         return redirect()->route('productType-index');
     }
 }

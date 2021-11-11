@@ -18,31 +18,43 @@
                     <tbody>
                         @foreach (Session::get("Cart")->products as $item)
                         <tr>
-                            <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="90%"></td>
+                            <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="70%"></td>
                             <td class="cart-title first-row">
-                                <h5>{{ $item['productInfo']->name }}</h5>
+                                <h4>{{ $item['productInfo']->name }}</h4>
                             </td>
-                            <td class="p-price first-row">${{ $item['productInfo']->promotion_price }}</td>
+                            <td class="p-price first-row" style="font-size:25px">${{ $item['productInfo']->promotion_price }}</td>
                             <td class="qua-col first-row">
                                 <div class="quantity">
                                     <div class="input-group inline-group">
                                         <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary btn-minus">
+                                            <button class="btn btn-outline-secondary btn-minus" onclick="UpdateItem({{ $item['productInfo']->id }})" >
                                                 <i class="fa fa-minus"></i>
                                             </button>
                                         </div>
-                                        <input class="form-control" min="0" name="quantity"
+                                        <input class="form-control" min="1" name="quantity"
                                             id="quanty-item{{ $item['productInfo']->id }}" value="{{ $item['quanty'] }}"
                                             type="number">
+                                             @if($item['productInfo']->stock >$item['quanty'])
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary btn-plus">
+                                            <button  class="btn btn-outline-secondary btn-plus" onclick="UpdateItem({{ $item['productInfo']->id }})">
                                                 <i class="fa fa-plus"></i>
                                             </button>
                                         </div>
+                                        @else
+                                        <div class="input-group-append">
+                                            <button disabled  class="btn btn-outline-secondary btn-plus" >
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
+                                <br>
+                                @if($item['productInfo']->stock ==$item['quanty'])
+                                The product has reached the maximum quantity
+                                @endif
                             </td>
-                            <td class="total-price first-row">${{ ($item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100))*$item['quanty'] }}</td>
+                            <td class="total-price first-row" style="font-size:25px">${{ ($item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100))*$item['quanty'] }}</td>
                             <td class="close-td first-row"><a class="btn"
                                     onclick="UpdateItem({{ $item['productInfo']->id }})"><i class="fal fa-save"></i></a>
                             </td>
@@ -112,5 +124,6 @@
             input[0][isNegative ? 'stepDown' : 'stepUp']()
         }
     })
+   
 
 </script>

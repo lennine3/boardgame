@@ -267,7 +267,7 @@
     <div style="padding-left: 150px;padding-right:150px">
 
     </div>
-    <img src="{{ $message->embed(public_path() . '/Img/common-banner.jpg') }}" width="100%" />
+    <img src="{{ $message->embed('Img/common-banner.jpg') }}" width="100%" />
     <div style="text-align: center">
         <h1><b>THANK YOU!!! YOU ORDER HAVE BEEN RECEIVED</b></h1>
     </div>

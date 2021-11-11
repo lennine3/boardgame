@@ -36,6 +36,9 @@
 
                     <p class="mb-0">
                         {{ auth()->user()->name }}
+                        <br>
+                        <img src="{{ asset('FrontEnd/img/coint.png') }}" alt="" style="width: 20%;height:20%">
+                        {{ Auth::user()->userRelation->point }} Point
                     </p>
                 </div>
 
@@ -58,6 +61,12 @@
                         <a href="{{ url('invoice-keep-order') }}">Order keep @if (!empty($countKeep))
                             <span class="badge" style="background: red">{{ $countKeep }}</span>
                             @endif </a>
+                    </p>
+                </div>
+                <div class="d-flex align-items-center order-info">
+                    <i class="far fa-credit-card"></i>
+                    <p class="mb-0">
+                        <a href="{{ url('redeem-code') }}">Redeem code</a>
                     </p>
                 </div>
             </div>

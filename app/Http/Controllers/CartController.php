@@ -5,6 +5,7 @@ use App\Models\Cart;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 class CartController extends Controller
 {
     //
@@ -50,15 +51,16 @@ class CartController extends Controller
         return view('shop.ListCart');
     }
     public function UpdateListItemCart(Request $request, $id,$quanty){
-
-        $oldCart=Session('Cart') ? Session('Cart') : null;
-        $newCart=new Cart($oldCart);
-        if($quanty!=0)
-        $newCart->UpdateItemCart($id,$quanty);
-        else
-        $newCart->DeleteItemCart($id);
-        $request->Session()->put('Cart',$newCart);
-
+        $product=product::find($id);
+        if($product->stock>=$quanty){
+            $oldCart=Session('Cart') ? Session('Cart') : null;
+            $newCart=new Cart($oldCart);
+            if($quanty!=0)
+            $newCart->UpdateItemCart($id,$quanty);
+            else
+            $newCart->DeleteItemCart($id);
+            $request->Session()->put('Cart',$newCart); 
+        }
         return view('shop.ListCart');
     }
 

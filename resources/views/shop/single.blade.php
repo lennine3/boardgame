@@ -44,7 +44,23 @@
                 <h3>
                     {{ $product->name }}
                 </h3>
-                <h2>$ {{ $product->price }}</h2>
+                    @if($product->promotionRelation->id!=1)
+                                                                <div class="col-lg-6">
+                                                                    <h2 class="price-color">
+                                                                        ${{ $product->promotion_price}}
+                                                                    </h2>
+                                                                </div>
+                                                                <div class="col-lg-6 single-product-price">
+                                                                    <h6 class="l-through">${{ $product->price }}</h6>
+                                                                </div>
+                                                                @else
+                                                                <div class="col-lg-12">
+                                                                    <h2 class="price-color">
+                                                                        ${{ $product->promotion_price}}
+                                                                    </h2>
+                                                                </div>
+                                                                    @endif
+                
                 <ul class="list">
                     <li>
                         @if ( $product->stock >0)
@@ -66,10 +82,12 @@
                     <label for="qty">Quantity</label>
                     <input type="number" value="1" min="1">
                 </div> --}}
-                <div style="bottom: 100px!important;position: absolute;">
+                <div style="bottom: 100px!important;">
+                    @if($product->stock!=0)
                     <a onclick="AddCart({{ $product->id }})" href="javascript:" class="product-primary-btn">
                         ADD TO CART
                     </a>
+                    @endif
                     <a href="#" class="icon_btn">
                         @if (auth()->check())
                             @php
@@ -245,7 +263,12 @@
                         <div class="owl-item">
                             <div class="single-product">
                                 <a href="{{ route('single',$related->id) }}">
-                                    <span class="onsale">Sale {{ $related->promotionRelation->rate }}% off</span>
+                                    @if($related->stock==0)
+                                    <span class="onsale">Out of stock</span>
+                                    @elseif($related->promotionRelation->id!=1)
+                                                    <span class="onsale">Sale {{ $related->promotionRelation->rate }}%
+                                                        off</span>
+                                                    @endif
                                     <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
                                         <div class="box-img">
                                             <img class="img-fluid" src="{{ asset('Img/product-img/'.$related->image) }}"
@@ -253,23 +276,26 @@
                                         </div>
                                     </div>
                                     <div class="product-details">
-                                        <h6> <a href="{{ route('single',$related->id) }}">{{ $related->name }}</a></h6>
+                                        <h6 class="mb-3"> <a href="{{ route('single',$related->id) }}">{{ $related->name }}</a></h6>
                                         <div class="price">
-                                            @if ($product->id_promotion!=0)
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <h6 class="price-color"> <span
-                                                            class="price_icon">$</span>{{ $related->promotion_price}}
-                                                    </h6>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <h6 class="l-through"><span
-                                                            class="price_icon">$</span>{{ $related->price }}</h6>
-                                                </div>
+                                                @if($related->promotionRelation->id!=1)
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="price-color">
+                                                                        ${{ $related->promotion_price}}
+                                                                    </h6>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <h6 class="l-through">${{ $related->price }}</h6>
+                                                                </div>
+                                                                @else
+                                                                <div class="col-lg-12">
+                                                                    <h6 class="price-color">
+                                                                        ${{ $related->promotion_price}}
+                                                                    </h6>
+                                                                </div>
+                                                                    @endif
                                             </div>
-                                            @else
-                                            <h6>${{ $product->price }}</h6>
-                                            @endif
                                         </div>
                                     </div>
                                 </a>
@@ -280,11 +306,11 @@
                 </div>
                 <div class="owl-nav ">
                     <div class="btn-left-related">
-                        <div class="owl-prev-related"><img src="{{ asset('FrontEnd/img/prev-black.png') }}" alt=""
+                        <div class="owl-prev-related" style="margin:25px"><img src="{{ asset('FrontEnd/img/prev-black.png') }}" alt=""
                                 class="img-fluid"></div>
                     </div>
                     <div class="btn-right-related">
-                        <div class="owl-next-related"><img src="{{ asset('FrontEnd/img/next-black.png') }}" alt=""
+                        <div class="owl-next-related" style="margin:25px"><img src="{{ asset('FrontEnd/img/next-black.png') }}" alt=""
                                 class="img-fluid"></div>
                     </div>
                 </div>
@@ -319,7 +345,11 @@
                                 <div class="owl-item">
                                     <div class="single-product">
                                         <a href="{{ route('single',$deal->id) }}">
+                                            @if($deal->stock!=0)
                                             <span class="onsale">Sale {{ $deal->promotionRelation->rate }}% off</span>
+                                            @else
+                                            <span class="onsale">Out of stock</span>
+                                            @endif
                                             <div class="wrap" style="top: 0px;z-index: 200;position: relative;">
                                                 <div class="box-img">
                                                     <img class="img-fluid"
@@ -330,7 +360,6 @@
                                                 <h6> <a href="{{ route('single',$deal->id) }}">{{ $deal->name }}</a>
                                                 </h6>
                                                 <div class="price">
-                                                    @if ($product->id_promotion!=0)
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <h6 class="price-color"> <span
@@ -342,9 +371,6 @@
                                                                     class="price_icon">$</span>{{ $deal->price }}</h6>
                                                         </div>
                                                     </div>
-                                                    @else
-                                                    <h6>${{ $deal->price }}</h6>
-                                                    @endif
                                                 </div>
                                             </div>
                                         </a>

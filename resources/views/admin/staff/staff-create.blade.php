@@ -9,7 +9,7 @@
                     <div class="mb-3">
                         <label for="inputName" class="form-label">Name</label>
                         <input type="text" class="form-control" id="inputName" placeholder="Ex: John Uzumaki"
-                            name="name">
+                            name="name" required>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -44,14 +44,14 @@
                     <div class="mb-3">
                         <label for="inputEmail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="inputEmail" placeholder="Ex: name@example.com"
-                            name="email">
+                            name="email" required>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="mb-3 floating-label">
                         <label for="inputPass" class="form-label">Password</label>
                         <input type="password" class="form-control" id="inputPass" placeholder="Enter Password"
-                            name="password">
+                            name="password" required>
                     </div>
                 </div>
             </div>
@@ -60,13 +60,13 @@
                     <div class="mb-3">
                         <label for="inputPhone" class="form-label">Phone</label>
                         <input type="text" class="form-control" id="inputPhone" placeholder="name@example.com"
-                            name="phone">
+                            name="phone" required>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputDate" class="form-label">Birth</label>
-                        <input type="date" class="form-control" id="inputDate" name="birth">
+                        <input type="date" class="form-control" id="inputDate" name="birth" required>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <div class="mb-3">
                         <label for="inputAddress" class="form-label">Address</label>
                         <input type="text" class="form-control" id="inputAddress"
-                            placeholder="Ex: 65 black street, California, USA" name="address">
+                            placeholder="Ex: 65 black street, California, USA" name="address" required>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Avatar</label>
-                        <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()">
+                        <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()" required>
                     </div>
                 </div>
                 <div class="col-lg-6">

@@ -4,13 +4,15 @@
 {{-- Ckeditor --}}
 <script src="{{ asset('BackEnd/js/ckeditor/ckeditor.js') }}"></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<link href="{{  asset('Backend/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
+<link href="{{  asset('BackEnd/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all">
 <!-- Custom Theme files -->
-<link href="{{ asset('Backend/css/style-new.css')}}" rel="stylesheet" type="text/css" media="all"/>
+<link href="{{ asset('BackEnd/css/style-new.css')}}" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="{{ asset('Backend/js/admin/jquery-2.1.1.min.js')}}"></script>
+
+<script src="{{ asset('BackEnd/js/admin/jquery-2.1.1.min.js')}}"></script>
+<script src="{{ asset('BackEnd/js/admin/bootstrap.js')}}"></script>
 <!--icons-css-->
-{{-- <link href="{{ asset('Backend/css/font-awesome.css')}}" rel="stylesheet"> --}}
+{{-- <link href="{{ asset('BackEnd/css/font-awesome.css')}}" rel="stylesheet"> --}}
 <link rel="stylesheet" href="{{ asset('BackEnd/css/all.css') }}">
 <link rel="stylesheet" href="{{ asset('BackEnd/css/style.css') }}">
 <!--Google Fonts-->
@@ -21,10 +23,15 @@
 <!--//charts-->
 
 <!--skycons-icons-->
-<script src="{{ asset('Backend/js/admin/skycons.js')}}"></script>
+<script src="{{ asset('BackEnd/js/admin/skycons.js')}}"></script>
 <!--//skycons-icons-->
 {{-- Data table --}}
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<!--Full Calender-->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.css' rel='stylesheet' />
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.js'></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

@@ -51,7 +51,7 @@ class User extends Authenticatable
     }
 
     public function userRelation(){
-        return $this->hasOne('App\Models\customer','id','user_id');
+        return $this->hasOne('App\Models\customer','user_id','id'); //correct
     }
 
     public function commentRealation(){

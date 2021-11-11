@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Spatie\Permission\Models\Role;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+
 class LoginController extends Controller
 {
     /*
@@ -50,21 +55,65 @@ class LoginController extends Controller
         ];
         $admin=Role::findById(1);
         $staff=Role::findById(2);
-        Auth::attempt($data);
-        if(Auth::user()->status==0)
+        
+        if(Auth::attempt($data))
+        {
+            if(Auth::user()->status==0)
         {
             Auth::logout();
+            alert()->error('Something wrong',"You still haven't verified your email");
 
-            return redirect()->route('home');
+            return redirect()->route('loginPage');
         }
         elseif (Auth()->user()->hasRole([$admin,$staff])) {
             //true
+            toast('Welcome '.Auth::user()->name,'success');
             return redirect()->route('admin');
             /* echo 'ok'; */
         } else {
-            //false
+            toast('Welcome '.Auth::user()->name,'success');
             return redirect()->route('home');
             /* echo 'not ok'; */
         }
+        }
+        else{
+            toast('Wrong email or password','error');
+            return redirect()->back();
+        }
+        
+    }
+    
+    public function resetPage()
+    {
+        return view('shop.sendResetPassword');
+    }
+
+    public function sendMailReset(Request $request)
+    {
+        $user=User::where('email',$request->email)->first();
+        $email=$request->email;
+        if($user!==null){
+            $data['userId']=$user->id;
+            $data['customerName']=$user->name;
+        Mail::send('mail.resetMail', compact('data'), function($message) use($email)
+        {
+            $message->to($email)->subject('Reset Password');
+        });
+        toast('Email sent success','success');
+        }
+        return redirect()->back();
+    }
+
+    public function resetPassword(Request $request,$id)
+    {
+        return view('shop.resetPassword',compact('id'));
+    }
+
+    public function storePassword(Request $request, $id){
+        $user=User::find($id);
+        $user->password=Hash::make($request->password);
+        $user->save();
+        alert()->success('Password reseted','You password had been changed.');
+        return redirect()->route('loginPage');
     }
 }

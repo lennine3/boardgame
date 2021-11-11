@@ -34,25 +34,44 @@ class productImageController extends Controller
         }
     }
 
-    public function deleteImg($id){
-        $productImg=productImage::find($id);
+    public function deleteImg(Request $request){
+        $productImg=productImage::find($request->imgId);
         $productImg->delete();
         return redirect()->back();
     }
     public function editImg($id){
         $productImg=productImage::find($id);
-        dd($productImg);
+        return view('admin.product.productImage-edit',compact('productImg'));
+    }
+    public function updateImg(Request $request,$id){
+
+        $productImg=productImage::find($id);
+        if($request->image!=null)
+        {
+            $productImg->image=$this->ImgUpload($request);
+        }
+        else
+        {
+            $productImg->image=$productImg->image;
+        }
+        $productImg->save();
+        toast('Image updated','success');
+        return redirect('admin/product-image');
     }
     public function ImgUpload(Request $request)
     {
-        if ($image = $request->file('image')) {
-            foreach ($image as $files) {
-           // $destinationPath = 'public/image/'; // upload path
-            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-         //   $files->move($destinationPath, $profileImage);
-            $insert[]['image'] = "$profileImage";
+        if($request->hasFile('image'))
+        {
+            if($request->file('image')->isValid())
+            {
+                $request->validate(
+                [
+                    'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+                $imageName=time().'.'.$request->image->extension();
+                $request->image->move(public_path('../Img/product-img'),$imageName);
+                return $imageName;
             }
         }
-        $check = productImage::insert($insert);
     }
 }

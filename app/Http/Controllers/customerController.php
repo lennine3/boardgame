@@ -9,7 +9,7 @@ class customerController extends Controller
 {
     //
     public function index(){
-        $customers=customer::all();
+        $customers=customer::where('status','!=',0)->get();
         return view('admin.customer.customer',compact('customers'));
     }
 
@@ -36,11 +36,21 @@ class customerController extends Controller
         $user=User::where('id','=',$customer->user_id)->first();
         $user->name=$request->name;
         $user->email=$request->email;
+        toast('Customer info update','success');
         $user->save();
 
         return redirect()->route('customer-index');
     }
-    
+    public function lockCustomer(Request $request){
+        $customer=customer::find($request->customerId);
+        $customer->status=0;
+        $user=User::find($customer->user_id);
+        $user->status=0;
+        $user->save();
+        $customer->save();
+        toast('Customer status update','success');
+        return redirect()->back();
+    }
     public function ImgUpload(Request $request)
     {
         if ($request->hasFile('image')) {
@@ -51,7 +61,7 @@ class customerController extends Controller
                 ]
                 );
                 $imageName=time().'.'.$request->image->extension();
-                $request->image->move(public_path('Img/customer-avatar'), $imageName);
+                $request->image->move(public_path('../Img/customer-avatar'), $imageName);
                 return $imageName;
             }
             return '';

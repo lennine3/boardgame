@@ -78,15 +78,13 @@ class RegisterController extends Controller
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         }
-
+        
         /* $user = new User(); */
         $customer=new customer();
         $user=User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role'=>3,
-            'status'=>0
         ]);
         $customer->name=$request->name;
         $customer->phone=$request->phone;
@@ -101,9 +99,9 @@ class RegisterController extends Controller
             'customerName'=>$customer->name,
             'message'=>'Successful',
         ];
-        Mail::send('mail.registerMail', compact('data'), function($message)
+        Mail::send('mail.registerMail', compact('data'), function($message) use ($request)
         {
-            $message->to('tvdkhoa1801@gmail.com')->subject('Complete register');
+            $message->to($request->email)->subject('Complete register');
         });
         $customer->save();
         return $this->registerFinishPage($user->id);
@@ -134,9 +132,9 @@ class RegisterController extends Controller
             'customerName'=>$customer->name,
             'message'=>'Successful',
         ];
-        Mail::send('mail.registerMail', compact('data'), function($message)
+        Mail::send('mail.registerMail', compact('data'), function($message) use ($user)
         {
-            $message->to('tvdkhoa1801@gmail.com')->subject('Complete register');
+            $message->to($user->email)->subject('Complete register');
         });
         return redirect()->back();
     }

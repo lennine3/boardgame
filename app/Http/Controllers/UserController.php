@@ -15,7 +15,7 @@ class UserController extends Controller
     }
     //
     public function index(){
-        $users = User::all();
+        $users = User::where('status','!=',0)->get();
         return view('admin/user/user',compact('users'));
     }
     public function edit($id){
@@ -28,12 +28,25 @@ class UserController extends Controller
         $users->name=$request->name;
         $users->email=$request->email;
         $users->password=Hash::make($request->password);
+        if($users->role=3)
+        {
+            $customer=customer::where('user_id',$users->id)->first();
+            $customer->name=$request->name;
+            $customer->save();
+        }
+        elseif($users->role=3)
+        {
+            $staff=staff::where('user_id',$users->id)->first();
+            $staff->name=$request->name;
+            $staff->save();
+        }
         $users->save();
+        toast('User info update','success');
         return redirect()->route('user');
     }
 
-    public function lockUser($id){
-        $user=User::find($id);
+    public function lockUser(Request $request){
+        $user=User::find($request->userId);
         if($user->role==2)
         {
             $account=staff::where('user_id','=',$user->id)->first();
@@ -48,6 +61,7 @@ class UserController extends Controller
         }
         $user->status=0;
         $user->save();
+        toast('User status update','success');
         return redirect()->back();
     }
 }

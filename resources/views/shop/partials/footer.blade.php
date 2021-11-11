@@ -1,103 +1,39 @@
-<div class="container-fluid footer">
+<div class="container-black">
     <div class="container">
-        <div class="row" style="padding-top: 35px">
-            <div class="col-12 col-lg-3">
-                <div>
-                    <img src="{{ asset('FrontEnd/img/logo.png') }}" alt="">
-                </div>
-                <br>
-                <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sunt,
-                    eaque possimus aliquid voluptatibus sit impedit alias beatae officiis! Incidunt atque magni
-                    veritatis accusamus.
-                    Ipsum ducimus magnam tenetur similique porro.
-                </div>
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <h3>About Us</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
             </div>
-            <div class="col-lg-6 col-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div style="display:inline-flex;padding-bottom:20px">
-                            <div class="parallelogram1"></div>
-                            <div style="padding-left: 5px">
-                                <h4 style="color: #fff" style="padding-left: 30px"><i>People's Choice</i></h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-12" style="padding-top: 10px">
-                            <div class="row">
-                                <div class="col-lg-6 d-flex justify-content-end">
-                                    <img src="{{ asset('Img/ct.jpg') }}" width="100%">
-                                </div>
-                                <div class="col-lg-4">
-                                    <div>
-                                        <label for="#">The Famoust gameboard of all time</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-3 col-12">
-                <div style="display:inline-flex;padding-bottom:20px">
-                    <div class="parallelogram1"></div>
-                    <div style="padding-left: 5px">
-                        <h4 style="color: #fff" style="padding-left: 30px"><i>Tag</i></h4>
-                    </div>
-                </div>
-                <div>
-                    <a class="btn" style="color: #fff;border-color:#fff">Family</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">RPG</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">Fun</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">Logic</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">Trust</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">Group</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">Family</a>
-                    <a class="btn" style="color: #fff;border-color:#fff">RPG</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="container">
-        <div class="row" style="padding-top: 20px;padding-bottom:20px">
-            <div class="col-lg-4">
-                <div style="font-size: 80%"> <b>SUBSCRIBE TO RECEIVE PROMOTION INFORMATION </b></div> <br>
+            <div class="col-lg-4 col-sm-12">
+                <h3>Newsletter</h3>
+                <p>Stay update with our latest</p>
                 <form action="#">
                     <div class="input-group mb3">
-                        <input type="text" class="form-control" id="email">
+                        <input type="text" class="form-control" id="email" placeholder="Enter email">
                         <label for="email"></label>
-                        <button class="btn btn-warning">SUBSCRIBE</button>
+                        <button class="btn btn-warning"><i class="fa fa-long-arrow-right text-white" aria-hidden="true"></i></button>
                     </div>
                 </form>
             </div>
-            <div class="col-lg-5" style="text-align: center">
-                <div style="font-size: 80%"> <b> PAYMENT METHOD </b></div> <br>
-                <div>
-                    <img src="{{ asset('FrontEnd/img/i_atm.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/onepay.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/visa.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/master.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/usd.png') }}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3" style="text-align: end">
-                <div style="font-size: 80%"> <b> CONNECT WITH US </b></div> <br>
-                <div>
-                    <img src="{{ asset('FrontEnd/img/face.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/insta.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/mail.png') }}" alt="">
-                    <img src="{{ asset('FrontEnd/img/youtube.png') }}" alt="">
+            <div class="col-lg-4 col-sm-12">
+                <h3>Facebook Feed</h3>
+                <div class="pt-3">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTK-Boardgame-100556532443552&tabs=event&width=340&height=130&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="d-flex justify-content-center border-top border-2 border-orange"
-    style="padding:20px 20px 20px 20px;color:#ec4e0f">&copy; Amin Board Game</div>
+<div class="container-black">
+    <p class="text-center pb-5 mb-0">Copyright <i class="fa fa-copyright text-white" aria-hidden="true"></i>2021 All rights reserved | 
+    This template is made by Someone</p>
+</div>
+
+
+
+
 
 {{--  <script>
         window.onscroll = function () {
@@ -129,6 +65,7 @@
     }
 
 </script>
+@include('sweetalert::alert')
 <!--Cart-->
 <script src="{{ asset('FrontEnd/js/cart-bag.js') }}"></script>
 <!-- JavaScript -->
@@ -157,3 +94,30 @@
     });
 
 </script>
+<!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100556532443552");
+      chatbox.setAttribute("attribution", "biz_inbox");
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v12.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>

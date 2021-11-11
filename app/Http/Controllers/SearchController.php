@@ -15,7 +15,7 @@ class SearchController extends Controller
     }
     public function search()
     {
-        $products = product::where('name', 'like', '%' .request('keyword') . '%')->get();
+        $products = product::where('name', 'like', '%' .request('keyword') . '%')->where('status',1)->get();
         return view('shop.search.search', compact('products'));
     }
 }

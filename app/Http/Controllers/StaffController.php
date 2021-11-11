@@ -59,6 +59,7 @@ class StaffController extends Controller
         $staffs->address=$request->address;
         $staffs->avatar=$this->ImgUpload($request);
         $staffs->user_id=$users->id;
+        toast('Staff created','success');
         $staffs->save();
         return redirect()->route('staff-index');
 
@@ -113,6 +114,7 @@ class StaffController extends Controller
         $staffs->sex=$request->gender;
         $staffs->address=$request->address;
         $staffs->avatar=$this->ImgUpload($request);
+        toast('Staff info updated','success');
         $staffs->save();
         return redirect()->route('staff-index');
     }
@@ -146,7 +148,7 @@ class StaffController extends Controller
                     'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 ]);
                 $imageName=time().'.'.$request->image->extension();
-                $request->image->move(public_path('Img/user-img'),$imageName);
+                $request->image->move(public_path('../Img/user-img'),$imageName);
                 return $imageName;
             }
             return '';

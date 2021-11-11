@@ -21,7 +21,7 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="productType" class="form-label">Product Type</label>
-                        <select name="productType" id="productType" class="form-select">
+                        <select name="productType" id="productType" class="form-control">
                             @foreach ($producttypes as $producttype)
                             <option value="{{ $producttype->id }}" <?php
                                 if(!empty($product)) {if($product->id_product_type==$producttype->id){echo 'selected';}}
@@ -35,7 +35,7 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="inputSupplier" class="form-label">Supplier</label>
-                        <select name="supplier" id="inputSupplier" class="form-select">
+                        <select name="supplier" id="inputSupplier" class="form-control">
                             @foreach ($suppliers as $supplier)
                             <option value="{{ $supplier->id }}" <?php
                                 if(!empty($product)) {if($product->id_product_type==$supplier->id){echo 'selected';}}
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-lg-6">
                     <label for="inputStaff" class="form-label">Staff</label>
-                    <select name="staff" id="inputStaff" class="form-select">
+                    <select name="staff" id="inputStaff" class="form-control">
                         @foreach ($staffs as $staff)
                         <option value="{{ $staff->id }}"
                             <?php if(!empty($product)) {if($product->id_product_type==$staff->id){echo 'selected';}} ?>>
@@ -121,7 +121,7 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="formPromotion" class="form-label">promotion</label>
-                        <select name="promotion" id="formPromotion" class="form-select">
+                        <select name="promotion" id="formPromotion" class="form-control">
                             @foreach ($promotions as $promotion)
                             <option value="{{ $promotion->id }}"
                                 <?php if(!empty($product)) {if($product->id_promotion==$promotion->id){echo 'selected';}} ?>>

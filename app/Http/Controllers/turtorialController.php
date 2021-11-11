@@ -19,11 +19,11 @@ class turtorialController extends Controller
         $turtorials=turtorial::all();
         return view('admin.turtorial.turtorial',compact('turtorials'));
     }
-    public function create(){
-        $products=product::all();
+    // public function create(){
+    //     $products=product::all();
 
-        return view('admin.turtorial.turtorial-create',compact('products'));
-    }
+    //     return view('admin.turtorial.turtorial-create',compact('products'));
+    // }
     public function store(Request $request){
 
         $turtorial=new turtorial();
@@ -35,10 +35,21 @@ class turtorialController extends Controller
         $turtorial->save();
         return redirect()->route('turtorial');
     }
-
-    public function destroy($id){
+    public function edit($id){
         $productContent=turtorial::find($id);
+        return view('admin.turtorial.turtorial-edit',compact('productContent'));
+    }
+    public function update(Request $request,$id){
+        $productContent=turtorial::find($id);
+        $productContent->content=$request->editor;
+        $productContent->save();
+        toast('Product content updated','success');
+        return redirect('admin/turtorial');
+    }
+    public function destroy(Request $request){
+        $productContent=turtorial::find($request->contentId);
         $productContent->delete();
+        toast('Product content deleted','success');
         return redirect()->back();
     }
 

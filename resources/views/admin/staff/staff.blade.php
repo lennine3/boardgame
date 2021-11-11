@@ -64,8 +64,8 @@
                         <img src="{{ asset('Img/user-img/'.$staff->avatar) }}" alt="" style="width: 150px;height:150px">
                     </td>
                     <td>
-                        <a href="{{ route('staffs.edit',$staff->id) }}" class="btn btn-success"><i
-                                class="far fa-lock"></i></a>
+                        <a href="{{ route('staffs.edit',$staff->id) }}" class="btn btn-warning"><i
+                                class="far fa-pencil"></i></a>
                     </td>
                     <td>
                         <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i

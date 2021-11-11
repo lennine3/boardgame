@@ -21,5 +21,3 @@
 
 </script>
 @include('sweetalert::alert')
-
-<script src="{{ asset('Backend/js/admin/bootstrap.js')}}"> </script>

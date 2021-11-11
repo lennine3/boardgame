@@ -36,7 +36,7 @@
                     foreach ($invoiceYearCount as $item)
                     $incomeYear+=$item->total_price
                     @endphp
-                    <h3>{{ $incomeYear }} $</h3>
+                    <h3>{{ number_format($incomeYear, 2) }} $</h3>
                     <h4>Earnings (Year)</h4>
                 </div>
                 <div class="col-md-4 market-update-right">
@@ -53,69 +53,39 @@
         <div class="col-md-12 chit-chat-layer1-left">
             <div class="work-progres">
                 <div class="chit-chat-heading">
-                    Recent Followers
+                    Best sell of the month
                 </div>
+                <br>
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table class="table-striped table-bordered table table-responsive overflow-auto row-border hover todo-table" id="table_id">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Project</th>
-                                <th>Manager</th>
-
-                                <th>Status</th>
-                                <th>Progress</th>
+                                <th>Product name</th>
+                                <th>Products sold number</th>
+                                <th>Money earn</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $no=0 ?>
+                            @foreach ($invoiceNumber as $item)
                             <tr>
-                                <td>1</td>
-                                <td>Face book</td>
-                                <td>Malorum</td>
-
-                                <td><span class="label label-danger">in progress</span></td>
-                                <td><span class="badge badge-info">50%</span></td>
+                                <?php $no++ ?>
+                                @if($no==1)
+                                <td> <span class="label label-danger">{{$no}} <i class="fas fa-medal"></i></span></td>
+                                @elseif($no==2)
+                                <td><span class="label label-primary">{{$no}} <i class="fas fa-medal"></i></span></td>
+                                @elseif($no==3)
+                                <td><span class="label label-success">{{$no}} <i class="fas fa-medal"></i></span></td>
+                                @else
+                                <td>{{$no}}</td>
+                                @endif
+                                
+                                <td><span class="label label-primary">{{$item->product->name}}</span></td>
+                                <td>{{$item->totalSell}} <i class="fad fa-box-check"></i></td>
+                                <td><span class="badge badge-info">{{ number_format($item->totalEarn, 2) }} $</span></td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Twitter</td>
-                                <td>Evan</td>
-
-                                <td><span class="label label-success">completed</span></td>
-                                <td><span class="badge badge-success">100%</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Google</td>
-                                <td>John</td>
-
-                                <td><span class="label label-warning">in progress</span></td>
-                                <td><span class="badge badge-warning">75%</span></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>LinkedIn</td>
-                                <td>Danial</td>
-
-                                <td><span class="label label-info">in progress</span></td>
-                                <td><span class="badge badge-info">65%</span></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Tumblr</td>
-                                <td>David</td>
-
-                                <td><span class="label label-warning">in progress</span></td>
-                                <td><span class="badge badge-danger">95%</span></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Tesla</td>
-                                <td>Mickey</td>
-
-                                <td><span class="label label-info">in progress</span></td>
-                                <td><span class="badge badge-success">95%</span></td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -129,6 +99,14 @@
             <div class="col-md-6 chart-layer1-left">
                 <div class="glocy-chart">
                     <div class="span-2c">
+                        <h3 class="tlt">All product in store</h3>
+                        <div id="piechart_3d" style="width: 700px; height: 500px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 chart-layer1-left">
+                <div class="glocy-chart">
+                    <div class="span-2c">
                         <h3 class="tlt">Sales Analytics</h3>
                         <canvas id="myChart" class="chart-style"></canvas>
                     </div>
@@ -138,6 +116,20 @@
         </div>
     </div>
     <!--main page chart start here-->
+    <div class="chit-chat-layer1">
+        <div class="col-md-12 chit-chat-layer1-left">
+            <div class="work-progres">
+                <div class="chit-chat-heading">
+                    Calendar
+                </div>
+                <br>
+                <div id='calendar'></div>
+                
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    
 </div>
 <script>
     var ctx = document.getElementById('myChart').getContext('2d');
@@ -177,4 +169,39 @@
         }
     });
 </script>
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+
+</script>
+<script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          
+        });
+        calendar.render();
+      });
+
+    </script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Product', 'Stock'],
+          <?php echo $chartData?>
+        ]);
+
+        var options = {
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
 @endsection

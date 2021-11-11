@@ -37,16 +37,16 @@
                             <div class="w-100">
                                 <h3 class="mb-4">Sign In</h3>
                             </div>
-                            <div class="w-100">
-                                <p class="social-media d-flex justify-content-end">
-                                    <a href="#"
-                                        class="social-icon d-flex align-items-center justify-content-center"><span
-                                            class="fab fa-facebook-f"></span></a>
-                                    <a href="#"
-                                        class="social-icon d-flex align-items-center justify-content-center"><span
-                                            class="fab fa-twitter"></span></a>
-                                </p>
-                            </div>
+                            <!--<div class="w-100">-->
+                            <!--    <p class="social-media d-flex justify-content-end">-->
+                            <!--        <a href="#"-->
+                            <!--            class="social-icon d-flex align-items-center justify-content-center"><span-->
+                            <!--                class="fab fa-facebook-f"></span></a>-->
+                            <!--        <a href="#"-->
+                            <!--            class="social-icon d-flex align-items-center justify-content-center"><span-->
+                            <!--                class="fab fa-twitter"></span></a>-->
+                            <!--    </p>-->
+                            <!--</div>-->
                         </div>
                         <form method="POST" action="{{ route('UserLogin') }}" class="signin-form">
                             @csrf
@@ -84,14 +84,14 @@
                         </form>
                         <div class="form-group d-md-flex mb-3">
                             <div class="w-50 text-left remember">
-                                <input type="checkbox" id="rememberCheck" checked>
-                                <span class="checkmark"></span>
-                                <label class="checkbox-wrap checkbox-primary mb-0 label-color"
-                                    for="rememberCheck">Remember Me</label>
+                                <!--<input type="checkbox" id="rememberCheck" checked>-->
+                                <!--<span class="checkmark"></span>-->
+                                <!--<label class="checkbox-wrap checkbox-primary mb-0 label-color"-->
+                                <!--    for="rememberCheck">Remember Me</label>-->
                             </div>
                             <div class="w-50 d-flex justify-content-end text-md-right">
                                 @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="text-log">{{ __('Forgot Password?') }}</a>
+                                <a href="{{ url('reset-password-page') }}" class="text-log">{{ __('Forgot Password?') }}</a>
                                 @endif
                             </div>
                         </div>

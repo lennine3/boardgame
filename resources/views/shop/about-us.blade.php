@@ -26,12 +26,16 @@
                 <img src="{{ asset('Img/Thinh.jpg') }}" class="card-img-top" alt="..." width="100%">
                 <div class="card-body">
                   <h5 class="card-title"><b>HÀ QUỐC THỊNH</b></h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">STUDENT'ID: 0306181369 <br> STUDENT'S CLASS: CĐTH 18PMC.</p>
                   <a href="#" class="btn btn-primary">DETAIL</a>
                 </div>
               </div>
         </div>
     </div>
+</div>
+<div class=" container" style="padding-top: 20px;padding-bottom:20px">
+    <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen
+src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJWZ60o0AvdTER2wKmg-QUvaE&key=AIzaSyCDOtvaMglH41FA5glg7HyTff5yMLSOVjw"></iframe>
 </div>
 <div class="container" style="padding-bottom: 35px">
     <div class="row" style="border: 1.1px black solid;border-radius:15px">

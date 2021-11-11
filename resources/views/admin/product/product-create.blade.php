@@ -7,13 +7,14 @@
             </div>
         </div>
         <div class="table-admin">
-            <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('admin/product-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('POST');
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label for="inputSKU" class="form-label">Stock Keeping Unit</label>
-                            <input type="text" class="form-control" id="inputSKU" placeholder="Ex: MA-105" name="sku">
+                            <input type="text" class="form-control" id="inputSKU" placeholder="Ex: MA-105" name="sku" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -44,13 +45,13 @@
                         <div class="mb-3">
                             <label for="inputName" class="form-label">Product Name</label>
                             <input type="text" class="form-control" id="inputName" placeholder=""
-                                name="name">
+                                name="name" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label for="inputStock" class="form-label">Stock</label>
-                            <input type="number" class="form-control" id="inputStock" name="stock">
+                            <input type="number" class="form-control" id="inputStock" name="stock" required>
                         </div>
                     </div>
                 </div>
@@ -58,21 +59,21 @@
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label for="inputPrice" class="form-label">Price</label>
-                            <input type="number" class="form-control" id="inputPrice" name="price">
+                            <input type="number" class="form-control" id="inputPrice" name="price" required>
                         </div>
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="productType" class="form-label">Size</label>
-                                    <input type="text" class="form-control" name="size">
+                                    <input type="text" class="form-control" name="size" required>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="productType" class="form-label">Origin</label>
-                                    <input type="text" class="form-control" name="origin">
+                                    <input type="text" class="form-control" name="origin" required>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="productType" class="form-label">Weight</label>
-                                    <input type="text" class="form-control" name="weight">
+                                    <input type="text" class="form-control" name="weight" required>
                                 </div>
                             </div>
 
@@ -81,7 +82,7 @@
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
                                     <label for="productType" class="form-label">Age</label>
-                                    <input type="text" class="form-control" name="age">
+                                    <input type="text" class="form-control" name="age" required>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +91,7 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Description</label>
                             <textarea name="description" id="" cols="30" rows="8" class="form-control"
-                                placeholder="Description"></textarea>
+                                placeholder="Description" required></textarea>
                         </div>
 
                     </div>
@@ -98,7 +99,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-3">
-                            <label for="formPromotion" class="form-label">promotion</label>
+                            <label for="formPromotion" class="form-label">Promotion</label>
                             <select name="promotion" id="formPromotion" class="form-control">
                                 @foreach ($promotions as $promotion)
                                 <option value="{{ $promotion->id }}">{{ $promotion->name }}</option>
@@ -109,7 +110,7 @@
                     <div class="col-lg-6">
                         <label for="" class="form-label">Status</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="status" name="status">
+                            <input class="form-check-input" type="checkbox" value="1" id="status" name="status" checked>
                             <label class="form-check-label" for="status">
                                 Active
                             </label>
@@ -117,10 +118,18 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-lg-12">
+                        <label for="productType" class="form-label">Description</label>
+                    <textarea name="editor" id="editor" cols="30" rows="50" required></textarea>
+                    {{-- <div id="editor" name="content"></div> --}}
+                </div>
+                </div>
+                <br>
+                <div class="row">
                     <div class="col-lg-6">
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Representative Image</label>
-                            <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()">
+                            <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -134,7 +143,7 @@
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Image</label>
                             {{-- <input class="form-control" type="file" id="formFile" name="image" onchange="ImgPreview()"> --}}
-                            <input class="form-control" type="file" id="file-input" name="imageFile[]" multiple="multiple">
+                            <input class="form-control" type="file" id="file-input" name="imageFile[]" multiple="multiple" required>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -189,5 +198,11 @@
         preview.src = src;
     }
 
+</script>
+<script type="text/javascript">
+    CKEDITOR.replace('editor', {
+        filebrowserUploadUrl: "{{route('Img-Upload', ['_token' => csrf_token() ])}}",
+filebrowserUploadMethod: 'form'
+});
 </script>
 @endsection

@@ -3,14 +3,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-                <input type="text" value=" " name="id" id="v_id" hidden>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <div class="row">
+                    <div class="col-lg-6 justify-content-start d-flex"><h3 class="modal-title" id="exampleModalLabel">Edit user</h3></div>
+                    <div class="col-lg-6 justify-content-end d-flex"><button type="button" class="btn btn-secondary" data-dismiss="modal">X</button></div>
+                </div>
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('updateUser',$user->id) }}">
-                    @method('PUT')
+                    @method('POST')
                     @csrf
+                    <input type="text" value=" " name="id" id="v_id" hidden>
                     <div class=" mb-3">
                         <label for="name" class=" col-form-label text-md-right">{{ __('Name') }}</label>
                         <input id="v_name" type="text" class="form-control @error('name') is-invalid @enderror"

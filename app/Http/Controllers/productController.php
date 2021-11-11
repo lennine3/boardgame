@@ -9,6 +9,8 @@ use App\Models\supplier;
 use App\Models\productType;
 use App\Models\staff;
 use App\Models\promotion;
+use App\Models\turtorial;
+use App\Models\productImage;
 use GuzzleHttp\Middleware;
 
 class productController extends Controller
@@ -25,7 +27,7 @@ class productController extends Controller
     public function index()
     {
         //
-        $products=product::all();
+        $products=product::where('status','=',1)->get();
         return view ('admin.product.product',compact('products'));
     }
 
@@ -72,16 +74,26 @@ class productController extends Controller
         $product->origin=$request->origin;
         $product->weight=$request->weight;
         $product->age=$request->age;
+        
         $product->save();
+
         if ($request->hasfile('imageFile')) {
             $files=$request->file('imageFile');
             foreach ($files as $file) {
                 $name = time().'-'.$file->getClientOriginalName();
-                $file->move(public_path('Img/product-img'), $name);
+                $file->move(public_path('../Img/product-img'), $name);
                 $product->image()->create(['image'=>$name,'product_id'=>$product->id]);
             }
         }
-        return redirect()->route('product.index');
+
+        $turtorial=new turtorial();
+        $turtorial->product_id=$product->id;
+        $turtorial->title=$product->name." description";
+        $turtorial->content=$request->editor;
+        toast('Product created','success');
+        $turtorial->save();
+
+        return redirect('admin/product');
     }
 
     /**
@@ -147,9 +159,10 @@ class productController extends Controller
         $product->origin=$request->origin;
         $product->weight=$request->weight;
         $product->age=$request->age;
-        /* dd($product); */
+        // dd($product);
         $product->save();
-        return redirect()->route('product.index');
+        toast('Product info updated','success');
+        return redirect('admin/product');
     }
 
     /**
@@ -158,16 +171,32 @@ class productController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
-        $product=product::findOrFail($id);
-        $product->delete();
-        return redirect()->route('product.index');
+        $product=product::findOrFail($request->productID);
+        $productImages=productImage::where('product_id','=',$product->id)->get();
+        foreach($productImages as $item)
+        {
+            $item->status=0;
+            $item->save();
+        }
+        
+        $description=turtorial::where('product_id','=',$product->id)->first();
+        if($description!==null)
+        {
+            $description->status=0;
+            $description->save();
+        }
+        $product->status=0;
+        $product->save();
+        //$product->delete();
+        toast('Product status changed','success');
+        return redirect('admin/product');
     }
     public function ImgSingle(Request $request){
                 $imageName=time().'.'.$request->imageFile[0]->extension();
-                $request->imageFile[0]->move(public_path('Img/product-img'),$imageName);
+                $request->imageFile[0]->move('Img/product-img',$imageName);
                 return $imageName;
     }
     public function ImgUpload(Request $request)
@@ -181,7 +210,7 @@ class productController extends Controller
                     'image'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 ]);
                 $imageName=time().'.'.$request->image->extension();
-                $request->image->move(public_path('Img/product-img'),$imageName);
+                $request->image->move(public_path('../Img/product-img'),$imageName);
                 return $imageName;
             }
         }
