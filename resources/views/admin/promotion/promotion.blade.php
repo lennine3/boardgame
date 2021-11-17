@@ -15,14 +15,22 @@
                     <label for="User" class="form-label">Sale off</label>
                     <input type="text" id="User" class="form-control" name="rate" required>
                 </div>
-                {{-- <div class="mb-3">
+                <div class="mb-3">
+                    <label for="User" class="form-label">Product</label>
+                    <select name="productId" id="productNumber" class="form-control">
+                        @foreach ($products as $item)
+                        <option value="{{ $item->id }}">{{ $item->stock_keeper_unit }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label for="User" class="form-label">Start Date</label>
-                    <input type="date" id="User" class="form-control">
+                    <input type="date" name="startDate" id="User" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="User" class="form-label">End' Date</label>
-                    <input type="date" id="User" class="form-control">
-                </div> --}}
+                    <input type="date" name="endDate" id="User" class="form-control">
+                </div>
                 <div class="d-flex justify-content-end" style="padding: 15px 15px 15px 15px">
                     <button class="btn btn-primary">Add</button>
                     {{-- <a class="btn btn-primary">Add</a> --}}
@@ -37,8 +45,8 @@
                         <th>ID</th>
                         <th>Promotion's Name</th>
                         <th>Sale Off</th>
-                        {{-- <th>Start Date</th>
-                        <th>End Date</th> --}}
+                        <th>Start Date</th>
+                        <th>End Date</th>
                     </thead>
                     <tbody>
                         @foreach ($promotions as $promotion)
@@ -46,6 +54,8 @@
                             <td>{{ $promotion->id }}</td>
                             <td>{{ $promotion->name }}</td>
                             <td>{{ $promotion->rate }}%</td>
+                            <td>{{ $promotion->start_date }}</td>
+                            <td>{{ $promotion->end_date }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -61,5 +71,8 @@
         );
     });
 
+    $(document).ready(function() {
+    $('#productNumber').select2();
+});
 </script>
 @endsection

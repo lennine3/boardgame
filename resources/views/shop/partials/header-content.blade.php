@@ -1,4 +1,6 @@
 @inject('userNotification', 'App\Models\notification')
+@inject('promotion', 'App\Models\promotion')
+@inject('product', 'App\Models\product')
 <div class=" border-bottom header-color header-nav">
     <div class="container">
         <div class="row">
@@ -35,65 +37,67 @@
                                             <div style="height:550px;overflow:auto">
                                                 @else
                                                 <div style="overflow:auto">
+                                                    @endif
+                                                    <div style="padding-top: 15px;padding-bototm:15px">
+                                                        <table class="table">
+                                                            <tbody>
+                                                                @foreach (Session::get("Cart")->products as $item)
+                                                                <tr style="border-bottom: 1px solid #fff!important">
+                                                                    <td>
+                                                                        <div class="cart-detail-img">
+                                                                            <img
+                                                                                src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-12 text-info">
+                                                                                ${{ $item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100) }}
+                                                                                x {{ $item['quanty'] }}
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <b>{{ $item['productInfo']->name }}</b>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="cart-close">
+                                                                            <button
+                                                                                data-id="{{ $item['productInfo']->id }}"
+                                                                                class="btn"><i
+                                                                                    class="fas fa-times"></i></button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="total-section text-center checkout row">
+                                                    <div class="col-lg-6">
+                                                        Total:
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <span
+                                                            class="text-info">${{ Session::get('Cart')->totalPrice }}</span>
+                                                    </div>
+                                                </div>
+                                                @else
+                                                <div style="padding: 15px 15px 15px 15px">There no product in your
+                                                    Cart.
+                                                    Please
+                                                    choose some thing.</div>
                                                 @endif
-                                            <div style="padding-top: 15px;padding-bototm:15px">
-                                                <table class="table">
-                                                    <tbody>
-                                                        @foreach (Session::get("Cart")->products as $item)
-                                                        <tr style="border-bottom: 1px solid #fff!important">
-                                                            <td>
-                                                                <div class="cart-detail-img">
-                                                                    <img
-                                                                        src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="row">
-                                                                    <div class="col-lg-12 text-info">
-                                                                        ${{ $item['productInfo']->price-($item['productInfo']->price*$item['productInfo']->promotionRelation->rate/100) }}
-                                                                        x {{ $item['quanty'] }}
-                                                                    </div>
-                                                                    <div class="col-lg-12">
-                                                                        <b>{{ $item['productInfo']->name }}</b></div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <div class="cart-close">
-                                                                    <button data-id="{{ $item['productInfo']->id }}"
-                                                                        class="btn"><i
-                                                                            class="fas fa-times"></i></button>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
                                             </div>
-                                            </div>
-                                            <div class="total-section text-center checkout row">
-                                                <div class="col-lg-6">
-                                                    Total:
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <span
-                                                        class="text-info">${{ Session::get('Cart')->totalPrice }}</span>
-                                                </div>
-                                            </div>
-                                            @else
-                                            <div style="padding: 15px 15px 15px 15px">There no product in your
-                                                Cart.
-                                                Please
-                                                choose some thing.</div>
-                                            @endif
                                         </div>
-                                    </div>
-                                    <div class="row">
+                                        <div class="row">
 
-                                        <div
-                                            class="col-lg-12 col-sm-12 col-12 text-center checkout d-flex justify-content-end">
-                                            <a href="{{ route('cart') }}" class="btn btn-primary">CART</a>
+                                            <div
+                                                class="col-lg-12 col-sm-12 col-12 text-center checkout d-flex justify-content-end">
+                                                <a href="{{ route('cart') }}" class="btn btn-primary">CART</a>
+                                            </div>
                                         </div>
-                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -155,51 +159,67 @@
                                 <i class="fas fa-bell" style="color: #fff"></i>
                             </a>
                             @php
-                                    $notifications=$userNotification::where('user_id','=',Auth::user()->id)->where('status','=',1)->get();
-                                    $count=$userNotification::where('user_id','=',Auth::user()->id)->where('status','=',1)->count();
-                                    $number=0;
-                                    @endphp
-                            <span class="badge badge-pill badge-danger">{{$count}}</span>
-                            <ul class="dropdown-menu">
-                                @foreach ($notifications as $notification)
-                                @php
-                                    $number++;
-                                @endphp
-                                @endforeach
-                                @if($number>2)
-                                <div style="height:350px;overflow:auto">
-                                @else
-                                <div style="overflow:auto">
-                                @endif
-                                @foreach ($notifications as $notification)
-                                <li>
-                                    <a class="dropdown-item" href="{{ url('notification-status/'.$notification->id) }}" onclick="notificationStatus({{ $notification->id }})">
-                                        <div class="row">
-                                            <div class="col align-self-start">
-                                                {{ $notification->content }}
-                                            </div>
-                                            <div class="col align-self-start">
-                                                {{ date('d/m/Y', strtotime($notification->created_at))}}
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <hr>
-                                <li>
-                                @endforeach
-                                </div>
-                                    
-                                <div class="container" style="width: 250px;">
-                                    You have {{ $number }} notification
-                                </div>
-                                @if ($number!=0)
-                                <div class="d-grid gap-2">
-                                    <a href="{{ url('notification-all-status') }}" class="btn btn-info btn-block"
-                                        style="color: #fff">Mark all
-                                        notifications</a>
-                                </div>
-                                @endif
+                            $notifications=$userNotification::where('user_id','=',Auth::user()->id)->where('status','=',1)->get();
+                            $count=$userNotification::where('user_id','=',Auth::user()->id)->where('status','=',1)->count();
+                            $number=0;
+                            $promotionCheck=$promotion::where('status',1)->get();
+                            $dateNow=date("Y-m-d");
+                            $dateCount=0;
+                            foreach ($promotionCheck as $item) {
+                            if($item->end_date<$dateNow) {
+                                $products=$product::find($item->product_id);
+                                $products->promotion_id=1;
+                                $products->promotion_price=$products->price;
 
-                            </ul>
+                                $products->save();
+                                $item->status=0;
+                                $item->save();
+                                }
+                                }
+                                @endphp
+                                <span class="badge badge-pill badge-danger">{{$count}}</span>
+                                <ul class="dropdown-menu">
+                                    @foreach ($notifications as $notification)
+                                    @php
+                                    $number++;
+                                    @endphp
+                                    @endforeach
+                                    @if($number>2)
+                                    <div style="height:350px;overflow:auto">
+                                        @else
+                                        <div style="overflow:auto">
+                                            @endif
+                                            @foreach ($notifications as $notification)
+                                            <li>
+                                                <a class="dropdown-item"
+                                                    href="{{ url('notification-status/'.$notification->id) }}"
+                                                    onclick="notificationStatus({{ $notification->id }})">
+                                                    <div class="row">
+                                                        <div class="col align-self-start">
+                                                            {{ $notification->content }}
+                                                        </div>
+                                                        <div class="col align-self-start">
+                                                            {{ date('d/m/Y', strtotime($notification->created_at))}}
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <hr>
+                                            <li>
+                                                @endforeach
+                                        </div>
+
+                                        <div class="container" style="width: 250px;">
+                                            You have {{ $number }} notification
+                                        </div>
+                                        @if ($number!=0)
+                                        <div class="d-grid gap-2">
+                                            <a href="{{ url('notification-all-status') }}"
+                                                class="btn btn-info btn-block" style="color: #fff">Mark all
+                                                notifications</a>
+                                        </div>
+                                        @endif
+
+                                </ul>
                         </div>
                     </li>
 

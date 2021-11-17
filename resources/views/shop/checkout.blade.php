@@ -224,7 +224,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="paymentMethod">
+                            <div id="keepProductRule" class="hide mb-3">
+                                <div style="color: red;">
+                                    Note: Your product only keep for 24 hour if you choose COD. Please pay attention to the time.
+                                </div>
+                            </div>
+                            <br>
+                            <div id="RedeemCodeId">
                                 <div>
                                     <h5><b>Redeem code</b></h5>
                                 </div>
@@ -288,9 +294,11 @@
 <script>
     function checkType() {
         if (document.getElementById('keepProduct').checked) {
-            document.getElementById("paymentMethod").setAttribute("class", "hide");
+            // document.getElementById("paymentMethod").setAttribute("class", "hide");
+            document.getElementById("keepProductRule").removeAttribute("class", "hide");
         } else {
-            document.getElementById("paymentMethod").removeAttribute("class", "hide");
+            // document.getElementById("paymentMethod").removeAttribute("class", "hide");
+            document.getElementById("keepProductRule").setAttribute("class", "hide");
         }
     }
 

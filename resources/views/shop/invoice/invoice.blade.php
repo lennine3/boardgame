@@ -86,9 +86,10 @@
                                                     </td>
                                                     <td>{{ $item->created_at->format('d/m/Y')}}</td>
                                                     <td>${{ $item->total_price }}</td>
-                                                    <td>@if($item->status==0)
+                                                    <td>@if($item->status==0&&$item->role_cancel==3)
+                                                    <button type="button" class="btn btn-danger">Order has been cancel</button>
+                                                    @elseif($item->status==0&&($item->role_cancel==1||$item->role_cancel==2))
                                                     <button type="button" class="btn btn-danger">Your order has been cancel</button>
-                                                    
                                                         @elseif ($item->order_status==1)
                                                         <button type="button" class="btn btn-secondary">Your order has been confirmed</button>
                                                         
@@ -125,14 +126,21 @@
         <h5 class="modal-title" id="exampleModalLabel">Cancel order</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form action="{{ url('/invoice-cancel') }}" method="GET">
+                            @csrf
+                            @method('GET')
       <div class="modal-body">
         Do you want to cancel your order?
+        <p>
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Reason" id="floatingTextarea" name=reason></textarea>
+              <label for="floatingTextarea">Reason</label>
+            </div>
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <form action="{{ url('/invoice-cancel') }}" method="GET">
-                            @csrf
-                            @method('GET')
+        
                             <input type="text" id="v_id" name="invoiceId" hidden>
         <button type="submit" class="btn btn-primary">Yes</button>
                         </form>

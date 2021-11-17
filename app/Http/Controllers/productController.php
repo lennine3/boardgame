@@ -56,19 +56,20 @@ class productController extends Controller
     {
         //
         $product=new product();
-        $product->stock_keeper_unit=$request->sku;
+        $product->product_code=$request->sku;
         $product->product_type_id=$request->productType;
         $product->supplier_id=$request->supplier;
         $product->name=$request->name;
         $product->price=$request->price;
         $product->stock=$request->stock;
-        $product->promotion_id=$request->promotion;
+        $product->promotion_id=1;
         if($request->status!=null)
         $product->status=$request->status;
         else
         $product->status=0;
         $product->image=$this->ImgUpload($request);
-        $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
+        // $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
+        $product->promotion_price=$product->price;
         $product->description=$request->description;
         $product->size=$request->size;
         $product->origin=$request->origin;
@@ -137,7 +138,7 @@ class productController extends Controller
         //
         $product=product::findOrFail($id);
         //$productDetail=productDetail::where('product_id',$id)->first();
-        $product->stock_keeper_unit=$request->sku;
+        $product->product_code=$request->sku;
         $product->product_type_id=$request->productType;
         $product->supplier_id=$request->supplier;
         $product->name=$request->name;
@@ -152,8 +153,9 @@ class productController extends Controller
         {
             $product->image=$product->image;
         }
-        $product->promotion_id=$request->promotion;
-        $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
+        $product->promotion_id=1;
+        $product->promotion_price=$product->price;
+        // $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
         $product->description=$request->description;
         $product->size=$request->size;
         $product->origin=$request->origin;

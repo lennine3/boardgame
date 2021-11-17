@@ -12,6 +12,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\customer;
 
 class LoginController extends Controller
 {
@@ -55,7 +56,7 @@ class LoginController extends Controller
         ];
         $admin=Role::findById(1);
         $staff=Role::findById(2);
-        
+        $customer=Role::findById(3);
         if(Auth::attempt($data))
         {
             if(Auth::user()->status==0)
@@ -71,9 +72,21 @@ class LoginController extends Controller
             return redirect()->route('admin');
             /* echo 'ok'; */
         } else {
-            toast('Welcome '.Auth::user()->name,'success');
-            return redirect()->route('home');
-            /* echo 'not ok'; */
+            // Auth()->user()->hasRole([$customer]);
+            
+            $customerInfo=customer::where('user_id',Auth()->user()->id)->first();
+            // dd($customerInfo);
+            if($customerInfo->mark<3)
+            {
+                toast('Welcome '.Auth::user()->name,'success');
+                return redirect()->route('home');
+            }
+            else
+            Auth::logout();
+            alert()->error('Suspect customer',"Your email has been ban, please contact support department to get more detail");
+
+            return redirect()->route('loginPage');
+            
         }
         }
         else{

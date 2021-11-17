@@ -103,7 +103,7 @@ class shopController extends Controller
         $is_buy=false;
         $checkInvoice=0;
         $check=0;
-        if(Auth::check())
+        if(Auth::check() && Auth::user()->role==3)
         {
             $customer=customer::where('user_id',Auth::user()->id)->first();
             if($checkInvoice=invoice::where('customer_id','=',$customer->id)->count()>0)
@@ -194,7 +194,18 @@ class shopController extends Controller
     public function cancelInvoice(Request $request)
     {
         $invoice=invoice::find($request->invoiceId);
+        $customer=customer::find($invoices->customer_id);
+        $customer->mark++;
+        $customer->save();
+        $invoiceDetail=invoiceDetail::where('invoice_id',$invoice->id)->get();
+        foreach($invoiceDetail as $item){
+            $product=product::find($item->product_id);
+            $product->stock=$product->stock+$item->number;
+            $product->save();
+        }
         $invoice->status=0;
+        $invoice->role_cancel=Auth()->user()->role;
+        $invoice->reason_cancel=$request->reason;
         $invoice->save();
         return back();
     }
@@ -287,6 +298,13 @@ class shopController extends Controller
     }
     public function checkout()
     {
+        foreach (Session("Cart")->products as $item)
+        {
+            $product=product::find($item['productInfo']->id);
+            if($product->stock<$item['productInfo']->stock)
+            return back();
+            
+        }
         $userRedeemCode=userVoucher::where('user_id',Auth::user()->id)->where('status',1)->get();
         $staff=staff::where('user_id', Auth()->user()->id)->first();
         $customer=customer::where('user_id', Auth()->user()->id)->first();

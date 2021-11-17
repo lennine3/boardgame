@@ -91,14 +91,24 @@ class adminController extends Controller
         $invoices=invoice::all();
         return view('admin.invoice.invoice',compact('invoices'));
     }
-    public function invoiceLock($id){
-        $invoices=invoice::find($id);
-        if($invoices->status==0)
-        $invoices->status=1;
-        else
+    public function invoiceLock(Request $request){
+        $invoices=invoice::find($request->invoiceId);
+        
+        $customer=customer::find($invoices->customer_id);
+        $customer->mark++;
+        $customer->save();
+        $invoiceDetail=invoiceDetail::where('invoice_id',$invoices->id)->get();
+        foreach($invoiceDetail as $item){
+            $product=product::find($item->product_id);
+            $product->stock=$product->stock+$item->number;
+            $product->save();
+        }
         $invoices->status=0;
+        $invoices->role_cancel=Auth()->user()->role;
+        $invoices->reason_cancel=$request->reason;
         $invoices->save();
-        toast('Invoice Status change','success');
+        
+        toast('Invoice cancel','success');
         return redirect()->back();
     }
 

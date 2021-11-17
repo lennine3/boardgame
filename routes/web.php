@@ -185,7 +185,7 @@ Route::prefix('/admin')->group(function () {
     
     //invoice
     Route::get('/invoice', 'App\Http\Controllers\adminController@invoicePage')->name('invoice');
-    Route::get('/invoice-lock/{id}', 'App\Http\Controllers\adminController@invoiceLock');
+    Route::get('/invoice-lock', 'App\Http\Controllers\adminController@invoiceLock');
     Route::get('/invoice-order-status/{id}', 'App\Http\Controllers\adminController@invoiceChange');
     //order
     Route::get('/order', function () {

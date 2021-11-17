@@ -97,16 +97,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="formPromotion" class="form-label">Promotion</label>
-                            <select name="promotion" id="formPromotion" class="form-control">
-                                @foreach ($promotions as $promotion)
-                                <option value="{{ $promotion->id }}">{{ $promotion->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
+                    <!--<div class="col-lg-6">-->
+                    <!--    <div class="mb-3">-->
+                    <!--        <label for="formPromotion" class="form-label">Promotion</label>-->
+                    <!--        <select name="promotion" id="formPromotion" class="form-control">-->
+                    <!--            @foreach ($promotions as $promotion)-->
+                    <!--            <option value="{{ $promotion->id }}">{{ $promotion->name }}</option>-->
+                    <!--            @endforeach-->
+                    <!--        </select>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <div class="col-lg-6">
                         <label for="" class="form-label">Status</label>
                         <div class="form-check">
@@ -119,7 +119,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <label for="productType" class="form-label">Description</label>
+                        <label for="productType" class="form-label">Description detail</label>
                     <textarea name="editor" id="editor" cols="30" rows="50" required></textarea>
                     {{-- <div id="editor" name="content"></div> --}}
                 </div>

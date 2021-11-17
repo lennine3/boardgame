@@ -1,4 +1,5 @@
 @if(Session::has("Cart")!=null)
+@inject('product', 'App\Models\product')
 <section class="shopping-cart spad" id="listCart">
     <div class="container">
         <div class="row">
@@ -17,10 +18,19 @@
                     </thead>
                     <tbody>
                         @foreach (Session::get("Cart")->products as $item)
+                        @php
+                            $productInfo=$product::find($item['productInfo']->id);
+                        @endphp
                         <tr>
                             <td class="cart-pic first-row"><img src="{{ asset('Img/product-img/'.$item['productInfo']->image) }}" alt="" width="70%"></td>
                             <td class="cart-title first-row">
                                 <h4>{{ $item['productInfo']->name }}</h4>
+                                <br>
+                                Stocking: @if($productInfo->stock<$item['quanty'])
+                                <span style="color:red">{{$productInfo->stock}}</span>
+                                @else
+                                {{$productInfo->stock}}
+                                @endif
                             </td>
                             <td class="p-price first-row" style="font-size:25px">${{ $item['productInfo']->promotion_price }}</td>
                             <td class="qua-col first-row">
@@ -34,7 +44,7 @@
                                         <input class="form-control" min="1" name="quantity"
                                             id="quanty-item{{ $item['productInfo']->id }}" value="{{ $item['quanty'] }}"
                                             type="number">
-                                             @if($item['productInfo']->stock >$item['quanty'])
+                                             @if($productInfo->stock >$item['quanty'])
                                         <div class="input-group-append">
                                             <button  class="btn btn-outline-secondary btn-plus" onclick="UpdateItem({{ $item['productInfo']->id }})">
                                                 <i class="fa fa-plus"></i>
@@ -50,7 +60,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                @if($item['productInfo']->stock ==$item['quanty'])
+                                @if($productInfo->stock ==$item['quanty'])
                                 The product has reached the maximum quantity
                                 @endif
                             </td>
