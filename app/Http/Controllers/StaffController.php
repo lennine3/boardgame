@@ -44,6 +44,7 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         //
+        try{
         $staffs=new staff();
         $users=new User();
         $users->name=$request->name;
@@ -62,7 +63,11 @@ class StaffController extends Controller
         toast('Staff created','success');
         $staffs->save();
         return redirect()->route('staff-index');
-
+        
+    } catch (\Exception $e) {
+        toast('There are error, please check again','error');
+    return redirect()->back();
+        }
     }
 
     /**

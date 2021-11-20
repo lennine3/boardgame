@@ -25,14 +25,14 @@
             <div class="col-3">
                 <div class="d-flex align-items-center ">
                     <img src="@php
-                            if (!empty($customer->avatar)) {
-                                echo asset('Img/customer-avatar/' . $customer->avatar);
-                            } elseif (!empty($staff->avatar)) {
-                                echo asset('Img/user-img/' . $staff->avatar);
-                            } else {
-                                echo asset('Img/unsigned.png');
-                            }
-                        @endphp" class="profile_edit mr-2">
+                        if (!empty($customer->avatar)) {
+                            echo asset('Img/customer-avatar/' . $customer->avatar);
+                        } elseif (!empty($staff->avatar)) {
+                            echo asset('Img/user-img/' . $staff->avatar);
+                        } else {
+                            echo asset('Img/unsigned.png');
+                        }
+                    @endphp" class="profile_edit mr-2">
 
                     <p class="mb-0">
                         {{ auth()->user()->name }}
@@ -50,17 +50,19 @@
                 </div>
 
                 <div class="d-flex align-items-center order-info active">
-                    <i class="far fa-credit-card"></i>
+                    <i class="fas fa-file-invoice-dollar"></i>
                     <p class="mb-0">
                         <a href="{{ route('invoice-shop') }}">My order</a>
                     </p>
                 </div>
-                <div class="d-flex align-items-center order-info">
+                 <div class="d-flex align-items-center order-info">
                     <i class="fas fa-box-alt"></i>
                     <p class="mb-0">
-                        <a href="{{ url('invoice-keep-order') }}">Order keep @if (!empty($countKeep))
+                        <a href="{{ url('invoice-keep-order') }}">Order keep
+                            @if (!empty($countKeep))
                             <span class="badge" style="background: red">{{ $countKeep }}</span>
-                            @endif </a>
+                            @endif
+                        </a>
                     </p>
                 </div>
                 <div class="d-flex align-items-center order-info">
@@ -81,10 +83,10 @@
                                 <b>{{ auth()->user()->name }}</b>
                             </p>
                             <span class="d-block">
-                                Address: {{ $invoice->address }}
+                                Address: {{ $customer->address }}
                             </span>
                             <span class="d-block">
-                                Phone number: {{ $invoice->phone }}
+                                Phone number: {{ $customer->phone }}
                             </span>
                         </div>
                     </div>

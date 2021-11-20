@@ -41,8 +41,8 @@ class productController extends Controller
         //
         $promotions=promotion::all();
         $staffs=staff::all();
-        $producttypes=productType::all();
-        $suppliers=supplier::all();
+        $producttypes=productType::where('status',1)->get();
+        $suppliers=supplier::where('status',1)->get();
         return view('admin.product.product-create',compact('staffs','producttypes','suppliers','promotions'));
     }
 
@@ -61,6 +61,7 @@ class productController extends Controller
         $product->supplier_id=$request->supplier;
         $product->name=$request->name;
         $product->price=$request->price;
+        $product->importPrice=$request->ImportPrice;
         $product->stock=$request->stock;
         $product->promotion_id=1;
         if($request->status!=null)
@@ -143,6 +144,7 @@ class productController extends Controller
         $product->supplier_id=$request->supplier;
         $product->name=$request->name;
         $product->price=$request->price;
+        $product->importPrice=$request->ImportPrice;
         $product->stock=$request->stock;
         $product->status=$request->status;
         if($request->image!=null)
@@ -153,8 +155,8 @@ class productController extends Controller
         {
             $product->image=$product->image;
         }
-        $product->promotion_id=1;
-        $product->promotion_price=$product->price;
+        // $product->promotion_id=1;
+        // $product->promotion_price=$product->price;
         // $product->promotion_price=$product->price-($product->price*$product->promotionRelation->rate/100);
         $product->description=$request->description;
         $product->size=$request->size;

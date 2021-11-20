@@ -136,7 +136,7 @@ class shopController extends Controller
     {
         $staff=staff::where('user_id', Auth()->user()->id)->first();
         $customer=customer::where('user_id', Auth()->user()->id)->first();
-        $countKeep=invoice::where('customer_id', Auth()->user()->id)->where('status','=',1)->where('keep_product','=',1)->count();
+        $countKeep=invoice::where('customer_id', $customer->id)->where('status','=',1)->where('keep_product','=',1)->count();
         return view('shop.profile-user.profile', compact('customer', 'staff','countKeep'));
     }
     public function profile_ajax()
@@ -194,7 +194,7 @@ class shopController extends Controller
     public function cancelInvoice(Request $request)
     {
         $invoice=invoice::find($request->invoiceId);
-        $customer=customer::find($invoices->customer_id);
+        $customer=customer::find($invoice->customer_id);
         $customer->mark++;
         $customer->save();
         $invoiceDetail=invoiceDetail::where('invoice_id',$invoice->id)->get();
@@ -255,7 +255,11 @@ class shopController extends Controller
     }
     public function invoiceDetail(invoice $invoice)
     {
-        return view('shop.invoice.invoice_detail', compact('invoice'));
+        $staff=staff::where('user_id', Auth()->user()->id)->first();
+        $customer=customer::where('user_id', Auth()->user()->id)->first();
+        $invoices=invoice::where('customer_id', $customer->id)->where('status','=',1)->where('keep_product','=',1)->latest()->get();
+        $countKeep=invoice::where('customer_id', $customer->id)->where('status','=',1)->where('keep_product','=',1)->count();
+        return view('shop.invoice.invoice_detail', compact('invoice','staff','customer','invoices','countKeep'));
     }
     public function invoice_ajax()
     {
@@ -355,6 +359,7 @@ class shopController extends Controller
         else
         $invoice->keep_product=0;
         $invoice->expected_date=$now;
+        // dd($invoice);
         $invoice->save();
         foreach (Session("Cart")->products as $item) {
             $invoiceDetail=new invoiceDetail;
@@ -469,7 +474,7 @@ public function redeemPage(){
         $staff=staff::where('user_id', Auth()->user()->id)->first();
         $customer=customer::where('user_id', Auth()->user()->id)->first();
         $vouchers=voucher::where('status','=',1)->get();
-        $countKeep=invoice::where('customer_id', Auth()->user()->id)->where('status','=',1)->where('keep_product','=',1)->count();
+        $countKeep=invoice::where('customer_id', $customer->id)->where('status','=',1)->where('keep_product','=',1)->count();
         return view('shop.voucher.voucher',compact('countKeep','vouchers','staff','customer'));
     }
 

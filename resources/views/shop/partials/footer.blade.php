@@ -3,7 +3,12 @@
         <div class="row">
             <div class="col-lg-4 col-sm-12">
                 <h3>About Us</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                Trần Võ Đăng Khoa <br>
+                Phone: 0382024592<br>
+                Email: 0306181328@gmail.com<br><br>
+                Hà Quốc Thịnh<br>
+                Phone: 0358707811<br>
+                Email: 0306181369@gmail.com<br>
             </div>
             <div class="col-lg-4 col-sm-12">
                 <h3>Newsletter</h3>

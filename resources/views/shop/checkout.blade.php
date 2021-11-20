@@ -193,7 +193,7 @@
                                     <h5><b>Payment method</b></h5>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="payment_item">
                                             <div class="radion_btn" style="display: inline-block;text-align: center;">
                                                 <label for="optionCod" style="display:block;padding-bottom:15px"><img src="{{ asset('FrontEnd/img/COD.jpg') }}" alt="" width="100%"></label>
@@ -203,16 +203,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="payment_item">
-                                            <div class="radion_btn" style="display: inline-block;text-align: center;">
-                                                <label for="optionBank" style="display:block;padding-bottom:15px"><img src="{{ asset('FrontEnd/img/Bank.png') }}" alt="" width="100%"></label>
-                                                <input type="radio" id="optionBank" name="paymentMethod" value="2">
-                                                <div class="check"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
+                                    <!--<div class="col-lg-4">-->
+                                    <!--    <div class="payment_item">-->
+                                    <!--        <div class="radion_btn" style="display: inline-block;text-align: center;">-->
+                                    <!--            <label for="optionBank" style="display:block;padding-bottom:15px"><img src="{{ asset('FrontEnd/img/Bank.png') }}" alt="" width="100%"></label>-->
+                                    <!--            <input type="radio" id="optionBank" name="paymentMethod" value="2">-->
+                                    <!--            <div class="check"></div>-->
+                                    <!--        </div>-->
+                                    <!--    </div>-->
+                                    <!--</div>-->
+                                    <div class="col-lg-6">
                                         <div class="payment_item">
                                             <div class="radion_btn" style="display: inline-block;text-align: center;">
                                                 <label for="optionVnpay" style="display:block;padding-bottom:15px"><img src="{{ asset('FrontEnd/img/vnpay.png') }}" alt="" width="100%"></label>

@@ -32,7 +32,7 @@
 
 <section class="order_details section_gap">
     <div class="container">
-        <h3 class="title_confirmation">Thank you. Your order has been received.</h3>
+        <h3 class="title_confirmation">Thank your. Your order has been received.</h3>
         <div class="row order_d_inner">
             <div class="col-lg-6">
                 <div class="details_item">

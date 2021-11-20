@@ -16,7 +16,7 @@ class promotionController extends Controller
 
     public function index()
     {
-        $products=product::where('status',1)->get();
+        $products=product::where('status',1)->where('promotion_id','!=',1)->get();
         $promotions=promotion::all();
         return view('admin.promotion.promotion',compact('promotions','products'));
     }

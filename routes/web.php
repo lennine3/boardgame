@@ -121,6 +121,8 @@ Route::prefix('/admin')->group(function () {
     Route::get('/edit/{id}', 'App\Http\Controllers\UserController@edit')->name('editUser');
     Route::post('/edit-user/{id}', 'App\Http\Controllers\UserController@update')->name('updateUser');
     Route::get('/user-lock', 'App\Http\Controllers\UserController@lockUser');
+    Route::get('/user-ban-list', 'App\Http\Controllers\UserController@banList');
+    Route::get('/unBan-user', 'App\Http\Controllers\UserController@unBan');
     //role
     Route::get('/role', 'App\Http\Controllers\RoleController@index')->name('role');
     //role-store
@@ -187,6 +189,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/invoice', 'App\Http\Controllers\adminController@invoicePage')->name('invoice');
     Route::get('/invoice-lock', 'App\Http\Controllers\adminController@invoiceLock');
     Route::get('/invoice-order-status/{id}', 'App\Http\Controllers\adminController@invoiceChange');
+    Route::get('/invoice-detail/{id}', 'App\Http\Controllers\adminController@invoiceDetail');
     //order
     Route::get('/order', function () {
         return view('admin.order.order');

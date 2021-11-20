@@ -17,6 +17,8 @@
                                 class="fal fa-user"></i><span> Staff</span></a></li>
                     <li><a href="{{ route('customer-index') }}" class="dot" id="role"><i class="fal fa-key"></i><span>
                                 Customer</span></a></li>
+                                <li><a href="{{ url('admin/user-ban-list') }}" class="dot" id="role"><i class="fal fa-user-slash"></i><span>
+                                    Ban List</span></a></li>
                 </ul>
             </li>
             <li id="menu-home"><a href="{{ url('admin/supplier') }}"><i

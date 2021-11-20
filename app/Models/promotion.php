@@ -9,4 +9,9 @@ class promotion extends Model
 {
     protected $table='promotion';
     use HasFactory;
+    
+    public function productRelation()
+    {
+        return $this->hasOne('App\Models\product', 'id', 'product_id');
+    }
 }

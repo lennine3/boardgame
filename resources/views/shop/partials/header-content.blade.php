@@ -1,13 +1,31 @@
 @inject('userNotification', 'App\Models\notification')
 @inject('promotion', 'App\Models\promotion')
 @inject('product', 'App\Models\product')
+@inject('productKeep', 'App\Models\invoice')
+@inject('customer', 'App\Models\customer')
 <div class=" border-bottom header-color header-nav">
+    @if (Auth::check())
+     @php
+    $dateNow=date("Y-m-d h:m:s");
+    $customer=$customer::where('user_id',Auth::user()->id)->first();
+    $productKeepInfo=$productKeep::where('customer_id', $customer->id)->where('status','=',1)->where('keep_product','=',1)->get();
+    $abc=0;
+    foreach ($productKeepInfo as $item) {
+        if ($item->created_at<$dateNow && $item->payment_method==1) {
+            $invoiceExpress=$productKeep::find($item->id);
+           $abc++;
+           $invoiceExpress->status=0;
+           $invoiceExpress->save();
+        }
+    }
+    @endphp
+    @endif
     <div class="container">
         <div class="row">
             <div class="md-12">
                 <ul>
                     <li style="float: left;line-height:50px">
-                        <i class="far fa-envelope"></i> tvdkhoa1801@gmail.com
+                        <i class="fad fa-phone-alt"></i> Hotline: 0382024592
                     </li>
                     <li style="padding-left: 40px;padding-right: 40px;">
                         <div class="dropdown" id="keep-open">
@@ -238,7 +256,7 @@
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('FrontEnd/img/logo-new.png') }}"
                 class="logo" alt="">
             <span
-                style="text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c">KT
+                style="text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c">TK
                 Board Game Store</span></a>
     </div>
     <hr>

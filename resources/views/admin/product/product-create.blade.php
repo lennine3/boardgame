@@ -57,9 +57,15 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="inputPrice" class="form-label">Price</label>
-                            <input type="number" class="form-control" id="inputPrice" name="price" required>
+                        <div class="row">
+                            <div class="mb-3 col-lg-6">
+                                <label for="ImportPrice" class="form-label">Import price</label>
+                                <input type="number" class="form-control" id="ImportPrice" name="ImportPrice" required>
+                            </div>
+                            <div class="mb-3 col-lg-6">
+                                <label for="inputPrice" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="inputPrice" name="price" required>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <div class="row">

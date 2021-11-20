@@ -19,7 +19,7 @@
                     <label for="User" class="form-label">Product</label>
                     <select name="productId" id="productNumber" class="form-control">
                         @foreach ($products as $item)
-                        <option value="{{ $item->id }}">{{ $item->stock_keeper_unit }}</option>
+                        <option value="{{ $item->id }}">{{ $item->product_code }} - {{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -44,7 +44,9 @@
                     <thead>
                         <th>ID</th>
                         <th>Promotion's Name</th>
+                        <th>Product's Name</th>
                         <th>Sale Off</th>
+                        <th>Status</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                     </thead>
@@ -53,7 +55,15 @@
                         <tr>
                             <td>{{ $promotion->id }}</td>
                             <td>{{ $promotion->name }}</td>
+                            <td>{{ $promotion->productRelation->name }}</td>
                             <td>{{ $promotion->rate }}%</td>
+                            <td>
+                                @if ($promotion->status==0)
+                                Not Active
+                                @elseif($promotion->status==1)
+                                Active
+                                @endif
+                            </td>
                             <td>{{ $promotion->start_date }}</td>
                             <td>{{ $promotion->end_date }}</td>
                         </tr>

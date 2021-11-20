@@ -3,7 +3,7 @@
 <div class="inner-block">
     <div class="d-flex bd-highlight mb-3">
         <div class="me-auto p-2 bd-highlight">
-            <h2>Add Product</h2>
+            <h2>Edit Product</h2>
         </div>
     </div>
     <div class="table-admin">
@@ -74,10 +74,16 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="mb-3">
+                    <div class="row">
+                        <div class="mb-3 col-lg-6">
+                                <label for="ImportPrice" class="form-label">Import price</label>
+                                <input type="number" class="form-control" value="{{ $product->importPrice }}" id="ImportPrice" name="ImportPrice" required>
+                            </div>
+                    <div class="mb-3 col-lg-6">
                         <label for="inputPrice" class="form-label">Price</label>
                         <input type="number" class="form-control" id="inputPrice" name="price"
                             value="{{ $product->price }}">
+                    </div>
                     </div>
                     <div class="mb-3">
                         <div class="row">
@@ -118,18 +124,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                        <label for="formPromotion" class="form-label">promotion</label>
-                        <select name="promotion" id="formPromotion" class="form-control">
-                            @foreach ($promotions as $promotion)
-                            <option value="{{ $promotion->id }}"
-                                <?php if(!empty($product)) {if($product->id_promotion==$promotion->id){echo 'selected';}} ?>>
-                                {{ $promotion->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="col-lg-6">-->
+                <!--    <div class="mb-3">-->
+                <!--        <label for="formPromotion" class="form-label">promotion</label>-->
+                <!--        <select name="promotion" id="formPromotion" class="form-control">-->
+                <!--            @foreach ($promotions as $promotion)-->
+                <!--            <option value="{{ $promotion->id }}"-->
+                <!--                <?php if(!empty($product)) {if($product->id_promotion==$promotion->id){echo 'selected';}} ?>>-->
+                <!--                {{ $promotion->name }}</option>-->
+                <!--            @endforeach-->
+                <!--        </select>-->
+                <!--    </div>-->
+                <!--</div>-->
                 <div class="col-lg-6">
                     <label for="" class="form-label">Status</label>
                     <div class="form-check">

@@ -71,16 +71,20 @@
     <div class="container term">
         <div class="row" style="text-align: center;padding: 25px 0px 10px 0px;">
             <div class="col-lg-3 term-box"><i class="fal fa-truck fa-2x"></i>
-                <h6 class="pad-top-10"><b>Free Delivery</b></h6> Fee ship on all order
+                <h6 class="pad-top-10"><b>Fast Delivery</b></h6> 
+                Will be shipped in 3 to 5 days.
             </div>
             <div class="col-lg-3 term-box"><i class="fal fa-sync-alt fa-2x"></i>
-                <h6 class="pad-top-10"><b>Return Policy</b></h6> Fee ship on all order
+                <h6 class="pad-top-10"><b>Return Policy</b></h6> 
+                Fast and simple.
             </div>
             <div class="col-lg-3 term-box"><i class="fal fa-headphones-alt fa-2x"></i>
-                <h6 class="pad-top-10"><b>24/7 Support</b></h6> Fee ship on all order
+                <h6 class="pad-top-10"><b>24/7 Support</b></h6> 
+                Alway online to support customer.
             </div>
             <div class="col-lg-3 term-box"><i class="fal fa-database fa-2x"></i>
-                <h6 class="pad-top-10"><b>Secure Payment</b></h6> Fee ship on all order
+                <h6 class="pad-top-10"><b>Secure Payment</b></h6> 
+                Your information will safe
             </div>
         </div>
     </div>

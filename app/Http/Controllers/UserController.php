@@ -64,4 +64,19 @@ class UserController extends Controller
         toast('User status update','success');
         return redirect()->back();
     }
+    
+    public function banList(){
+        $users=User::join('customer','users.id','=','customer.user_id')->where('customer.mark',3)->get();
+        return view('admin/user/banList',compact('users'));
+    }
+
+    public function unBan(Request $request){
+
+        $customer=customer::find($request->userId);
+        $customer->mark=0;
+        // dd($customer);
+        $customer->save();
+        // $users=User::join('customer','users.id','=','customer.user_id')->where('customer.mark',3)->get();
+        return redirect()->back();
+    }
 }

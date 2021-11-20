@@ -9,28 +9,36 @@
         </div>
     </div>
 </section>
-<div class=" container-fluid" style="padding-top: 20px;padding-bottom:20px">
-    <div class="row">
-        <div class="col-lg-6  d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('Img/khoa.jpg') }}" class="card-img-top" alt="..." width="100%">
-                <div class="card-body">
-                  <h5 class="card-title"><b>TRẦN VÕ ĐĂNG KHOA</b></h5>
-                  <p class="card-text">STUDENT'ID: 0306181328 <br> STUDENT'S CLASS: CĐTH 18PMA </p>
-                  <a href="#" class="btn btn-primary">Detail</a>
-                </div>
-              </div>
-        </div>
-        <div class="col-lg-6  d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('Img/Thinh.jpg') }}" class="card-img-top" alt="..." width="100%">
-                <div class="card-body">
-                  <h5 class="card-title"><b>HÀ QUỐC THỊNH</b></h5>
-                  <p class="card-text">STUDENT'ID: 0306181369 <br> STUDENT'S CLASS: CĐTH 18PMC.</p>
-                  <a href="#" class="btn btn-primary">DETAIL</a>
-                </div>
-              </div>
-        </div>
+<div class=" container" style="padding-top: 20px;padding-bottom:20px">
+    <div>
+        <h1 style="text-align: center">About us</h1>
+        <hr>
+    </div>
+    <img src="{{ asset('Img/ABOUT-US.jpg') }}" alt="" width="100%">
+    <br><br>
+    <div>
+        <p><b>1. About</b></p>
+        <p>
+        Welcome to TK-Boardgame - a project to popularize Board Games for Vietnamese people and bring a healthy entertainment playground to the Board Game community.
+        </p>
+        <p>
+        When you visit our website, I mean that you agree to the terms. The Website reserves the right to change, modify, add or remove any part of these Terms of Sale, at any time. Changes are effective immediately upon posting on the website without prior notice. accept those changes.
+        </p>
+        <p>
+            Please check back often to stay up to date with our changes.
+        </p>
+        <p><b>2. Website User Manual</b></p>
+        <p>
+            When accessing our website, customers must ensure that they are at least 18 years old, or access under the supervision of a parent or legal guardian. Customers have a guarantee of all civil acts to perform goods purchase and sale transactions in accordance with the provisions of Vietnamese law.
+        </p>
+        <p>
+            Use of any part of this website for commercial purposes or on behalf of any third party is strictly prohibited without our prior written permission. If any of these are covered, we will cancel the customer's account without notice.
+        </p>
+        <p><b>3. Customer opinions</b></p>
+        <p>All website content and customer critiques are our property. If we release any fake information, we will immediately lock your account or take different measures as prescribed by Vietnamese law.</p>
+        <p><b>4. Accept orders and prices</b></p>
+        <p>We reserve the right to limit or cancel your order for anything related to technical errors, customer-managed systems at any time. We may ask for more phone numbers and addresses before accepting orders.</p>
+        <p>We are committed to providing the most accurate pricing information to users. However, sometimes errors still occur, for example in case the product is not displayed correctly on the website or the price is wrong, in each case we will link instructions or cancel the order for you. guest. We also reserve the right to restrict or cancel any order whether it is either undetermined or paid.</p>
     </div>
 </div>
 <div class=" container" style="padding-top: 20px;padding-bottom:20px">

@@ -39,7 +39,8 @@ class adminController extends Controller
         $todoUser=todoList::join('todouser','todolist.id','=','todouser.todo_id')->where('todouser.user_id','=',Auth::user()->id)->where('is_done','=',0)->get('todolist.*');
         $now = Carbon::now();
         $Staffs=staff::all();
-        $invoiceYearCount=invoice::whereYear('created_at', '=', $now->year)->get();
+        // $invoiceYearCount=invoice::whereYear('created_at', '=', $now->year)->get();
+        $invoiceYearCount=invoice::whereYear('created_at', '=', $now->year)->where('order_status',3)->get();
         $staffCount=staff::all()->count();
         $customerCount=customer::all()->count();
         $invoiceCount=invoice::whereMonth('created_at', '=', $now->month)->count();
@@ -93,6 +94,11 @@ class adminController extends Controller
     }
     public function invoiceLock(Request $request){
         $invoices=invoice::find($request->invoiceId);
+        $invoices->status=0;
+        $invoices->role_cancel=Auth()->user()->role;
+        $invoices->reason_cancel=$request->reason;
+        $invoices->save();
+        
         
         $customer=customer::find($invoices->customer_id);
         $customer->mark++;
@@ -103,10 +109,7 @@ class adminController extends Controller
             $product->stock=$product->stock+$item->number;
             $product->save();
         }
-        $invoices->status=0;
-        $invoices->role_cancel=Auth()->user()->role;
-        $invoices->reason_cancel=$request->reason;
-        $invoices->save();
+        
         
         toast('Invoice cancel','success');
         return redirect()->back();
@@ -126,7 +129,10 @@ class adminController extends Controller
         toast('Order status change','success');
         return redirect()->back();
     }
-
+    public function invoiceDetail($invoiceId){
+        $invoices=invoiceDetail::where('invoice_id',$invoiceId)->get();
+        return view('admin.invoice.invoice-detail',compact('invoices'));
+    }
     public function mailTest(){
         $details = [
             'title' => 'test mail',

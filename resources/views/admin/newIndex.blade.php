@@ -96,15 +96,15 @@
     <!--main page chit chating end here-->
     <div class="main-page-charts">
         <div class="main-page-chart-layer1">
-            <div class="col-md-6 chart-layer1-left">
-                <div class="glocy-chart">
-                    <div class="span-2c">
-                        <h3 class="tlt">All product in store</h3>
-                        <div id="piechart_3d" style="width: 700px; height: 500px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 chart-layer1-left">
+            <!--<div class="col-md-6 chart-layer1-left">-->
+            <!--    <div class="glocy-chart">-->
+            <!--        <div class="span-2c">-->
+            <!--            <h3 class="tlt">All product in store</h3>-->
+            <!--            <div id="piechart_3d" style="width: 700px; height: 500px;"></div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <div class="col-md-12 chart-layer1-left">
                 <div class="glocy-chart">
                     <div class="span-2c">
                         <h3 class="tlt">Sales Analytics</h3>
