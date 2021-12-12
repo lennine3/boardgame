@@ -256,7 +256,7 @@
         <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('FrontEnd/img/logo-new.png') }}"
                 class="logo" alt="">
             <span
-                style="text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c">TK
+                class="title_shop">TK
                 Board Game Store</span></a>
     </div>
     <hr>

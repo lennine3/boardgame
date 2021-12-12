@@ -70,20 +70,20 @@
 <div class="pad-top-100">
     <div class="container term">
         <div class="row" style="text-align: center;padding: 25px 0px 10px 0px;">
-            <div class="col-lg-3 term-box"><i class="fal fa-truck fa-2x"></i>
-                <h6 class="pad-top-10"><b>Fast Delivery</b></h6> 
+            <div class="col-lg-3 col-md-12 term-box"><i class="fal fa-truck fa-2x"></i>
+                <h6 class="pad-top-10"><b>Fast Delivery</b></h6>
                 Will be shipped in 3 to 5 days.
             </div>
-            <div class="col-lg-3 term-box"><i class="fal fa-sync-alt fa-2x"></i>
-                <h6 class="pad-top-10"><b>Return Policy</b></h6> 
+            <div class="col-lg-3 col-md-12 term-box"><i class="fal fa-sync-alt fa-2x"></i>
+                <h6 class="pad-top-10"><b>Return Policy</b></h6>
                 Fast and simple.
             </div>
-            <div class="col-lg-3 term-box"><i class="fal fa-headphones-alt fa-2x"></i>
-                <h6 class="pad-top-10"><b>24/7 Support</b></h6> 
+            <div class="col-lg-3 col-md-12 term-box"><i class="fal fa-headphones-alt fa-2x"></i>
+                <h6 class="pad-top-10"><b>24/7 Support</b></h6>
                 Alway online to support customer.
             </div>
-            <div class="col-lg-3 term-box"><i class="fal fa-database fa-2x"></i>
-                <h6 class="pad-top-10"><b>Secure Payment</b></h6> 
+            <div class="col-lg-3 col-md-12 term-box"><i class="fal fa-database fa-2x"></i>
+                <h6 class="pad-top-10"><b>Secure Payment</b></h6>
                 Your information will safe
             </div>
         </div>
@@ -159,16 +159,16 @@
                                                                     @if($product->stock!=0)
                                                                     <div class="tooltip col-lg-6">
                                                                         <a onclick="AddCart({{ $product->id }})"
-                                                                            href="javascript:">
+                                                                            href="javascript:" class="add-padding">
                                                                             <i
                                                                                 class="fal fa-shopping-bag fa-3x addCart"></i>
                                                                         </a><span class="tooltiptext">Add Cart</span>
                                                                     </div>
                                                                     @else
-                                                                    
+
                                                                     @endif
                                                                     <div class="tooltip col-lg-6">
-                                                                        <a href="#">
+                                                                        <a href="#" class="fav-padding">
                                                                             @if (auth()->check())
                                                                                 @php
                                                                                     $check = auth()->user()->favorites()->where('product_id', $product->id)->first();
@@ -268,9 +268,9 @@
                                             </div>
                                     </div>
                                 </div>
-                                
-                                
-                                
+
+
+
                                 <div class="container-fluid">
                                     <hr>
                                 </div>
@@ -324,7 +324,7 @@
     <div class="container">
         <div class="row">
             <a class="col">
-                <img src="{{ asset('FrontEnd/img/label.png') }}" alt="" class="single-img"></a>
+                <img src="{{ asset('FrontEnd/img/label.png') }}" alt="" class="single-img img-fluid"></a>
             <a class="col">
                 <img src="{{ asset('FrontEnd/img/crown.png') }}" alt="" class="single-img img-fluid">
             </a>

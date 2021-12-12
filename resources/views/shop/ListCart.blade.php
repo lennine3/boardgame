@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="cart-table table-responsive">
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Image</th>
@@ -134,6 +134,6 @@
             input[0][isNegative ? 'stepDown' : 'stepUp']()
         }
     })
-   
+
 
 </script>

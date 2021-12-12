@@ -4,10 +4,14 @@ body {
     color: #777777;
     line-height: 24px;
     font-size: 18px;
+    width: 100%;
 }
-
 .item-info {
     padding: 15px 15px 15px 15px;
+}
+
+.title_shop{
+    text-align: center;vertical-align: middle;padding-top:35px;font-size: 45px;font-family: 'Otomanopee One', sans-serif;font-weight:600;color:#0000008c
 }
 
 .item-game-wrapper {
@@ -484,7 +488,7 @@ h6 {
     background: url(../img/cry-havoc.png) center no-repeat;
     background-size: cover;
     text-align: center;
-    padding: 275px 0;
+    padding: 275px 20;
 }
 
 .exclusive-deal-area {
@@ -2241,7 +2245,8 @@ img {
 
 .text-wrap,
 .login-wrap {
-    width: 50%;
+    /* width: 50%; */
+    width: 100%;
 }
 
 .text-center {
@@ -2270,11 +2275,6 @@ img {
 .login-wrap {
     position: relative;
     background: #fff;
-}
-
-.text-wrap,
-.login-wrap {
-    width: 50%;
 }
 
 .login-wrap h3 {
@@ -2348,6 +2348,9 @@ only screen and (max-device-width: 1024px) {
     .owl-next-related {
         display: none !important;
     }
+    .owl-nav{
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 480px),
@@ -2404,5 +2407,31 @@ only screen and (max-device-width: 480px) {
 
     .owl-next-related {
         display: none !important;
+    }
+    .title_shop{
+        font-size: 20px!important;
+    }
+    .container-random {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .owl-nav{
+        display: none;
+    }
+    .img-random{
+        width: 200px;
+        height: 200px;
+    }
+    .term{
+        height: 600px;
+    }
+    .term-box{
+        height: 150px;
+    }
+    .add-padding{
+        padding-right: 25px;
+    }
+    .fav-padding{
+        padding-left: 25px;
     }
 }
